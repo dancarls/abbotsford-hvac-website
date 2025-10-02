@@ -7,6 +7,20 @@ export default function Header() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const navigate = useNavigate();
 
+  // Add timeout for dropdown delay
+  let dropdownTimeout: NodeJS.Timeout;
+
+  const handleMouseEnter = () => {
+    clearTimeout(dropdownTimeout);
+    setIsServicesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeout = setTimeout(() => {
+      setIsServicesOpen(false);
+    }, 200); // 200ms delay before closing
+  };
+
   const services = [
     { name: 'Heating Services', path: '/services/heating' },
     { name: 'Cooling Services', path: '/services/cooling' },
@@ -45,8 +59,8 @@ export default function Header() {
             {/* Services Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               <button
                 className="text-gray-700 hover:text-green-500 font-medium flex items-center cursor-pointer"
@@ -67,7 +81,7 @@ export default function Header() {
                           navigate(service.path);
                           setIsServicesOpen(false);
                         }}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 cursor-pointer"
+                        className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-green-50 hover:text-green-600 cursor-pointer transition-colors"
                       >
                         {service.name}
                       </button>

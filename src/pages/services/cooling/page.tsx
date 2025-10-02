@@ -88,11 +88,11 @@ export default function CoolingServices() {
   ];
 
   const serviceAreas = [
-    'Abbotsford West', 'Abbotsford East', 'Clayburn Village', 'McMillan',
-    'Auguston', 'Eagle Mountain', 'Sandy Hill', 'Clearbrook Centre',
-    'Townline Hill', 'Mill Lake', 'West Clearbrook', 'South Clearbrook',
-    'Aberdeen', 'South Poplar', 'Kilgard', 'Gifford', 'Mission',
-    'Hatzic', 'Dewdney', 'Glen Valley', 'Silverhill'
+    'Summerside', 'Sherwood Park', 'St. Albert', 'Spruce Grove',
+    'Stony Plain', 'Fort Saskatchewan', 'Beaumont', 'Devon',
+    'Morinville', 'Leduc', 'Calmar', 'Bon Accord',
+    'Legal', 'Gibbons', 'Redwater', 'Lamont',
+    'Bruderheim', 'Andrew', 'Mundare', 'Vegreville'
   ];
 
   const faqs = [
@@ -110,7 +110,7 @@ export default function CoolingServices() {
     },
     {
       question: 'What size air conditioner do I need for my home?',
-      answer: 'AC sizing depends on square footage, insulation, windows, and climate. Our technicians perform load calculations to determine the right BTU capacity for efficient cooling.'
+      answer: 'A professional assessment calculates proper size based on your home\'s square footage, insulation, windows, and Edmonton\'s climate conditions.'
     },
     {
       question: 'How much does air conditioning installation cost?',
@@ -129,16 +129,12 @@ export default function CoolingServices() {
       answer: 'Neglected maintenance, dirty filters, refrigerant leaks, electrical issues, and worn compressor components are typical causes of AC system failures.'
     },
     {
-      question: 'Can a ductless mini-split work in Abbotsford\'s climate?',
-      answer: 'Yes! Modern ductless systems work efficiently in Abbotsford\'s climate and can provide both heating and cooling with excellent energy efficiency.'
+      question: 'Can a ductless mini-split work in Edmonton\'s climate?',
+      answer: 'Yes! Modern ductless systems work efficiently in Edmonton\'s climate and can provide both heating and cooling with excellent energy efficiency, even in Alberta\'s temperature extremes.'
     },
     {
       question: 'What financing options are available for AC installation?',
-      answer: 'We offer flexible financing plans, and there may be government or utility rebates available for energy-efficient AC upgrades in BC.'
-    },
-    {
-      question: 'What size air conditioner do I need for my home?',
-      answer: 'A professional assessment calculates proper size based on your home\'s square footage, insulation, windows, and local climate conditions in Abbotsford.'
+      answer: 'We offer flexible financing plans, and there may be government or utility rebates available for energy-efficient AC upgrades in Alberta.'
     },
     {
       question: 'What is SEER rating and why does it matter?',
@@ -188,24 +184,24 @@ export default function CoolingServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              Expert Cooling Services in <span className="text-blue-400">Abbotsford</span>
+              Expert Cooling Services in <span className="text-blue-400">Edmonton, AB</span>
             </h1>
             <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-200">
-              Professional air conditioning installation, repair, and maintenance services. Stay cool and comfortable all summer long with our expert cooling solutions.
+              Professional air conditioning installation, repair, and maintenance services. Beat the summer heat with our expert cooling solutions throughout Edmonton and surrounding Alberta communities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
                 onClick={() => document.getElementById('cooling-form')?.scrollIntoView({ behavior: 'smooth' })}
                 className="bg-green-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors whitespace-nowrap cursor-pointer"
               >
-                Get Free AC Quote
+                Get Free Cooling Quote
               </button>
-              <a 
-                href="tel:604-555-0123" 
+              <button 
+                onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
                 className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors text-center whitespace-nowrap cursor-pointer"
               >
-                Call (604) 555-0123
-              </a>
+                Talk to Our AI Assistant
+              </button>
             </div>
           </div>
         </div>
@@ -219,7 +215,7 @@ export default function CoolingServices() {
               Complete Cooling Solutions
             </h2>
             <p className="text-xl text-gray-600">
-              From AC installation to emergency repairs, we handle all your cooling needs in Abbotsford
+              From AC installation to emergency repairs, we handle all your cooling needs in Edmonton
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -312,16 +308,16 @@ export default function CoolingServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Cooling Service Areas
+              Edmonton Area Cooling Service Coverage
             </h2>
             <p className="text-xl text-gray-600">
-              Professional air conditioning services throughout Abbotsford and surrounding areas
+              Professional air conditioning services throughout Edmonton and surrounding Alberta communities
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="bg-gray-100 rounded-xl p-4">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-122.38308678476562!3d49.05718584863281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d4c89d72c663%3A0x4a2b36750554ba72!2sAbbotsford%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-113.490929!3d53.544388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53a02220e223e1e7%3A0x2a8608d10c4c7d9!2sEdmonton%2C%20AB%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
@@ -333,7 +329,7 @@ export default function CoolingServices() {
             </div>
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-                Areas We Serve for Cooling Services
+                Edmonton Areas We Serve for Cooling Services
               </h3>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
                 {serviceAreas.map((area, index) => (
@@ -345,17 +341,17 @@ export default function CoolingServices() {
               </div>
               <div className="bg-blue-50 rounded-lg p-6">
                 <h4 className="text-lg font-semibold text-blue-900 mb-2">
-                  Need cooling service outside these areas?
+                  Need cooling service in other Edmonton areas?
                 </h4>
                 <p className="text-blue-800 mb-4">
-                  We may still be able to help! Contact us to see if we can service your location.
+                  We serve the entire Greater Edmonton Area! Contact us to confirm service availability in your area.
                 </p>
-                <a 
-                  href="tel:604-555-0123" 
+                <button 
+                  onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
                   className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block whitespace-nowrap cursor-pointer"
                 >
-                  Call for Service Area
-                </a>
+                  Check Coverage with AI Assistant
+                </button>
               </div>
             </div>
           </div>
@@ -404,7 +400,7 @@ export default function CoolingServices() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-707 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                   Email Address *
                 </label>
                 <input
@@ -418,7 +414,7 @@ export default function CoolingServices() {
                 />
               </div>
               <div>
-                <label htmlFor="service_type" className="block text-sm font-medium text-gray-707 mb-2">
+                <label htmlFor="service_type" className="block text-sm font-medium text-gray-700 mb-2">
                   Service Type *
                 </label>
                 <div className="relative">
@@ -445,7 +441,7 @@ export default function CoolingServices() {
                 </div>
               </div>
               <div>
-                <label htmlFor="property_type" className="block text-sm font-medium text-gray-707 mb-2">
+                <label htmlFor="property_type" className="block text-sm font-medium text-gray-700 mb-2">
                   Property Type
                 </label>
                 <div className="relative">
@@ -468,7 +464,7 @@ export default function CoolingServices() {
                 </div>
               </div>
               <div>
-                <label htmlFor="urgency" className="block text-sm font-medium text-gray-707 mb-2">
+                <label htmlFor="urgency" className="block text-sm font-medium text-gray-700 mb-2">
                   How urgent is this?
                 </label>
                 <div className="relative">
@@ -477,7 +473,7 @@ export default function CoolingServices() {
                     name="urgency"
                     value={formData.urgency}
                     onChange={(e) => setFormData({...formData, urgency: e.target.value})}
-                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none"
+                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus-ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none"
                   >
                     <option value="">Select urgency</option>
                     <option value="emergency">Emergency - No AC</option>
@@ -491,7 +487,7 @@ export default function CoolingServices() {
                 </div>
               </div>
               <div className="md:col-span-2">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-707 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
                   Additional Details
                 </label>
                 <textarea
@@ -502,7 +498,7 @@ export default function CoolingServices() {
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                   placeholder="Tell us about your cooling system, any issues you're experiencing, or what you're looking for..."
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus-ring-2 focus:ring-blue-500 focus:border-transparent text-sm resize-none"
                 ></textarea>
                 <p className="text-xs text-gray-500 mt-1">{formData.message.length}/500 characters</p>
               </div>
@@ -510,8 +506,7 @@ export default function CoolingServices() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-blue-7
-                  transition-colors disabled:opacity-50 whitespace-nowrap cursor-pointer"
+                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors disabled:opacity-50 whitespace-nowrap cursor-pointer"
                 >
                   {isSubmitting ? 'Submitting...' : 'Request Cooling Service'}
                 </button>
@@ -534,7 +529,7 @@ export default function CoolingServices() {
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-gray-600">
-              Common questions about cooling services in Abbotsford
+              Common questions about cooling services in Edmonton
             </p>
           </div>
           <div className="space-y-6">
@@ -561,17 +556,17 @@ export default function CoolingServices() {
             </div>
           </div>
           <h2 className="text-4xl font-bold text-white mb-4">
-            AC Broken? We&apos;re Here to Help!
+            AC Broken? We're Here to Help!
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Don&apos;t suffer in the heat with a broken air conditioner. Our emergency AC repair team is available 24/7 throughout Abbotsford.
+            Don't suffer in the heat with a broken air conditioner. Our emergency AC repair team is available 24/7 throughout Edmonton.
           </p>
-          <a 
-            href="tel:604-555-0123" 
+          <button 
+            onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
             className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors inline-block whitespace-nowrap cursor-pointer"
           >
-            Call Emergency Line: (604) 555-0123
-          </a>
+            Get Emergency AC Help Now
+          </button>
         </div>
       </section>
 

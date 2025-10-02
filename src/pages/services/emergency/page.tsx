@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
@@ -87,11 +88,11 @@ export default function EmergencyServices() {
   ];
 
   const serviceAreas = [
-    'Abbotsford West', 'Abbotsford East', 'Clayburn Village', 'McMillan',
-    'Auguston', 'Eagle Mountain', 'Sandy Hill', 'Clearbrook Centre',
-    'Townline Hill', 'Mill Lake', 'West Clearbrook', 'South Clearbrook',
-    'Aberdeen', 'South Poplar', 'Kilgard', 'Gifford', 'Mission',
-    'Hatzic', 'Dewdney', 'Glen Valley', 'Silverhill'
+    'Summerside', 'Sherwood Park', 'St. Albert', 'Spruce Grove',
+    'Stony Plain', 'Fort Saskatchewan', 'Beaumont', 'Devon',
+    'Morinville', 'Leduc', 'Calmar', 'Bon Accord',
+    'Legal', 'Gibbons', 'Redwater', 'Lamont',
+    'Bruderheim', 'Andrew', 'Mundare', 'Vegreville'
   ];
 
   const faqs = [
@@ -132,23 +133,23 @@ export default function EmergencyServices() {
               </div>
             </div>
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              24/7 Emergency HVAC Service in <span className="text-yellow-300">Abbotsford</span>
+              24/7 Emergency HVAC Service in <span className="text-yellow-300">Edmonton, AB</span>
             </h1>
             <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-100">
-              When your heating or cooling system fails, we respond fast. Available 24/7, 365 days a year for emergency HVAC repairs throughout Abbotsford.
+              When your heating or cooling system fails, we respond fast. Available 24/7, 365 days a year for emergency HVAC repairs throughout Edmonton and surrounding Alberta communities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="tel:604-555-0123" 
+              <button 
+                onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
                 className="bg-yellow-400 text-red-900 px-8 py-4 rounded-lg text-lg font-bold hover:bg-yellow-300 transition-colors text-center whitespace-nowrap cursor-pointer shadow-lg"
               >
-                🚨 CALL NOW: (604) 555-0123
-              </a>
+                🚨 GET EMERGENCY HELP NOW
+              </button>
               <button 
                 onClick={() => document.getElementById('emergency-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-white text-red-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors whitespace-nowrap cursor-pointer"
+                className="bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transition-colors whitespace-nowrap cursor-pointer"
               >
-                Request Emergency Service
+                Submit Emergency Request
               </button>
             </div>
           </div>
@@ -163,7 +164,7 @@ export default function EmergencyServices() {
               <i className="ri-alarm-warning-line text-xl"></i>
             </div>
             <p className="text-lg font-semibold">
-              HVAC EMERGENCY? Don't wait - call us immediately at (604) 555-0123 for fast response!
+              HVAC EMERGENCY? Don't wait - get immediate help through our AI assistant or call us for fast response!
             </p>
           </div>
         </div>
@@ -177,7 +178,7 @@ export default function EmergencyServices() {
               Complete Emergency HVAC Services
             </h2>
             <p className="text-xl text-gray-600">
-              When HVAC emergencies strike, we're ready with fast, professional emergency service throughout Abbotsford
+              When HVAC emergencies strike, we're ready with fast, professional emergency service throughout Edmonton
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -322,16 +323,16 @@ export default function EmergencyServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Emergency Service Areas
+              Edmonton Area Emergency Service Coverage
             </h2>
             <p className="text-xl text-gray-600">
-              24/7 emergency HVAC service throughout Abbotsford and surrounding areas
+              24/7 emergency HVAC service throughout Edmonton and surrounding Alberta communities
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="bg-gray-100 rounded-xl p-4">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-122.38308678476562!3d49.05718584863281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d4c89d72c663%3A0x4a2b36750554ba72!2sAbbotsford%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-113.490929!3d53.544388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53a02220e223e1e7%3A0x2a8608d10c4c7d9!2sEdmonton%2C%20AB%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
@@ -343,7 +344,7 @@ export default function EmergencyServices() {
             </div>
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-                Areas We Serve for Emergency HVAC
+                Edmonton Areas We Serve for Emergency HVAC
               </h3>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
                 {serviceAreas.map((area, index) => (
@@ -358,14 +359,14 @@ export default function EmergencyServices() {
                   Emergency outside these areas?
                 </h4>
                 <p className="text-red-800 mb-4">
-                  Call us anyway! We may be able to help or recommend emergency service in your area.
+                  Contact us anyway! We may be able to help or recommend emergency service providers in your Alberta location.
                 </p>
-                <a 
-                  href="tel:604-555-0123" 
+                <button 
+                  onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
                   className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors inline-block whitespace-nowrap cursor-pointer"
                 >
-                  Call Emergency Line
-                </a>
+                  Get Emergency Help Now
+                </button>
               </div>
             </div>
           </div>
@@ -386,7 +387,7 @@ export default function EmergencyServices() {
                 Request Emergency HVAC Service
               </h2>
               <p className="text-lg text-gray-600">
-                For fastest service, call (604) 555-0123 now. Or submit this form for immediate response.
+                For fastest service, use our AI assistant above. Or submit this form for immediate response.
               </p>
             </div>
             <form onSubmit={handleSubmit} data-readdy-form id="emergency-service-form" className="grid md:grid-cols-2 gap-6">
@@ -560,7 +561,7 @@ export default function EmergencyServices() {
               Emergency Service FAQ
             </h2>
             <p className="text-xl text-gray-600">
-              Common questions about emergency HVAC services in Abbotsford
+              Common questions about emergency HVAC services in Edmonton
             </p>
           </div>
           <div className="space-y-6">
@@ -587,17 +588,17 @@ export default function EmergencyServices() {
             </div>
           </div>
           <h2 className="text-4xl font-bold text-white mb-4">
-            Don't Wait - Call Now!
+            Don't Wait - Get Help Now!
           </h2>
           <p className="text-xl text-red-100 mb-8">
-            HVAC emergencies get worse with time. Call our emergency hotline immediately for fast, professional service.
+            Don't let HVAC issues escalate. Get immediate emergency help through our AI assistant for fast, professional service across Edmonton.
           </p>
-          <a 
-            href="tel:604-555-0123" 
+          <button 
+            onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
             className="bg-yellow-400 text-red-900 px-12 py-6 rounded-lg text-2xl font-bold hover:bg-yellow-300 transition-colors inline-block whitespace-nowrap cursor-pointer shadow-lg animate-pulse"
           >
-            🚨 EMERGENCY: (604) 555-0123
-          </a>
+            🚨 GET EMERGENCY HELP NOW
+          </button>
           <p className="text-red-100 mt-4 text-sm">
             Available 24/7 • 365 Days a Year • Fast Response
           </p>

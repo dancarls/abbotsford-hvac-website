@@ -88,11 +88,11 @@ export default function MaintenanceServices() {
   ];
 
   const serviceAreas = [
-    'Abbotsford West', 'Abbotsford East', 'Clayburn Village', 'McMillan',
-    'Auguston', 'Eagle Mountain', 'Sandy Hill', 'Clearbrook Centre',
-    'Townline Hill', 'Mill Lake', 'West Clearbrook', 'South Clearbrook',
-    'Aberdeen', 'South Poplar', 'Kilgard', 'Gifford', 'Mission',
-    'Hatzic', 'Dewdney', 'Glen Valley', 'Silverhill'
+    'Summerside', 'Sherwood Park', 'St. Albert', 'Spruce Grove',
+    'Stony Plain', 'Fort Saskatchewan', 'Beaumont', 'Devon',
+    'Morinville', 'Leduc', 'Calmar', 'Bon Accord',
+    'Legal', 'Gibbons', 'Redwater', 'Lamont',
+    'Bruderheim', 'Andrew', 'Mundare', 'Vegreville'
   ];
 
   const faqs = [
@@ -146,16 +146,16 @@ export default function MaintenanceServices() {
       <section 
         className="relative py-24 bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20performing%20comprehensive%20maintenance%20service%20on%20residential%20system%20in%20Abbotsford%20home%2C%20checking%20and%20cleaning%20equipment%2C%20preventive%20care%20service%2C%20professional%20maintenance%20work%2C%20system%20tune-up%20and%20inspection%2C%20modern%20HVAC%20maintenance&width=1920&height=800&seq=maintenance-hero-1&orientation=landscape')`
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20performing%20detailed%20maintenance%20service%20on%20residential%20heating%20and%20cooling%20system%2C%20checking%20components%20with%20diagnostic%20tools%2C%20clean%20organized%20work%20environment%2C%20preventive%20maintenance%20service%2C%20professional%20HVAC%20care&width=1920&height=800&seq=maintenance-hero-1&orientation=landscape')`
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              HVAC Maintenance Services in <span className="text-blue-400">Abbotsford</span>
+              HVAC Maintenance Services in <span className="text-blue-400">Edmonton, AB</span>
             </h1>
             <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-200">
-              Professional HVAC maintenance, tune-ups, and service agreements. Keep your heating and cooling systems running efficiently with our comprehensive maintenance services.
+              Comprehensive HVAC maintenance and tune-up services. Keep your heating and cooling systems running efficiently with our preventive maintenance programs throughout Edmonton and surrounding Alberta communities.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
@@ -164,12 +164,12 @@ export default function MaintenanceServices() {
               >
                 Schedule Maintenance
               </button>
-              <a 
-                href="tel:604-555-0123" 
+              <button 
+                onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
                 className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors text-center whitespace-nowrap cursor-pointer"
               >
-                Call (604) 555-0123
-              </a>
+                Talk to Our AI Assistant
+              </button>
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function MaintenanceServices() {
               Complete HVAC Maintenance Solutions
             </h2>
             <p className="text-xl text-gray-600">
-              From annual inspections to maintenance agreements, we keep your HVAC systems running efficiently in Abbotsford
+              From annual inspections to maintenance agreements, we keep your HVAC systems running efficiently in Edmonton
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -432,16 +432,16 @@ export default function MaintenanceServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Maintenance Service Areas
+              Edmonton Area Maintenance Service Coverage
             </h2>
             <p className="text-xl text-gray-600">
-              Professional HVAC maintenance services throughout Abbotsford and surrounding areas
+              Professional HVAC maintenance services throughout Edmonton and surrounding Alberta communities
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="bg-gray-100 rounded-xl p-4">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-122.38308678476562!3d49.05718584863281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d4c89d72c663%3A0x4a2b36750554ba72!2sAbbotsford%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-113.490929!3d53.544388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53a02220e223e1e7%3A0x2a8608d10c4c7d9!2sEdmonton%2C%20AB%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
@@ -453,7 +453,7 @@ export default function MaintenanceServices() {
             </div>
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-                Areas We Serve for Maintenance Services
+                Edmonton Areas We Serve for HVAC Maintenance
               </h3>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
                 {serviceAreas.map((area, index) => (
@@ -465,17 +465,17 @@ export default function MaintenanceServices() {
               </div>
               <div className="bg-blue-50 rounded-lg p-6">
                 <h4 className="text-lg font-semibold text-blue-900 mb-2">
-                  Need maintenance service outside these areas?
+                  Need maintenance service in other Edmonton areas?
                 </h4>
                 <p className="text-blue-800 mb-4">
-                  We may still be able to help! Contact us to see if we can service your location.
+                  We serve the entire Greater Edmonton Area! Contact us to schedule maintenance in your specific location.
                 </p>
-                <a 
-                  href="tel:604-555-0123" 
+                <button 
+                  onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
                   className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block whitespace-nowrap cursor-pointer"
                 >
-                  Call for Service Area
-                </a>
+                  Check Coverage with AI Assistant
+                </button>
               </div>
             </div>
           </div>
@@ -630,7 +630,7 @@ export default function MaintenanceServices() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors disabled:opacity-50 whitespace-nowrap cursor-pointer"
+                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-blue-7 00 transition-colors disabled:opacity-50 whitespace-nowrap cursor-pointer"
                 >
                   {isSubmitting ? 'Submitting...' : 'Schedule Maintenance Service'}
                 </button>
@@ -653,7 +653,7 @@ export default function MaintenanceServices() {
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-gray-600">
-              Common questions about HVAC maintenance services in Abbotsford
+              Common questions about HVAC maintenance services in Edmonton
             </p>
           </div>
           <div className="space-y-6">
@@ -683,14 +683,14 @@ export default function MaintenanceServices() {
             Keep Your HVAC Running Smoothly
           </h2>
           <p className="text-xl text-green-100 mb-8">
-            Don't wait for a breakdown. Schedule regular maintenance to ensure reliable comfort and energy efficiency.
+            Don't wait for breakdowns. Protect your investment with professional HVAC maintenance from our Edmonton experts.
           </p>
-          <a 
-            href="tel:604-555-0123" 
+          <button 
+            onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
             className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors inline-block whitespace-nowrap cursor-pointer"
           >
-            Schedule Maintenance: (604) 555-0123
-          </a>
+            Schedule Maintenance Now
+          </button>
         </div>
       </section>
 

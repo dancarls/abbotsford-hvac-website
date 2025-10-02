@@ -18,20 +18,6 @@ const CommercialServicesPage = lazy(() => import('../pages/services/commercial/p
 const EmergencyServicesPage = lazy(() => import('../pages/services/emergency/page'));
 const NotFoundPage = lazy(() => import('../pages/NotFound'));
 
-import type { RouteObject } from "react-router-dom";
-import NotFound from "../pages/NotFound";
-import Home from "../pages/home/page";
-import Blog from "../pages/blog/page";
-import BlogPost from "../pages/blog/[slug]/page";
-import HeatingServices from "../pages/services/heating/page";
-import CoolingServices from "../pages/services/cooling/page";
-import VentilationServices from "../pages/services/ventilation/page";
-import AirQualityServices from "../pages/services/air-quality/page";
-import PlumbingServices from "../pages/services/plumbing/page";
-import MaintenanceServices from "../pages/services/maintenance/page";
-import CommercialServices from "../pages/services/commercial/page";
-import EmergencyServices from "../pages/services/emergency/page";
-
 const routes: RouteObject[] = [
   {
     path: '/',

@@ -23,11 +23,11 @@ export default function BlogPostPage() {
   const blogPosts: BlogPost[] = [
     {
       id: '1',
-      title: 'How to Prepare Your HVAC System for Winter in Edmonton',
-      excerpt: 'Essential maintenance tips to ensure your heating system runs efficiently during Edmonton\'s cold months.',
+      title: 'How to Prepare Your HVAC System for Winter in Abbotsford',
+      excerpt: 'Essential maintenance tips to ensure your heating system runs efficiently during Fraser Valley\'s cold months.',
       content: `
         <h2>Why Winter HVAC Preparation Matters</h2>
-        <p>As temperatures drop in Edmonton and surrounding areas, your heating system becomes the most important appliance in your home. Proper preparation ensures efficient operation, lower energy bills, and prevents costly emergency repairs during the coldest months.</p>
+        <p>As temperatures drop in Abbotsford and the Fraser Valley, your heating system becomes the most important appliance in your home. Proper preparation ensures efficient operation, lower energy bills, and prevents costly emergency repairs during the coldest months.</p>
         
         <h2>Essential Pre-Winter Maintenance Tasks</h2>
         
@@ -53,14 +53,16 @@ export default function BlogPostPage() {
         </ul>
         
         <h2>Emergency Preparedness</h2>
-        <p>Don't wait until the first cold snap to discover your heating system isn't ready. Contact Edmonton HVAC today to schedule your pre-winter maintenance and ensure your family stays warm all season long.</p>
+        <p>Keep our emergency service number handy: (604) 555-0123. We provide 24/7 emergency HVAC repairs throughout Abbotsford and the Fraser Valley.</p>
+        
+        <p>Don't wait until the first cold snap to discover your heating system isn't ready. Contact Abbotsford HVAC today to schedule your pre-winter maintenance and ensure your family stays warm all season long.</p>
       `,
       author: 'Mike Thompson',
       date: '2024-01-15',
       category: 'Maintenance',
       readTime: '5 min read',
-      image: 'https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20performing%20winter%20maintenance%20on%20residential%20furnace%20system%20in%20Edmonton%20home%2C%20checking%20filters%20and%20equipment%2C%20cold%20weather%20preparation&width=1200&height=600&seq=blog-post-1&orientation=landscape',
-      slug: 'prepare-hvac-system-winter-edmonton'
+      image: 'https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20performing%20winter%20maintenance%20on%20residential%20furnace%20system%20in%20Abbotsford%20home%2C%20checking%20filters%20and%20equipment%2C%20cold%20weather%20preparation&width=1200&height=600&seq=blog-post-1&orientation=landscape',
+      slug: 'prepare-hvac-system-winter-abbotsford'
     }
   ];
 
@@ -156,15 +158,15 @@ export default function BlogPostPage() {
             Need Professional HVAC Service?
           </h3>
           <p className="text-gray-700 mb-6">
-            Don't wait for HVAC problems to escalate. Contact Edmonton HVAC for expert service, maintenance, and repairs throughout Edmonton and surrounding areas.
+            Don't wait for HVAC problems to escalate. Contact Abbotsford HVAC for expert service, maintenance, and repairs throughout the Fraser Valley.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <button 
-              onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+            <a 
+              href="tel:604-555-0123"
               className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors text-center cursor-pointer whitespace-nowrap"
             >
-              Talk to Our AI Assistant
-            </button>
+              Call (604) 555-0123
+            </a>
             <button 
               onClick={() => window.REACT_APP_NAVIGATE?.('/contact')}
               className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors cursor-pointer whitespace-nowrap"
