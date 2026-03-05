@@ -159,21 +159,37 @@ export default function ServiceAreaPage() {
                             <div>
                                 <h3 className="text-3xl font-bold text-gray-900 mb-8 pb-2 border-b">All Services Available in {areaData.name}</h3>
                                 <div className="grid sm:grid-cols-2 gap-6">
-                                    {geoData.services.map(service => (
-                                        <Link
-                                            key={service.slug}
-                                            to={`/services/${service.slug}/${areaData.slug}`}
-                                            className="group flex items-center gap-4 bg-gray-50 p-4 rounded-xl hover:bg-white hover:shadow-lg transition-all border border-transparent hover:border-gray-100"
-                                        >
-                                            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm group-hover:bg-blue-600 transition-colors">
-                                                <i className="ri-tools-fill text-blue-600 group-hover:text-white text-xl"></i>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-gray-900 group-hover:text-blue-600">{service.name}</h4>
-                                                <p className="text-sm text-gray-500">Expert {service.name.toLowerCase()} in {areaData.name}</p>
-                                            </div>
-                                        </Link>
-                                    ))}
+                                    {geoData.services.map(service => {
+                                        // Dynamic, SEO-friendly blurbs for each service-area combination
+                                        const blurbs: Record<string, string> = {
+                                            'heating': `Top-rated furnace repair and heating installations in ${areaData.name}, specifically designed for local temperatures.`,
+                                            'cooling': `Expert air conditioning service and AC repair for homeowners across ${areaData.name}, ensuring summer comfort.`,
+                                            'ventilation': `Professional air duct cleaning and ventilation solutions to improve airflow in your ${areaData.name} property.`,
+                                            'air-quality': `Custom indoor air filtration and purification systems tailored for the specific environment of ${areaData.name}.`,
+                                            'plumbing': `Reliable residential and commercial plumbing repairs available 24/7 throughout the ${areaData.name} community.`,
+                                            'maintenance': `Proactive HVAC maintenance plans to extend the life of your systems near ${areaData.landmark} and beyond.`,
+                                            'commercial': `Heavy-duty commercial HVAC and refrigeration services for business owners operating in ${areaData.name}.`,
+                                            'emergency': `Immediate, local emergency heating and cooling assistance for ${areaData.name} residents near ${areaData.landmark}.`
+                                        };
+
+                                        const blurb = blurbs[service.slug] || `Expert ${service.name.toLowerCase()} solutions for residents and businesses in ${areaData.name}.`;
+
+                                        return (
+                                            <Link
+                                                key={service.slug}
+                                                to={`/services/${service.slug}/${areaData.slug}`}
+                                                className="group flex items-center gap-4 bg-gray-50 p-4 rounded-xl hover:bg-white hover:shadow-lg transition-all border border-transparent hover:border-gray-100"
+                                            >
+                                                <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm group-hover:bg-blue-600 transition-colors">
+                                                    <i className="ri-tools-fill text-blue-600 group-hover:text-white text-xl"></i>
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-bold text-gray-900 group-hover:text-blue-600">{service.name}</h4>
+                                                    <p className="text-sm text-gray-500">{blurb}</p>
+                                                </div>
+                                            </Link>
+                                        );
+                                    })}
                                 </div>
                             </div>
                         </div>

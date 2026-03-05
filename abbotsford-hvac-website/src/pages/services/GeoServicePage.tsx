@@ -21,18 +21,34 @@ export default function GeoServicePage() {
             const contentKey = `${category}-${area}`;
 
             // 1. Try Supabase first
-            const { data, error } = await supabase
-                .from('geo_service_content')
-                .select('*')
-                .eq('slug', contentKey)
-                .single();
+            try {
+                const { data, error } = await supabase
+                    .from('geo_service_content')
+                    .select('*')
+                    .eq('slug', contentKey)
+                    .single();
 
-            if (data && !error) {
-                setContent(data);
-            } else {
-                // 2. Fallback to JSON
-                const fallback = (geoData.content as any)[contentKey];
+                if (data && !error) {
+                    setContent(data);
+                    setLoading(false);
+                    return;
+                }
+            } catch (e) {
+                console.log("Supabase fetch failed, falling back to JSON/Dynamic");
+            }
+
+            // 2. Fallback to JSON
+            const fallback = (geoData.content as any)[contentKey];
+            if (fallback) {
                 setContent(fallback);
+            } else if (areaData && serviceData) {
+                // 3. Dynamic Generation (Ensures all 168+ pages work)
+                setContent({
+                    hero_title: `Expert ${serviceData.name} in ${areaData.name}`,
+                    hero_subtitle: `Professional ${serviceData.name.toLowerCase()} solutions for residential and commercial properties in ${areaData.name}, BC.`,
+                    title: `Your Trusted ${serviceData.name} Partner in ${areaData.name}`,
+                    main_content: `Are you looking for reliable ${serviceData.name.toLowerCase()} services in the ${areaData.name} area? Our certified technicians specialize in handling the unique HVAC and plumbing needs of properties near ${areaData.landmark}. We offer 24/7 support, upfront pricing, and local expertise that ensures your home or business stays comfortable year-round.`
+                });
             }
             setLoading(false);
         }
@@ -40,7 +56,7 @@ export default function GeoServicePage() {
         if (category && area) {
             fetchContent();
         }
-    }, [category, area]);
+    }, [category, area, areaData, serviceData]);
 
     if (loading) {
         return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
@@ -51,8 +67,8 @@ export default function GeoServicePage() {
             <div className="min-h-screen bg-white">
                 <Header />
                 <div className="py-24 text-center">
-                    <h1 className="text-4xl font-bold mb-4">Page Not Found</h1>
-                    <p className="text-gray-600 mb-8">Sorry, we couldn't find the specific service or area you are looking for.</p>
+                    <h1 className="text-4xl font-bold mb-4">Service or Area Not Listed</h1>
+                    <p className="text-gray-600 mb-8">We couldn't find the specific combination of {category} and {area} you're looking for.</p>
                     <Link to="/" className="text-blue-600 font-semibold hover:underline">Return to Homepage</Link>
                 </div>
                 <Footer />
