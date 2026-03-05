@@ -1,52 +1,8 @@
-
-import { useState } from 'react';
+import ProjectServiceForm from '../../../components/feature/ProjectServiceForm';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 
 export default function EmergencyServices() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service_type: '',
-    property_type: '',
-    urgency: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('');
-
-    try {
-      const formBody = new URLSearchParams();
-      Object.entries(formData).forEach(([key, value]) => {
-        formBody.append(key, value);
-      });
-
-      const response = await fetch('https://readdy.ai/api/form/d3ad1vog3i95tm0o9cfg', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formBody.toString(),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('Thank you! We\'ll contact you immediately about your emergency service needs.');
-        setFormData({ name: '', phone: '', email: '', service_type: '', property_type: '', urgency: '', message: '' });
-      } else {
-        setSubmitStatus('Something went wrong. Please try again or call us directly.');
-      }
-    } catch (error) {
-      setSubmitStatus('Something went wrong. Please try again or call us directly.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const emergencyServices = [
     {
@@ -69,7 +25,7 @@ export default function EmergencyServices() {
     },
     {
       icon: 'ri-snowy-line',
-      title: 'Emergency AC Repairs', 
+      title: 'Emergency AC Repairs',
       description: 'Emergency air conditioning repairs during hot weather. Don\'t suffer in the heat when your AC breaks down.',
       features: ['AC System Failures', 'Cooling Emergencies', 'Refrigerant Leaks', 'Compressor Issues', 'Electrical Problems']
     },
@@ -88,11 +44,11 @@ export default function EmergencyServices() {
   ];
 
   const serviceAreas = [
-    'Summerside', 'Sherwood Park', 'St. Albert', 'Spruce Grove',
-    'Stony Plain', 'Fort Saskatchewan', 'Beaumont', 'Devon',
-    'Morinville', 'Leduc', 'Calmar', 'Bon Accord',
-    'Legal', 'Gibbons', 'Redwater', 'Lamont',
-    'Bruderheim', 'Andrew', 'Mundare', 'Vegreville'
+    'Abbotsford West', 'Abbotsford East', 'Clayburn Village', 'McMillan',
+    'Auguston', 'Eagle Mountain', 'Sandy Hill', 'Clearbrook Centre',
+    'Townline Hill', 'Mill Lake', 'West Clearbrook', 'South Clearbrook',
+    'Aberdeen', 'South Poplar', 'Kilgard', 'Gifford', 'Mission',
+    'Hatzic', 'Dewdney', 'Glen Valley', 'Silverhill'
   ];
 
   const faqs = [
@@ -117,39 +73,44 @@ export default function EmergencyServices() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
+
       {/* Hero Section */}
-      <section 
-        className="relative py-24 bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(220, 38, 38, 0.7), rgba(220, 38, 38, 0.7)), url('https://readdy.ai/api/search-image?query=Emergency%20HVAC%20technician%20responding%20to%20urgent%20service%20call%20at%20night%2C%20professional%20emergency%20van%20with%20lights%2C%20urgent%20HVAC%20repair%20service%20in%20Abbotsford%2C%20emergency%20response%20vehicle%2C%2024-hour%20service%20availability%2C%20critical%20heating%20cooling%20repair&width=1920&height=800&seq=emergency-hero-1&orientation=landscape')`
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-32 overflow-hidden bg-red-900">
+        {/* Blurred Background Layer */}
+        <div
+          className="absolute inset-0 bg-cover bg-center scale-110 blur-[8px] opacity-60"
+          style={{
+            backgroundImage: `url('https://readdy.ai/api/search-image?query=Emergency%20HVAC%20technician%20responding%20to%20urgent%20service%20call%20at%20night%2C%20professional%20emergency%20van%20with%20lights%2C%20urgent%20HVAC%20repair%20service%20in%20Abbotsford%2C%20emergency%20response%20vehicle%2C%2024-hour%20service%20availability%2C%20critical%20heating%20cooling%20repair&width=1920&height=1000&seq=emergency-hero-1&orientation=landscape')`
+          }}
+        />
+
+        {/* Content Overlay */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
-            <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-24 h-24 bg-white/20 backdrop-blur-xl border-2 border-white/40 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
               <div className="w-12 h-12 flex items-center justify-center">
-                <i className="ri-alarm-warning-line text-4xl text-red-600"></i>
+                <i className="ri-alarm-warning-line text-5xl text-yellow-400 animate-pulse"></i>
               </div>
             </div>
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              24/7 Emergency HVAC Service in <span className="text-yellow-300">Edmonton, AB</span>
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-2xl">
+              24/7 Emergency HVAC Service in <span className="text-yellow-300">Abbotsford</span>
             </h1>
-            <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-100">
-              When your heating or cooling system fails, we respond fast. Available 24/7, 365 days a year for emergency HVAC repairs throughout Edmonton and surrounding Alberta communities.
+            <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto text-white drop-shadow-lg font-medium">
+              When your heating or cooling system fails, we respond fast. Available 24/7, 365 days a year for emergency HVAC repairs throughout Abbotsford.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
-                className="bg-yellow-400 text-red-900 px-8 py-4 rounded-lg text-lg font-bold hover:bg-yellow-300 transition-colors text-center whitespace-nowrap cursor-pointer shadow-lg"
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <button
+                onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                className="bg-yellow-400 text-red-900 px-10 py-5 rounded-xl text-xl font-bold hover:bg-yellow-300 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3"
               >
-                🚨 GET EMERGENCY HELP NOW
+                <i className="ri-user-voice-fill text-2xl"></i>
+                Talk to Our AI HVAC Assistant
               </button>
-              <button 
-                onClick={() => document.getElementById('emergency-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-red-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-red-700 transition-colors whitespace-nowrap cursor-pointer"
+              <button
+                onClick={() => document.getElementById('emergency-form-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl"
               >
-                Submit Emergency Request
+                Request Online Quote
               </button>
             </div>
           </div>
@@ -164,7 +125,7 @@ export default function EmergencyServices() {
               <i className="ri-alarm-warning-line text-xl"></i>
             </div>
             <p className="text-lg font-semibold">
-              HVAC EMERGENCY? Don't wait - get immediate help through our AI assistant or call us for fast response!
+              HVAC EMERGENCY? Don't wait - call us immediately at (604) 555-0123 for fast response!
             </p>
           </div>
         </div>
@@ -178,7 +139,7 @@ export default function EmergencyServices() {
               Complete Emergency HVAC Services
             </h2>
             <p className="text-xl text-gray-600">
-              When HVAC emergencies strike, we're ready with fast, professional emergency service throughout Edmonton
+              When HVAC emergencies strike, we're ready with fast, professional emergency service throughout Abbotsford
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -308,7 +269,7 @@ export default function EmergencyServices() {
               </div>
             </div>
             <div className="bg-gray-100 rounded-xl p-4">
-              <img 
+              <img
                 src="https://readdy.ai/api/search-image?query=Emergency%20HVAC%20technician%20working%20urgently%20to%20repair%20heating%20system%20in%20cold%20weather%2C%20professional%20emergency%20repair%20service%2C%20technician%20with%20emergency%20tools%20and%20parts%2C%20urgent%20HVAC%20repair%20in%20Abbotsford%20home%2C%20emergency%20service%20response&width=600&height=400&seq=emergency-service-1&orientation=landscape"
                 alt="Emergency HVAC service"
                 className="w-full h-auto rounded-lg object-cover object-top"
@@ -323,16 +284,16 @@ export default function EmergencyServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Edmonton Area Emergency Service Coverage
+              Emergency Service Areas
             </h2>
             <p className="text-xl text-gray-600">
-              24/7 emergency HVAC service throughout Edmonton and surrounding Alberta communities
+              24/7 emergency HVAC service throughout Abbotsford and surrounding areas
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="bg-gray-100 rounded-xl p-4">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-113.490929!3d53.544388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53a02220e223e1e7%3A0x2a8608d10c4c7d9!2sEdmonton%2C%20AB%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-122.38308678476562!3d49.05718584863281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d4c89d72c663%3A0x4a2b36750554ba72!2sAbbotsford%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
@@ -344,7 +305,7 @@ export default function EmergencyServices() {
             </div>
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-                Edmonton Areas We Serve for Emergency HVAC
+                Areas We Serve for Emergency HVAC
               </h3>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
                 {serviceAreas.map((area, index) => (
@@ -359,13 +320,13 @@ export default function EmergencyServices() {
                   Emergency outside these areas?
                 </h4>
                 <p className="text-red-800 mb-4">
-                  Contact us anyway! We may be able to help or recommend emergency service providers in your Alberta location.
+                  Call us anyway! We may be able to help or recommend emergency service in your area.
                 </p>
-                <button 
-                  onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
+                <button
+                  onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
                   className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors inline-block whitespace-nowrap cursor-pointer"
                 >
-                  Get Emergency Help Now
+                  Check Service Area via AI
                 </button>
               </div>
             </div>
@@ -373,183 +334,23 @@ export default function EmergencyServices() {
         </div>
       </section>
 
-      {/* Emergency Service Request Form */}
-      <section id="emergency-form" className="py-16 bg-gray-50">
+      <section id="emergency-form-section" className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl p-8 border-l-4 border-red-500">
-            <div className="text-center mb-8">
-              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <div className="w-8 h-8 flex items-center justify-center">
-                  <i className="ri-alarm-warning-line text-2xl text-red-600"></i>
-                </div>
-              </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Request Emergency HVAC Service
-              </h2>
-              <p className="text-lg text-gray-600">
-                For fastest service, use our AI assistant above. Or submit this form for immediate response.
-              </p>
-            </div>
-            <form onSubmit={handleSubmit} data-readdy-form id="emergency-service-form" className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm"
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm"
-                />
-              </div>
-              <div>
-                <label htmlFor="service_type" className="block text-sm font-medium text-gray-700 mb-2">
-                  Emergency Type *
-                </label>
-                <div className="relative">
-                  <select
-                    id="service_type"
-                    name="service_type"
-                    required
-                    value={formData.service_type}
-                    onChange={(e) => setFormData({...formData, service_type: e.target.value})}
-                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm appearance-none"
-                  >
-                    <option value="">Select emergency type</option>
-                    <option value="no-heat">No Heat - Furnace Not Working</option>
-                    <option value="no-ac">No AC - Air Conditioner Not Working</option>
-                    <option value="gas-leak">Gas Leak or Gas Smell</option>
-                    <option value="water-leak">Water Leak from HVAC System</option>
-                    <option value="electrical-issue">Electrical Issue with HVAC</option>
-                    <option value="strange-noises">Strange Noises or Burning Smells</option>
-                    <option value="carbon-monooxide">Carbon Monoxide Detector Alert</option>
-                    <option value="other-emergency">Other Emergency</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <i className="ri-arrow-down-s-line text-gray-400"></i>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <label htmlFor="property_type" className="block text-sm font-medium text-gray-700 mb-2">
-                  Property Type
-                </label>
-                <div className="relative">
-                  <select
-                    id="property_type"
-                    name="property_type"
-                    value={formData.property_type}
-                    onChange={(e) => setFormData({...formData, property_type: e.target.value})}
-                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm appearance-none"
-                  >
-                    <option value="">Select property type</option>
-                    <option value="single-family">Single Family Home</option>
-                    <option value="townhouse">Townhouse</option>
-                    <option value="condo">Condo/Apartment</option>
-                    <option value="commercial">Commercial Building</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <i className="ri-arrow-down-s-line text-gray-400"></i>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <label htmlFor="urgency" className="block text-sm font-medium text-gray-700 mb-2">
-                  Urgency Level *
-                </label>
-                <div className="relative">
-                  <select
-                    id="urgency"
-                    name="urgency"
-                    required
-                    value={formData.urgency}
-                    onChange={(e) => setFormData({...formData, urgency: e.target.value})}
-                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm appearance-none"
-                  >
-                    <option value="">How urgent is this?</option>
-                    <option value="critical">Critical - Safety Issue</option>
-                    <option value="urgent">Urgent - No Heat/AC</option>
-                    <option value="same-day">Same Day Service Needed</option>
-                    <option value="next-day">Next Day Service</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <i className="ri-arrow-down-s-line text-gray-400"></i>
-                  </div>
-                </div>
-              </div>
-              <div className="md:col-span-2">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Emergency Details *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  maxLength={500}
-                  required
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  placeholder="Describe your HVAC emergency: What happened? What symptoms are you experiencing? When did it start?"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm resize-none"
-                ></textarea>
-                <p className="text-xs text-gray-500 mt-1">{formData.message.length}/500 characters</p>
-              </div>
-              <div className="md:col-span-2">
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-                  <div className="flex items-start">
-                    <div className="w-5 h-5 flex items-center justify-center mr-3">
-                      <i className="ri-information-line text-red-600"></i>
-                    </div>
-                    <div className="text-sm text-red-800">
-                      <strong>Safety Notice:</strong> If you smell gas, suspect a gas leak, or your carbon monoxide detector is alarming, leave the premises immediately and call the gas company emergency line, then call us.
-                    </div>
-                  </div>
-                </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-red-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-red-700 transition-colors disabled:opacity-50 whitespace-nowrap cursor-pointer"
-                >
-                  {isSubmitting ? 'Submitting Emergency Request...' : 'Request Emergency Service Now'}
-                </button>
-                {submitStatus && (
-                  <p className={`mt-4 text-center ${submitStatus.includes('Thank you') ? 'text-green-600' : 'text-red-600'}`}>
-                    {submitStatus}
-                  </p>
-                )}
-              </div>
-            </form>
-          </div>
+          <ProjectServiceForm
+            serviceId="emergency-form"
+            serviceName="Emergency HVAC Service"
+            formEndpoint="https://readdy.ai/api/form/d3ad1vog3i95tm0o9cfg"
+            serviceOptions={[
+              { value: 'no-heat', label: 'No Heat - Furnace Not Working' },
+              { value: 'no-ac', label: 'No AC - Air Conditioner Not Working' },
+              { value: 'gas-leak', label: 'Gas Leak or Gas Smell' },
+              { value: 'water-leak', label: 'Water Leak from HVAC System' },
+              { value: 'electrical-issue', label: 'Electrical Issue with HVAC' },
+              { value: 'strange-noises', label: 'Strange Noises or Burning Smells' },
+              { value: 'carbon-monooxide', label: 'Carbon Monoxide Detector Alert' },
+              { value: 'other-emergency', label: 'Other Emergency' }
+            ]}
+          />
         </div>
       </section>
 
@@ -561,7 +362,7 @@ export default function EmergencyServices() {
               Emergency Service FAQ
             </h2>
             <p className="text-xl text-gray-600">
-              Common questions about emergency HVAC services in Edmonton
+              Common questions about emergency HVAC services in Abbotsford
             </p>
           </div>
           <div className="space-y-6">
@@ -588,16 +389,17 @@ export default function EmergencyServices() {
             </div>
           </div>
           <h2 className="text-4xl font-bold text-white mb-4">
-            Don't Wait - Get Help Now!
+            Don't Wait - Call Now!
           </h2>
           <p className="text-xl text-red-100 mb-8">
-            Don't let HVAC issues escalate. Get immediate emergency help through our AI assistant for fast, professional service across Edmonton.
+            HVAC emergencies get worse with time. Call our emergency hotline immediately for fast, professional service.
           </p>
-          <button 
-            onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
-            className="bg-yellow-400 text-red-900 px-12 py-6 rounded-lg text-2xl font-bold hover:bg-yellow-300 transition-colors inline-block whitespace-nowrap cursor-pointer shadow-lg animate-pulse"
+          <button
+            onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+            className="bg-yellow-400 text-red-900 px-12 py-6 rounded-xl text-2xl font-bold hover:bg-yellow-300 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto animate-pulse"
           >
-            🚨 GET EMERGENCY HELP NOW
+            <i className="ri-user-voice-fill"></i>
+            Talk to Our AI Assistant Now
           </button>
           <p className="text-red-100 mt-4 text-sm">
             Available 24/7 • 365 Days a Year • Fast Response

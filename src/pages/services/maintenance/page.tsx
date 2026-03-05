@@ -1,52 +1,8 @@
-
-import { useState } from 'react';
+import ProjectServiceForm from '../../../components/feature/ProjectServiceForm';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 
 export default function MaintenanceServices() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service_type: '',
-    property_type: '',
-    urgency: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('');
-
-    try {
-      const formBody = new URLSearchParams();
-      Object.entries(formData).forEach(([key, value]) => {
-        formBody.append(key, value);
-      });
-
-      const response = await fetch('https://readdy.ai/api/form/d3ad1vog3i95tm0o9ci0', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formBody.toString(),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('Thank you! We\'ll contact you soon about your maintenance service needs.');
-        setFormData({ name: '', phone: '', email: '', service_type: '', property_type: '', urgency: '', message: '' });
-      } else {
-        setSubmitStatus('Something went wrong. Please try again.');
-      }
-    } catch (error) {
-      setSubmitStatus('Something went wrong. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const maintenanceServices = [
     {
@@ -88,11 +44,11 @@ export default function MaintenanceServices() {
   ];
 
   const serviceAreas = [
-    'Summerside', 'Sherwood Park', 'St. Albert', 'Spruce Grove',
-    'Stony Plain', 'Fort Saskatchewan', 'Beaumont', 'Devon',
-    'Morinville', 'Leduc', 'Calmar', 'Bon Accord',
-    'Legal', 'Gibbons', 'Redwater', 'Lamont',
-    'Bruderheim', 'Andrew', 'Mundare', 'Vegreville'
+    'Abbotsford West', 'Abbotsford East', 'Clayburn Village', 'McMillan',
+    'Auguston', 'Eagle Mountain', 'Sandy Hill', 'Clearbrook Centre',
+    'Townline Hill', 'Mill Lake', 'West Clearbrook', 'South Clearbrook',
+    'Aberdeen', 'South Poplar', 'Kilgard', 'Gifford', 'Mission',
+    'Hatzic', 'Dewdney', 'Glen Valley', 'Silverhill'
   ];
 
   const faqs = [
@@ -141,34 +97,39 @@ export default function MaintenanceServices() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
+
       {/* Hero Section */}
-      <section 
-        className="relative py-24 bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20performing%20detailed%20maintenance%20service%20on%20residential%20heating%20and%20cooling%20system%2C%20checking%20components%20with%20diagnostic%20tools%2C%20clean%20organized%20work%20environment%2C%20preventive%20maintenance%20service%2C%20professional%20HVAC%20care&width=1920&height=800&seq=maintenance-hero-1&orientation=landscape')`
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-32 overflow-hidden bg-gray-900">
+        {/* Blurred Background Layer */}
+        <div
+          className="absolute inset-0 bg-cover bg-center scale-110 blur-[8px] opacity-60"
+          style={{
+            backgroundImage: `url('https://readdy.api/search-image?query=Professional%20HVAC%20technician%20performing%20comprehensive%20maintenance%20service%20on%20residential%20system%20in%20Abbotsford%20home%2C%20checking%20and%20cleaning%20equipment%2C%20preventive%20care%20service%2C%20professional%20maintenance%20work%2C%20system%20tune-up%20and%20inspection%2C%20modern%20HVAC%20maintenance&width=1920&height=1000&seq=maintenance-hero-1&orientation=landscape')`
+          }}
+        />
+
+        {/* Content Overlay */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              HVAC Maintenance Services in <span className="text-blue-400">Edmonton, AB</span>
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-2xl">
+              HVAC Maintenance Services in <span className="text-blue-400">Abbotsford</span>
             </h1>
-            <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-200">
-              Comprehensive HVAC maintenance and tune-up services. Keep your heating and cooling systems running efficiently with our preventive maintenance programs throughout Edmonton and surrounding Alberta communities.
+            <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto text-white drop-shadow-lg font-medium">
+              Professional HVAC maintenance, tune-ups, and service agreements. Keep your heating and cooling systems running efficiently.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => document.getElementById('maintenance-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-green-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors whitespace-nowrap cursor-pointer"
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <button
+                onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3"
               >
-                Schedule Maintenance
+                <i className="ri-user-voice-fill text-2xl"></i>
+                Talk to Our AI HVAC Assistant
               </button>
-              <button 
-                onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
-                className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors text-center whitespace-nowrap cursor-pointer"
+              <button
+                onClick={() => document.getElementById('maintenance-form-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl"
               >
-                Talk to Our AI Assistant
+                Request Online Quote
               </button>
             </div>
           </div>
@@ -183,7 +144,7 @@ export default function MaintenanceServices() {
               Complete HVAC Maintenance Solutions
             </h2>
             <p className="text-xl text-gray-600">
-              From annual inspections to maintenance agreements, we keep your HVAC systems running efficiently in Edmonton
+              From annual inspections to maintenance agreements, we keep your HVAC systems running efficiently in Abbotsford
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -262,14 +223,14 @@ export default function MaintenanceServices() {
                   10% repair discount
                 </li>
               </ul>
-              <button 
-                onClick={() => document.getElementById('maintenance-form')?.scrollIntoView({ behavior: 'smooth' })}
+              <button
+                onClick={() => document.getElementById('maintenance-form-section')?.scrollIntoView({ behavior: 'smooth' })}
                 className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors cursor-pointer whitespace-nowrap"
               >
                 Choose Basic
               </button>
             </div>
-            
+
             <div className="bg-green-50 rounded-xl p-8 text-center border-2 border-green-500 relative">
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                 <span className="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">Most Popular</span>
@@ -313,14 +274,14 @@ export default function MaintenanceServices() {
                   20% repair discount
                 </li>
               </ul>
-              <button 
-                onClick={() => document.getElementById('maintenance-form')?.scrollIntoView({ behavior: 'smooth' })}
+              <button
+                onClick={() => document.getElementById('maintenance-form-section')?.scrollIntoView({ behavior: 'smooth' })}
                 className="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors cursor-pointer whitespace-nowrap"
               >
                 Choose Premium
               </button>
             </div>
-            
+
             <div className="bg-gray-50 rounded-xl p-8 text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <div className="w-8 h-8 flex items-center justify-center">
@@ -361,8 +322,8 @@ export default function MaintenanceServices() {
                   25% repair discount
                 </li>
               </ul>
-              <button 
-                onClick={() => document.getElementById('maintenance-form')?.scrollIntoView({ behavior: 'smooth' })}
+              <button
+                onClick={() => document.getElementById('maintenance-form-section')?.scrollIntoView({ behavior: 'smooth' })}
                 className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors cursor-pointer whitespace-nowrap"
               >
                 Choose Commercial
@@ -417,7 +378,7 @@ export default function MaintenanceServices() {
               </div>
             </div>
             <div className="bg-gray-100 rounded-xl p-4">
-              <img 
+              <img
                 src="https://readdy.ai/api/search-image?query=HVAC%20technician%20performing%20detailed%20system%20maintenance%20and%20inspection%2C%20professional%20maintenance%20checklist%2C%20modern%20HVAC%20equipment%20servicing%20in%20Abbotsford%20home%2C%20preventive%20care%20service%2C%20professional%20maintenance%20work%2C%20system%20optimization&width=600&height=400&seq=maintenance-service-1&orientation=landscape"
                 alt="Professional maintenance service"
                 className="w-full h-auto rounded-lg object-cover object-top"
@@ -432,16 +393,16 @@ export default function MaintenanceServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Edmonton Area Maintenance Service Coverage
+              Maintenance Service Areas
             </h2>
             <p className="text-xl text-gray-600">
-              Professional HVAC maintenance services throughout Edmonton and surrounding Alberta communities
+              Professional HVAC maintenance services throughout Abbotsford and surrounding areas
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="bg-gray-100 rounded-xl p-4">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-113.490929!3d53.544388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53a02220e223e1e7%3A0x2a8608d10c4c7d9!2sEdmonton%2C%20AB%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-122.38308678476562!3d49.05718584863281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d4c89d72c663%3A0x4a2b36750554ba72!2sAbbotsford%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
@@ -453,7 +414,7 @@ export default function MaintenanceServices() {
             </div>
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-                Edmonton Areas We Serve for HVAC Maintenance
+                Areas We Serve for Maintenance Services
               </h3>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
                 {serviceAreas.map((area, index) => (
@@ -465,16 +426,16 @@ export default function MaintenanceServices() {
               </div>
               <div className="bg-blue-50 rounded-lg p-6">
                 <h4 className="text-lg font-semibold text-blue-900 mb-2">
-                  Need maintenance service in other Edmonton areas?
+                  Need maintenance service outside these areas?
                 </h4>
                 <p className="text-blue-800 mb-4">
-                  We serve the entire Greater Edmonton Area! Contact us to schedule maintenance in your specific location.
+                  We may still be able to help! Contact us to see if we can service your location.
                 </p>
-                <button 
-                  onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
+                <button
+                  onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
                   className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block whitespace-nowrap cursor-pointer"
                 >
-                  Check Coverage with AI Assistant
+                  Check Service Area via AI
                 </button>
               </div>
             </div>
@@ -482,166 +443,22 @@ export default function MaintenanceServices() {
         </div>
       </section>
 
-      {/* Maintenance Service Request Form */}
-      <section id="maintenance-form" className="py-16 bg-gray-50">
+      <section id="maintenance-form-section" className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl p-8">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Schedule Maintenance Service
-              </h2>
-              <p className="text-lg text-gray-600">
-                Keep your HVAC systems running efficiently with our professional maintenance services.
-              </p>
-            </div>
-            <form onSubmit={handleSubmit} data-readdy-form id="maintenance-service-form" className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                />
-              </div>
-              <div>
-                <label htmlFor="service_type" className="block text-sm font-medium text-gray-700 mb-2">
-                  Service Type *
-                </label>
-                <div className="relative">
-                  <select
-                    id="service_type"
-                    name="service_type"
-                    required
-                    value={formData.service_type}
-                    onChange={(e) => setFormData({...formData, service_type: e.target.value})}
-                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none"
-                  >
-                    <option value="">Select maintenance service</option>
-                    <option value="annual-inspection">Annual Inspection</option>
-                    <option value="filter-replacement">Filter Replacement</option>
-                    <option value="thermostat-upgrade">Thermostat Upgrade</option>
-                    <option value="maintenance-agreement">Maintenance Agreement</option>
-                    <option value="system-tune-up">System Tune-up</option>
-                    <option value="preventive-care">Preventive Care</option>
-                    <option value="other">Other</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <i className="ri-arrow-down-s-line text-gray-400"></i>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <label htmlFor="property_type" className="block text-sm font-medium text-gray-700 mb-2">
-                  Property Type
-                </label>
-                <div className="relative">
-                  <select
-                    id="property_type"
-                    name="property_type"
-                    value={formData.property_type}
-                    onChange={(e) => setFormData({...formData, property_type: e.target.value})}
-                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none"
-                  >
-                    <option value="">Select property type</option>
-                    <option value="single-family">Single Family Home</option>
-                    <option value="townhouse">Townhouse</option>
-                    <option value="condo">Condo/Apartment</option>
-                    <option value="commercial">Commercial Building</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <i className="ri-arrow-down-s-line text-gray-400"></i>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <label htmlFor="urgency" className="block text-sm font-medium text-gray-700 mb-2">
-                  Preferred Timing
-                </label>
-                <div className="relative">
-                  <select
-                    id="urgency"
-                    name="urgency"
-                    value={formData.urgency}
-                    onChange={(e) => setFormData({...formData, urgency: e.target.value})}
-                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none"
-                  >
-                    <option value="">Select timing preference</option>
-                    <option value="this-week">This Week</option>
-                    <option value="next-week">Next Week</option>
-                    <option value="this-month">This Month</option>
-                    <option value="flexible">Flexible Scheduling</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <i className="ri-arrow-down-s-line text-gray-400"></i>
-                  </div>
-                </div>
-              </div>
-              <div className="md:col-span-2">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Additional Details
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  maxLength={500}
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  placeholder="Tell us about your HVAC systems, maintenance history, or specific maintenance needs..."
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm resize-none"
-                ></textarea>
-                <p className="text-xs text-gray-500 mt-1">{formData.message.length}/500 characters</p>
-              </div>
-              <div className="md:col-span-2">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-blue-7 00 transition-colors disabled:opacity-50 whitespace-nowrap cursor-pointer"
-                >
-                  {isSubmitting ? 'Submitting...' : 'Schedule Maintenance Service'}
-                </button>
-                {submitStatus && (
-                  <p className={`mt-4 text-center ${submitStatus.includes('Thank you') ? 'text-green-600' : 'text-red-600'}`}>
-                    {submitStatus}
-                  </p>
-                )}
-              </div>
-            </form>
-          </div>
+          <ProjectServiceForm
+            serviceId="maintenance-form"
+            serviceName="HVAC Maintenance Service"
+            formEndpoint="https://readdy.ai/api/form/d3ad1vog3i95tm0o9ci0"
+            serviceOptions={[
+              { value: 'annual-inspection', label: 'Annual Inspection' },
+              { value: 'filter-replacement', label: 'Filter Replacement' },
+              { value: 'thermostat-upgrade', label: 'Thermostat Upgrade' },
+              { value: 'maintenance-agreement', label: 'Maintenance Agreement' },
+              { value: 'system-tune-up', label: 'System Tune-up' },
+              { value: 'preventive-care', label: 'Preventive Care' },
+              { value: 'other', label: 'Other' }
+            ]}
+          />
         </div>
       </section>
 
@@ -653,7 +470,7 @@ export default function MaintenanceServices() {
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-gray-600">
-              Common questions about HVAC maintenance services in Edmonton
+              Common questions about HVAC maintenance services in Abbotsford
             </p>
           </div>
           <div className="space-y-6">
@@ -683,13 +500,14 @@ export default function MaintenanceServices() {
             Keep Your HVAC Running Smoothly
           </h2>
           <p className="text-xl text-green-100 mb-8">
-            Don't wait for breakdowns. Protect your investment with professional HVAC maintenance from our Edmonton experts.
+            Don't wait for a breakdown. Schedule regular maintenance to ensure reliable comfort and energy efficiency.
           </p>
-          <button 
-            onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
-            className="bg-white text-green-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors inline-block whitespace-nowrap cursor-pointer"
+          <button
+            onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+            className="bg-white text-green-600 px-10 py-5 rounded-xl text-xl font-bold hover:bg-gray-100 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto"
           >
-            Schedule Maintenance Now
+            <i className="ri-user-voice-fill"></i>
+            Talk to Our AI Assistant 24/7
           </button>
         </div>
       </section>

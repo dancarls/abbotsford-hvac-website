@@ -11,11 +11,11 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="text-2xl font-bold mb-4">
-              <span className="text-blue-400">Edmonton</span>
+              <span className="text-blue-400">Abbotsford</span>
               <span className="text-green-400"> HVAC</span>
             </div>
             <p className="text-gray-300 mb-4">
-              Your trusted local HVAC experts serving Edmonton, AB and surrounding areas with professional heating, cooling, and air quality solutions.
+              Your trusted local HVAC experts serving Abbotsford, BC and surrounding areas with professional heating, cooling, and air quality solutions.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors cursor-pointer">
@@ -70,36 +70,11 @@ export default function Footer() {
                 <div className="w-5 h-5 flex items-center justify-center mt-1 mr-3">
                   <i className="ri-map-pin-line text-blue-400"></i>
                 </div>
-                <span className="text-gray-300">123 Main Street, Edmonton, AB T5J 0A1</span>
+                <span className="text-gray-300">123 Main Street, Abbotsford, BC V2S 0A3</span>
               </div>
-              <div className="flex items-center">
-                <div className="w-5 h-5 flex items-center justify-center mr-3">
-                  <i className="ri-customer-service-2-line text-blue-400"></i>
-                </div>
-                <button 
-                  onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
-                  className="text-gray-300 hover:text-white transition-colors cursor-pointer"
-                >
-                  Talk to Our AI Assistant
-                </button>
-              </div>
-              <div className="flex items-center">
-                <div className="w-5 h-5 flex items-center justify-center mr-3">
-                  <i className="ri-mail-line text-blue-400"></i>
-                </div>
-                <a href="mailto:info@edmontonhvac.ca" className="text-gray-300 hover:text-white transition-colors cursor-pointer">
-                  info@edmontonhvac.ca
-                </a>
-              </div>
-              <div className="flex items-start">
-                <div className="w-5 h-5 flex items-center justify-center mt-1 mr-3">
-                  <i className="ri-time-line text-blue-400"></i>
-                </div>
-                <div className="text-gray-300">
-                  <p>Mon-Fri: 7AM-7PM</p>
-                  <p>Sat-Sun: 8AM-5PM</p>
-                  <p className="text-green-400 font-semibold">24/7 Emergency Service</p>
-                </div>
+              <div className="text-gray-300">
+                <p>Mon-Sun: 24/7 Service Available</p>
+                <p className="text-blue-400 font-semibold mt-2">Captured & Managed by AI Assistant</p>
               </div>
             </div>
           </div>
@@ -109,21 +84,25 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © {currentYear} Edmonton HVAC. All rights reserved.
+              © {currentYear} Abbotsford HVAC. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link to="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer">
                 Privacy Policy
               </Link>
               <span className="text-gray-600">|</span>
-              <a 
-                href="https://readdy.ai/?origin=logo" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                href="https://readdy.ai/?origin=logo"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer"
               >
                 Website Builder
               </a>
+              <span className="text-gray-600">|</span>
+              <Link to="/admin" className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer">
+                Admin
+              </Link>
             </div>
           </div>
         </div>

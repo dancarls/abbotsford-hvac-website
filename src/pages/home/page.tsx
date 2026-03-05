@@ -21,7 +21,7 @@ export default function Home() {
       "@type": "Review",
       "itemReviewed": {
         "@type": "LocalBusiness",
-        "name": "Edmonton HVAC"
+        "name": "Abbotsford HVAC"
       },
       "reviewRating": {
         "@type": "Rating",
@@ -30,9 +30,9 @@ export default function Home() {
       },
       "author": {
         "@type": "Person",
-        "name": "Jessica Anderson"
+        "name": "Sarah Johnson"
       },
-      "reviewBody": "Outstanding service! They replaced our old furnace with a new high-efficiency unit. The team was professional and the installation was flawless."
+      "reviewBody": "Excellent service! They installed our new furnace quickly and professionally. The team was knowledgeable and cleaned up perfectly after the job."
     };
 
     const script = document.createElement('script');
@@ -45,8 +45,31 @@ export default function Home() {
     };
   }, []);
 
+  const [isVerifying, setIsVerifying] = useState(false);
+  const [verificationCode, setVerificationCode] = useState('');
+  const [sentCode, setSentCode] = useState('');
+
+  const handleStartVerification = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.email) return;
+
+    setIsSubmitting(true);
+    // Simulate sending a verification code
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    console.log("SIMULATED VERIFICATION CODE:", code);
+    setSentCode(code);
+    setIsVerifying(true);
+    setIsSubmitting(false);
+    setSubmitStatus('A verification code has been sent to your email. Please enter it below to confirm.');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (verificationCode !== sentCode) {
+      setSubmitStatus('Invalid verification code. Please check your email.');
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus('');
 
@@ -56,7 +79,7 @@ export default function Home() {
         formBody.append(key, value);
       });
 
-      const response = await fetch('https://readdy.ai/api/form/d3basfp6d8097tiljl6g', {
+      const response = await fetch('https://readdy.ai/api/form/d3aa5q7hm68tmmd6s6qg', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -65,8 +88,11 @@ export default function Home() {
       });
 
       if (response.ok) {
-        setSubmitStatus('Thank you! We\'ll contact you soon to schedule your service.');
+        setSubmitStatus('Thank you! Your verified request has been received. Our team will contact you soon.');
         setFormData({ name: '', phone: '', email: '', service: '', preferred_time: '' });
+        setIsVerifying(false);
+        setSentCode('');
+        setVerificationCode('');
       } else {
         setSubmitStatus('Something went wrong. Please try again.');
       }
@@ -79,58 +105,74 @@ export default function Home() {
 
   const services = [
     {
-      icon: '🔥',
+      icon: 'ri-temp-hot-line',
+      iconColor: 'text-red-600',
+      bgColor: 'bg-red-50',
       title: 'Heating Services',
-      description: 'Expert furnace installation, boiler repair, heat pump systems, radiant floor heating, smart thermostats, and 24/7 emergency heating repairs to keep your Edmonton home warm all winter.',
+      description: 'Expert furnace installation, boiler repair, heat pump systems, radiant floor heating, smart thermostats, and 24/7 emergency heating repairs to keep your Abbotsford home warm all winter.',
       subServices: ['Furnace Installation & Repair', 'Boiler Services', 'Heat Pump Systems', 'Radiant Floor Heating', 'Smart Thermostats', 'Emergency Heating Repairs'],
       link: '/services/heating'
     },
     {
-      icon: '❄️',
+      icon: 'ri-snowflake-line',
+      iconColor: 'text-blue-600',
+      bgColor: 'bg-blue-50',
       title: 'Cooling Services',
-      description: 'Complete air conditioning installation, maintenance, repair, central air systems, ductless mini-splits, and emergency AC repairs for optimal cooling comfort in Edmonton.',
+      description: 'Complete air conditioning installation, maintenance, repair, central air systems, ductless mini-splits, and emergency AC repairs for optimal cooling comfort in Abbotsford.',
       subServices: ['AC Installation', 'AC Maintenance & Repair', 'Central Air Systems', 'Ductless Mini-Splits', 'Emergency AC Repairs', 'Cooling System Upgrades'],
       link: '/services/cooling'
     },
     {
-      icon: '💨',
+      icon: 'ri-windy-line',
+      iconColor: 'text-teal-600',
+      bgColor: 'bg-teal-50',
       title: 'Ventilation Services',
       description: 'Professional whole-home ventilation systems, exhaust fans, attic fans, air balancing, ERV/HRV installation, and duct cleaning services for better indoor air circulation.',
       subServices: ['Whole-Home Ventilation', 'Exhaust & Attic Fans', 'Air Balancing', 'ERV/HRV Systems', 'Duct Cleaning', 'Ventilation Maintenance'],
       link: '/services/ventilation'
     },
     {
-      icon: '🍃',
+      icon: 'ri-leaf-line',
+      iconColor: 'text-emerald-600',
+      bgColor: 'bg-emerald-50',
       title: 'Indoor Air Quality',
       description: 'Advanced UV air purifiers, air filtration systems, humidifiers, dehumidifiers, carbon monoxide detectors, and mold remediation to ensure healthy indoor air quality.',
       subServices: ['UV Air Purifiers', 'Air Filtration Systems', 'Humidifiers & Dehumidifiers', 'CO Detectors', 'Mold Remediation', 'Air Quality Testing'],
       link: '/services/air-quality'
     },
     {
-      icon: '💧',
+      icon: 'ri-drop-line',
+      iconColor: 'text-sky-600',
+      bgColor: 'bg-sky-50',
       title: 'Plumbing & Water Heating',
-      description: "Water heater installation and repair, plumbing repairs, pipe insulation, and related services to complement your home's comfort systems in Edmonton.",
+      description: "Water heater installation and repair, plumbing repairs, pipe insulation, and related services to complement your home's comfort systems in Abbotsford.",
       subServices: ['Water Heater Services', 'Plumbing Repairs', 'Pipe Insulation', 'Hot Water Systems', 'Tankless Water Heaters', 'Emergency Plumbing'],
       link: '/services/plumbing'
     },
     {
-      icon: '⚙️',
+      icon: 'ri-tools-line',
+      iconColor: 'text-slate-600',
+      bgColor: 'bg-slate-50',
       title: 'Maintenance Services',
       description: 'Comprehensive annual HVAC inspections, filter replacements, thermostat upgrades, and maintenance agreements to keep your systems running efficiently year-round.',
       subServices: ['Annual Inspections', 'Filter Replacement', 'Thermostat Upgrades', 'Maintenance Agreements', 'System Tune-ups', 'Preventive Care'],
       link: '/services/maintenance'
     },
     {
-      icon: '🏢',
+      icon: 'ri-building-line',
+      iconColor: 'text-indigo-600',
+      bgColor: 'bg-indigo-50',
       title: 'Commercial HVAC',
-      description: 'Professional commercial HVAC system installation, repairs, refrigeration, building automation, and energy-efficient solutions for Edmonton businesses.',
+      description: 'Professional commercial HVAC system installation, repairs, refrigeration, building automation, and energy-efficient solutions for Abbotsford businesses.',
       subServices: ['System Installation', 'Commercial Repairs', 'Refrigeration Services', 'Building Automation', 'Energy Solutions', 'Emergency Commercial Service'],
       link: '/services/commercial'
     },
     {
-      icon: '🚨',
+      icon: 'ri-alarm-warning-line',
+      iconColor: 'text-orange-600',
+      bgColor: 'bg-orange-50',
       title: 'Emergency Services',
-      description: '24/7 emergency HVAC repairs in Edmonton. No heating in winter? AC broken in summer? We respond fast with same-day emergency service to restore your comfort.',
+      description: '24/7 emergency HVAC repairs in Abbotsford. No heating in winter? AC broken in summer? We respond fast with same-day emergency service to restore your comfort.',
       subServices: ['24/7 Emergency Response', 'Same-Day Service', 'Emergency Heating Repairs', 'Emergency AC Repairs', 'Weekend & Holiday Service', 'Emergency Diagnostics'],
       link: '/services/emergency'
     }
@@ -138,125 +180,106 @@ export default function Home() {
 
   const testimonials = [
     {
-      name: 'Jessica Anderson',
-      location: 'Summerside',
+      name: 'Sarah Johnson',
+      location: 'Abbotsford West',
       rating: 5,
-      text: 'Outstanding service! They replaced our old furnace with a new high-efficiency unit. The team was professional and the installation was flawless.',
+      text: 'Excellent service! They installed our new furnace quickly and professionally. The team was knowledgeable and cleaned up perfectly after the job.',
       date: '2024-01-15'
     },
     {
-      name: 'David Kim',
-      location: 'Oliver',
+      name: 'Mike Chen',
+      location: 'Clayburn Village',
       rating: 5,
-      text: 'Called for emergency AC repair during a heatwave. They responded within an hour and had our system running perfectly. Exceptional customer service.',
+      text: 'Called for emergency AC repair on a Saturday. They came out within 2 hours and had us cool again. Great customer service and fair pricing.',
       date: '2024-02-08'
     },
     {
-      name: 'Michelle Roberts',
-      location: 'Sherwood Park',
+      name: 'Jennifer Smith',
+      location: 'Eagle Mountain',
       rating: 5,
-      text: 'Been using them for maintenance for over 2 years. Always reliable, professional, and fairly priced. Highly recommend their service plans!',
+      text: 'Professional, reliable, and honest. They maintained our HVAC system for 3 years now. Highly recommend their maintenance plans!',
       date: '2024-01-22'
     }
   ];
 
   const serviceAreas = [
-    'Belle Rive', 'Oxford', 'Hudson', 'Sherbrooke', 'Overlanders', 'Hairsine',
-    'Carleton', 'Eastwood', 'Clover Bar', 'Britannia Youngstown', 'Glenwood',
-    'River Valley Laurier', 'Strathcona', 'Summerside', 'MacTaggart', 'Menisa',
-    'Kameyosek', 'Sweet Grass', 'Rhatigan Ridge', 'Graydon Hill', 'Desrochers',
-    'DeCoteau', 'Stillwater', 'Riverview Area', 'Nakamun Park', 'Sunrise Beach',
-    'Alexander', 'Morinville', 'Calahoo', 'St. Albert', 'Sturgeon County',
-    'Bon Accord', 'Fort Saskatchewan', 'Bruderheim', 'Sherwood Park',
-    'Spruce Grove', 'Stony Plain', 'Enoch Cree Nation', 'Devon', 'Beaumont', 'Oliver'
+    'Abbotsford West', 'Abbotsford East', 'Clayburn Village', 'McMillan',
+    'Auguston', 'Eagle Mountain', 'Sandy Hill', 'Clearbrook Centre',
+    'Townline Hill', 'Mill Lake', 'West Clearbrook', 'South Clearbrook',
+    'Aberdeen', 'South Poplar', 'Kilgard', 'Gifford', 'Mission',
+    'Hatzic', 'Dewdney', 'Glen Valley', 'Silverhill'
   ];
 
   const blogPosts = [
     {
       id: '1',
-      title: 'Preparing Your HVAC System for Edmonton\'s Harsh Winters',
-      excerpt: 'Essential winterization tips to ensure your heating system performs efficiently during Alberta\'s extreme cold temperatures.',
-      author: 'Robert Wilson',
+      title: 'How to Prepare Your HVAC System for Winter in Abbotsford',
+      excerpt: 'Essential maintenance tips to ensure your heating system runs efficiently during Fraser Valley\'s cold months.',
+      author: 'Mike Thompson',
       date: '2024-01-15',
-      category: 'Winter Maintenance',
-      readTime: '6 min read',
-      image: 'https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20performing%20winter%20maintenance%20on%20residential%20furnace%20system%20in%20Edmonton%20Alberta%20home%2C%20snowy%20weather%20outside%2C%20cold%20climate%20preparation%2C%20high-efficiency%20heating%20equipment&width=600&height=300&seq=edmonton-blog-1&orientation=landscape',
-      slug: 'preparing-hvac-edmonton-harsh-winters'
+      category: 'Maintenance',
+      readTime: '5 min read',
+      image: 'https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20performing%20winter%20maintenance%20on%20residential%20furnace%20system%20in%20Abbotsford%20home%2C%20checking%20filters%20and%20equipment%2C%20cold%20weather%20preparation&width=600&height=300&seq=home-blog-1&orientation=landscape',
+      slug: 'prepare-hvac-system-winter-abbotsford'
     },
     {
       id: '2',
-      title: 'Best Energy-Efficient Heating Solutions for Alberta Homes',
-      excerpt: 'Discover the most cost-effective and environmentally friendly heating options for Edmonton\'s climate and energy costs.',
-      author: 'Amanda Martinez',
+      title: 'Signs Your Air Conditioner Needs Repair Before Summer',
+      excerpt: 'Don\'t wait for the hottest day of the year to discover your AC isn\'t working. Watch for these warning signs.',
+      author: 'Sarah Chen',
       date: '2024-01-10',
-      category: 'Energy Efficiency',
-      readTime: '5 min read',
-      image: 'https://readdy.ai/api/search-image?query=Modern%20energy-efficient%20furnace%20and%20heat%20pump%20system%20in%20Edmonton%20home%2C%20smart%20thermostat%2C%20high-efficiency%20HVAC%20equipment%2C%20Alberta%20energy%20savings%2C%20winter%20heating%20solutions&width=600&height=300&seq=edmonton-blog-2&orientation=landscape',
-      slug: 'best-energy-efficient-heating-alberta-homes'
+      category: 'Cooling',
+      readTime: '4 min read',
+      image: 'https://readdy.ai/api/search-image?query=Air%20conditioning%20unit%20showing%20signs%20of%20wear%20and%20repair%20needs%2C%20residential%20exterior%20AC%20unit%20with%20visible%20issues%2C%20professional%20diagnostic%20assessment&width=600&height=300&seq=home-blog-2&orientation=landscape',
+      slug: 'air-conditioner-repair-signs-summer'
     },
     {
       id: '3',
-      title: 'When to Replace Your Furnace: Signs Edmonton Homeowners Should Know',
-      excerpt: 'Learn the key indicators that it\'s time to upgrade your furnace, especially important for Edmonton\'s demanding climate.',
-      author: 'James Thompson',
+      title: 'Energy-Efficient HVAC Upgrades That Save Money',
+      excerpt: 'Discover which HVAC improvements offer the best return on investment for Abbotsford homeowners.',
+      author: 'David Kim',
       date: '2024-01-08',
-      category: 'Heating',
-      readTime: '4 min read',
-      image: 'https://readdy.ai/api/search-image?query=Old%20furnace%20showing%20signs%20of%20wear%20versus%20new%20high-efficiency%20furnace%20replacement%20in%20Edmonton%20basement%2C%20professional%20HVAC%20upgrade%2C%20system%20comparison&width=600&height=300&seq=edmonton-blog-3&orientation=landscape',
-      slug: 'when-replace-furnace-edmonton-homeowners'
+      category: 'Energy Efficiency',
+      readTime: '6 min read',
+      image: 'https://readdy.ai/api/search-image?query=Modern%20energy-efficient%20HVAC%20system%20installation%20in%20contemporary%20home%2C%20smart%20thermostat%20and%20high-efficiency%20equipment%2C%20cost%20savings%20visualization&width=600&height=300&seq=home-blog-3&orientation=landscape',
+      slug: 'energy-efficient-hvac-upgrades-save-money'
     }
   ];
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
-      {/* Breadcrumb Navigation */}
-      <nav className="bg-gray-50 py-3" aria-label="Breadcrumb">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ol className="flex items-center space-x-2 text-sm">
-            <li>
-              <button 
-                onClick={() => window.REACT_APP_NAVIGATE?.('/')}
-                className="text-blue-600 hover:text-blue-700 cursor-pointer"
-              >
-                Home
-              </button>
-            </li>
-          </ol>
-        </div>
-      </nav>
-      
+
       {/* Hero Section */}
-      <section 
-        className="relative min-h-screen flex items-center bg-cover bg-center"
+      <section
+        className="relative min-h-[90vh] flex items-center bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=Modern%20comfortable%20family%20home%20in%20Edmonton%20Alberta%20with%20snow%20in%20winter%2C%20clean%20residential%20architecture%2C%20HVAC%20equipment%20visible%2C%20beautiful%20Canadian%20neighborhood%20setting%2C%20professional%20photography%2C%20cold%20climate%2C%20well-maintained%20property&width=1920&height=1080&seq=edmonton-hero-1&orientation=landscape')`
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=Modern%20comfortable%20family%20home%20in%20Abbotsford%20British%20Columbia%20with%20clean%20architectural%20lines%2C%20HVAC%20equipment%20visible%20on%20exterior%2C%20beautiful%20residential%20neighborhood%20setting%2C%20professional%20photography%2C%20natural%20lighting%2C%20blue%20sky%20background%2C%20well-maintained%20landscaping%2C%20Canadian%20residential%20architecture%20style&width=1920&height=1080&seq=hero-1&orientation=landscape')`
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="text-white">
               <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Your Trusted HVAC Specialists in <span className="text-green-500">Edmonton, AB</span>
+                Your Local HVAC Experts in <span className="text-blue-400">Abbotsford, BC</span>
               </h1>
               <p className="text-xl mb-8 text-gray-200">
-                Premium heating, cooling, and air quality solutions for Edmonton homes and businesses. Expert technicians delivering exceptional service with 24/7 emergency support across Alberta.
+                Professional heating, cooling, ventilation & air quality solutions for homes & businesses. Licensed technicians serving Fraser Valley with 24/7 emergency service managed by AI.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={() => document.getElementById('service-form')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="bg-green-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors whitespace-nowrap cursor-pointer"
-                  aria-label="Book a free HVAC consultation"
-                >
-                  Book a Free Consultation
-                </button>
-                <button 
-                  onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
-                  className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors text-center whitespace-nowrap cursor-pointer"
+                <button
+                  onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                  className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2"
                   aria-label="Talk to our AI assistant"
                 >
-                  Talk to Our AI Assistant
+                  <i className="ri-user-voice-fill"></i>
+                  Talk to Our AI HVAC Assistant
+                </button>
+                <button
+                  onClick={() => document.getElementById('service-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all whitespace-nowrap cursor-pointer"
+                >
+                  Request Service Form
                 </button>
               </div>
             </div>
@@ -269,113 +292,144 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-xl shadow-lg p-8">
             <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">
-              Schedule Your HVAC Service
+              Request HVAC Service Today
             </h2>
-            <form onSubmit={handleSubmit} data-readdy-form id="service-request-form" className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
-                  aria-describedby="name-help"
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
-                  placeholder="Optional - we'll use AI assistant primarily"
-                  aria-describedby="phone-help"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
-                  aria-describedby="email-help"
-                />
-              </div>
-              <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                  Service Needed *
-                </label>
-                <div className="relative">
-                  <select
-                    id="service"
-                    name="service"
-                    required
-                    value={formData.service}
-                    onChange={(e) => setFormData({...formData, service: e.target.value})}
-                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm appearance-none"
-                    aria-describedby="service-help"
-                  >
-                    <option value="">Select HVAC service</option>
-                    <option value="furnace-repair">Furnace Repair</option>
-                    <option value="furnace-installation">Furnace Installation</option>
-                    <option value="ac-repair">AC Repair</option>
-                    <option value="ac-installation">AC Installation</option>
-                    <option value="heat-pump">Heat Pump Service</option>
-                    <option value="ductless">Ductless Mini-Split</option>
-                    <option value="air-quality">Indoor Air Quality</option>
-                    <option value="maintenance">Maintenance Service</option>
-                    <option value="emergency">Emergency Service</option>
-                    <option value="other">Other HVAC Service</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <i className="ri-arrow-down-s-line text-gray-400"></i>
+            <form onSubmit={isVerifying ? handleSubmit : handleStartVerification} data-readdy-form id="service-request-form" className="grid md:grid-cols-2 gap-6">
+              {!isVerifying ? (
+                <>
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      aria-describedby="name-help"
+                    />
                   </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      required
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      aria-describedby="phone-help"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      aria-describedby="email-help"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                      Service Needed *
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="service"
+                        name="service"
+                        required
+                        value={formData.service}
+                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                        className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none"
+                        aria-describedby="service-help"
+                      >
+                        <option value="">Select HVAC service</option>
+                        <option value="furnace-repair">Furnace Repair</option>
+                        <option value="furnace-installation">Furnace Installation</option>
+                        <option value="ac-repair">AC Repair</option>
+                        <option value="ac-installation">AC Installation</option>
+                        <option value="heat-pump">Heat Pump Service</option>
+                        <option value="ductless">Ductless Mini-Split</option>
+                        <option value="air-quality">Indoor Air Quality</option>
+                        <option value="maintenance">Maintenance Service</option>
+                        <option value="emergency">Emergency Service</option>
+                        <option value="other">Other HVAC Service</option>
+                      </select>
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                        <i className="ri-arrow-down-s-line text-gray-400"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="md:col-span-2">
+                    <label htmlFor="preferred_time" className="block text-sm font-medium text-gray-700 mb-2">
+                      Preferred Appointment Time
+                    </label>
+                    <input
+                      type="text"
+                      id="preferred_time"
+                      name="preferred_time"
+                      value={formData.preferred_time}
+                      onChange={(e) => setFormData({ ...formData, preferred_time: e.target.value })}
+                      placeholder="e.g., Tomorrow morning, This weekend, ASAP"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      aria-describedby="time-help"
+                    />
+                  </div>
+                </>
+              ) : (
+                <div className="md:col-span-2">
+                  <label htmlFor="verification_code" className="block text-sm font-medium text-gray-700 mb-2">
+                    Verification Code *
+                  </label>
+                  <input
+                    type="text"
+                    id="verification_code"
+                    name="verification_code"
+                    required
+                    value={verificationCode}
+                    onChange={(e) => setVerificationCode(e.target.value)}
+                    placeholder="Enter 6-digit code"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-center text-2xl tracking-widest"
+                  />
+                  <p className="text-sm text-gray-500 mt-2 text-center">
+                    Check your email for the code to confirm your request.
+                  </p>
                 </div>
-              </div>
-              <div className="md:col-span-2">
-                <label htmlFor="preferred_time" className="block text-sm font-medium text-gray-700 mb-2">
-                  Preferred Appointment Time
-                </label>
-                <input
-                  type="text"
-                  id="preferred_time"
-                  name="preferred_time"
-                  value={formData.preferred_time}
-                  onChange={(e) => setFormData({...formData, preferred_time: e.target.value})}
-                  placeholder="e.g., Tomorrow morning, This weekend, ASAP"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm"
-                  aria-describedby="time-help"
-                />
-              </div>
+              )}
               <div className="md:col-span-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-green-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors disabled:opacity-50 whitespace-nowrap cursor-pointer"
-                  aria-label="Submit HVAC service request"
+                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors disabled:opacity-50 whitespace-nowrap cursor-pointer shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Request Service'}
+                  {isSubmitting ? 'Processing...' : (isVerifying ? 'Verify & Submit Request' : 'Get Verified Quote')}
                 </button>
                 {submitStatus && (
-                  <p className={`mt-4 text-center ${submitStatus.includes('Thank you') ? 'text-green-600' : 'text-red-600'}`} role="status" aria-live="polite">
+                  <p className={`mt-4 text-center p-3 rounded-lg ${submitStatus.includes('Thank you') ? 'bg-green-50 text-green-700' : 'bg-blue-50 text-blue-700'}`} role="status" aria-live="polite">
                     {submitStatus}
                   </p>
+                )}
+                {isVerifying && (
+                  <button
+                    type="button"
+                    onClick={() => setIsVerifying(false)}
+                    className="w-full mt-4 text-gray-500 hover:text-gray-700 text-sm font-medium cursor-pointer"
+                  >
+                    Back to Form
+                  </button>
                 )}
               </div>
             </form>
@@ -388,47 +442,47 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Edmonton Homeowners Choose Us
+              Why Choose Abbotsford HVAC?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience superior HVAC service with Alberta's most reliable heating and cooling specialists
+              We're your trusted local HVAC experts, committed to keeping your home comfortable year-round
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">🏠</span>
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-blue-50 rounded-[2rem] flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-all duration-300 shadow-sm border border-blue-100">
+                <i className="ri-medal-line text-4xl text-blue-600" aria-hidden="true"></i>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Alberta Owned & Operated</h3>
-              <p className="text-gray-600">
-                We understand Edmonton's climate challenges and provide solutions tailored to Alberta winters
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Elite Standards</h3>
+              <p className="text-gray-600 leading-relaxed text-sm">
+                As a locally owned business, we maintain the highest quality standards in the Abbotsford region.
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">⏰</span>
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-red-50 rounded-[2rem] flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-all duration-300 shadow-sm border border-red-100">
+                <i className="ri-timer-flash-line text-4xl text-red-600" aria-hidden="true"></i>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Round-the-Clock Emergency</h3>
-              <p className="text-gray-600">
-                When your heating fails in -30°C weather, we're here with immediate emergency response
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Rapid Response</h3>
+              <p className="text-gray-600 leading-relaxed text-sm">
+                Our AI-integrated dispatch ensures lightning-fast 24/7 emergency service when it matters most.
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">🛡️</span>
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-emerald-50 rounded-[2rem] flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-all duration-300 shadow-sm border border-emerald-100">
+                <i className="ri-shield-check-line text-4xl text-emerald-600" aria-hidden="true"></i>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Certified & Guaranteed</h3>
-              <p className="text-gray-600">
-                All technicians hold current Alberta certifications with full warranty protection on all work
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Certified Excellence</h3>
+              <p className="text-gray-600 leading-relaxed text-sm">
+                Fully licensed, insured, and background-checked technicians for your total peace of mind.
               </p>
             </div>
-            <div className="text-center">
-              <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">📍</span>
+            <div className="text-center group">
+              <div className="w-20 h-20 bg-amber-50 rounded-[2rem] flex items-center justify-center mx-auto mb-6 transform group-hover:scale-110 transition-all duration-300 shadow-sm border border-amber-100">
+                <i className="ri-heart-line text-4xl text-amber-600" aria-hidden="true"></i>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Greater Edmonton Coverage</h3>
-              <p className="text-gray-600">
-                From downtown Edmonton to Sherwood Park, we serve all Greater Edmonton Area communities
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Community Driven</h3>
+              <p className="text-gray-600 leading-relaxed text-sm">
+                From Clearbrook to Eagle Mountain, we take pride in serving every Abbotsford neighborhood.
               </p>
             </div>
           </div>
@@ -440,55 +494,41 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Expert HVAC Solutions for Edmonton Homes
+              Complete HVAC Services in Abbotsford
             </h2>
             <p className="text-xl text-gray-600">
-              Comprehensive heating, cooling, and air quality services designed for Alberta's demanding climate
+              Professional heating, cooling, ventilation, and air quality solutions for your home and business
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {services.map((service, index) => (
-              <article key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow h-full flex flex-col">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                  <span className="text-2xl">{service.icon}</span>
+              <article key={index} className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 h-full flex flex-col border border-gray-100 group">
+                <div
+                  className={`w-16 h-16 ${service.bgColor} rounded-2xl flex items-center justify-center mb-6 border border-white/50 shadow-sm transform group-hover:scale-110 transition-transform duration-300`}
+                >
+                  <i className={`${service.icon} text-3xl ${service.iconColor}`} aria-hidden="true"></i>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-4 flex-grow">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h3>
+                <p className="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">
                   {service.description}
                 </p>
-                <div className="mb-4">
-                  <h4 className="font-medium text-gray-800 mb-2">Services Include:</h4>
-                  <ul className="text-sm text-gray-600 space-y-1">
-                    {service.subServices.map((subService, subIndex) => (
-                      <li key={subIndex} className="flex items-start">
-                        <span className="text-green-600 mr-2" aria-hidden="true">•</span>
-                        <span>{subService}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="space-y-3 pt-6 border-t border-gray-50 text-sm font-medium">
+                  <button
+                    onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                    className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                  >
+                    <i className="ri-user-voice-fill"></i>
+                    Talk to AI Assistant
+                  </button>
+                  <button
+                    onClick={() => window.REACT_APP_NAVIGATE?.(service.link)}
+                    className="w-full text-blue-600 hover:text-blue-700 py-2 transition-colors cursor-pointer text-center"
+                  >
+                    View Details
+                  </button>
                 </div>
-                <button 
-                  onClick={() => {
-                    window.REACT_APP_NAVIGATE?.(service.link);
-                  }}
-                  className="text-green-600 font-semibold hover:text-green-700 transition-colors cursor-pointer whitespace-nowrap mt-auto"
-                  aria-label={`Learn more about ${service.title}`}
-                >
-                  Learn More →
-                </button>
               </article>
             ))}
-          </div>
-          <div className="text-center mt-12">
-            <button 
-              onClick={() => document.getElementById('service-form')?.scrollIntoView({ behavior: 'smooth' })}
-              className="bg-green-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors whitespace-nowrap cursor-pointer"
-              aria-label="Get free HVAC estimate"
-            >
-              Get Free Estimate Today
-            </button>
           </div>
         </div>
       </section>
@@ -498,128 +538,130 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Edmonton HVAC Knowledge Hub
+              Latest HVAC Tips & Insights
             </h2>
             <p className="text-xl text-gray-600">
-              Stay informed with expert tips and insights tailored for Alberta homeowners
+              Expert advice and industry insights to help you make informed HVAC decisions
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
-              <article key={post.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <article key={post.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
                 <div className="relative">
-                  <img 
+                  <img
                     src={post.image}
                     alt={post.title}
                     className="w-full h-48 object-cover object-top"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium shadow-md">
                       {post.category}
                     </span>
                   </div>
                 </div>
-                <div className="p-6">
-                  <div className="flex items-center text-sm text-gray-500 mb-3">
-                    <span>{post.author}</span>
-                    <span className="mx-2">•</span>
-                    <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-                    <span className="mx-2">•</span>
-                    <span>{post.readTime}</span>
+                <div className="p-6 flex-grow flex flex-col">
+                  <div className="flex items-center text-xs text-gray-500 mb-3 space-x-2">
+                    <span className="flex items-center gap-1"><i className="ri-user-line"></i> {post.author}</span>
+                    <span>•</span>
+                    <span className="flex items-center gap-1"><i className="ri-calendar-line"></i> {new Date(post.date).toLocaleDateString()}</span>
+                    <span>•</span>
+                    <span className="flex items-center gap-1"><i className="ri-time-line"></i> {post.readTime}</span>
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 line-clamp-3">
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3 leading-relaxed">
                     {post.excerpt}
                   </p>
-                  <button 
+                  <button
                     onClick={() => window.REACT_APP_NAVIGATE?.(`/blog/${post.slug}`)}
-                    className="text-green-600 font-semibold hover:text-green-700 transition-colors cursor-pointer whitespace-nowrap"
+                    className="text-blue-600 font-bold hover:text-blue-700 transition-colors cursor-pointer whitespace-nowrap mt-auto flex items-center gap-1"
                   >
-                    Read More →
+                    Read Full Article <i className="ri-arrow-right-line"></i>
                   </button>
                 </div>
               </article>
             ))}
           </div>
           <div className="text-center mt-12">
-            <button 
+            <button
               onClick={() => window.REACT_APP_NAVIGATE?.('/blog')}
-              className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors whitespace-nowrap cursor-pointer"
+              className="bg-gray-100 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors cursor-pointer"
             >
-              View All Articles
+              Browse All Articles
             </button>
           </div>
         </div>
       </section>
 
-      {/* Service Area Map */}
-      <section className="py-16 bg-gray-50">
+      {/* Service Area Section */}
+      <section className="py-16 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Edmonton Area HVAC Service Coverage
+              Local HVAC Service Areas
             </h2>
-            <p className="text-xl text-gray-600">
-              Professional HVAC services throughout Edmonton and surrounding Alberta communities
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Proudly serving your neighborhood in Abbotsford and throughout the Fraser Valley.
             </p>
           </div>
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="bg-gray-100 rounded-xl p-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="bg-white p-2 rounded-2xl shadow-xl border border-gray-100 h-[450px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-113.490929!3d53.544388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53a02220e223e1e7%3A0x2a8608d10c4c7d9!2sEdmonton%2C%20AB%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-122.38308678476562!3d49.05718584863281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d4c89d72c663%3A0x4a2b36750554ba72!2sAbbotsford%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
                 width="100%"
-                height="400"
+                height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-lg"
-                title="Edmonton HVAC Service Areas Map"
+                className="rounded-xl"
+                title="Abbotsford HVAC Service Areas Map"
               ></iframe>
             </div>
             <div>
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-                Communities We Serve
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {serviceAreas.map((area, index) => (
-                  <div key={index} className="flex items-center">
-                    <div className="w-2 h-2 bg-green-600 rounded-full mr-3" aria-hidden="true"></div>
-                    <span className="text-gray-700">{area}</span>
-                  </div>
+              <div className="grid grid-cols-2 gap-x-8 gap-y-4">
+                {serviceAreas.map((areaName, index) => (
+                  <button
+                    key={index}
+                    onClick={() => window.REACT_APP_NAVIGATE?.(`/service-areas/${areaName.toLowerCase().replace(/ /g, '-')}`)}
+                    className="flex items-center text-left hover:text-blue-600 transition-all cursor-pointer group"
+                  >
+                    <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-3 group-hover:scale-150 group-hover:shadow-[0_0_8px_rgba(37,99,235,0.6)] transition-all" aria-hidden="true"></div>
+                    <span className="text-gray-700 font-semibold group-hover:translate-x-1 transition-transform text-sm">{areaName}</span>
+                  </button>
                 ))}
               </div>
-              <div className="mt-8 p-6 bg-green-50 rounded-lg">
-                <h4 className="text-lg font-semibold text-green-900 mb-2">
-                  Don't see your community listed?
-                </h4>
-                <p className="text-green-800 mb-4">
-                  We may still provide service to your area. Connect with our AI assistant to confirm coverage availability!
-                </p>
-                <button 
-                  onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
-                  className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors inline-block whitespace-nowrap cursor-pointer"
-                  aria-label="Talk to AI assistant to check service availability"
-                >
-                  Check Coverage
-                </button>
+              <div className="mt-10 p-6 bg-blue-600 rounded-2xl shadow-lg relative overflow-hidden group">
+                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform">
+                  <i className="ri-customer-service-2-fill text-6xl text-white"></i>
+                </div>
+                <div className="relative z-10">
+                  <p className="text-blue-100 font-medium mb-1 text-sm uppercase tracking-wider">Don't see your area?</p>
+                  <h4 className="text-xl font-bold text-white mb-4 leading-tight">We may still be able to help you today.</h4>
+                  <button
+                    onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                    className="bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-50 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
+                  >
+                    <i className="ri-user-voice-fill"></i>
+                    Ask Our AI Assistant
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Customer Testimonials with Review Schema */}
+      {/* Customer Testimonials */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              What Edmonton Customers Say
+              What Our Customers Say
             </h2>
             <p className="text-xl text-gray-600">
-              Genuine reviews from satisfied customers throughout the Edmonton region
+              Real reviews from satisfied customers across Abbotsford and Fraser Valley
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -643,7 +685,7 @@ export default function Home() {
                 </div>
                 <meta itemProp="datePublished" content={testimonial.date} />
                 <div itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness">
-                  <meta itemProp="name" content="Edmonton HVAC" />
+                  <meta itemProp="name" content="Abbotsford HVAC" />
                 </div>
               </article>
             ))}

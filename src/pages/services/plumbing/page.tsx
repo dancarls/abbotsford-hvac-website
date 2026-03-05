@@ -1,52 +1,8 @@
-
-import { useState } from 'react';
+import ProjectServiceForm from '../../../components/feature/ProjectServiceForm';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 
 export default function PlumbingServices() {
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    service_type: '',
-    property_type: '',
-    urgency: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('');
-
-    try {
-      const formBody = new URLSearchParams();
-      Object.entries(formData).forEach(([key, value]) => {
-        formBody.append(key, value);
-      });
-
-      const response = await fetch('https://readdy.ai/api/form/d3ad1vog3i95tm0o9chg', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: formBody.toString(),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('Thank you! We\'ll contact you soon about your plumbing service needs.');
-        setFormData({ name: '', phone: '', email: '', service_type: '', property_type: '', urgency: '', message: '' });
-      } else {
-        setSubmitStatus('Something went wrong. Please try again.');
-      }
-    } catch (error) {
-      setSubmitStatus('Something went wrong. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const plumbingServices = [
     {
@@ -88,11 +44,11 @@ export default function PlumbingServices() {
   ];
 
   const serviceAreas = [
-    'Summerside', 'Sherwood Park', 'St. Albert', 'Spruce Grove',
-    'Stony Plain', 'Fort Saskatchewan', 'Beaumont', 'Devon',
-    'Morinville', 'Leduc', 'Calmar', 'Bon Accord',
-    'Legal', 'Gibbons', 'Redwater', 'Lamont',
-    'Bruderheim', 'Andrew', 'Mundare', 'Vegreville'
+    'Abbotsford West', 'Abbotsford East', 'Clayburn Village', 'McMillan',
+    'Auguston', 'Eagle Mountain', 'Sandy Hill', 'Clearbrook Centre',
+    'Townline Hill', 'Mill Lake', 'West Clearbrook', 'South Clearbrook',
+    'Aberdeen', 'South Poplar', 'Kilgard', 'Gifford', 'Mission',
+    'Hatzic', 'Dewdney', 'Glen Valley', 'Silverhill'
   ];
 
   const faqs = [
@@ -117,34 +73,39 @@ export default function PlumbingServices() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
+
       {/* Hero Section */}
-      <section 
-        className="relative py-24 bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://readdy.ai/api/search-image?query=Professional%20plumber%20installing%20modern%20plumbing%20system%20in%20residential%20home%2C%20clean%20professional%20plumbing%20installation%2C%20modern%20fixtures%20and%20pipes%2C%20expert%20plumbing%20service%2C%20quality%20plumbing%20work%20in%20Canadian%20home&width=1920&height=800&seq=plumbing-hero-1&orientation=landscape')`
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-32 overflow-hidden bg-gray-900">
+        {/* Blurred Background Layer */}
+        <div
+          className="absolute inset-0 bg-cover bg-center scale-110 blur-[8px] opacity-60"
+          style={{
+            backgroundImage: `url('https://readdy.ai/api/search-image?query=Professional%20plumber%20installing%20modern%20tankless%20water%20heater%20in%20clean%20Abbotsford%20home%20basement%2C%20professional%20plumbing%20installation%2C%20modern%20water%20heating%20system%2C%20expert%20plumbing%20service%2C%20Canadian%20residential%20plumbing%20work%2C%20clean%20technical%20installation&width=1920&height=1000&seq=plumbing-hero-1&orientation=landscape')`
+          }}
+        />
+
+        {/* Content Overlay */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              Professional Plumbing Services in <span className="text-blue-400">Edmonton, AB</span>
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-2xl">
+              Expert Plumbing & Water Heating in <span className="text-blue-400">Abbotsford</span>
             </h1>
-            <p className="text-xl mb-8 max-w-3xl mx-auto text-gray-200">
-              Expert plumbing installation, repair, and maintenance services. From emergency repairs to complete system installations, we handle all your plumbing needs throughout Edmonton and surrounding Alberta communities.
+            <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto text-white drop-shadow-lg font-medium">
+              Professional water heater installation, plumbing repairs, and pipe insulation services. Keep your water flowing and heating systems running efficiently.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => document.getElementById('plumbing-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-green-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors whitespace-nowrap cursor-pointer"
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <button
+                onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3"
               >
-                Get Free Plumbing Quote
+                <i className="ri-user-voice-fill text-2xl"></i>
+                Talk to Our AI HVAC Assistant
               </button>
-              <button 
-                onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
-                className="bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors text-center whitespace-nowrap cursor-pointer"
+              <button
+                onClick={() => document.getElementById('plumbing-form-section')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl"
               >
-                Talk to Our AI Assistant
+                Request Online Quote
               </button>
             </div>
           </div>
@@ -159,7 +120,7 @@ export default function PlumbingServices() {
               Complete Plumbing & Water Heating Solutions
             </h2>
             <p className="text-xl text-gray-600">
-              From water heater installation to emergency repairs, we handle all your plumbing needs in Edmonton
+              From water heater installation to emergency repairs, we handle all your plumbing needs in Abbotsford
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -237,7 +198,7 @@ export default function PlumbingServices() {
               </div>
             </div>
             <div className="bg-gray-100 rounded-xl p-4">
-              <img 
+              <img
                 src="https://readdy.ai/api/search-image?query=Professional%20plumber%20performing%20water%20heater%20maintenance%20service%2C%20checking%20temperature%20and%20pressure%20settings%2C%20modern%20residential%20water%20heating%20system%2C%20professional%20plumbing%20service%20in%20Abbotsford%20home%2C%20expert%20technical%20work&width=600&height=400&seq=plumbing-service-1&orientation=landscape"
                 alt="Professional plumbing service"
                 className="w-full h-auto rounded-lg object-cover object-top"
@@ -252,16 +213,16 @@ export default function PlumbingServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Edmonton Area Plumbing Service Coverage
+              Plumbing Service Areas
             </h2>
             <p className="text-xl text-gray-600">
-              Professional plumbing services throughout Edmonton and surrounding Alberta communities
+              Professional plumbing services throughout Abbotsford and surrounding areas
             </p>
           </div>
           <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="bg-gray-100 rounded-xl p-4">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-113.490929!3d53.544388!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53a02220e223e1e7%3A0x2a8608d10c4c7d9!2sEdmonton%2C%20AB%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-122.38308678476562!3d49.05718584863281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d4c89d72c663%3A0x4a2b36750554ba72!2sAbbotsford%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
@@ -273,7 +234,7 @@ export default function PlumbingServices() {
             </div>
             <div>
               <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-                Edmonton Areas We Serve for Plumbing Services
+                Areas We Serve for Plumbing Services
               </h3>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
                 {serviceAreas.map((area, index) => (
@@ -285,16 +246,16 @@ export default function PlumbingServices() {
               </div>
               <div className="bg-blue-50 rounded-lg p-6">
                 <h4 className="text-lg font-semibold text-blue-900 mb-2">
-                  Need plumbing service in other Edmonton areas?
+                  Need plumbing service outside these areas?
                 </h4>
                 <p className="text-blue-800 mb-4">
-                  We serve the entire Greater Edmonton Area! Contact us to confirm service availability in your specific location.
+                  We may still be able to help! Contact us to see if we can service your location.
                 </p>
-                <button 
-                  onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
+                <button
+                  onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
                   className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block whitespace-nowrap cursor-pointer"
                 >
-                  Check Coverage with AI Assistant
+                  Check Service Area via AI
                 </button>
               </div>
             </div>
@@ -302,166 +263,22 @@ export default function PlumbingServices() {
         </div>
       </section>
 
-      {/* Plumbing Service Request Form */}
-      <section id="plumbing-form" className="py-16 bg-white">
+      <section id="plumbing-form-section" className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gray-50 rounded-xl p-8">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                Request Plumbing Service
-              </h2>
-              <p className="text-lg text-gray-600">
-                Get a free quote for your plumbing needs. We'll respond quickly with pricing and availability.
-              </p>
-            </div>
-            <form onSubmit={handleSubmit} data-readdy-form id="plumbing-service-form" className="grid md:grid-cols-2 gap-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                />
-              </div>
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
-                  value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                />
-              </div>
-              <div>
-                <label htmlFor="service_type" className="block text-sm font-medium text-gray-700 mb-2">
-                  Service Type *
-                </label>
-                <div className="relative">
-                  <select
-                    id="service_type"
-                    name="service_type"
-                    required
-                    value={formData.service_type}
-                    onChange={(e) => setFormData({...formData, service_type: e.target.value})}
-                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none"
-                  >
-                    <option value="">Select plumbing service</option>
-                    <option value="water-heater-installation">Water Heater Installation</option>
-                    <option value="water-heater-repair">Water Heater Repair</option>
-                    <option value="plumbing-repairs">Plumbing Repairs</option>
-                    <option value="pipe-insulation">Pipe Insulation</option>
-                    <option value="tankless-water-heater">Tankless Water Heater</option>
-                    <option value="emergency-plumbing">Emergency Plumbing</option>
-                    <option value="other">Other</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <i className="ri-arrow-down-s-line text-gray-400"></i>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <label htmlFor="property_type" className="block text-sm font-medium text-gray-700 mb-2">
-                  Property Type
-                </label>
-                <div className="relative">
-                  <select
-                    id="property_type"
-                    name="property_type"
-                    value={formData.property_type}
-                    onChange={(e) => setFormData({...formData, property_type: e.target.value})}
-                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none"
-                  >
-                    <option value="">Select property type</option>
-                    <option value="single-family">Single Family Home</option>
-                    <option value="townhouse">Townhouse</option>
-                    <option value="condo">Condo/Apartment</option>
-                    <option value="commercial">Commercial Building</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <i className="ri-arrow-down-s-line text-gray-400"></i>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <label htmlFor="urgency" className="block text-sm font-medium text-gray-700 mb-2">
-                  How urgent is this?
-                </label>
-                <div className="relative">
-                  <select
-                    id="urgency"
-                    name="urgency"
-                    value={formData.urgency}
-                    onChange={(e) => setFormData({...formData, urgency: e.target.value})}
-                    className="w-full px-4 py-3 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none"
-                  >
-                    <option value="">Select urgency</option>
-                    <option value="emergency">Emergency - Water Leak</option>
-                    <option value="urgent">Urgent - No Hot Water</option>
-                    <option value="soon">This Week</option>
-                    <option value="planning">Planning Ahead</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                    <i className="ri-arrow-down-s-line text-gray-400"></i>
-                  </div>
-                </div>
-              </div>
-              <div className="md:col-span-2">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Additional Details
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  maxLength={500}
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  placeholder="Tell us about your plumbing issue, water heater age, or what you're looking for..."
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm resize-none"
-                ></textarea>
-                <p className="text-xs text-gray-500 mt-1">{formData.message.length}/500 characters</p>
-              </div>
-              <div className="md:col-span-2">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors disabled:opacity-50 whitespace-nowrap cursor-pointer"
-                >
-                  {isSubmitting ? 'Submitting...' : 'Request Plumbing Service'}
-                </button>
-                {submitStatus && (
-                  <p className={`mt-4 text-center ${submitStatus.includes('Thank you') ? 'text-green-600' : 'text-red-600'}`}>
-                    {submitStatus}
-                  </p>
-                )}
-              </div>
-            </form>
-          </div>
+          <ProjectServiceForm
+            serviceId="plumbing-form"
+            serviceName="Plumbing Service"
+            formEndpoint="https://readdy.ai/api/form/d3ad1vog3i95tm0o9chg"
+            serviceOptions={[
+              { value: 'water-heater-installation', label: 'Water Heater Installation' },
+              { value: 'water-heater-repair', label: 'Water Heater Repair' },
+              { value: 'plumbing-repairs', label: 'Plumbing Repairs' },
+              { value: 'pipe-insulation', label: 'Pipe Insulation' },
+              { value: 'tankless-water-heater', label: 'Tankless Water Heater' },
+              { value: 'emergency-plumbing', label: 'Emergency Plumbing' },
+              { value: 'other', label: 'Other' }
+            ]}
+          />
         </div>
       </section>
 
@@ -473,7 +290,7 @@ export default function PlumbingServices() {
               Frequently Asked Questions
             </h2>
             <p className="text-xl text-gray-600">
-              Common questions about plumbing services in Edmonton
+              Common questions about plumbing services in Abbotsford
             </p>
           </div>
           <div className="space-y-6">
@@ -502,14 +319,15 @@ export default function PlumbingServices() {
           <h2 className="text-4xl font-bold text-white mb-4">
             Plumbing Emergency? We're Here to Help!
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Don't let plumbing problems disrupt your day. Get fast, reliable plumbing service from our Edmonton experts.
+          <p className="text-xl text-red-100 mb-8">
+            Don't let a plumbing emergency cause water damage. Our emergency plumbing team is available 24/7 throughout Abbotsford.
           </p>
-          <button 
-            onClick={() => document.querySelector('#vapi-widget-floating-button')?.click()}
-            className="bg-white text-red-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors inline-block whitespace-nowrap cursor-pointer"
+          <button
+            onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+            className="bg-white text-red-600 px-10 py-5 rounded-xl text-xl font-bold hover:bg-gray-100 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto"
           >
-            Get Emergency Plumbing Help Now
+            <i className="ri-user-voice-fill"></i>
+            Talk to Our AI Assistant 24/7
           </button>
         </div>
       </section>
