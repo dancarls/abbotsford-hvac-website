@@ -1,6 +1,7 @@
 import ProjectServiceForm from '../../../components/feature/ProjectServiceForm';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
+import SEO from '../../../components/common/SEO';
 
 export default function VentilationServices() {
 
@@ -124,6 +125,22 @@ export default function VentilationServices() {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Expert Ventilation Services"
+        description="Professional ventilation system installation, duct cleaning, and air balancing services in Abbotsford. Improve your indoor air quality and comfort with our expert care."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        }}
+      />
       <Header />
 
       {/* Hero Section */}
@@ -147,11 +164,11 @@ export default function VentilationServices() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button
-                onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                onClick={() => window.location.href = 'tel:123-456-7890'}
                 className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3"
               >
-                <i className="ri-user-voice-fill text-2xl"></i>
-                Talk to Our AI HVAC Assistant
+                <i className="ri-phone-fill text-2xl"></i>
+                Call Now (123) 456-7890
               </button>
               <button
                 onClick={() => document.getElementById('ventilation-form-section')?.scrollIntoView({ behavior: 'smooth' })}
@@ -304,10 +321,10 @@ export default function VentilationServices() {
                   We may still be able to help! Contact us to see if we can service your location.
                 </p>
                 <button
-                  onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                  onClick={() => window.location.href = 'tel:123-456-7890'}
                   className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block whitespace-nowrap cursor-pointer"
                 >
-                  Check Service Area via AI
+                  Contact for Service Area
                 </button>
               </div>
             </div>
@@ -375,11 +392,11 @@ export default function VentilationServices() {
             Improve your indoor air quality and comfort with professional ventilation solutions from our Abbotsford experts.
           </p>
           <button
-            onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+            onClick={() => window.location.href = 'tel:123-456-7890'}
             className="bg-white text-green-600 px-10 py-5 rounded-xl text-xl font-bold hover:bg-gray-100 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto"
           >
-            <i className="ri-user-voice-fill"></i>
-            Talk to Our AI Assistant 24/7
+            <i className="ri-phone-fill"></i>
+            Call Our Support Team 24/7
           </button>
         </div>
       </section>

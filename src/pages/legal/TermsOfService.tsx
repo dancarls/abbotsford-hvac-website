@@ -14,17 +14,7 @@ export default function TermsOfService() {
                         </p>
                     </section>
 
-                    <section>
-                        <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">2. AI Assistant Disclaimer</h2>
-                        <p>
-                            Our website utilizes advanced AI technology to assist with initial diagnostic inquiries, ballpark quotes, and scheduling. While we strive for accuracy, AI-generated communications are for informational purposes only.
-                        </p>
-                        <ul className="list-disc pl-6 space-y-2">
-                            <li>All AI-provided quotes are estimates and subject to on-site physical inspection.</li>
-                            <li>AI diagnostics do not replace the professional judgment of a licensed technician.</li>
-                            <li>In the event of a life-threatening emergency (e.g., gas leak), do not rely on the AI assistant; contact emergency services immediately.</li>
-                        </ul>
-                    </section>
+
 
                     <section>
                         <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">3. Service Area & Estimates</h2>
@@ -36,7 +26,7 @@ export default function TermsOfService() {
                     <section>
                         <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">4. Limitation of Liability</h2>
                         <p>
-                            Abbotsford HVAC shall not be liable for any indirect, incidental, or consequential damages arising from the use of our website or AI assistant. Our maximum liability shall not exceed the amount paid for the specific service in question.
+                            Abbotsford HVAC shall not be liable for any indirect, incidental, or consequential damages arising from the use of our website or services. Our maximum liability shall not exceed the amount paid for the specific service in question.
                         </p>
                     </section>
 

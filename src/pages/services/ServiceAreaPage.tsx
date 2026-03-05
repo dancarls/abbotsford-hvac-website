@@ -68,6 +68,37 @@ export default function ServiceAreaPage() {
                 title={content.title}
                 description={content.description}
                 ogImage={`https://readdy.ai/api/search-image?query=${encodeURIComponent(`${areaData.name} BC landscape, community landmarks`)}&width=1200&height=630&seq=seo-area-1&orientation=landscape`}
+                schema={{
+                    "@context": "https://schema.org",
+                    "@type": "LocalBusiness",
+                    "name": `Abbotsford HVAC - ${areaData.name}`,
+                    "description": content.description,
+                    "url": `https://abbotsfordhvac.ca/service-areas/${area}`,
+                    "telephone": "(604) 555-0123",
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Abbotsford",
+                        "addressRegion": "BC",
+                        "addressCountry": "CA"
+                    },
+                    "geo": {
+                        "@type": "GeoCoordinates",
+                        "latitude": 49.057186,
+                        "longitude": -122.308681
+                    },
+                    "areaServed": {
+                        "@type": "Place",
+                        "name": areaData.name
+                    },
+                    "breadcrumb": {
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://abbotsfordhvac.ca" },
+                            { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": "https://abbotsfordhvac.ca/service-areas" },
+                            { "@type": "ListItem", "position": 3, "name": areaData.name, "item": `https://abbotsfordhvac.ca/service-areas/${area}` }
+                        ]
+                    }
+                }}
             />
             <Header />
 
@@ -92,11 +123,11 @@ export default function ServiceAreaPage() {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                             <button
-                                onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                                onClick={() => window.location.href = 'tel:6045550123'}
                                 className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3"
                             >
-                                <i className="ri-user-voice-fill text-2xl"></i>
-                                Talk to Our AI HVAC Assistant
+                                <i className="ri-phone-fill text-2xl"></i>
+                                Call Now (604) 555-0123
                             </button>
                             <button
                                 onClick={() => window.REACT_APP_NAVIGATE?.('/contact')}
@@ -200,14 +231,14 @@ export default function ServiceAreaPage() {
                                 <div className="absolute top-0 right-0 -m-8 w-32 h-32 bg-blue-600/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
                                 <h3 className="text-2xl font-bold mb-4 relative z-10">Local {areaData.name} Support</h3>
                                 <p className="text-gray-400 mb-8 relative z-10 text-lg">
-                                    Need a professional opinion on your HVAC system? Our AI Assistant is trained on {areaData.name} service standards.
+                                    Need a professional opinion on your HVAC system? Our team is trained on {areaData.name} service standards.
                                 </p>
                                 <button
-                                    onClick={() => window.location.href = 'tel:123-456-7890'}
+                                    onClick={() => window.location.href = 'tel:6045550123'}
                                     className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 cursor-pointer"
                                 >
                                     <i className="ri-phone-fill text-2xl"></i>
-                                    Call (123) 456-7890
+                                    Call (604) 555-0123
                                 </button>
                                 <button
                                     onClick={() => window.REACT_APP_NAVIGATE?.('/contact')}

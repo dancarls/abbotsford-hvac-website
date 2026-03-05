@@ -42,7 +42,7 @@ export default function ContactPage() {
       setIsVerifying(true);
       setSubmitStatus('A 6-digit verification code has been sent to your email.');
     } catch (error) {
-      setSubmitStatus('Error initializing verification. Please try our AI assistant.');
+      setSubmitStatus('Error initializing verification. Please call our support team.');
     } finally {
       setIsSubmitting(false);
     }
@@ -86,10 +86,10 @@ export default function ContactPage() {
         setIsVerifying(false);
         setVerificationCode('');
       } else {
-        setSubmitStatus('There was an error sending your message. Please use our AI assistant.');
+        setSubmitStatus('There was an error sending your message. Please call our support team.');
       }
     } catch (error) {
-      setSubmitStatus('There was an error sending your message. Please use our AI assistant.');
+      setSubmitStatus('There was an error sending your message. Please call our support team.');
     } finally {
       setIsSubmitting(false);
     }
@@ -122,10 +122,10 @@ export default function ContactPage() {
               <i className="ri-alarm-warning-fill text-2xl animate-pulse"></i>
               HVAC Emergency?
               <button
-                onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                onClick={() => window.location.href = 'tel:(604) 555-0123'}
                 className="bg-white text-red-600 px-4 py-1 rounded-full text-sm font-bold hover:bg-red-50 transition-all cursor-pointer shadow-sm"
               >
-                Talk to Our AI Assistant 24/7
+                Call Support Now
               </button>
             </p>
           </div>
@@ -143,7 +143,7 @@ export default function ContactPage() {
                 Get Your Free Quote
               </h2>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                Fill out the form below and we'll get back to you within 24 hours with a personalized quote. For immediate assistance, use our AI technician.
+                Fill out the form below and we'll get back to you within 24 hours with a personalized quote. For immediate assistance, please call our support team.
               </p>
 
               <form onSubmit={isVerifying ? handleSubmit : handleStartVerification} className="space-y-6" data-readdy-form id="contact-form">
@@ -309,10 +309,10 @@ export default function ContactPage() {
                       <span className="text-gray-400 text-sm italic">Or for instant scheduling:</span>
                       <button
                         type="button"
-                        onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                        onClick={() => window.location.href = 'tel:(604) 555-0123'}
                         className="block w-full mt-2 text-blue-600 font-bold hover:text-blue-700 cursor-pointer text-sm"
                       >
-                        Talk to our AI Assistant Now →
+                        Call our Support Team Now →
                       </button>
                     </div>
                   )}
@@ -324,20 +324,20 @@ export default function ContactPage() {
             <div className="space-y-8">
               <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl p-8 lg:p-10 text-white shadow-2xl relative overflow-hidden group">
                 <div className="absolute -bottom-10 -right-10 opacity-10 group-hover:scale-110 transition-transform duration-500">
-                  <i className="ri-user-voice-fill text-[180px]"></i>
+                  <i className="ri-customer-service-2-fill text-[180px]"></i>
                 </div>
                 <div className="relative z-10">
-                  <span className="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-6 inline-block">Recommended</span>
-                  <h3 className="text-3xl font-bold mb-4">Meet Your AI HVAC Technician</h3>
+                  <span className="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-6 inline-block">24/7 Support</span>
+                  <h3 className="text-3xl font-bold mb-4">Need Immediate Assistance?</h3>
                   <p className="text-blue-100 mb-8 leading-relaxed">
-                    Our AI assistant can diagnose common issues, provide instant ballpark quotes, and schedule emergency appointments without the wait.
+                    Our expert support team is ready to help with emergency repairs, diagnostic questions, and instant service scheduling. No wait times, just real help.
                   </p>
                   <button
-                    onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                    onClick={() => window.location.href = 'tel:(604) 555-0123'}
                     className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all flex items-center justify-center gap-3 shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-lg"
                   >
-                    <i className="ri-chat-voice-line text-xl"></i>
-                    Start Talking to AI Now
+                    <i className="ri-phone-fill text-xl"></i>
+                    Call (604) 555-0123 Now
                   </button>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 import ProjectServiceForm from '../../../components/feature/ProjectServiceForm';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
+import SEO from '../../../components/common/SEO';
 
 export default function EmergencyServices() {
 
@@ -72,6 +73,22 @@ export default function EmergencyServices() {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="24/7 Emergency HVAC Services"
+        description="Fast, reliable emergency heating and cooling repairs in Abbotsford. Available 24/7, 365 days a year for urgent furnace and AC failures."
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map(faq => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer
+            }
+          }))
+        }}
+      />
       <Header />
 
       {/* Hero Section */}
@@ -100,11 +117,11 @@ export default function EmergencyServices() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <button
-                onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                onClick={() => window.location.href = 'tel:123-456-7890'}
                 className="bg-yellow-400 text-red-900 px-10 py-5 rounded-xl text-xl font-bold hover:bg-yellow-300 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3"
               >
-                <i className="ri-user-voice-fill text-2xl"></i>
-                Talk to Our AI HVAC Assistant
+                <i className="ri-phone-fill text-2xl"></i>
+                Call Now (123) 456-7890
               </button>
               <button
                 onClick={() => document.getElementById('emergency-form-section')?.scrollIntoView({ behavior: 'smooth' })}
@@ -323,10 +340,10 @@ export default function EmergencyServices() {
                   Call us anyway! We may be able to help or recommend emergency service in your area.
                 </p>
                 <button
-                  onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                  onClick={() => window.location.href = 'tel:123-456-7890'}
                   className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors inline-block whitespace-nowrap cursor-pointer"
                 >
-                  Check Service Area via AI
+                  Contact for Service Area
                 </button>
               </div>
             </div>
@@ -395,11 +412,11 @@ export default function EmergencyServices() {
             HVAC emergencies get worse with time. Call our emergency hotline immediately for fast, professional service.
           </p>
           <button
-            onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+            onClick={() => window.location.href = 'tel:123-456-7890'}
             className="bg-yellow-400 text-red-900 px-12 py-6 rounded-xl text-2xl font-bold hover:bg-yellow-300 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto animate-pulse"
           >
-            <i className="ri-user-voice-fill"></i>
-            Talk to Our AI Assistant Now
+            <i className="ri-phone-fill"></i>
+            Call Our Emergency Team Now
           </button>
           <p className="text-red-100 mt-4 text-sm">
             Available 24/7 • 365 Days a Year • Fast Response

@@ -42,7 +42,7 @@ export default function ProjectServiceForm({ serviceId, serviceName, formEndpoin
             setIsVerifying(true);
             setSubmitStatus('A 6-digit verification code has been sent to your email.');
         } catch (error) {
-            setSubmitStatus('Error initializing verification. Please try our AI assistant.');
+            setSubmitStatus('Error initializing verification. Please try calling our support team.');
         } finally {
             setIsSubmitting(false);
         }
@@ -76,10 +76,10 @@ export default function ProjectServiceForm({ serviceId, serviceName, formEndpoin
                 setIsVerifying(false);
                 setVerificationCode('');
             } else {
-                setSubmitStatus('There was an error sending your message. Please use our AI assistant.');
+                setSubmitStatus('There was an error sending your message. Please try calling our support team.');
             }
         } catch (error) {
-            setSubmitStatus('There was an error sending your message. Please use our AI assistant.');
+            setSubmitStatus('There was an error sending your message. Please try calling our support team.');
         } finally {
             setIsSubmitting(false);
         }
@@ -93,7 +93,7 @@ export default function ProjectServiceForm({ serviceId, serviceName, formEndpoin
                     Request {serviceName}
                 </h2>
                 <p className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
-                    Get a professional quote for your {serviceName.toLowerCase()} needs. For instant help, try our AI assistant.
+                    Get a professional quote for your {serviceName.toLowerCase()} needs. For instant help, call our support team.
                 </p>
             </div>
 
@@ -253,10 +253,10 @@ export default function ProjectServiceForm({ serviceId, serviceName, formEndpoin
                         <div className="text-center">
                             <button
                                 type="button"
-                                onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                                onClick={() => window.location.href = 'tel:6045550123'}
                                 className="text-blue-600 font-bold hover:text-blue-700 cursor-pointer text-sm"
                             >
-                                Or Talk to our AI Assistant Now →
+                                Or Call our Support Team Now →
                             </button>
                         </div>
                     )}

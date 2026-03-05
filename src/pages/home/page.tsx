@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
+import SEO from '../../components/common/SEO';
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -14,36 +15,6 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
 
-  // Add structured data for reviews
-  useEffect(() => {
-    const reviewsSchema = {
-      "@context": "https://schema.org",
-      "@type": "Review",
-      "itemReviewed": {
-        "@type": "LocalBusiness",
-        "name": "Abbotsford HVAC"
-      },
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "5",
-        "bestRating": "5"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "Sarah Johnson"
-      },
-      "reviewBody": "Excellent service! They installed our new furnace quickly and professionally. The team was knowledgeable and cleaned up perfectly after the job."
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(reviewsSchema);
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
 
   const [isVerifying, setIsVerifying] = useState(false);
   const [verificationCode, setVerificationCode] = useState('');
@@ -248,6 +219,51 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Abbotsford HVAC - Expert Heating, Cooling & Air Quality Services"
+        description="Professional HVAC services in Abbotsford, BC. Expert heating, cooling, ventilation & air quality solutions. 24/7 emergency service by licensed technicians."
+        ogImage="https://abbotsfordhvac.ca/og-image.jpg"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "Abbotsford HVAC",
+          "image": "https://abbotsfordhvac.ca/logo.jpg",
+          "@id": "https://abbotsfordhvac.ca",
+          "url": "https://abbotsfordhvac.ca",
+          "telephone": "(604) 555-0123",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Main Street",
+            "addressLocality": "Abbotsford",
+            "addressRegion": "BC",
+            "postalCode": "V2S 0A3",
+            "addressCountry": "CA"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 49.057186,
+            "longitude": -122.308681
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "07:00",
+              "closes": "19:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Saturday", "Sunday"],
+              "opens": "08:00",
+              "closes": "17:00"
+            }
+          ],
+          "sameAs": [
+            "https://www.facebook.com/abbotsfordhvac",
+            "https://www.instagram.com/abbotsfordhvac"
+          ]
+        }}
+      />
       <Header />
 
       {/* Hero Section */}
@@ -264,22 +280,21 @@ export default function Home() {
                 Your Local HVAC Experts in <span className="text-blue-400">Abbotsford, BC</span>
               </h1>
               <p className="text-xl mb-8 text-gray-200">
-                Professional heating, cooling, ventilation & air quality solutions for homes & businesses. Licensed technicians serving Fraser Valley with 24/7 emergency service managed by AI.
+                Professional heating, cooling, ventilation & air quality solutions for homes & businesses. Licensed technicians serving Fraser Valley with 24/7 emergency service.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
-                  onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                  onClick={() => document.getElementById('service-form')?.scrollIntoView({ behavior: 'smooth' })}
                   className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2"
-                  aria-label="Talk to our AI assistant"
                 >
-                  <i className="ri-user-voice-fill"></i>
-                  Talk to Our AI HVAC Assistant
+                  <i className="ri-calendar-check-line text-2xl"></i>
+                  Book Online Service
                 </button>
                 <button
-                  onClick={() => document.getElementById('service-form')?.scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => window.location.href = 'tel:6045550123'}
                   className="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all whitespace-nowrap cursor-pointer"
                 >
-                  Request Service Form
+                  Call (604) 555-0123
                 </button>
               </div>
             </div>
@@ -464,7 +479,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Rapid Response</h3>
               <p className="text-gray-600 leading-relaxed text-sm">
-                Our AI-integrated dispatch ensures lightning-fast 24/7 emergency service when it matters most.
+                Our dedicated dispatch ensures lightning-fast 24/7 emergency service when it matters most.
               </p>
             </div>
             <div className="text-center group">
@@ -514,17 +529,10 @@ export default function Home() {
                 </p>
                 <div className="space-y-3 pt-6 border-t border-gray-50 text-sm font-medium">
                   <button
-                    onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                    onClick={() => window.REACT_APP_NAVIGATE?.(service.link)}
                     className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md"
                   >
-                    <i className="ri-user-voice-fill"></i>
-                    Talk to AI Assistant
-                  </button>
-                  <button
-                    onClick={() => window.REACT_APP_NAVIGATE?.(service.link)}
-                    className="w-full text-blue-600 hover:text-blue-700 py-2 transition-colors cursor-pointer text-center"
-                  >
-                    View Details
+                    View Service Details
                   </button>
                 </div>
               </article>
@@ -640,11 +648,11 @@ export default function Home() {
                   <p className="text-blue-100 font-medium mb-1 text-sm uppercase tracking-wider">Don't see your area?</p>
                   <h4 className="text-xl font-bold text-white mb-4 leading-tight">We may still be able to help you today.</h4>
                   <button
-                    onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                    onClick={() => window.location.href = 'tel:6045550123'}
                     className="bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-50 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-md"
                   >
-                    <i className="ri-user-voice-fill"></i>
-                    Ask Our AI Assistant
+                    <i className="ri-phone-fill"></i>
+                    Call Our Support Team
                   </button>
                 </div>
               </div>

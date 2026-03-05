@@ -74,7 +74,7 @@ export default function Footer() {
               </div>
               <div className="text-gray-300">
                 <p>Mon-Sun: 24/7 Service Available</p>
-                <p className="text-blue-400 font-semibold mt-2">Captured & Managed by AI Assistant</p>
+
               </div>
             </div>
           </div>
