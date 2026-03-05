@@ -4,6 +4,7 @@ import Header from '../../../../components/feature/Header';
 import Footer from '../../../../components/feature/Footer';
 import geoData from '../../../../lib/data/geo-service-data.json';
 import { supabase } from '../../../../lib/supabase';
+import { getSettings } from '@/lib/getSettings';
 
 interface PageProps {
     params: { location: string; service: string };
@@ -69,6 +70,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function GeoServicePage({ params }: PageProps) {
     const { location: area, service: category } = params;
+    const settings = getSettings();
 
     const areaData = geoData.areas.find((a: any) => a.slug === area);
     const serviceData = geoData.services.find((s: any) => s.slug === category);
@@ -180,11 +182,11 @@ export default async function GeoServicePage({ params }: PageProps) {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                             <a
-                                href="tel:123-456-7890"
+                                href={`tel:${settings.phoneNumber}`}
                                 className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3"
                             >
                                 <i className="ri-phone-fill text-2xl"></i>
-                                Call Now (123) 456-7890
+                                Call Now {settings.phoneNumber}
                             </a>
                             <Link
                                 href="/contact"
@@ -276,11 +278,11 @@ export default async function GeoServicePage({ params }: PageProps) {
                                     Our technicians are standby in the {areaData.name} area. Get a professional consultation right now.
                                 </p>
                                 <a
-                                    href="tel:123-456-7890"
+                                    href={`tel:${settings.phoneNumber}`}
                                     className="w-full bg-white text-blue-600 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all shadow-lg hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 cursor-pointer"
                                 >
                                     <i className="ri-phone-fill text-2xl"></i>
-                                    Call (123) 456-7890
+                                    Call {settings.phoneNumber}
                                 </a>
                                 <Link
                                     href="/contact"

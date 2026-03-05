@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
@@ -9,6 +9,35 @@ export default function AdminDashboard() {
     const [activeTab, setActiveTab] = useState('areas');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
+    const [siteSettings, setSiteSettings] = useState({ phoneNumber: '', showTeamSection: false });
+    const [isSaving, setIsSaving] = useState(false);
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            fetch('/api/settings')
+                .then(res => res.json())
+                .then(data => setSiteSettings(data))
+                .catch(console.error);
+        }
+    }, [isAuthenticated]);
+
+    const handleSaveSettings = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSaving(true);
+        try {
+            await fetch('/api/settings', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(siteSettings)
+            });
+            alert('Settings saved successfully!');
+        } catch (error) {
+            console.error('Failed to save settings', error);
+            alert('Error saving settings');
+        } finally {
+            setIsSaving(false);
+        }
+    };
 
     if (!isAuthenticated) {
         return (
@@ -89,6 +118,12 @@ export default function AdminDashboard() {
                             className={`px-6 py-4 text-sm font-semibold transition-colors whitespace-nowrap ${activeTab === 'account' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-blue-600'}`}
                         >
                             Account
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('settings')}
+                            className={`px-6 py-4 text-sm font-semibold transition-colors whitespace-nowrap ${activeTab === 'settings' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-blue-600'}`}
+                        >
+                            Settings
                         </button>
                     </div>
 
@@ -208,6 +243,46 @@ export default function AdminDashboard() {
                                         <button className="text-red-600 font-semibold hover:underline">Manage Spam Email Filters</button>
                                     </div>
                                 </div>
+                            </div>
+                        )}
+
+                        {activeTab === 'settings' && (
+                            <div>
+                                <h2 className="text-xl font-bold mb-6">Global Site Settings</h2>
+                                <form onSubmit={handleSaveSettings} className="space-y-6 max-w-2xl">
+                                    <div className="bg-gray-50 p-6 rounded-xl border">
+                                        <h3 className="font-bold mb-4">Contact Information</h3>
+                                        <div>
+                                            <label className="block text-sm font-semibold mb-2">Main Phone Number</label>
+                                            <input
+                                                type="text"
+                                                value={siteSettings.phoneNumber}
+                                                onChange={(e) => setSiteSettings({ ...siteSettings, phoneNumber: e.target.value })}
+                                                className="w-full p-3 border rounded-xl"
+                                                placeholder="e.g. 123-456-7890"
+                                            />
+                                            <p className="text-xs text-gray-500 mt-2">This will update the phone number globally across the top header, footer, and service pages.</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-gray-50 p-6 rounded-xl border">
+                                        <h3 className="font-bold mb-4">About Us Page Integration</h3>
+                                        <label className="flex items-center space-x-3 cursor-pointer">
+                                            <input
+                                                type="checkbox"
+                                                checked={siteSettings.showTeamSection}
+                                                onChange={(e) => setSiteSettings({ ...siteSettings, showTeamSection: e.target.checked })}
+                                                className="w-5 h-5 text-blue-600 rounded"
+                                            />
+                                            <span className="font-semibold text-gray-700">Show &quot;Meet Our Team&quot; Section</span>
+                                        </label>
+                                        <p className="text-xs text-gray-500 mt-2">Toggle this when you have gathered all team member photos and info. When off, the section is completely hidden from visitors.</p>
+                                    </div>
+
+                                    <button type="submit" disabled={isSaving} className="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition-all disabled:opacity-50">
+                                        {isSaving ? 'Saving...' : 'Save All Settings'}
+                                    </button>
+                                </form>
                             </div>
                         )}
                     </div>

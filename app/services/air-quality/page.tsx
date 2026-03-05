@@ -9,16 +9,16 @@ import { getSettings } from '@/lib/getSettings';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Expert Heating Services | Abbotsford HVAC",
-  description: "Professional furnace installation, repair, and maintenance services in Abbotsford. Keep your home warm and comfortable all winter long.",
+  title: "Indoor Air Quality Services | Abbotsford HVAC",
+  description: "Professional indoor air quality solutions, purifiers, and humidifiers in Abbotsford.",
   openGraph: {
-    title: "Expert Heating Services | Abbotsford HVAC",
-    description: "Professional furnace installation, repair, and maintenance services in Abbotsford. Keep your home warm and comfortable all winter long.",
+    title: "Indoor Air Quality Services | Abbotsford HVAC",
+    description: "Professional indoor air quality solutions, purifiers, and humidifiers in Abbotsford.",
     images: ['https://abbotsfordhvac.ca/og-heating.jpg']
   }
 };
 
-export default function HeatingServices() {
+export default function AirQualityServices() {
   const settings = getSettings();
 
   const heatingServices = [
@@ -167,7 +167,7 @@ export default function HeatingServices() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center text-white">
             <h1 className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-2xl">
-              Expert Heating Services in <span className="text-blue-400">Abbotsford</span>
+              Indoor Air Quality Services in <span className="text-blue-400">Abbotsford</span>
             </h1>
             <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto text-white drop-shadow-lg font-medium">
               Professional furnace installation, repair, and maintenance services. Keep your home warm and comfortable all winter long.

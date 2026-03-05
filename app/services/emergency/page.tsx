@@ -3,7 +3,10 @@ import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { getSettings } from '@/lib/getSettings';
 
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: "24/7 Emergency HVAC Services | Abbotsford HVAC",
@@ -16,6 +19,7 @@ export const metadata: Metadata = {
 };
 
 export default function EmergencyServices() {
+  const settings = getSettings();
 
   const emergencyServices = [
     {
@@ -114,9 +118,9 @@ export default function EmergencyServices() {
               When your heating or cooling system fails, we respond fast. Available 24/7, 365 days a year for emergency HVAC repairs throughout Abbotsford.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <a href="tel:123-456-7890" className="bg-yellow-400 text-red-900 px-10 py-5 rounded-xl text-xl font-bold hover:bg-yellow-300 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3">
+              <a href={`tel:${settings.phoneNumber}`} className="bg-yellow-400 text-red-900 px-10 py-5 rounded-xl text-xl font-bold hover:bg-yellow-300 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3">
                 <i className="ri-phone-fill text-2xl"></i>
-                Call Now (123) 456-7890
+                Call Now {settings.phoneNumber}
               </a>
               <a href="#emergency-form-section" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
                 Request Online Quote
@@ -331,7 +335,7 @@ export default function EmergencyServices() {
                 <p className="text-red-800 mb-4">
                   Call us anyway! We may be able to help or recommend emergency service in your area.
                 </p>
-                <a href="tel:123-456-7890" className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors inline-block whitespace-nowrap cursor-pointer">
+                <a href={`tel:${settings.phoneNumber}`} className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors inline-block whitespace-nowrap cursor-pointer">
                   Contact for Service Area
                 </a>
               </div>
@@ -400,7 +404,7 @@ export default function EmergencyServices() {
           <p className="text-xl text-red-100 mb-8">
             HVAC emergencies get worse with time. Call our emergency hotline immediately for fast, professional service.
           </p>
-          <a href="tel:123-456-7890" className="bg-yellow-400 text-red-900 px-12 py-6 rounded-xl text-2xl font-bold hover:bg-yellow-300 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto animate-pulse">
+          <a href={`tel:${settings.phoneNumber}`} className="bg-yellow-400 text-red-900 px-12 py-6 rounded-xl text-2xl font-bold hover:bg-yellow-300 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto animate-pulse">
             <i className="ri-phone-fill"></i>
             Call Our Emergency Team Now
           </a>

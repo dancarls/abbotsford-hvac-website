@@ -42,10 +42,10 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Home</Link></li>
               <li><Link href="/about" className="text-gray-300 hover:text-white transition-colors cursor-pointer">About Us</Link></li>
-              <li><Link href="/services" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Services</Link></li>
-              <li><Link href="/service-areas" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Service Areas</Link></li>
-              <li><Link href="/maintenance-plans" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Maintenance Plans</Link></li>
-              <li><Link href="/commercial" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Commercial HVAC</Link></li>
+              <li><Link href="/services/heating" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Services</Link></li>
+              <li><Link href="/locations/abbotsford-west" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Service Areas</Link></li>
+              <li><Link href="/services/maintenance" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Maintenance Plans</Link></li>
+              <li><Link href="/services/commercial" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Commercial HVAC</Link></li>
             </ul>
           </div>
 

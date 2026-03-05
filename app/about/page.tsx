@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
+import { getSettings } from '@/lib/getSettings';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'About Us | Abbotsford HVAC',
@@ -14,6 +17,8 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const settings = getSettings();
+
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
@@ -71,8 +76,8 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <img
-                src="https://readdy.ai/api/search-image?query=Modern%20HVAC%20company%20office%20building%20exterior%20with%20company%20vehicles%20parked%20outside%2C%20professional%20business%20appearance%20in%20Abbotsford%20British%20Columbia%2C%20clean%20architectural%20design%20with%20glass%20windows&width=600&height=500&seq=company-building&orientation=landscape"
-                alt="Abbotsford HVAC Office"
+                src="https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20inspecting%20modern%20heating%20equipment%20in%20clean%20utility%20room%2C%20bright%20lighting%2C%20technical%20tools&width=600&height=500&orientation=landscape"
+                alt="Abbotsford HVAC Professional Service"
                 className="rounded-lg shadow-lg object-cover w-full h-96"
               />
             </div>
@@ -155,63 +160,65 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our certified technicians and support staff are dedicated to providing exceptional HVAC services
-            </p>
+      {settings.showTeamSection && (
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Our certified technicians and support staff are dedicated to providing exceptional HVAC services
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20HVAC%20company%20owner%20manager%20in%20business%20attire%20standing%20confidently%20in%20modern%20office%20environment%2C%20middle-aged%20experienced%20leader%2C%20clean%20professional%20appearance&width=400&height=300&seq=team-owner&orientation=landscape"
+                  alt="Mike Thompson - Owner"
+                  className="w-full h-64 object-cover object-top"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">Mike Thompson</h3>
+                  <p className="text-blue-600 font-medium mb-3">Owner & Founder</p>
+                  <p className="text-gray-600 text-sm">
+                    With over 20 years in the HVAC industry, Mike founded Abbotsford HVAC to bring reliable, honest service to the Fraser Valley.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Experienced%20HVAC%20technician%20in%20uniform%20working%20on%20heating%20system%2C%20professional%20appearance%20with%20tools%2C%20expertise%20and%20competence%20in%20residential%20setting&width=400&height=300&seq=team-tech1&orientation=landscape"
+                  alt="Sarah Chen - Lead Technician"
+                  className="w-full h-64 object-cover object-top"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">Sarah Chen</h3>
+                  <p className="text-blue-600 font-medium mb-3">Lead Technician</p>
+                  <p className="text-gray-600 text-sm">
+                    Red Seal certified with 15 years experience, Sarah specializes in complex installations and system diagnostics.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Professional%20customer%20service%20representative%20in%20modern%20office%20environment%2C%20friendly%20approachable%20person%20answering%20phone%20calls%2C%20clean%20business%20atmosphere&width=400&height=300&seq=team-service&orientation=landscape"
+                  alt="David Kim - Service Manager"
+                  className="w-full h-64 object-cover object-top"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">David Kim</h3>
+                  <p className="text-blue-600 font-medium mb-3">Service Manager</p>
+                  <p className="text-gray-600 text-sm">
+                    David coordinates our service operations and ensures every customer receives prompt, professional attention.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img
-                src="https://readdy.ai/api/search-image?query=Professional%20HVAC%20company%20owner%20manager%20in%20business%20attire%20standing%20confidently%20in%20modern%20office%20environment%2C%20middle-aged%20experienced%20leader%2C%20clean%20professional%20appearance&width=400&height=300&seq=team-owner&orientation=landscape"
-                alt="Mike Thompson - Owner"
-                className="w-full h-64 object-cover object-top"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Mike Thompson</h3>
-                <p className="text-blue-600 font-medium mb-3">Owner & Founder</p>
-                <p className="text-gray-600 text-sm">
-                  With over 20 years in the HVAC industry, Mike founded Abbotsford HVAC to bring reliable, honest service to the Fraser Valley.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img
-                src="https://readdy.ai/api/search-image?query=Experienced%20HVAC%20technician%20in%20uniform%20working%20on%20heating%20system%2C%20professional%20appearance%20with%20tools%2C%20expertise%20and%20competence%20in%20residential%20setting&width=400&height=300&seq=team-tech1&orientation=landscape"
-                alt="Sarah Chen - Lead Technician"
-                className="w-full h-64 object-cover object-top"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Sarah Chen</h3>
-                <p className="text-blue-600 font-medium mb-3">Lead Technician</p>
-                <p className="text-gray-600 text-sm">
-                  Red Seal certified with 15 years experience, Sarah specializes in complex installations and system diagnostics.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <img
-                src="https://readdy.ai/api/search-image?query=Professional%20customer%20service%20representative%20in%20modern%20office%20environment%2C%20friendly%20approachable%20person%20answering%20phone%20calls%2C%20clean%20business%20atmosphere&width=400&height=300&seq=team-service&orientation=landscape"
-                alt="David Kim - Service Manager"
-                className="w-full h-64 object-cover object-top"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">David Kim</h3>
-                <p className="text-blue-600 font-medium mb-3">Service Manager</p>
-                <p className="text-gray-600 text-sm">
-                  David coordinates our service operations and ensures every customer receives prompt, professional attention.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Certifications & Awards */}
       <section className="py-20 bg-gray-50">
@@ -273,7 +280,7 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
-              href="tel:123-456-7890"
+              href={`tel:${settings.phoneNumber}`}
               className="bg-white text-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center gap-2 text-lg"
             >
               <i className="ri-phone-fill"></i>

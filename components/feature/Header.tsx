@@ -33,10 +33,10 @@ export default function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-2xl font-bold text-blue-600"
-            style={{ fontFamily: '"Pacifico", serif' }}
+            className="text-2xl font-bold text-blue-600 flex items-center gap-2"
           >
-            Abbotsford HVAC
+            <span className="text-blue-500">Abbotsford</span>
+            <span className="text-green-500">HVAC</span>
           </Link>
 
           {/* Desktop Navigation */}

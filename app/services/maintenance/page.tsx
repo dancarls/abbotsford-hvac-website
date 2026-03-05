@@ -3,7 +3,10 @@ import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { getSettings } from '@/lib/getSettings';
 
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: "HVAC Maintenance Services | Abbotsford HVAC",
@@ -16,6 +19,7 @@ export const metadata: Metadata = {
 };
 
 export default function MaintenanceServices() {
+  const settings = getSettings();
 
   const maintenanceServices = [
     {
@@ -133,9 +137,9 @@ export default function MaintenanceServices() {
               Professional HVAC maintenance, tune-ups, and service agreements. Keep your heating and cooling systems running efficiently.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <a href="tel:123-456-7890" className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3">
+              <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3">
                 <i className="ri-phone-fill text-2xl"></i>
-                Call Now (123) 456-7890
+                Call Now {settings.phoneNumber}
               </a>
               <a href="#maintenance-form-section" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
                 Request Online Quote
@@ -431,7 +435,7 @@ export default function MaintenanceServices() {
                 <p className="text-blue-800 mb-4">
                   We may still be able to help! Contact us to see if we can service your location.
                 </p>
-                <a href="tel:123-456-7890" className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block whitespace-nowrap cursor-pointer">
+                <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block whitespace-nowrap cursor-pointer">
                   Contact for Service Area
                 </a>
               </div>
@@ -499,7 +503,7 @@ export default function MaintenanceServices() {
           <p className="text-xl text-green-100 mb-8">
             Don't wait for a breakdown. Schedule regular maintenance to ensure reliable comfort and energy efficiency.
           </p>
-          <a href="tel:123-456-7890" className="bg-white text-green-600 px-10 py-5 rounded-xl text-xl font-bold hover:bg-gray-100 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto">
+          <a href={`tel:${settings.phoneNumber}`} className="bg-white text-green-600 px-10 py-5 rounded-xl text-xl font-bold hover:bg-gray-100 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto">
             <i className="ri-phone-fill"></i>
             Call Our Support Team 24/7
           </a>
