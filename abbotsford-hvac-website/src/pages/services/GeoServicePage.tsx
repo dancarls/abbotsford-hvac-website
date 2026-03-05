@@ -202,11 +202,11 @@ export default function GeoServicePage() {
                                     Our technicians are standby in the {areaData.name} area. Get a professional consultation right now.
                                 </p>
                                 <button
-                                    onClick={() => (document.querySelector('#vapi-widget-floating-button') as HTMLElement)?.click()}
+                                    onClick={() => window.location.href = 'tel:123-456-7890'}
                                     className="w-full bg-white text-blue-600 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all shadow-lg hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 cursor-pointer"
                                 >
-                                    <i className="ri-user-voice-fill text-2xl"></i>
-                                    Talk to Our AI HVAC Assistant
+                                    <i className="ri-phone-fill text-2xl"></i>
+                                    Call (123) 456-7890
                                 </button>
                                 <button
                                     onClick={() => window.REACT_APP_NAVIGATE?.('/contact')}

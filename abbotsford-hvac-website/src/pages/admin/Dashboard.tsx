@@ -5,6 +5,49 @@ import Footer from '../../components/feature/Footer';
 
 export default function AdminDashboard() {
     const [activeTab, setActiveTab] = useState('areas');
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [password, setPassword] = useState('');
+
+    if (!isAuthenticated) {
+        return (
+            <div className="min-h-screen bg-gray-900 flex items-center justify-center px-4">
+                <div className="max-w-md w-full bg-white rounded-2xl shadow-2xl p-8">
+                    <div className="text-center mb-8">
+                        <h1 className="text-2xl font-bold text-gray-900">Owner Login</h1>
+                        <p className="text-gray-500 mt-2">Enter your password to manage Abbotsford HVAC</p>
+                    </div>
+                    <form onSubmit={(e) => {
+                        e.preventDefault();
+                        if (password === 'AbbyHVAC2026') {
+                            setIsAuthenticated(true);
+                        } else {
+                            alert('Incorrect password');
+                        }
+                    }}>
+                        <div className="mb-6">
+                            <label className="block text-sm font-semibold mb-2">Password</label>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
+                                placeholder="••••••••"
+                            />
+                        </div>
+                        <button className="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-all">
+                            Access Dashboard
+                        </button>
+                    </form>
+                    <button
+                        onClick={() => window.REACT_APP_NAVIGATE?.('/')}
+                        className="w-full mt-4 text-gray-500 font-semibold hover:underline"
+                    >
+                        Back to Website
+                    </button>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen bg-gray-50 text-gray-900">
@@ -37,10 +80,10 @@ export default function AdminDashboard() {
                             SEO & Code
                         </button>
                         <button
-                            onClick={() => setActiveTab('ai-agent')}
-                            className={`px-6 py-4 text-sm font-semibold transition-colors whitespace-nowrap ${activeTab === 'ai-agent' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-blue-600'}`}
+                            onClick={() => setActiveTab('articles')}
+                            className={`px-6 py-4 text-sm font-semibold transition-colors whitespace-nowrap ${activeTab === 'articles' ? 'bg-blue-50 text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-blue-600'}`}
                         >
-                            AI Agent
+                            Articles
                         </button>
                         <button
                             onClick={() => setActiveTab('account')}
@@ -70,8 +113,18 @@ export default function AdminDashboard() {
                                         <div key={area} className="p-4 border rounded-xl hover:border-blue-400 transition-all">
                                             <h3 className="font-bold">{area}</h3>
                                             <div className="mt-2 flex gap-2">
-                                                <button className="text-blue-600 hover:underline text-xs font-semibold">Edit Content</button>
-                                                <button className="text-blue-600 hover:underline text-xs font-semibold">View Page</button>
+                                                <button
+                                                    onClick={() => window.location.href = `/admin/edit-area/${area.toLowerCase().replace(/ /g, '-')}`}
+                                                    className="text-blue-600 hover:underline text-xs font-semibold"
+                                                >
+                                                    Edit Content
+                                                </button>
+                                                <button
+                                                    onClick={() => window.REACT_APP_NAVIGATE?.(`/service-areas/${area.toLowerCase().replace(/ /g, '-')}`)}
+                                                    className="text-blue-600 hover:underline text-xs font-semibold"
+                                                >
+                                                    View Page
+                                                </button>
                                             </div>
                                         </div>
                                     ))}
@@ -110,24 +163,31 @@ export default function AdminDashboard() {
                             </div>
                         )}
 
-                        {activeTab === 'ai-agent' && (
-                            <div className="max-w-2xl">
-                                <h2 className="text-xl font-bold mb-6">AI Agent Configuration</h2>
-                                <div className="space-y-6">
-                                    <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                                        <p className="text-blue-800 text-sm italic">"I am your HVAC assistant. How can I help you today?"</p>
-                                    </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-2">Agent Personality / Instructions</label>
-                                        <textarea className="w-full p-2 border rounded-lg h-32 text-sm" defaultValue="You are a professional HVAC assistant for Abbotsford HVAC. Your goal is to help visitors book services, get quotes, and gather their contact information for our team. Be friendly, knowledgeable, and focus on capturing leads."></textarea>
-                                    </div>
-                                    <div className="flex items-center gap-4">
-                                        <label className="flex items-center gap-2 cursor-pointer">
-                                            <input type="checkbox" checked readOnly />
-                                            <span className="text-sm font-medium">Enable Voice Interaction</span>
-                                        </label>
-                                    </div>
-                                    <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700">Update Agent</button>
+                        {activeTab === 'articles' && (
+                            <div className="max-w-4xl">
+                                <div className="flex justify-between items-center mb-6">
+                                    <h2 className="text-xl font-bold">Manage Blog Articles</h2>
+                                    <button className="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors">
+                                        + Create New Article
+                                    </button>
+                                </div>
+                                <div className="space-y-4">
+                                    {[
+                                        { title: 'Winter Maintenance Tips', date: '2024-01-15', status: 'Published' },
+                                        { title: 'Signs You Need AC Repair', date: '2024-01-10', status: 'Published' },
+                                        { title: 'Energy Saving Upgrades', date: '2024-01-08', status: 'Draft' }
+                                    ].map((article, i) => (
+                                        <div key={i} className="flex items-center justify-between p-4 border rounded-xl hover:bg-gray-50">
+                                            <div>
+                                                <h3 className="font-bold">{article.title}</h3>
+                                                <p className="text-xs text-gray-500">Last updated: {article.date} • <span className={article.status === 'Published' ? 'text-green-600' : 'text-orange-600'}>{article.status}</span></p>
+                                            </div>
+                                            <div className="flex gap-3">
+                                                <button className="text-blue-600 text-sm font-semibold hover:underline">Edit</button>
+                                                <button className="text-gray-400 text-sm font-semibold hover:text-red-600 transition-colors">Delete</button>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         )}
