@@ -9,14 +9,60 @@ import { getSettings } from '@/lib/getSettings';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Commercial HVAC Services | Abbotsford HVAC",
-  description: "Professional commercial HVAC installation, repair, and maintenance services in Abbotsford.",
+  title: "Commercial HVAC Services in Abbotsford, BC",
+  description: "Commercial HVAC installation, repair, refrigeration & building automation in Abbotsford. Minimize downtime with priority service for Abbotsford & Fraser Valley businesses. Free quotes.",
+  alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/commercial' },
   openGraph: {
-    title: "Commercial HVAC Services | Abbotsford HVAC",
-    description: "Professional commercial HVAC installation, repair, and maintenance services in Abbotsford.",
-    images: ['https://abbotsfordhvac.ca/og-heating.jpg']
+    title: "Commercial HVAC Services in Abbotsford, BC | Abbotsford HVAC",
+    description: "Commercial HVAC installation, repair, refrigeration & building automation in Abbotsford. Minimize downtime with priority service for local businesses.",
+    images: ['https://www.abbotsfordhvac.ca/og-commercial.jpg']
   }
 };
+
+const commercialSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Commercial HVAC Services in Abbotsford, BC",
+    "description": "Commercial HVAC installation, repair, refrigeration systems and building automation for Abbotsford businesses.",
+    "provider": { "@type": "HVACBusiness", "@id": "https://www.abbotsfordhvac.ca/#business" },
+    "areaServed": [
+      { "@type": "City", "name": "Abbotsford" },
+      { "@type": "AdministrativeArea", "name": "Fraser Valley Regional District" }
+    ],
+    "serviceType": ["Commercial HVAC Installation", "Commercial Repairs", "Refrigeration Services", "Building Automation", "Commercial Maintenance Agreements"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.abbotsfordhvac.ca/services/commercial" },
+      { "@type": "ListItem", "position": 3, "name": "Commercial HVAC", "item": "https://www.abbotsfordhvac.ca/services/commercial" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Do you offer commercial HVAC service agreements in Abbotsford?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — we offer customized commercial maintenance agreements for offices, retail spaces, restaurants, warehouses, and industrial facilities in Abbotsford. Agreements include scheduled preventive maintenance, priority emergency response, and detailed service documentation." }
+      },
+      {
+        "@type": "Question",
+        "name": "How quickly can you respond to a commercial HVAC emergency?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For commercial clients on a service agreement, we provide priority dispatch with a target 1–2 hour response time in Abbotsford. We understand that HVAC failure in a commercial setting means lost productivity or revenue, so emergency response is our top priority." }
+      },
+      {
+        "@type": "Question",
+        "name": "What commercial building types do you service in the Fraser Valley?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We service offices, retail stores, restaurants, food processing facilities, warehouses, medical clinics, schools, and light industrial buildings throughout Abbotsford and the Fraser Valley. Our technicians are trained in both rooftop units and complex multi-zone systems." }
+      }
+    ]
+  }
+];
 
 export default function CommercialServices() {
   const settings = getSettings();
@@ -149,7 +195,7 @@ export default function CommercialServices() {
 
   return (
     <div className="min-h-screen bg-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({}) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(commercialSchema) }} />
       {/* SEO tag replaced */}
       <Header />
 

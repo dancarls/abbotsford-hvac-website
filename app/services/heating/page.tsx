@@ -9,14 +9,72 @@ import { getSettings } from '@/lib/getSettings';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Expert Heating Services | Abbotsford HVAC",
-  description: "Professional furnace installation, repair, and maintenance services in Abbotsford. Keep your home warm and comfortable all winter long.",
+  title: "Expert Heating Services in Abbotsford, BC",
+  description: "Professional furnace installation, repair & heat pump services in Abbotsford. Licensed technicians available 24/7. Same-day emergency heating repairs. Call now.",
+  alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/heating' },
   openGraph: {
-    title: "Expert Heating Services | Abbotsford HVAC",
-    description: "Professional furnace installation, repair, and maintenance services in Abbotsford. Keep your home warm and comfortable all winter long.",
-    images: ['https://abbotsfordhvac.ca/og-heating.jpg']
+    title: "Expert Heating Services in Abbotsford, BC | Abbotsford HVAC",
+    description: "Professional furnace installation, repair & heat pump services in Abbotsford. Licensed technicians available 24/7. Same-day emergency heating repairs.",
+    images: ['https://www.abbotsfordhvac.ca/og-heating.jpg']
   }
 };
+
+const heatingSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Heating Services in Abbotsford, BC",
+    "description": "Professional furnace installation, repair, heat pump systems, boiler services and emergency heating repairs in Abbotsford, BC.",
+    "provider": { "@type": "HVACBusiness", "@id": "https://www.abbotsfordhvac.ca/#business" },
+    "areaServed": { "@type": "City", "name": "Abbotsford" },
+    "serviceType": ["Furnace Installation", "Furnace Repair", "Heat Pump Installation", "Boiler Services", "Emergency Heating Repair"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.abbotsfordhvac.ca/services/heating" },
+      { "@type": "ListItem", "position": 3, "name": "Heating Services", "item": "https://www.abbotsfordhvac.ca/services/heating" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How often should I have my heating system serviced in Abbotsford?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We recommend annual furnace service before the heating season — ideally in September or October. Abbotsford's damp climate can affect heat exchangers and burners, so yearly inspections catch issues before they become costly breakdowns." }
+      },
+      {
+        "@type": "Question",
+        "name": "What are signs my furnace needs repair?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Warning signs include unusual noises (banging, squealing, rattling), yellow or flickering pilot light, uneven heating, frequent cycling on/off, rising energy bills, or your furnace is over 15 years old. If you notice any of these, call us for a same-day diagnosis." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a furnace last in the Fraser Valley?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most gas furnaces last 15–20 years with proper maintenance. Heat pumps typically last 15 years. Annual servicing can significantly extend the life of your system. We offer maintenance plans that maximize your equipment lifespan." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a heat pump a good choice for Abbotsford's climate?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — modern cold-climate heat pumps work efficiently down to -25°C, well below Abbotsford winter lows. They provide both heating and cooling in one system, and BC Hydro and FortisBC often offer rebates up to $6,000 for qualifying installations." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does furnace installation cost in Abbotsford?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Furnace installation in Abbotsford typically ranges from $3,000 to $8,000+ depending on the unit's efficiency rating (AFUE), brand, and installation complexity. High-efficiency 96% AFUE models cost more upfront but reduce monthly gas bills significantly. We provide free, no-obligation estimates." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer emergency heating service in Abbotsford?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, we provide 24/7 emergency heating repair throughout Abbotsford and the Fraser Valley. We aim to have a technician at your door within 1–2 hours for urgent heating failures." }
+      }
+    ]
+  }
+];
 
 export default function HeatingServices() {
   const settings = getSettings();
@@ -149,8 +207,7 @@ export default function HeatingServices() {
 
   return (
     <div className="min-h-screen bg-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({}) }} />
-      {/* SEO tag replaced */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(heatingSchema) }} />
       <Header />
 
       {/* Hero Section */}

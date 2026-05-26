@@ -129,7 +129,7 @@ export default async function GeoServicePage({ params }: PageProps) {
             },
             "provider": {
                 "@type": "LocalBusiness",
-                "@id": "https://abbotsfordhvac.ca"
+                "@id": "https://www.abbotsfordhvac.ca"
             }
         },
         {

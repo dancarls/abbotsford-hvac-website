@@ -9,14 +9,67 @@ import { getSettings } from '@/lib/getSettings';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "24/7 Emergency HVAC Services | Abbotsford HVAC",
-  description: "Fast, reliable emergency heating and cooling repairs in Abbotsford. Available 24/7, 365 days a year for urgent furnace and AC failures.",
+  title: "24/7 Emergency HVAC Repair in Abbotsford, BC",
+  description: "No heat? AC broken? Emergency HVAC repair in Abbotsford available 24/7 — including weekends & holidays. Fast 1–2 hour response across Fraser Valley. Call now.",
+  alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/emergency' },
   openGraph: {
-    title: "24/7 Emergency HVAC Services | Abbotsford HVAC",
-    description: "Fast, reliable emergency heating and cooling repairs in Abbotsford. Available 24/7, 365 days a year for urgent furnace and AC failures.",
-    images: ['https://abbotsfordhvac.ca/og-emergency.jpg']
+    title: "24/7 Emergency HVAC Repair in Abbotsford, BC | Abbotsford HVAC",
+    description: "No heat? AC broken? Emergency HVAC repair in Abbotsford available 24/7 including weekends & holidays. Fast 1–2 hour response across Fraser Valley.",
+    images: ['https://www.abbotsfordhvac.ca/og-emergency.jpg']
   }
 };
+
+const emergencySchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "24/7 Emergency HVAC Repair in Abbotsford, BC",
+    "description": "24/7 emergency furnace repair, emergency AC repair and same-day HVAC service in Abbotsford, BC and the Fraser Valley.",
+    "provider": { "@type": "HVACBusiness", "@id": "https://www.abbotsfordhvac.ca/#business" },
+    "availableChannel": { "@type": "ServiceChannel", "servicePhone": { "@type": "ContactPoint", "contactType": "emergency", "availableLanguage": "English", "hoursAvailable": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" } } },
+    "areaServed": [
+      { "@type": "City", "name": "Abbotsford" },
+      { "@type": "City", "name": "Mission" },
+      { "@type": "AdministrativeArea", "name": "Fraser Valley Regional District" }
+    ],
+    "serviceType": ["Emergency Furnace Repair", "Emergency AC Repair", "Emergency Heating", "Same-Day HVAC Service"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.abbotsfordhvac.ca/services/emergency" },
+      { "@type": "ListItem", "position": 3, "name": "Emergency Services", "item": "https://www.abbotsfordhvac.ca/services/emergency" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How fast can you respond to an HVAC emergency in Abbotsford?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For emergency calls in Abbotsford, we target a 1–2 hour response time, 24 hours a day, 7 days a week, including holidays. We keep technicians on call specifically for after-hours and weekend emergencies so you're never left waiting in the cold or heat." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you charge extra for after-hours emergency HVAC calls?",
+        "acceptedAnswer": { "@type": "Answer", "text": "After-hours and weekend emergency service calls do carry an after-hours service fee in addition to the standard diagnostic rate. We provide upfront pricing before any work begins so there are no surprises. Contact us for current emergency service rates." }
+      },
+      {
+        "@type": "Question",
+        "name": "What counts as an HVAC emergency?",
+        "acceptedAnswer": { "@type": "Answer", "text": "HVAC emergencies include: complete heating failure when temperatures drop below 5°C, gas leaks or CO detector alerts (call gas company and 911 first), AC failure during a heat warning, flooding from a failed condensate line, or electrical burning smell from HVAC equipment." }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I do while waiting for an emergency HVAC technician?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For heating emergencies: use electric space heaters safely, keep interior doors closed to retain heat, check your circuit breaker and thermostat batteries. For AC emergencies: close blinds, use fans, move to the lowest floor of your home. Do not attempt to repair gas appliances yourself." }
+      }
+    ]
+  }
+];
 
 export default function EmergencyServices() {
   const settings = getSettings();
@@ -89,7 +142,7 @@ export default function EmergencyServices() {
 
   return (
     <div className="min-h-screen bg-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({}) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(emergencySchema) }} />
       {/* SEO tag replaced */}
       <Header />
 

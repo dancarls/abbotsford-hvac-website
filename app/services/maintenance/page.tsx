@@ -9,14 +9,57 @@ import { getSettings } from '@/lib/getSettings';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "HVAC Maintenance Services | Abbotsford HVAC",
-  description: "Professional HVAC maintenance, tune-ups, and service agreements in Abbotsford. Keep your heating and cooling systems running efficiently with our expert care.",
+  title: "HVAC Maintenance Plans & Tune-Ups in Abbotsford, BC",
+  description: "Annual HVAC maintenance plans & seasonal tune-ups in Abbotsford. Prevent breakdowns, extend equipment life & keep your warranty valid. Serving Fraser Valley. Book today.",
+  alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/maintenance' },
   openGraph: {
-    title: "HVAC Maintenance Services | Abbotsford HVAC",
-    description: "Professional HVAC maintenance, tune-ups, and service agreements in Abbotsford. Keep your heating and cooling systems running efficiently with our expert care.",
-    images: ['https://abbotsfordhvac.ca/og-maintenance.jpg']
+    title: "HVAC Maintenance Plans & Tune-Ups in Abbotsford, BC | Abbotsford HVAC",
+    description: "Annual HVAC maintenance plans & seasonal tune-ups in Abbotsford. Prevent breakdowns, extend equipment life & keep your warranty valid.",
+    images: ['https://www.abbotsfordhvac.ca/og-maintenance.jpg']
   }
 };
+
+const maintenanceSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "HVAC Maintenance Services in Abbotsford, BC",
+    "description": "Annual HVAC maintenance plans, seasonal tune-ups, filter replacements and system inspections in Abbotsford, BC.",
+    "provider": { "@type": "HVACBusiness", "@id": "https://www.abbotsfordhvac.ca/#business" },
+    "areaServed": { "@type": "City", "name": "Abbotsford" },
+    "serviceType": ["Annual HVAC Inspection", "Filter Replacement", "System Tune-Up", "Maintenance Agreement", "Preventive Care"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.abbotsfordhvac.ca/services/maintenance" },
+      { "@type": "ListItem", "position": 3, "name": "Maintenance Services", "item": "https://www.abbotsfordhvac.ca/services/maintenance" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does an HVAC maintenance visit include?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A full HVAC maintenance visit includes: inspecting and cleaning the heat exchanger, burners, and igniter; checking refrigerant levels and AC coils; replacing or cleaning air filters; testing thermostat calibration; lubricating moving parts; inspecting electrical connections; and testing system performance and safety controls." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will skipping maintenance void my HVAC warranty?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — most HVAC manufacturers (Carrier, Lennox, Trane, Daikin) require annual professional maintenance to keep the warranty valid. Without documented maintenance records, warranty claims can be denied. Our maintenance plans provide detailed service records for every visit." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does HVAC maintenance cost in Abbotsford?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A single HVAC tune-up in Abbotsford typically costs $120–$200. Our annual maintenance plans cover both heating and cooling seasonal tune-ups at a discounted rate, plus priority scheduling and discounts on repairs." }
+      }
+    ]
+  }
+];
 
 export default function MaintenanceServices() {
   const settings = getSettings();
@@ -113,7 +156,7 @@ export default function MaintenanceServices() {
 
   return (
     <div className="min-h-screen bg-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({}) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(maintenanceSchema) }} />
       {/* SEO tag replaced */}
       <Header />
 

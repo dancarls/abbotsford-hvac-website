@@ -9,14 +9,62 @@ import { getSettings } from '@/lib/getSettings';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Expert Ventilation Services | Abbotsford HVAC",
-  description: "Professional ventilation system installation, duct cleaning, and air balancing services in Abbotsford. Improve your indoor air quality and comfort with our expert care.",
+  title: "Ventilation & Duct Cleaning Services in Abbotsford, BC",
+  description: "Professional HRV/ERV installation, duct cleaning & whole-home ventilation in Abbotsford. Improve air circulation and reduce moisture in your Fraser Valley home. Free estimates.",
+  alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/ventilation' },
   openGraph: {
-    title: "Expert Ventilation Services | Abbotsford HVAC",
-    description: "Professional ventilation system installation, duct cleaning, and air balancing services in Abbotsford. Improve your indoor air quality and comfort with our expert care.",
-    images: ['https://abbotsfordhvac.ca/og-ventilation.jpg']
+    title: "Ventilation & Duct Cleaning Services in Abbotsford, BC | Abbotsford HVAC",
+    description: "Professional HRV/ERV installation, duct cleaning & whole-home ventilation in Abbotsford. Improve air circulation and reduce moisture.",
+    images: ['https://www.abbotsfordhvac.ca/og-ventilation.jpg']
   }
 };
+
+const ventilationSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Ventilation Services in Abbotsford, BC",
+    "description": "Professional ventilation system installation, duct cleaning, HRV/ERV systems and air balancing services in Abbotsford, BC.",
+    "provider": { "@type": "HVACBusiness", "@id": "https://www.abbotsfordhvac.ca/#business" },
+    "areaServed": { "@type": "City", "name": "Abbotsford" },
+    "serviceType": ["Duct Cleaning", "HRV Installation", "ERV Installation", "Whole-Home Ventilation", "Exhaust Fan Installation"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.abbotsfordhvac.ca/services/ventilation" },
+      { "@type": "ListItem", "position": 3, "name": "Ventilation Services", "item": "https://www.abbotsfordhvac.ca/services/ventilation" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How often should I have my ducts cleaned in Abbotsford?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most HVAC professionals recommend duct cleaning every 3–5 years for average homes. However, Abbotsford's damp climate can promote mould growth in ducts — if you have pets, allergies, or recently completed renovations, more frequent cleaning is beneficial." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is an HRV and do I need one in the Fraser Valley?",
+        "acceptedAnswer": { "@type": "Answer", "text": "An HRV (Heat Recovery Ventilator) exchanges stale indoor air with fresh outdoor air while recovering up to 80% of the heat. In Abbotsford's wet climate, an HRV also helps control humidity, reducing condensation and mould risk — highly recommended for modern well-sealed homes." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I know if my home has poor ventilation?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Signs of poor ventilation include condensation on windows, musty odours, high humidity readings, visible mould in bathrooms or attic, stale air, or frequent respiratory issues. Our technicians offer free ventilation assessments." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does professional duct cleaning include?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Our duct cleaning service includes inspection, high-powered vacuuming of all supply and return ducts, cleaning of registers and grilles, sanitizing with antimicrobial treatment, and a post-cleaning airflow test. We provide before-and-after photos." }
+      }
+    ]
+  }
+];
 
 export default function VentilationServices() {
   const settings = getSettings();
@@ -141,7 +189,7 @@ export default function VentilationServices() {
 
   return (
     <div className="min-h-screen bg-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({}) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ventilationSchema) }} />
       {/* SEO tag replaced */}
       <Header />
 
