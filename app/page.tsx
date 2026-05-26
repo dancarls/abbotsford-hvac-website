@@ -147,46 +147,77 @@ export default function Home() {
     }
   ];
 
-  const schemaData = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Abbotsford HVAC",
-    "image": "https://abbotsfordhvac.ca/logo.jpg",
-    "@id": "https://abbotsfordhvac.ca",
-    "url": "https://abbotsfordhvac.ca",
-    "telephone": "(604) 555-0123",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "123 Main Street",
-      "addressLocality": "Abbotsford",
-      "addressRegion": "BC",
-      "postalCode": "V2S 0A3",
-      "addressCountry": "CA"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 49.057186,
-      "longitude": -122.308681
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "07:00",
-        "closes": "19:00"
+  const schemaData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "HVACBusiness",
+      "name": "Abbotsford HVAC",
+      "image": "https://www.abbotsfordhvac.ca/logo.jpg",
+      "@id": "https://www.abbotsfordhvac.ca/#business",
+      "url": "https://www.abbotsfordhvac.ca",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Abbotsford",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
       },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Saturday", "Sunday"],
-        "opens": "08:00",
-        "closes": "17:00"
-      }
-    ],
-    "sameAs": [
-      "https://www.facebook.com/abbotsfordhvac",
-      "https://www.instagram.com/abbotsfordhvac"
-    ]
-  };
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 49.057186,
+        "longitude": -122.308681
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Abbotsford" },
+        { "@type": "City", "name": "Mission" },
+        { "@type": "AdministrativeArea", "name": "Fraser Valley Regional District" }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "07:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday", "Sunday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "3",
+        "bestRating": "5"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "HVAC Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Furnace Installation & Repair" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Air Conditioning Installation & Repair" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Heat Pump Systems" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ductless Mini-Split Installation" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Indoor Air Quality Solutions" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial HVAC Services" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "24/7 Emergency HVAC Service" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "HVAC Maintenance Plans" } }
+        ]
+      },
+      "sameAs": [
+        "https://www.facebook.com/abbotsfordhvac",
+        "https://www.instagram.com/abbotsfordhvac"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "https://www.abbotsfordhvac.ca",
+      "name": "Abbotsford HVAC"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-white">

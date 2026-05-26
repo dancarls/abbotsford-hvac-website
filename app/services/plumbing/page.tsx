@@ -9,14 +9,57 @@ import { getSettings } from '@/lib/getSettings';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Expert Plumbing & Water Heating Services | Abbotsford HVAC",
-  description: "Professional water heater installation, plumbing repairs, and pipe insulation services in Abbotsford. Expert plumbing solutions for your home.",
+  title: "Water Heater & Plumbing Services in Abbotsford, BC",
+  description: "Tankless & traditional water heater installation, plumbing repairs & pipe insulation in Abbotsford. Same-day service available. Licensed plumbers serving Fraser Valley. Free estimates.",
+  alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/plumbing' },
   openGraph: {
-    title: "Expert Plumbing & Water Heating Services | Abbotsford HVAC",
-    description: "Professional water heater installation, plumbing repairs, and pipe insulation services in Abbotsford. Expert plumbing solutions for your home.",
-    images: ['https://abbotsfordhvac.ca/og-plumbing.jpg']
+    title: "Water Heater & Plumbing Services in Abbotsford, BC | Abbotsford HVAC",
+    description: "Tankless & traditional water heater installation, plumbing repairs & pipe insulation in Abbotsford. Same-day service available.",
+    images: ['https://www.abbotsfordhvac.ca/og-plumbing.jpg']
   }
 };
+
+const plumbingSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Plumbing & Water Heating Services in Abbotsford, BC",
+    "description": "Water heater installation, plumbing repairs, tankless water heater conversion and pipe insulation services in Abbotsford, BC.",
+    "provider": { "@type": "HVACBusiness", "@id": "https://www.abbotsfordhvac.ca/#business" },
+    "areaServed": { "@type": "City", "name": "Abbotsford" },
+    "serviceType": ["Water Heater Installation", "Tankless Water Heater", "Plumbing Repairs", "Pipe Insulation", "Emergency Plumbing"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.abbotsfordhvac.ca/services/plumbing" },
+      { "@type": "ListItem", "position": 3, "name": "Plumbing & Water Heating", "item": "https://www.abbotsfordhvac.ca/services/plumbing" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does water heater installation cost in Abbotsford?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Traditional tank water heaters cost $1,200–$3,000 installed in Abbotsford. Tankless water heaters range from $2,500–$5,500+ installed. Tankless units have higher upfront costs but provide endless hot water and last 20+ years vs 10–15 for tanks." }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I switch to a tankless water heater?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Tankless water heaters are ideal if you frequently run out of hot water, want to save on energy bills (20–30% more efficient), or have limited space. They're a strong choice for Abbotsford homes with 2+ bathrooms or high hot water demand." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a water heater last?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Tank water heaters typically last 10–15 years. Tankless units can last 20+ years with annual descaling — important in Abbotsford due to moderately hard water from the municipal supply. Signs you need replacement include rusty water, rumbling sounds, or inconsistent temperatures." }
+      }
+    ]
+  }
+];
 
 export default function PlumbingServices() {
   const settings = getSettings();
@@ -89,7 +132,7 @@ export default function PlumbingServices() {
 
   return (
     <div className="min-h-screen bg-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({}) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(plumbingSchema) }} />
       {/* SEO tag replaced */}
       <Header />
 

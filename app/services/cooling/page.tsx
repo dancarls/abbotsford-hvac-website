@@ -9,14 +9,67 @@ import { getSettings } from '@/lib/getSettings';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Expert Cooling Services | Abbotsford HVAC",
-  description: "Professional air conditioning installation, repair, and maintenance services in Abbotsford. Stay cool and comfortable all summer long.",
+  title: "Air Conditioning & Cooling Services in Abbotsford, BC",
+  description: "Expert AC installation, repair & ductless mini-split services in Abbotsford. Beat the Fraser Valley heat with same-day cooling service. Licensed & insured. Free estimates.",
+  alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/cooling' },
   openGraph: {
-    title: "Expert Cooling Services | Abbotsford HVAC",
-    description: "Professional air conditioning installation, repair, and maintenance services in Abbotsford. Stay cool and comfortable all summer long.",
-    images: ['https://abbotsfordhvac.ca/og-cooling.jpg']
+    title: "Air Conditioning & Cooling Services in Abbotsford, BC | Abbotsford HVAC",
+    description: "Expert AC installation, repair & ductless mini-split services in Abbotsford. Beat the Fraser Valley heat with same-day cooling service.",
+    images: ['https://www.abbotsfordhvac.ca/og-cooling.jpg']
   }
 };
+
+const coolingSchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Air Conditioning Services in Abbotsford, BC",
+    "description": "Professional AC installation, repair, ductless mini-split and emergency cooling services in Abbotsford, BC.",
+    "provider": { "@type": "HVACBusiness", "@id": "https://www.abbotsfordhvac.ca/#business" },
+    "areaServed": { "@type": "City", "name": "Abbotsford" },
+    "serviceType": ["AC Installation", "AC Repair", "Ductless Mini-Split", "Central Air Systems", "Emergency AC Repair"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.abbotsfordhvac.ca/services/cooling" },
+      { "@type": "ListItem", "position": 3, "name": "Cooling Services", "item": "https://www.abbotsfordhvac.ca/services/cooling" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does AC installation cost in Abbotsford?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Central AC installation in Abbotsford typically ranges from $4,000 to $10,000 depending on home size, existing ductwork, and unit efficiency. Ductless mini-splits start around $2,500 per zone. We provide free, no-obligation estimates." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a ductless mini-split better than central air for Abbotsford homes?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For homes without existing ductwork, ductless mini-splits are often the better choice — they're more energy-efficient, allow zone-by-zone control, and can provide both heating and cooling year-round. Central air is more cost-effective if you already have a ducted furnace system." }
+      },
+      {
+        "@type": "Question",
+        "name": "How often should I service my air conditioner?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Annual AC servicing is recommended, ideally in spring before the cooling season. This includes cleaning coils, checking refrigerant levels, inspecting electrical components, and testing performance — preventing breakdowns during the hottest days." }
+      },
+      {
+        "@type": "Question",
+        "name": "What are signs my AC needs repair?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Key warning signs include warm air blowing from vents, weak airflow, unusual noises (grinding, squealing), ice forming on the unit, water leaks around the unit, or your energy bill spiking without explanation. Call us for a same-day diagnosis." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer emergency AC repair in Abbotsford?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes — we offer 24/7 emergency AC repair throughout Abbotsford and the Fraser Valley. When your AC fails on the hottest day of summer, we dispatch a technician within 1–2 hours." }
+      }
+    ]
+  }
+];
 
 export default function CoolingServices() {
   const settings = getSettings();
@@ -149,7 +202,7 @@ export default function CoolingServices() {
 
   return (
     <div className="min-h-screen bg-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({}) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(coolingSchema) }} />
       {/* SEO tag replaced */}
       <Header />
 

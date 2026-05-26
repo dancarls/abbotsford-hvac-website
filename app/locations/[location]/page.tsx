@@ -85,11 +85,11 @@ export default async function ServiceAreaPage({ params }: PageProps) {
 
     const schemaData = {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": `Abbotsford HVAC - ${areaData.name}`,
+        "@type": "HVACBusiness",
+        "name": "Abbotsford HVAC",
+        "@id": "https://www.abbotsfordhvac.ca/#business",
         "description": content.description,
-        "url": `https://abbotsfordhvac.ca/locations/${area}`,
-        "telephone": "(604) 555-0123",
+        "url": `https://www.abbotsfordhvac.ca/locations/${area}`,
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Abbotsford",
@@ -108,9 +108,9 @@ export default async function ServiceAreaPage({ params }: PageProps) {
         "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://abbotsfordhvac.ca" },
-                { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": "https://abbotsfordhvac.ca/locations" },
-                { "@type": "ListItem", "position": 3, "name": areaData.name, "item": `https://abbotsfordhvac.ca/locations/${area}` }
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
+                { "@type": "ListItem", "position": 2, "name": "Service Areas", "item": "https://www.abbotsfordhvac.ca/locations" },
+                { "@type": "ListItem", "position": 3, "name": areaData.name, "item": `https://www.abbotsfordhvac.ca/locations/${area}` }
             ]
         }
     };

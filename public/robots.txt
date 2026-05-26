@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://abbotsfordhvac.ca/sitemap.xml
+Sitemap: https://www.abbotsfordhvac.ca/sitemap.xml

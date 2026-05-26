@@ -8,11 +8,14 @@ export const metadata: Metadata = {
         template: '%s | Abbotsford HVAC',
     },
     description: 'Professional HVAC services in Abbotsford, BC. Expert heating, cooling, ventilation & air quality solutions. 24/7 emergency service. Licensed & insured.',
-    metadataBase: new URL('https://abbotsfordhvac.ca'),
+    metadataBase: new URL('https://www.abbotsfordhvac.ca'),
     openGraph: {
         siteName: 'Abbotsford HVAC',
         type: 'website',
         locale: 'en_CA',
+    },
+    alternates: {
+        canonical: '/',
     },
 }
 

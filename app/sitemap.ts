@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import geoData from '../lib/data/geo-service-data.json';
 
-const BASE_URL = 'https://abbotsfordhvac.ca';
+const BASE_URL = 'https://www.abbotsfordhvac.ca';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const staticPages: MetadataRoute.Sitemap = [
@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { url: `${BASE_URL}/about`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
         { url: `${BASE_URL}/contact`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.9 },
         { url: `${BASE_URL}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
+        { url: `${BASE_URL}/service-areas`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
         { url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     ];
 

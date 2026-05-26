@@ -9,14 +9,62 @@ import { getSettings } from '@/lib/getSettings';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: "Indoor Air Quality Services | Abbotsford HVAC",
-  description: "Professional indoor air quality solutions, purifiers, and humidifiers in Abbotsford.",
+  title: "Indoor Air Quality Solutions in Abbotsford, BC",
+  description: "UV air purifiers, HEPA filtration, humidifiers & CO detectors installed in Abbotsford homes. Breathe cleaner air in your Fraser Valley home. Licensed technicians. Free estimates.",
+  alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/air-quality' },
   openGraph: {
-    title: "Indoor Air Quality Services | Abbotsford HVAC",
-    description: "Professional indoor air quality solutions, purifiers, and humidifiers in Abbotsford.",
-    images: ['https://abbotsfordhvac.ca/og-heating.jpg']
+    title: "Indoor Air Quality Solutions in Abbotsford, BC | Abbotsford HVAC",
+    description: "UV air purifiers, HEPA filtration, humidifiers & CO detectors installed in Abbotsford homes. Breathe cleaner air in your Fraser Valley home.",
+    images: ['https://www.abbotsfordhvac.ca/og-air-quality.jpg']
   }
 };
+
+const airQualitySchema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Indoor Air Quality Services in Abbotsford, BC",
+    "description": "UV air purifiers, HEPA filtration systems, humidifiers, dehumidifiers and carbon monoxide detector installation in Abbotsford, BC.",
+    "provider": { "@type": "HVACBusiness", "@id": "https://www.abbotsfordhvac.ca/#business" },
+    "areaServed": { "@type": "City", "name": "Abbotsford" },
+    "serviceType": ["UV Air Purifiers", "Air Filtration Systems", "Humidifier Installation", "CO Detector Installation", "Mold Remediation"]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.abbotsfordhvac.ca/services/air-quality" },
+      { "@type": "ListItem", "position": 3, "name": "Indoor Air Quality", "item": "https://www.abbotsfordhvac.ca/services/air-quality" }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is indoor air quality a concern in Abbotsford?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Abbotsford's high rainfall and humidity create ideal conditions for mould, dust mites, and airborne allergens indoors. Wildfire smoke from BC's interior is also an increasing seasonal concern. Proper air filtration and purification significantly reduces these risks." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a UV air purifier and how does it work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "UV air purifiers use ultraviolet light to neutralize airborne bacteria, viruses, and mould spores as air passes through your HVAC system. They are installed inside your existing ductwork and operate silently 24/7, providing whole-home protection." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need a humidifier or dehumidifier in the Fraser Valley?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most Abbotsford homes benefit from a dehumidifier in summer and a humidifier in winter. Abbotsford's wet winters can cause excess humidity and condensation, while forced-air heating in winter dries indoor air significantly — leading to dry skin, static, and cracked wood." }
+      },
+      {
+        "@type": "Question",
+        "name": "How often should carbon monoxide detectors be replaced?",
+        "acceptedAnswer": { "@type": "Answer", "text": "CO detectors should be replaced every 5–7 years. If your detector is beeping in a non-emergency pattern (end-of-life chirp) or is more than 7 years old, it needs replacement. We can inspect and replace all CO and smoke detectors during a service visit." }
+      }
+    ]
+  }
+];
 
 export default function AirQualityServices() {
   const settings = getSettings();
@@ -149,7 +197,7 @@ export default function AirQualityServices() {
 
   return (
     <div className="min-h-screen bg-white">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({}) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(airQualitySchema) }} />
       {/* SEO tag replaced */}
       <Header />
 
