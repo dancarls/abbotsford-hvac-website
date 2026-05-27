@@ -964,6 +964,21 @@ export default function ACMaintenancePage() {
                 </div>
               </div>
 
+              {/* Internal Links */}
+              <div className="inline-cta" style={{ marginTop: '32px' }}>
+                <div className="inline-cta__text">
+                  <strong>AC not cooling properly despite recent maintenance?</strong> Run through our 7 quick checks before calling a tech — it could save you a service call.
+                </div>
+                <a href="/blog/ac-not-cooling-abbotsford-repair" className="btn-sm">AC Not Cooling? →</a>
+              </div>
+
+              <div className="inline-cta" style={{ marginTop: '16px' }}>
+                <div className="inline-cta__text">
+                  <strong>Have a hot room, suite, or addition your central AC never reaches?</strong> A ductless mini-split may be a better fit than extending ductwork.
+                </div>
+                <a href="/blog/ductless-mini-split-cooling-abbotsford" className="btn-sm">Mini-Split Guide →</a>
+              </div>
+
               {/* Main CTA */}
               <div className="cta-box">
                 <div className="cta-box__eyebrow">AbbotsfordHVAC.ca — Serving the Fraser Valley</div>

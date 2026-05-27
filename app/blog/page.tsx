@@ -41,6 +41,18 @@ export default function BlogPage() {
       slug: 'ac-not-cooling-abbotsford-repair'
     },
     {
+      id: 'new-3',
+      title: 'Ductless Mini-Split Cooling in Abbotsford: Best Way to Cool Hot Rooms, Suites & Additions',
+      excerpt: 'One hot room. A basement suite with no ductwork. Learn when a mini-split beats extending ductwork, what installation costs, and how BC rebates can offset $1,000–$6,000.',
+      content: '',
+      author: 'AbbotsfordHVAC.ca',
+      date: '2025-06-01',
+      category: 'Mini-Split Installation',
+      readTime: '9 min read',
+      image: '/images/ductless-mini-split-abbotsford-hero.png',
+      slug: 'ductless-mini-split-cooling-abbotsford'
+    },
+    {
       id: '3',
       title: 'Energy-Efficient HVAC Upgrades That Save Money',
       excerpt: 'Discover which HVAC improvements offer the best return on investment for Abbotsford homeowners.',
@@ -75,18 +87,6 @@ export default function BlogPage() {
       readTime: '7 min read',
       image: 'https://readdy.ai/api/search-image?query=Side%20by%20side%20comparison%20of%20modern%20heat%20pump%20and%20furnace%20systems%2C%20residential%20heating%20equipment%20installation%2C%20professional%20comparison%20visualization&width=800&height=400&seq=blog-5&orientation=landscape',
       slug: 'heat-pump-vs-furnace-abbotsford-homes'
-    },
-    {
-      id: '6',
-      title: 'Commercial HVAC Maintenance Best Practices',
-      excerpt: 'Keep your business comfortable and energy-efficient with proper commercial HVAC maintenance schedules.',
-      content: 'Full article content here...',
-      author: 'David Kim',
-      date: '2023-12-28',
-      category: 'Commercial',
-      readTime: '8 min read',
-      image: 'https://readdy.ai/api/search-image?query=Commercial%20HVAC%20system%20maintenance%20in%20office%20building%2C%20large%20scale%20heating%20and%20cooling%20equipment%2C%20professional%20technicians%20working&width=800&height=400&seq=blog-6&orientation=landscape',
-      slug: 'commercial-hvac-maintenance-best-practices'
     }
   ];
 
