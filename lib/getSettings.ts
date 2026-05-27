@@ -1,14 +1,15 @@
-import fs from 'fs';
-import path from 'path';
+import settingsData from './data/settings.json';
 
 export function getSettings() {
-    try {
-        const settingsPath = path.join(process.cwd(), 'lib/data/settings.json');
-        if (fs.existsSync(settingsPath)) {
-            return JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
-        }
-    } catch (e) {
-        console.error('Failed to load settings', e);
-    }
-    return { phoneNumber: "123-456-7890", showTeamSection: false, teamMembers: [] };
+    return {
+        businessName: settingsData.businessName || "Abbotsford HVAC",
+        phoneNumber: settingsData.phoneNumber || "(604) 555-0123",
+        phoneRaw: settingsData.phoneRaw || "6045550123",
+        primaryCity: settingsData.primaryCity || "Abbotsford",
+        baseUrl: settingsData.baseUrl || "https://www.abbotsfordhvac.ca",
+        email: settingsData.email || "info@abbotsfordhvac.ca",
+        aiReceptionistScript: (settingsData as any).aiReceptionistScript || "",
+        showTeamSection: settingsData.showTeamSection || false,
+        teamMembers: settingsData.teamMembers || [],
+    };
 }

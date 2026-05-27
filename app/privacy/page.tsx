@@ -1,8 +1,10 @@
 import Header from '../../components/feature/Header';
 import Link from 'next/link';
 import Footer from '../../components/feature/Footer';
+import { getSettings } from '../../lib/getSettings';
 
 export default function PrivacyPolicy() {
+  const settings = getSettings();
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -101,10 +103,7 @@ export default function PrivacyPolicy() {
                 <strong>Email:</strong> <a href="mailto:privacy@abbotsfordhvac.ca" className="text-blue-600 hover:text-blue-700">privacy@abbotsfordhvac.ca</a>
               </p>
               <p className="text-gray-700 mb-2">
-                <strong>Phone:</strong> <a href="tel:604-555-0123" className="text-blue-600 hover:text-blue-700">(604) 555-0123</a>
-              </p>
-              <p className="text-gray-700">
-                <strong>Address:</strong> 123 Main Street, Abbotsford, BC V2S 1A1
+                <strong>Phone:</strong> <a href={`tel:${settings.phoneRaw}`} className="text-blue-600 hover:text-blue-700">{settings.phoneNumber}</a>
               </p>
             </div>
           </section>

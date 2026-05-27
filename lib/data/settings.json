@@ -1,5 +1,11 @@
 {
-    "phoneNumber": "123-456-7890",
+    "businessName": "Abbotsford HVAC",
+    "phoneNumber": "(604) 555-0123",
+    "phoneRaw": "6045550123",
+    "primaryCity": "Abbotsford",
+    "baseUrl": "https://www.abbotsfordhvac.ca",
+    "email": "info@abbotsfordhvac.ca",
+    "aiReceptionistScript": "",
     "showTeamSection": false,
     "teamMembers": []
 }

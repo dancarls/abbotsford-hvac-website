@@ -1,4 +1,3 @@
-import ProjectServiceForm from '../../../components/feature/ProjectServiceForm';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { Metadata } from 'next';
@@ -171,12 +170,9 @@ export default function EmergencyServices() {
               When your heating or cooling system fails, we respond fast. Available 24/7, 365 days a year for emergency HVAC repairs throughout Abbotsford.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <a href={`tel:${settings.phoneNumber}`} className="bg-yellow-400 text-red-900 px-10 py-5 rounded-xl text-xl font-bold hover:bg-yellow-300 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3">
+              <a href={`tel:${settings.phoneRaw}`} className="bg-yellow-400 text-red-900 px-10 py-5 rounded-xl text-xl font-bold hover:bg-yellow-300 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3">
                 <i className="ri-phone-fill text-2xl"></i>
                 Call Now {settings.phoneNumber}
-              </a>
-              <a href="#emergency-form-section" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
-                Request Online Quote
               </a>
             </div>
           </div>
@@ -191,7 +187,7 @@ export default function EmergencyServices() {
               <i className="ri-alarm-warning-line text-xl"></i>
             </div>
             <p className="text-lg font-semibold">
-              HVAC EMERGENCY? Don't wait - call us immediately at (604) 555-0123 for fast response!
+              HVAC EMERGENCY? Don't wait — call {settings.phoneNumber} for fast response!
             </p>
           </div>
         </div>
@@ -388,7 +384,7 @@ export default function EmergencyServices() {
                 <p className="text-red-800 mb-4">
                   Call us anyway! We may be able to help or recommend emergency service in your area.
                 </p>
-                <a href={`tel:${settings.phoneNumber}`} className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors inline-block whitespace-nowrap cursor-pointer">
+                <a href={`tel:${settings.phoneRaw}`} className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors inline-block whitespace-nowrap cursor-pointer">
                   Contact for Service Area
                 </a>
               </div>
@@ -398,22 +394,13 @@ export default function EmergencyServices() {
       </section>
 
       <section id="emergency-form-section" className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ProjectServiceForm
-            serviceId="emergency-form"
-            serviceName="Emergency HVAC Service"
-            formEndpoint="https://readdy.ai/api/form/d3ad1vog3i95tm0o9cfg"
-            serviceOptions={[
-              { value: 'no-heat', label: 'No Heat - Furnace Not Working' },
-              { value: 'no-ac', label: 'No AC - Air Conditioner Not Working' },
-              { value: 'gas-leak', label: 'Gas Leak or Gas Smell' },
-              { value: 'water-leak', label: 'Water Leak from HVAC System' },
-              { value: 'electrical-issue', label: 'Electrical Issue with HVAC' },
-              { value: 'strange-noises', label: 'Strange Noises or Burning Smells' },
-              { value: 'carbon-monooxide', label: 'Carbon Monoxide Detector Alert' },
-              { value: 'other-emergency', label: 'Other Emergency' }
-            ]}
-          />
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Need Emergency HVAC Service Right Now?</h2>
+          <p className="text-xl text-gray-600 mb-8">Don't wait — call us directly or chat with our AI assistant for immediate help.</p>
+          <a href={`tel:${settings.phoneRaw}`} className="inline-flex bg-red-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-red-700 transition-all shadow-xl items-center gap-3">
+            <i className="ri-phone-fill text-2xl"></i>
+            Call Now {settings.phoneNumber}
+          </a>
         </div>
       </section>
 
@@ -457,7 +444,7 @@ export default function EmergencyServices() {
           <p className="text-xl text-red-100 mb-8">
             HVAC emergencies get worse with time. Call our emergency hotline immediately for fast, professional service.
           </p>
-          <a href={`tel:${settings.phoneNumber}`} className="bg-yellow-400 text-red-900 px-12 py-6 rounded-xl text-2xl font-bold hover:bg-yellow-300 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto animate-pulse">
+          <a href={`tel:${settings.phoneRaw}`} className="bg-yellow-400 text-red-900 px-12 py-6 rounded-xl text-2xl font-bold hover:bg-yellow-300 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto animate-pulse">
             <i className="ri-phone-fill"></i>
             Call Our Emergency Team Now
           </a>

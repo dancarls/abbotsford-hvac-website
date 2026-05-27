@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
+import { getSettings } from '../../../lib/getSettings';
 
 interface BlogPost {
   id: string;
@@ -82,6 +83,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
+  const settings = getSettings();
   const currentPost = blogPosts.find(post => post.slug === params.slug);
   const relatedPosts = blogPosts.filter(post => post.slug !== params.slug).slice(0, 3);
 
@@ -117,11 +119,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     },
     "publisher": {
       "@type": "LocalBusiness",
-      "@id": "https://abbotsfordhvac.ca"
+      "@id": "https://www.abbotsfordhvac.ca"
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://abbotsfordhvac.ca/blog/${currentPost.slug}`
+      "@id": `https://www.abbotsfordhvac.ca/blog/${currentPost.slug}`
     },
     "breadcrumb": {
       "@type": "BreadcrumbList",
@@ -130,19 +132,19 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://abbotsfordhvac.ca"
+          "item": "https://www.abbotsfordhvac.ca"
         },
         {
           "@type": "ListItem",
           "position": 2,
           "name": "Blog",
-          "item": "https://abbotsfordhvac.ca/blog"
+          "item": "https://www.abbotsfordhvac.ca/blog"
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": currentPost.title,
-          "item": `https://abbotsfordhvac.ca/blog/${currentPost.slug}`
+          "item": `https://www.abbotsfordhvac.ca/blog/${currentPost.slug}`
         }
       ]
     }
@@ -217,10 +219,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="tel:6045550123"
+              href={`tel:${settings.phoneRaw}`}
               className="bg-green-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors text-center cursor-pointer whitespace-nowrap"
             >
-              Call (604) 555-0123
+              Call {settings.phoneNumber}
             </a>
             <Link
               href="/contact"

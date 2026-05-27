@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Header from '../components/feature/Header';
 import Footer from '../components/feature/Footer';
-import HomeContactForm from '../components/feature/HomeContactForm';
+import { getSettings } from '../lib/getSettings';
 
 export default function Home() {
+  const settings = getSettings();
   const services = [
     {
       icon: 'ri-temp-hot-line',
@@ -242,17 +243,17 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="#service-form"
+                  href={`tel:${settings.phoneRaw}`}
                   className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2"
                 >
-                  <i className="ri-calendar-check-line text-2xl"></i>
-                  Book Online Service
+                  <i className="ri-phone-fill text-2xl"></i>
+                  Call Now — Free Quote
                 </a>
                 <a
-                  href="tel:6045550123"
+                  href={`tel:${settings.phoneRaw}`}
                   className="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all whitespace-nowrap cursor-pointer flex items-center justify-center"
                 >
-                  Call (604) 555-0123
+                  Call {settings.phoneNumber}
                 </a>
               </div>
             </div>
@@ -260,14 +261,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quick Service Request Form */}
+      {/* Request Service CTA */}
       <section id="service-form" className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-3xl font-bold text-center mb-8 text-gray-900">
-              Request HVAC Service Today
-            </h2>
-            <HomeContactForm />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Request HVAC Service Today</h2>
+          <p className="text-xl text-gray-600 mb-10">Call us now or chat with our AI assistant — available 24/7 for emergencies.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={`tel:${settings.phoneRaw}`}
+              className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-xl flex items-center justify-center gap-3"
+            >
+              <i className="ri-phone-fill text-2xl"></i>
+              Call {settings.phoneNumber}
+            </a>
+            <Link
+              href="/contact"
+              className="bg-white border-2 border-blue-600 text-blue-600 px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-50 transition-all shadow-xl flex items-center justify-center gap-3"
+            >
+              <i className="ri-message-3-line text-2xl"></i>
+              Get a Free Quote
+            </Link>
           </div>
         </div>
       </section>
