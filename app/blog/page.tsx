@@ -17,16 +17,16 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   const blogPosts = [
     {
-      id: '1',
-      title: 'How to Prepare Your HVAC System for Winter in Abbotsford',
-      excerpt: 'Essential maintenance tips to ensure your heating system runs efficiently during Fraser Valley\'s cold months.',
-      content: 'Full article content here...',
-      author: 'Mike Thompson',
-      date: '2024-01-15',
-      category: 'Maintenance',
-      readTime: '5 min read',
-      image: 'https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20performing%20winter%20maintenance%20on%20residential%20furnace%20system%20in%20Abbotsford%20home%2C%20checking%20filters%20and%20equipment%2C%20cold%20weather%20preparation&width=800&height=400&seq=blog-1&orientation=landscape',
-      slug: 'prepare-hvac-system-winter-abbotsford'
+      id: 'new-1',
+      title: 'AC Maintenance in Abbotsford: What\'s Included in a Summer Tune-Up (and Why It Saves You Money)',
+      excerpt: 'Discover what a proper AC tune-up includes, how it lowers your power bills, and why Abbotsford homeowners should book before the next heat wave.',
+      content: '',
+      author: 'AbbotsfordHVAC.ca',
+      date: '2025-06-01',
+      category: 'AC Maintenance',
+      readTime: '7 min read',
+      image: '/images/ac-maintenance-abbotsford-hero.png',
+      slug: 'ac-maintenance-abbotsford-summer-tune-up'
     },
     {
       id: '2',
