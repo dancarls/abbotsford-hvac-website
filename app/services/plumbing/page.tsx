@@ -4,7 +4,7 @@ import Footer from '../../../components/feature/Footer';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getSettings } from '@/lib/getSettings';
-
+import geoData from '@/lib/data/geo-service-data.json';
 
 export const dynamic = 'force-dynamic';
 
@@ -103,13 +103,6 @@ export default function PlumbingServices() {
     }
   ];
 
-  const serviceAreas = [
-    'Abbotsford West', 'Abbotsford East', 'Clayburn Village', 'McMillan',
-    'Auguston', 'Eagle Mountain', 'Sandy Hill', 'Clearbrook Centre',
-    'Townline Hill', 'Mill Lake', 'West Clearbrook', 'South Clearbrook',
-    'Aberdeen', 'South Poplar', 'Kilgard', 'Gifford', 'Mission',
-    'Hatzic', 'Dewdney', 'Glen Valley', 'Silverhill'
-  ];
 
   const faqs = [
     {
@@ -137,14 +130,15 @@ export default function PlumbingServices() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden bg-gray-900">
-        {/* Blurred Background Layer */}
+      <section className="relative py-32 overflow-hidden bg-blue-900">
+        {/* Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center scale-110 blur-[8px] opacity-60"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url('https://readdy.ai/api/search-image?query=Professional%20plumber%20installing%20modern%20tankless%20water%20heater%20in%20clean%20Abbotsford%20home%20basement%2C%20professional%20plumbing%20installation%2C%20modern%20water%20heating%20system%2C%20expert%20plumbing%20service%2C%20Canadian%20residential%20plumbing%20work%2C%20clean%20technical%20installation&width=1920&height=1000&seq=plumbing-hero-1&orientation=landscape')`
           }}
         />
+        <div className="absolute inset-0 bg-blue-900/60" />
 
         {/* Content Overlay */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -293,11 +287,11 @@ export default function PlumbingServices() {
                 Areas We Serve for Plumbing Services
               </h3>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                {serviceAreas.map((area, index) => (
-                  <div key={index} className="flex items-center">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
-                    <span className="text-gray-700">{area}</span>
-                  </div>
+                {geoData.areas.map((area) => (
+                  <Link key={area.slug} href={`/locations/${area.slug}`} className="flex items-center group">
+                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 flex-shrink-0"></div>
+                    <span className="text-gray-700 group-hover:text-blue-600 transition-colors">{area.name}</span>
+                  </Link>
                 ))}
               </div>
               <div className="bg-blue-50 rounded-lg p-6">

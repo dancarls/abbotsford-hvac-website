@@ -123,14 +123,15 @@ export default async function ServiceAreaPage({ params }: PageProps) {
             <Header />
 
             {/* Hero Section */}
-            <section className="relative py-32 overflow-hidden bg-gray-900">
-                {/* Blurred Background Layer */}
+            <section className="relative py-32 overflow-hidden bg-blue-900">
+                {/* Background Image */}
                 <div
-                    className="absolute inset-0 bg-cover bg-center scale-110 blur-[6px] opacity-60"
+                    className="absolute inset-0 bg-cover bg-center"
                     style={{
                         backgroundImage: `url('https://readdy.ai/api/search-image?query=${encodeURIComponent(`${areaData.name} BC landscape, community landmarks, suburban area`)}&width=1920&height=1000&seq=area-hero-1&orientation=landscape')`
                     }}
                 />
+                <div className="absolute inset-0 bg-blue-900/60" />
 
                 {/* Content Overlay */}
                 <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -246,10 +247,10 @@ export default async function ServiceAreaPage({ params }: PageProps) {
 
                         {/* Right Sidebar */}
                         <div className="space-y-8">
-                            <div className="bg-gray-900 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden group">
+                            <div className="bg-blue-700 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 -m-8 w-32 h-32 bg-blue-600/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
                                 <h3 className="text-2xl font-bold mb-4 relative z-10">Local {areaData.name} Support</h3>
-                                <p className="text-gray-400 mb-8 relative z-10 text-lg">
+                                <p className="text-blue-100 mb-8 relative z-10 text-lg">
                                     Need a professional opinion on your HVAC system? Our team is trained on {areaData.name} service standards.
                                 </p>
                                 <a
@@ -295,6 +296,36 @@ export default async function ServiceAreaPage({ params }: PageProps) {
                                 </p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Nearby Areas */}
+            <section className="py-16 bg-gray-50">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-10">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-3">We Also Serve Nearby Areas</h2>
+                        <p className="text-gray-600">HVAC service throughout Abbotsford and the Fraser Valley</p>
+                    </div>
+                    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        {geoData.areas.filter(a => a.slug !== areaData.slug).slice(0, 12).map((area) => (
+                            <Link
+                                key={area.slug}
+                                href={`/locations/${area.slug}`}
+                                className="group flex items-center gap-3 p-4 bg-white rounded-xl hover:bg-blue-50 border border-gray-100 hover:border-blue-200 transition-all shadow-sm"
+                            >
+                                <div className="w-2 h-2 bg-blue-600 rounded-full group-hover:scale-125 transition-transform flex-shrink-0"></div>
+                                <span className="font-semibold text-gray-800 group-hover:text-blue-700 transition-colors">{area.name}</span>
+                            </Link>
+                        ))}
+                    </div>
+                    <div className="text-center mt-8">
+                        <Link
+                            href="/service-areas"
+                            className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+                        >
+                            View All Service Areas →
+                        </Link>
                     </div>
                 </div>
             </section>

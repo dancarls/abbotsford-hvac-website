@@ -39,8 +39,15 @@ export default function ServiceAreasPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceAreasSchema) }} />
       <Header />
 
-      <section className="bg-blue-700 py-20 text-white text-center">
-        <div className="max-w-4xl mx-auto px-4">
+      <section className="relative py-20 overflow-hidden bg-blue-800 text-white text-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('https://readdy.ai/api/search-image?query=Abbotsford%20BC%20residential%20neighbourhood%20aerial%20view%2C%20Fraser%20Valley%20suburban%20homes%2C%20community%20landscape%2C%20professional%20HVAC%20service%20area&width=1920&height=600&seq=service-areas-hero-1&orientation=landscape')`
+          }}
+        />
+        <div className="absolute inset-0 bg-blue-800/65" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4">
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">HVAC Service Areas</h1>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
             Serving Abbotsford neighbourhoods and the broader Fraser Valley with licensed heating, cooling, and air quality services.
