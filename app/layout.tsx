@@ -1,6 +1,9 @@
 import React from 'react'
 import './globals.css'
 import type { Metadata } from 'next'
+import { getSettings } from '../lib/getSettings'
+
+const settings = getSettings();
 
 export const metadata: Metadata = {
     title: {
@@ -47,6 +50,9 @@ export default function RootLayout({
             </head>
             <body className="font-sans antialiased">
                 {children}
+                {settings.aiReceptionistScript && (
+                    <div dangerouslySetInnerHTML={{ __html: settings.aiReceptionistScript }} />
+                )}
             </body>
         </html>
     )

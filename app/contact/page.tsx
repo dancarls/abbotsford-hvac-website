@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
-import ContactForm from '../../components/feature/ContactForm';
+import { getSettings } from '../../lib/getSettings';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Abbotsford HVAC',
@@ -14,33 +14,32 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const settings = getSettings();
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     "mainEntity": {
-      "@type": "LocalBusiness",
-      "name": "Abbotsford HVAC",
-      "telephone": "(604) 555-0123",
-      "email": "info@abbotsfordhvac.ca",
+      "@type": "HVACBusiness",
+      "@id": `${settings.baseUrl}/#business`,
+      "name": settings.businessName,
+      "telephone": settings.phoneNumber,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "123 Main Street",
         "addressLocality": "Abbotsford",
         "addressRegion": "BC",
-        "postalCode": "V2S 0A3",
         "addressCountry": "CA"
       },
       "contactPoint": [
         {
           "@type": "ContactPoint",
-          "telephone": "+1-(604)-555-0123",
+          "telephone": `+1-${settings.phoneRaw}`,
           "contactType": "customer service",
           "areaServed": "CA",
           "availableLanguage": "English"
         },
         {
           "@type": "ContactPoint",
-          "telephone": "+1-(604)-555-0123",
+          "telephone": `+1-${settings.phoneRaw}`,
           "contactType": "emergency",
           "areaServed": "CA",
           "availableLanguage": "English"
@@ -79,96 +78,83 @@ export default function ContactPage() {
               <i className="ri-alarm-warning-fill text-2xl animate-pulse"></i>
               HVAC Emergency?
               <a
-                href="tel:6045550123"
+                href={`tel:${settings.phoneRaw}`}
                 className="inline-block bg-white text-red-600 px-4 py-1 rounded-full text-sm font-bold hover:bg-red-50 transition-all cursor-pointer shadow-sm"
               >
-                Call Support Now
+                Call Now
               </a>
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Form & Info */}
+      {/* Contact Options */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <div className="bg-white rounded-3xl shadow-2xl p-8 lg:p-12 border border-gray-100">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                <i className="ri-mail-send-line text-blue-600"></i>
-                Get Your Free Quote
-              </h2>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                Fill out the form below and we'll get back to you within 24 hours with a personalized quote. For immediate assistance, please call our support team.
-              </p>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">How Would You Like to Reach Us?</h2>
+            <p className="text-xl text-gray-600">We're available by phone and AI chat — no forms, no waiting.</p>
+          </div>
 
-              <ContactForm />
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* Call Us */}
+            <div className="bg-blue-600 rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden">
+              <div className="absolute -bottom-8 -right-8 opacity-10">
+                <i className="ri-phone-fill text-[150px]"></i>
+              </div>
+              <div className="relative z-10">
+                <span className="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-6 inline-block">24/7 Available</span>
+                <h3 className="text-3xl font-bold mb-3">Call Us Directly</h3>
+                <p className="text-blue-100 mb-8 leading-relaxed">
+                  Speak with our team instantly. Emergency heating or cooling calls answered any time — including nights, weekends, and holidays.
+                </p>
+                <a
+                  href={`tel:${settings.phoneRaw}`}
+                  className="inline-flex bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all items-center gap-3 shadow-xl text-lg"
+                >
+                  <i className="ri-phone-fill text-xl"></i>
+                  {settings.phoneNumber}
+                </a>
+              </div>
             </div>
 
-            {/* Contact Information & AI Focus */}
-            <div className="space-y-8">
-              <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-3xl p-8 lg:p-10 text-white shadow-2xl relative overflow-hidden group">
-                <div className="absolute -bottom-10 -right-10 opacity-10 group-hover:scale-110 transition-transform duration-500">
-                  <i className="ri-customer-service-2-fill text-[180px]"></i>
-                </div>
-                <div className="relative z-10">
-                  <span className="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-6 inline-block">24/7 Support</span>
-                  <h3 className="text-3xl font-bold mb-4">Need Immediate Assistance?</h3>
-                  <p className="text-blue-100 mb-8 leading-relaxed">
-                    Our expert support team is ready to help with emergency repairs, diagnostic questions, and instant service scheduling. No wait times, just real help.
-                  </p>
-                  <a
-                    href="tel:6045550123"
-                    className="inline-flex bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all items-center justify-center gap-3 shadow-xl hover:scale-105 active:scale-95 cursor-pointer text-lg"
-                  >
-                    <i className="ri-phone-fill text-xl"></i>
-                    Call (604) 555-0123 Now
-                  </a>
+            {/* AI Chat */}
+            <div className="bg-white rounded-3xl p-10 border border-gray-100 shadow-2xl relative overflow-hidden">
+              <div className="absolute -bottom-8 -right-8 opacity-5">
+                <i className="ri-robot-fill text-[150px] text-blue-600"></i>
+              </div>
+              <div className="relative z-10">
+                <span className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-6 inline-block">AI Powered</span>
+                <h3 className="text-3xl font-bold text-gray-900 mb-3">Chat with Our AI Assistant</h3>
+                <p className="text-gray-600 mb-8 leading-relaxed">
+                  Get instant answers, request quotes, and book service — our AI assistant handles it 24/7. Look for the chat button in the corner of every page.
+                </p>
+                <div className="flex items-center gap-3 p-4 bg-blue-50 rounded-xl">
+                  <i className="ri-chat-smile-2-line text-2xl text-blue-600"></i>
+                  <span className="text-blue-800 font-semibold">Chat widget active on all pages</span>
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl">
-                <h3 className="text-2xl font-bold text-gray-900 mb-8">Business Details</h3>
-
-                <div className="space-y-8 text-gray-600">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center shrink-0 border border-gray-100 shadow-sm">
-                      <i className="ri-map-pin-2-fill text-xl text-blue-600"></i>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-900">Headquarters</h4>
-                      <p className="text-sm">123 Main Street, Abbotsford, BC V2S 0A3</p>
-                      <p className="text-xs text-gray-400 mt-1 italic">Serving the entire Fraser Valley</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center shrink-0 border border-gray-100 shadow-sm">
-                      <i className="ri-mail-fill text-xl text-blue-600"></i>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-900">Direct Email</h4>
-                      <p className="text-sm">info@abbotsfordhvac.ca</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center shrink-0 border border-gray-100 shadow-sm">
-                      <i className="ri-time-fill text-xl text-blue-600"></i>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-900">Service Hours</h4>
-                      <div className="text-sm space-y-1 mt-1">
-                        <div className="flex justify-between gap-4"><span>Mon - Fri:</span> <span>7 AM - 7 PM</span></div>
-                        <div className="flex justify-between gap-4"><span>Sat - Sun:</span> <span>8 AM - 5 PM</span></div>
-                        <div className="pt-2 flex justify-between gap-4 text-red-600 font-bold border-t border-gray-50">
-                          <span>Emergency:</span> <span>24/7 Priority</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          {/* Service Hours */}
+          <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
+            <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+              <i className="ri-time-fill text-blue-600"></i>
+              Service Hours
+            </h3>
+            <div className="grid sm:grid-cols-3 gap-4 text-sm">
+              <div className="p-4 bg-gray-50 rounded-xl">
+                <div className="font-bold text-gray-900 mb-1">Mon – Fri</div>
+                <div className="text-gray-600">7 AM – 7 PM</div>
+              </div>
+              <div className="p-4 bg-gray-50 rounded-xl">
+                <div className="font-bold text-gray-900 mb-1">Sat – Sun</div>
+                <div className="text-gray-600">8 AM – 5 PM</div>
+              </div>
+              <div className="p-4 bg-red-50 rounded-xl">
+                <div className="font-bold text-red-600 mb-1">Emergency</div>
+                <div className="text-red-600 font-semibold">24/7 Always</div>
               </div>
             </div>
           </div>

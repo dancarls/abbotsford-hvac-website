@@ -2,6 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import settingsData from '../../lib/data/settings.json';
+
+const PHONE = settingsData.phoneNumber || '(604) 555-0123';
+const PHONE_RAW = settingsData.phoneRaw || PHONE.replace(/[^0-9]/g, '');
 
 const services = [
   { name: 'Heating Services', path: '/services/heating' },
@@ -114,10 +118,10 @@ export default function Header() {
           {/* CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <a
-              href="tel:6045550123"
+              href={`tel:${PHONE_RAW}`}
               className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 shadow-md hover:shadow-lg transition-all text-sm whitespace-nowrap"
             >
-              Call (604) 555-0123
+              Call {PHONE}
             </a>
           </div>
 
@@ -151,11 +155,11 @@ export default function Header() {
               <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="text-gray-700 hover:text-blue-600 font-medium">Contact</Link>
               <div className="pt-3 border-t">
                 <a
-                  href="tel:6045550123"
+                  href={`tel:${PHONE_RAW}`}
                   onClick={() => setIsMenuOpen(false)}
                   className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors block text-center"
                 >
-                  Call (604) 555-0123
+                  Call {PHONE}
                 </a>
               </div>
             </div>
