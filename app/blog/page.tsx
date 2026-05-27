@@ -53,40 +53,40 @@ export default function BlogPage() {
       slug: 'ductless-mini-split-cooling-abbotsford'
     },
     {
-      id: '3',
-      title: 'Energy-Efficient HVAC Upgrades That Save Money',
-      excerpt: 'Discover which HVAC improvements offer the best return on investment for Abbotsford homeowners.',
-      content: 'Full article content here...',
-      author: 'David Kim',
-      date: '2024-01-08',
-      category: 'Energy Efficiency',
-      readTime: '6 min read',
-      image: 'https://readdy.ai/api/search-image?query=Modern%20energy-efficient%20HVAC%20system%20installation%20in%20contemporary%20home%2C%20smart%20thermostat%20and%20high-efficiency%20equipment%2C%20cost%20savings%20visualization&width=800&height=400&seq=blog-3&orientation=landscape',
-      slug: 'energy-efficient-hvac-upgrades-save-money'
-    },
-    {
       id: '4',
       title: 'Indoor Air Quality Solutions for Fraser Valley Allergies',
-      excerpt: 'Combat seasonal allergies and improve your home\'s air quality with these professional HVAC solutions.',
-      content: 'Full article content here...',
-      author: 'Sarah Chen',
-      date: '2024-01-05',
+      excerpt: 'The valley\'s agricultural pollen and wildfire smoke make Fraser Valley homes uniquely challenging for allergy sufferers. Here\'s which HVAC upgrades — HEPA filters, ERVs, UV purifiers — actually move the needle.',
+      content: '',
+      author: 'AbbotsfordHVAC.ca',
+      date: '2025-07-01',
       category: 'Air Quality',
-      readTime: '5 min read',
-      image: 'https://readdy.ai/api/search-image?query=Indoor%20air%20quality%20improvement%20system%20with%20air%20purifiers%20and%20filtration%20equipment%20in%20modern%20home%20interior%2C%20clean%20fresh%20air%20visualization&width=800&height=400&seq=blog-4&orientation=landscape',
+      readTime: '8 min read',
+      image: '/images/indoor-air-quality-abbotsford-hero.png',
       slug: 'indoor-air-quality-fraser-valley-allergies'
     },
     {
       id: '5',
-      title: 'Heat Pump vs Furnace: Which is Right for Your Home?',
-      excerpt: 'Compare the pros and cons of heat pumps and furnaces for Abbotsford\'s climate and your home\'s needs.',
-      content: 'Full article content here...',
-      author: 'Mike Thompson',
-      date: '2024-01-02',
+      title: 'Heat Pump vs Furnace: Which Is Right for Your Abbotsford Home?',
+      excerpt: 'Both systems heat your home. Only one also cools it, qualifies for up to $6,000 in BC rebates, and cuts your carbon footprint. Here\'s the honest comparison for Abbotsford\'s climate.',
+      content: '',
+      author: 'AbbotsfordHVAC.ca',
+      date: '2025-07-01',
       category: 'Heating',
-      readTime: '7 min read',
-      image: 'https://readdy.ai/api/search-image?query=Side%20by%20side%20comparison%20of%20modern%20heat%20pump%20and%20furnace%20systems%2C%20residential%20heating%20equipment%20installation%2C%20professional%20comparison%20visualization&width=800&height=400&seq=blog-5&orientation=landscape',
-      slug: 'heat-pump-vs-furnace-abbotsford-homes'
+      readTime: '9 min read',
+      image: '/images/heat-pump-vs-furnace-abbotsford-hero.png',
+      slug: 'heat-pump-vs-furnace-abbotsford'
+    },
+    {
+      id: '6',
+      title: 'Home HVAC Maintenance Best Practices for Abbotsford Homeowners',
+      excerpt: 'The seasonal maintenance checklist that keeps your furnace, AC, or heat pump running efficiently — and prevents the expensive emergency breakdowns that happen to neglected systems.',
+      content: '',
+      author: 'AbbotsfordHVAC.ca',
+      date: '2025-07-01',
+      category: 'HVAC Maintenance',
+      readTime: '8 min read',
+      image: '/images/hvac-maintenance-abbotsford-hero.png',
+      slug: 'home-hvac-maintenance-best-practices-abbotsford'
     }
   ];
 
