@@ -17,51 +17,7 @@ interface BlogPost {
   slug: string;
 }
 
-const blogPosts: BlogPost[] = [
-  {
-    id: '1',
-    title: 'How to Prepare Your HVAC System for Winter in Abbotsford',
-    excerpt: 'Essential maintenance tips to ensure your heating system runs efficiently during Fraser Valley\'s cold months.',
-    content: `
-      <h2>Why Winter HVAC Preparation Matters</h2>
-      <p>As temperatures drop in Abbotsford and the Fraser Valley, your heating system becomes the most important appliance in your home. Proper preparation ensures efficient operation, lower energy bills, and prevents costly emergency repairs during the coldest months.</p>
-      
-      <h2>Essential Pre-Winter Maintenance Tasks</h2>
-      
-      <h3>1. Replace or Clean Air Filters</h3>
-      <p>Dirty filters reduce airflow and force your system to work harder. Replace disposable filters or clean reusable ones monthly during peak usage periods.</p>
-      
-      <h3>2. Test Your Thermostat</h3>
-      <p>Ensure your thermostat is working correctly by testing both heating and cooling modes. Consider upgrading to a programmable or smart thermostat for better efficiency.</p>
-      
-      <h3>3. Inspect Vents and Ductwork</h3>
-      <p>Check all vents for obstructions and ensure dampers are open. Look for visible damage to ductwork that could cause heat loss.</p>
-      
-      <h3>4. Schedule Professional Maintenance</h3>
-      <p>A professional tune-up includes cleaning, lubricating moving parts, checking electrical connections, and ensuring safe operation.</p>
-      
-      <h2>Warning Signs to Watch For</h2>
-      <ul>
-        <li>Unusual noises during operation</li>
-        <li>Uneven heating throughout your home</li>
-        <li>Higher than normal energy bills</li>
-        <li>Frequent cycling on and off</li>
-        <li>Yellow pilot light (should be blue)</li>
-      </ul>
-      
-      <h2>Emergency Preparedness</h2>
-      <p>Keep our emergency service number handy: (604) 555-0123. We provide 24/7 emergency HVAC repairs throughout Abbotsford and the Fraser Valley.</p>
-      
-      <p>Don't wait until the first cold snap to discover your heating system isn't ready. Contact Abbotsford HVAC today to schedule your pre-winter maintenance and ensure your family stays warm all season long.</p>
-    `,
-    author: 'Mike Thompson',
-    date: '2024-01-15',
-    category: 'Maintenance',
-    readTime: '5 min read',
-    image: 'https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20performing%20winter%20maintenance%20on%20residential%20furnace%20system%20in%20Abbotsford%20home%2C%20checking%20filters%20and%20equipment%2C%20cold%20weather%20preparation&width=1200&height=600&seq=blog-post-1&orientation=landscape',
-    slug: 'prepare-hvac-system-winter-abbotsford'
-  }
-];
+const blogPosts: BlogPost[] = [];
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = blogPosts.find(p => p.slug === params.slug);
