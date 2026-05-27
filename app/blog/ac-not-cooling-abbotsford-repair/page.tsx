@@ -959,6 +959,14 @@ export default function ACNotCoolingPage() {
                 </div>
               </div>
 
+              {/* Internal Link */}
+              <div className="inline-cta" style={{ marginBottom: '0' }}>
+                <div className="inline-cta__text">
+                  <strong>No ductwork in a suite or addition?</strong> A ductless mini-split may solve your cooling problem more cost-effectively than extending your existing system.
+                </div>
+                <a href="/blog/ductless-mini-split-cooling-abbotsford" className="btn-sm">Mini-Split Guide →</a>
+              </div>
+
               <div className="cta-box">
                 <div className="cta-box__eyebrow">AbbotsfordHVAC.ca — AC Repair Specialists</div>
                 <h2>AC Still Not Cooling After the Checks?<br />{"Let's"} Fix It Today.</h2>
