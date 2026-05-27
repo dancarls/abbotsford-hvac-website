@@ -114,37 +114,37 @@ export default function Home() {
 
   const blogPosts = [
     {
-      id: '1',
-      title: 'How to Prepare Your HVAC System for Winter in Abbotsford',
-      excerpt: 'Essential maintenance tips to ensure your heating system runs efficiently during Fraser Valley\'s cold months.',
-      author: 'Mike Thompson',
-      date: '2024-01-15',
-      category: 'Maintenance',
-      readTime: '5 min read',
-      image: 'https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20performing%20winter%20maintenance%20on%20residential%20furnace%20system%20in%20Abbotsford%20home%2C%20checking%20filters%20and%20equipment%2C%20cold%20weather%20preparation&width=600&height=300&seq=home-blog-1&orientation=landscape',
-      slug: 'prepare-hvac-system-winter-abbotsford'
+      id: 'new-1',
+      title: 'AC Maintenance in Abbotsford: What\'s Included in a Summer Tune-Up (and Why It Saves You Money)',
+      excerpt: 'Discover what a proper AC tune-up includes, how it lowers your power bills, and why Abbotsford homeowners should book before the next heat wave.',
+      author: 'AbbotsfordHVAC.ca',
+      date: '2025-06-01',
+      category: 'AC Maintenance',
+      readTime: '7 min read',
+      image: '/images/ac-maintenance-abbotsford-hero.png',
+      slug: 'ac-maintenance-abbotsford-summer-tune-up'
     },
     {
-      id: '2',
-      title: 'Signs Your Air Conditioner Needs Repair Before Summer',
-      excerpt: 'Don\'t wait for the hottest day of the year to discover your AC isn\'t working. Watch for these warning signs.',
-      author: 'Sarah Chen',
-      date: '2024-01-10',
-      category: 'Cooling',
-      readTime: '4 min read',
-      image: 'https://readdy.ai/api/search-image?query=Air%20conditioning%20unit%20showing%20signs%20of%20wear%20and%20repair%20needs%2C%20residential%20exterior%20AC%20unit%20with%20visible%20issues%2C%20professional%20diagnostic%20assessment&width=600&height=300&seq=home-blog-2&orientation=landscape',
-      slug: 'air-conditioner-repair-signs-summer'
+      id: 'new-2',
+      title: 'AC Not Cooling in Abbotsford? 7 Quick Checks Before You Call for AC Repair',
+      excerpt: 'Run these 7 safe checks before calling a tech, then learn the most common repair causes, what it costs, and when to replace instead of repair.',
+      author: 'AbbotsfordHVAC.ca',
+      date: '2025-06-01',
+      category: 'AC Repair',
+      readTime: '8 min read',
+      image: '/images/ac-not-cooling-abbotsford-hero.png',
+      slug: 'ac-not-cooling-abbotsford-repair'
     },
     {
-      id: '3',
-      title: 'Energy-Efficient HVAC Upgrades That Save Money',
-      excerpt: 'Discover which HVAC improvements offer the best return on investment for Abbotsford homeowners.',
-      author: 'David Kim',
-      date: '2024-01-08',
-      category: 'Energy Efficiency',
-      readTime: '6 min read',
-      image: 'https://readdy.ai/api/search-image?query=Modern%20energy-efficient%20HVAC%20system%20installation%20in%20contemporary%20home%2C%20smart%20thermostat%20and%20high-efficiency%20equipment%2C%20cost%20savings%20visualization&width=600&height=300&seq=home-blog-3&orientation=landscape',
-      slug: 'energy-efficient-hvac-upgrades-save-money'
+      id: 'new-3',
+      title: 'Ductless Mini-Split Cooling in Abbotsford: Best Way to Cool Hot Rooms, Suites & Additions',
+      excerpt: 'One hot room. A basement suite with no ductwork. Learn when a mini-split beats extending ductwork, what installation costs, and how BC rebates can offset $1,000–$6,000.',
+      author: 'AbbotsfordHVAC.ca',
+      date: '2025-06-01',
+      category: 'Mini-Split Installation',
+      readTime: '9 min read',
+      image: '/images/ductless-mini-split-abbotsford-hero.png',
+      slug: 'ductless-mini-split-cooling-abbotsford'
     }
   ];
 

@@ -3,7 +3,7 @@ import Footer from '../../../components/feature/Footer';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getSettings } from '@/lib/getSettings';
-
+import geoData from '@/lib/data/geo-service-data.json';
 
 export const dynamic = 'force-dynamic';
 
@@ -112,13 +112,6 @@ export default function EmergencyServices() {
     }
   ];
 
-  const serviceAreas = [
-    'Abbotsford West', 'Abbotsford East', 'Clayburn Village', 'McMillan',
-    'Auguston', 'Eagle Mountain', 'Sandy Hill', 'Clearbrook Centre',
-    'Townline Hill', 'Mill Lake', 'West Clearbrook', 'South Clearbrook',
-    'Aberdeen', 'South Poplar', 'Kilgard', 'Gifford', 'Mission',
-    'Hatzic', 'Dewdney', 'Glen Valley', 'Silverhill'
-  ];
 
   const faqs = [
     {
@@ -147,13 +140,14 @@ export default function EmergencyServices() {
 
       {/* Hero Section */}
       <section className="relative py-32 overflow-hidden bg-red-900">
-        {/* Blurred Background Layer */}
+        {/* Background Image */}
         <div
-          className="absolute inset-0 bg-cover bg-center scale-110 blur-[8px] opacity-60"
+          className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url('https://readdy.ai/api/search-image?query=Emergency%20HVAC%20technician%20responding%20to%20urgent%20service%20call%20at%20night%2C%20professional%20emergency%20van%20with%20lights%2C%20urgent%20HVAC%20repair%20service%20in%20Abbotsford%2C%20emergency%20response%20vehicle%2C%2024-hour%20service%20availability%2C%20critical%20heating%20cooling%20repair&width=1920&height=1000&seq=emergency-hero-1&orientation=landscape')`
           }}
         />
+        <div className="absolute inset-0 bg-red-900/60" />
 
         {/* Content Overlay */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -370,11 +364,11 @@ export default function EmergencyServices() {
                 Areas We Serve for Emergency HVAC
               </h3>
               <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                {serviceAreas.map((area, index) => (
-                  <div key={index} className="flex items-center">
-                    <div className="w-2 h-2 bg-red-600 rounded-full mr-3"></div>
-                    <span className="text-gray-700">{area}</span>
-                  </div>
+                {geoData.areas.map((area) => (
+                  <Link key={area.slug} href={`/locations/${area.slug}`} className="flex items-center group">
+                    <div className="w-2 h-2 bg-red-600 rounded-full mr-3 flex-shrink-0"></div>
+                    <span className="text-gray-700 group-hover:text-red-600 transition-colors">{area.name}</span>
+                  </Link>
                 ))}
               </div>
               <div className="bg-red-50 rounded-lg p-6 border border-red-200">
