@@ -29,16 +29,16 @@ export default function BlogPage() {
       slug: 'ac-maintenance-abbotsford-summer-tune-up'
     },
     {
-      id: '2',
-      title: 'Signs Your Air Conditioner Needs Repair Before Summer',
-      excerpt: 'Don\'t wait for the hottest day of the year to discover your AC isn\'t working. Watch for these warning signs.',
-      content: 'Full article content here...',
-      author: 'Sarah Chen',
-      date: '2024-01-10',
-      category: 'Cooling',
-      readTime: '4 min read',
-      image: 'https://readdy.ai/api/search-image?query=Air%20conditioning%20unit%20showing%20signs%20of%20wear%20and%20repair%20needs%2C%20residential%20exterior%20AC%20unit%20with%20visible%20issues%2C%20professional%20diagnostic%20assessment&width=800&height=400&seq=blog-2&orientation=landscape',
-      slug: 'air-conditioner-repair-signs-summer'
+      id: 'new-2',
+      title: 'AC Not Cooling in Abbotsford? 7 Quick Checks Before You Call for AC Repair',
+      excerpt: 'Run these 7 safe checks before calling a tech, then learn the most common repair causes, what it costs, and when to replace instead of repair.',
+      content: '',
+      author: 'AbbotsfordHVAC.ca',
+      date: '2025-06-01',
+      category: 'AC Repair',
+      readTime: '8 min read',
+      image: '/images/ac-not-cooling-abbotsford-hero.png',
+      slug: 'ac-not-cooling-abbotsford-repair'
     },
     {
       id: '3',
