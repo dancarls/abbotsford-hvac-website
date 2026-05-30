@@ -279,7 +279,7 @@ const articleCSS = `
     box-shadow: var(--shadow-md);
   }
   .ms-pullquote::before {
-    content: '\201C'; position: absolute;
+    content: '\\201C'; position: absolute;
     top: -10px; left: 24px;
     font-family: var(--font-display); font-size: 130px;
     color: rgba(255,255,255,.07); line-height: 1; pointer-events: none;

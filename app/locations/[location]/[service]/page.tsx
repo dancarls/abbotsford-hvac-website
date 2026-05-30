@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         title: content.hero_title,
         description: content.hero_subtitle,
         openGraph: {
-            images: [`https://readdy.ai/api/search-image?query=${encodeURIComponent(`Professional ${serviceData.name} in ${areaData.name} Abbotsford`)}&width=1200&height=630&seq=seo-geo-1&orientation=landscape`],
+            images: [`https://www.abbotsfordhvac.ca/images/hvac-maintenance-abbotsford-hero.png`],
             type: 'website',
             title: content.hero_title,
             description: content.hero_subtitle
@@ -167,7 +167,7 @@ export default async function GeoServicePage({ params }: PageProps) {
                 <div
                     className="absolute inset-0 bg-cover bg-center scale-110 blur-[8px] opacity-60"
                     style={{
-                        backgroundImage: `url('https://readdy.ai/api/search-image?query=${encodeURIComponent(`Professional ${serviceData.name} service in ${areaData.name} residential area, HVAC technician at work`)}&width=1920&height=1000&seq=geo-hero-1&orientation=landscape')`
+                        backgroundImage: `url('/images/hvac-maintenance-abbotsford-hero.png')`
                     }}
                 />
 

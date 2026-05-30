@@ -57,7 +57,7 @@ export default function ContactPage() {
       <section
         className="relative h-96 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=Professional%20HVAC%20customer%20service%20office%20with%20modern%20communication%20equipment%2C%20friendly%20staff%20ready%20to%20help%20customers%2C%20clean%20business%20environment%20in%20Abbotsford%20BC&width=1200&height=600&seq=contact-hero&orientation=landscape')`
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('/images/hvac-maintenance-abbotsford-hero.png')`
         }}
       >
         <div className="absolute inset-0 flex items-center justify-center">

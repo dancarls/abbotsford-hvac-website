@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         title: content.title,
         description: content.description,
         openGraph: {
-            images: [`https://readdy.ai/api/search-image?query=${encodeURIComponent(`${areaData.name} BC landscape, community landmarks`)}&width=1200&height=630&seq=seo-area-1&orientation=landscape`],
+            images: [`https://www.abbotsfordhvac.ca/images/hvac-maintenance-abbotsford-hero.png`],
             type: 'website',
             title: content.title,
             description: content.description
@@ -128,7 +128,7 @@ export default async function ServiceAreaPage({ params }: PageProps) {
                 <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{
-                        backgroundImage: `url('https://readdy.ai/api/search-image?query=${encodeURIComponent(`${areaData.name} BC landscape, community landmarks, suburban area`)}&width=1920&height=1000&seq=area-hero-1&orientation=landscape')`
+                        backgroundImage: `url('/images/hvac-maintenance-abbotsford-hero.png')`
                     }}
                 />
                 <div className="absolute inset-0 bg-blue-900/60" />
@@ -294,6 +294,52 @@ export default async function ServiceAreaPage({ params }: PageProps) {
                                 <p className="text-sm text-gray-500 italic">
                                     * Statistics based on internal service data for the {areaData.name} region over the past 12 months.
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Map + All Service Areas */}
+            <section className="py-16 bg-white">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-10">
+                        <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Full Service Area</h2>
+                        <p className="text-gray-600">Heating, cooling, and HVAC service throughout Abbotsford and the Fraser Valley</p>
+                    </div>
+                    <div className="grid lg:grid-cols-2 gap-10 items-start">
+                        <div className="bg-gray-100 rounded-xl p-4">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-122.38308678476562!3d49.05718584863281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d4c89d72c663%3A0x4a2b36750554ba72!2sAbbotsford%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
+                                width="100%"
+                                height="400"
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                className="rounded-lg"
+                                title="Abbotsford HVAC Service Area Map"
+                            ></iframe>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-semibold mb-4 text-gray-900">All Areas We Serve</h3>
+                            <div className="grid grid-cols-2 gap-2 mb-6">
+                                {geoData.areas.map((a) => (
+                                    <Link
+                                        key={a.slug}
+                                        href={`/locations/${a.slug}`}
+                                        className={`flex items-center gap-2 p-2 rounded-lg text-sm transition-colors ${a.slug === areaData.slug ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'}`}
+                                    >
+                                        <div className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0"></div>
+                                        {a.name}
+                                    </Link>
+                                ))}
+                            </div>
+                            <div className="bg-blue-50 rounded-lg p-4">
+                                <p className="text-sm text-blue-800 font-medium">Don&apos;t see your area? We may still be able to help.</p>
+                                <a href={`tel:${settings.phoneNumber}`} className="mt-2 inline-block text-sm bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                                    Call {settings.phoneNumber}
+                                </a>
                             </div>
                         </div>
                     </div>

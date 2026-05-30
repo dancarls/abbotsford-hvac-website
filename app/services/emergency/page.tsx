@@ -144,7 +144,7 @@ export default function EmergencyServices() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://readdy.ai/api/search-image?query=Emergency%20HVAC%20technician%20responding%20to%20urgent%20service%20call%20at%20night%2C%20professional%20emergency%20van%20with%20lights%2C%20urgent%20HVAC%20repair%20service%20in%20Abbotsford%2C%20emergency%20response%20vehicle%2C%2024-hour%20service%20availability%2C%20critical%20heating%20cooling%20repair&width=1920&height=1000&seq=emergency-hero-1&orientation=landscape')`
+            backgroundImage: `url('/images/ac-not-cooling-abbotsford-hero.png')`
           }}
         />
         <div className="absolute inset-0 bg-red-900/60" />
@@ -326,10 +326,42 @@ export default function EmergencyServices() {
             </div>
             <div className="bg-gray-100 rounded-xl p-4">
               <img
-                src="https://readdy.ai/api/search-image?query=Emergency%20HVAC%20technician%20working%20urgently%20to%20repair%20heating%20system%20in%20cold%20weather%2C%20professional%20emergency%20repair%20service%2C%20technician%20with%20emergency%20tools%20and%20parts%2C%20urgent%20HVAC%20repair%20in%20Abbotsford%20home%2C%20emergency%20service%20response&width=600&height=400&seq=emergency-service-1&orientation=landscape"
+                src="/images/ac-capacitor-diagnosis-abbotsford.png"
                 alt="Emergency HVAC service"
                 className="w-full h-auto rounded-lg object-cover object-top"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Emergency Response Context */}
+      <section className="py-16 bg-red-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Fast Emergency Response Across Abbotsford</h2>
+            <p className="text-xl text-red-200 max-w-3xl mx-auto">When your heating fails in January or your AC dies in a July heat wave, every hour matters. Here's what our emergency process looks like from your first call.</p>
+          </div>
+          <div className="grid md:grid-cols-4 gap-6">
+            <div className="bg-red-800 rounded-xl p-6 text-center">
+              <div className="text-4xl font-bold text-yellow-400 mb-2">1</div>
+              <h3 className="text-lg font-bold mb-2">You Call</h3>
+              <p className="text-red-200 text-sm">Our dispatch answers immediately — no voicemail, no call-back queue. We assess your situation and confirm coverage area.</p>
+            </div>
+            <div className="bg-red-800 rounded-xl p-6 text-center">
+              <div className="text-4xl font-bold text-yellow-400 mb-2">2</div>
+              <h3 className="text-lg font-bold mb-2">Tech Dispatched</h3>
+              <p className="text-red-200 text-sm">A certified technician is dispatched within minutes. Our GPS-routed dispatch sends the closest available tech in Abbotsford.</p>
+            </div>
+            <div className="bg-red-800 rounded-xl p-6 text-center">
+              <div className="text-4xl font-bold text-yellow-400 mb-2">3</div>
+              <h3 className="text-lg font-bold mb-2">On-Site Diagnosis</h3>
+              <p className="text-red-200 text-sm">We diagnose the problem and give you a clear, upfront price before any work begins. No surprises, no hidden fees.</p>
+            </div>
+            <div className="bg-red-800 rounded-xl p-6 text-center">
+              <div className="text-4xl font-bold text-yellow-400 mb-2">4</div>
+              <h3 className="text-lg font-bold mb-2">Problem Solved</h3>
+              <p className="text-red-200 text-sm">Our vans carry the most common parts for all major brands. Most emergency repairs are completed in a single visit.</p>
             </div>
           </div>
         </div>

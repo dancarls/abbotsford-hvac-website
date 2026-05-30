@@ -1,4 +1,3 @@
-import ProjectServiceForm from '../../../components/feature/ProjectServiceForm';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { Metadata } from 'next';
@@ -209,7 +208,7 @@ export default function HeatingServices() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20installing%20modern%20gas%20furnace%20in%20clean%20basement%20mechanical%20room%2C%20Abbotsford%20residential%20home%2C%20high-efficiency%20heating%20system%2C%20professional%20installation%2C%20clean%20organized%20workspace%2C%20modern%20heating%20equipment%2C%20Canadian%20home%20interior&width=1920&height=1000&seq=heating-hero-1&orientation=landscape')`
+            backgroundImage: `url('/images/heat-pump-vs-furnace-abbotsford-hero.png')`
           }}
         />
         <div className="absolute inset-0 bg-blue-900/60" />
@@ -228,8 +227,8 @@ export default function HeatingServices() {
                 <i className="ri-phone-fill text-2xl"></i>
                 Call Now {settings.phoneNumber}
               </a>
-              <a href="#heating-form-section" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
-                Request Online Quote
+              <a href="/contact" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
+                Chat or Get a Quote
               </a>
             </div>
           </div>
@@ -323,11 +322,44 @@ export default function HeatingServices() {
             </div>
             <div className="bg-gray-100 rounded-xl p-4">
               <img
-                src="https://readdy.ai/api/search-image?query=HVAC%20technician%20performing%20professional%20furnace%20maintenance%20service%20in%20modern%20home%20basement%2C%20checking%20heating%20system%20components%2C%20diagnostic%20tools%2C%20clean%20professional%20work%20environment%2C%20Abbotsford%20residential%20heating%20service%2C%20high-efficiency%20furnace%20inspection&width=600&height=400&seq=heating-service-1&orientation=landscape"
+                src="/images/dual-fuel-heat-pump-installation-abbotsford.png"
                 alt="Professional heating service"
                 className="w-full h-auto rounded-lg object-cover object-top"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Abbotsford Climate & Local Knowledge */}
+      <section className="py-16 bg-blue-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Heating Built for Abbotsford's Climate</h2>
+            <p className="text-xl text-blue-200 max-w-3xl mx-auto">The Fraser Valley's wet winters and temperature swings demand a heating system designed for local conditions — not a generic spec from a catalogue.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-blue-800 rounded-xl p-6">
+              <i className="ri-temp-cold-line text-3xl text-blue-300 mb-4 block"></i>
+              <h3 className="text-xl font-bold mb-3">Cold, Damp Winters</h3>
+              <p className="text-blue-200">Abbotsford temperatures regularly drop to -10°C to -15°C. High humidity accelerates heat exchanger corrosion — we inspect for this every service call and recommend corrosion-resistant systems that stand up to Fraser Valley winters.</p>
+            </div>
+            <div className="bg-blue-800 rounded-xl p-6">
+              <i className="ri-money-dollar-circle-line text-3xl text-blue-300 mb-4 block"></i>
+              <h3 className="text-xl font-bold mb-3">BC Hydro & FortisBC Rebates</h3>
+              <p className="text-blue-200">Qualifying heat pump installations can receive up to $6,000 in CleanBC rebates. We help you identify eligible systems, complete the paperwork, and maximize your rebate — at no extra charge.</p>
+            </div>
+            <div className="bg-blue-800 rounded-xl p-6">
+              <i className="ri-leaf-line text-3xl text-blue-300 mb-4 block"></i>
+              <h3 className="text-xl font-bold mb-3">Heat Pumps vs. Gas Furnaces</h3>
+              <p className="text-blue-200">Modern cold-climate heat pumps work efficiently down to -25°C, making them ideal for Abbotsford. We perform a load calculation and compare operating costs before recommending which system makes financial sense for your home.</p>
+            </div>
+          </div>
+          <div className="mt-10 grid md:grid-cols-4 gap-6 text-center">
+            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">15+</div><div className="text-blue-300 text-sm mt-1">Years serving Abbotsford</div></div>
+            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">2,000+</div><div className="text-blue-300 text-sm mt-1">Systems installed locally</div></div>
+            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">24/7</div><div className="text-blue-300 text-sm mt-1">Emergency response</div></div>
+            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">4.9★</div><div className="text-blue-300 text-sm mt-1">Average customer rating</div></div>
           </div>
         </div>
       </section>
@@ -384,23 +416,25 @@ export default function HeatingServices() {
         </div>
       </section>
 
-      <section id="heating-form-section" className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ProjectServiceForm
-            serviceId="heating-form"
-            serviceName="Heating Service"
-            formEndpoint="https://readdy.ai/api/form/8c0adk74jlskm93dk4ma"
-            serviceOptions={[
-              { value: 'furnace-installation', label: 'Furnace Installation' },
-              { value: 'furnace-repair', label: 'Furnace Repair' },
-              { value: 'heat-pump', label: 'Heat Pump Service' },
-              { value: 'boiler-service', label: 'Boiler Service' },
-              { value: 'thermostat', label: 'Smart Thermostat' },
-              { value: 'emergency-heating', label: 'Emergency Heating' },
-              { value: 'maintenance', label: 'Heating Maintenance' },
-              { value: 'other', label: 'Other' }
-            ]}
-          />
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i className="ri-robot-2-line text-2xl text-white"></i>
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Book Heating Service?</h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Call us now or use our AI chat assistant — available 24/7 to answer questions, provide estimates, and book your appointment. No forms, no waiting.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg text-lg inline-flex items-center justify-center gap-3">
+              <i className="ri-phone-fill"></i>
+              Call {settings.phoneNumber}
+            </a>
+            <a href="/contact" className="bg-white text-blue-600 border-2 border-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all text-lg inline-flex items-center justify-center gap-3">
+              <i className="ri-chat-smile-2-line"></i>
+              Chat with Our AI
+            </a>
+          </div>
         </div>
       </section>
 

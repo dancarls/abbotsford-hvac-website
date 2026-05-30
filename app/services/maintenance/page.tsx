@@ -1,4 +1,3 @@
-import ProjectServiceForm from '../../../components/feature/ProjectServiceForm';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { Metadata } from 'next';
@@ -159,7 +158,7 @@ export default function MaintenanceServices() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://readdy.api/search-image?query=Professional%20HVAC%20technician%20performing%20comprehensive%20maintenance%20service%20on%20residential%20system%20in%20Abbotsford%20home%2C%20checking%20and%20cleaning%20equipment%2C%20preventive%20care%20service%2C%20professional%20maintenance%20work%2C%20system%20tune-up%20and%20inspection%2C%20modern%20HVAC%20maintenance&width=1920&height=1000&seq=maintenance-hero-1&orientation=landscape')`
+            backgroundImage: `url('/images/hvac-maintenance-abbotsford-hero.png')`
           }}
         />
         <div className="absolute inset-0 bg-blue-900/60" />
@@ -178,7 +177,7 @@ export default function MaintenanceServices() {
                 <i className="ri-phone-fill text-2xl"></i>
                 Call Now {settings.phoneNumber}
               </a>
-              <a href="#maintenance-form-section" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
+              <a href="/contact" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
                 Request Online Quote
               </a>
             </div>
@@ -273,7 +272,7 @@ export default function MaintenanceServices() {
                   10% repair discount
                 </li>
               </ul>
-              <a href="#maintenance-form-section" className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors cursor-pointer whitespace-nowrap">
+              <a href="/contact" className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors cursor-pointer whitespace-nowrap">
                 Choose Basic
               </a>
             </div>
@@ -321,7 +320,7 @@ export default function MaintenanceServices() {
                   20% repair discount
                 </li>
               </ul>
-              <a href="#maintenance-form-section" className="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors cursor-pointer whitespace-nowrap">
+              <a href="/contact" className="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors cursor-pointer whitespace-nowrap">
                 Choose Premium
               </a>
             </div>
@@ -366,7 +365,7 @@ export default function MaintenanceServices() {
                   25% repair discount
                 </li>
               </ul>
-              <a href="#maintenance-form-section" className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors cursor-pointer whitespace-nowrap">
+              <a href="/contact" className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors cursor-pointer whitespace-nowrap">
                 Choose Commercial
               </a>
             </div>
@@ -420,10 +419,37 @@ export default function MaintenanceServices() {
             </div>
             <div className="bg-gray-100 rounded-xl p-4">
               <img
-                src="https://readdy.ai/api/search-image?query=HVAC%20technician%20performing%20detailed%20system%20maintenance%20and%20inspection%2C%20professional%20maintenance%20checklist%2C%20modern%20HVAC%20equipment%20servicing%20in%20Abbotsford%20home%2C%20preventive%20care%20service%2C%20professional%20maintenance%20work%2C%20system%20optimization&width=600&height=400&seq=maintenance-service-1&orientation=landscape"
+                src="/images/hvac-filter-replacement-abbotsford.png"
                 alt="Professional maintenance service"
                 className="w-full h-auto rounded-lg object-cover object-top"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Abbotsford Maintenance Context */}
+      <section className="py-16 bg-blue-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">What Abbotsford's Climate Does to Your HVAC</h2>
+            <p className="text-xl text-blue-200 max-w-3xl mx-auto">Fraser Valley's wet, pollen-heavy environment is uniquely hard on HVAC equipment. Here's what our technicians look for on every Abbotsford maintenance call.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-blue-800 rounded-xl p-6">
+              <i className="ri-temp-cold-line text-3xl text-blue-300 mb-4 block"></i>
+              <h3 className="text-xl font-bold mb-3">Fall Heating Tune-Up</h3>
+              <p className="text-blue-200">September is the ideal time for furnace or heat pump maintenance in Abbotsford. We clean burners, check heat exchangers for cracks (critical in damp climates), test controls, and calibrate thermostats before the cold arrives.</p>
+            </div>
+            <div className="bg-blue-800 rounded-xl p-6">
+              <i className="ri-sun-line text-3xl text-yellow-400 mb-4 block"></i>
+              <h3 className="text-xl font-bold mb-3">Spring AC Tune-Up</h3>
+              <p className="text-blue-200">April is the right time to service your AC before summer demand peaks. We clean condenser coils, check refrigerant levels, test capacitors, and inspect for damage from winter storms — so you're ready before the first heat wave hits.</p>
+            </div>
+            <div className="bg-blue-800 rounded-xl p-6">
+              <i className="ri-filter-line text-3xl text-blue-300 mb-4 block"></i>
+              <h3 className="text-xl font-bold mb-3">Filter Schedules for Fraser Valley</h3>
+              <p className="text-blue-200">Abbotsford's agricultural pollen and wildfire smoke clog filters faster than most cities. We recommend checking filters monthly and replacing every 4-6 weeks during high-pollen spring and smoky late summers.</p>
             </div>
           </div>
         </div>
@@ -481,22 +507,25 @@ export default function MaintenanceServices() {
         </div>
       </section>
 
-      <section id="maintenance-form-section" className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ProjectServiceForm
-            serviceId="maintenance-form"
-            serviceName="HVAC Maintenance Service"
-            formEndpoint="https://readdy.ai/api/form/d3ad1vog3i95tm0o9ci0"
-            serviceOptions={[
-              { value: 'annual-inspection', label: 'Annual Inspection' },
-              { value: 'filter-replacement', label: 'Filter Replacement' },
-              { value: 'thermostat-upgrade', label: 'Thermostat Upgrade' },
-              { value: 'maintenance-agreement', label: 'Maintenance Agreement' },
-              { value: 'system-tune-up', label: 'System Tune-up' },
-              { value: 'preventive-care', label: 'Preventive Care' },
-              { value: 'other', label: 'Other' }
-            ]}
-          />
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i className="ri-robot-2-line text-2xl text-white"></i>
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Schedule Your HVAC Maintenance</h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Call us now or use our AI chat assistant — available 24/7 to schedule tune-ups, set up a maintenance plan, or ask any HVAC question. No forms, no waiting.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg text-lg inline-flex items-center justify-center gap-3">
+              <i className="ri-phone-fill"></i>
+              Call {settings.phoneNumber}
+            </a>
+            <a href="/contact" className="bg-white text-blue-600 border-2 border-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all text-lg inline-flex items-center justify-center gap-3">
+              <i className="ri-chat-smile-2-line"></i>
+              Chat with Our AI
+            </a>
+          </div>
         </div>
       </section>
 

@@ -229,7 +229,7 @@ export default function Home() {
       <section
         className="relative min-h-[90vh] flex items-center bg-cover bg-center"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=Modern%20comfortable%20family%20home%20in%20Abbotsford%20British%20Columbia%20with%20clean%20architectural%20lines%2C%20HVAC%20equipment%20visible%20on%20exterior%2C%20beautiful%20residential%20neighborhood%20setting%2C%20professional%20photography%2C%20natural%20lighting%2C%20blue%20sky%20background%2C%20well-maintained%20landscaping%2C%20Canadian%20residential%20architecture%20style&width=1920&height=1080&seq=hero-1&orientation=landscape')`
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/images/hvac-maintenance-abbotsford-hero.png')`
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">

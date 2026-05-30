@@ -43,7 +43,7 @@ export default function AboutPage() {
       <section
         className="relative h-96 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20team%20working%20on%20modern%20heating%20and%20cooling%20systems%20in%20a%20clean%20workshop%20environment%20with%20tools%20and%20equipment%2C%20emphasizing%20expertise%20and%20reliability%20in%20British%20Columbia%20Canada&width=1200&height=600&seq=about-hero&orientation=landscape')`
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('/images/hvac-maintenance-abbotsford-hero.png')`
         }}
       >
         <div className="absolute inset-0 flex items-center justify-center">
@@ -76,7 +76,7 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <img
-                src="https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20inspecting%20modern%20heating%20equipment%20in%20clean%20utility%20room%2C%20bright%20lighting%2C%20technical%20tools&width=600&height=500&orientation=landscape"
+                src="/images/dual-fuel-heat-pump-installation-abbotsford.png"
                 alt="Abbotsford HVAC Professional Service"
                 className="rounded-lg shadow-lg object-cover w-full h-96"
               />
@@ -173,7 +173,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <img
-                  src="https://readdy.ai/api/search-image?query=Professional%20HVAC%20company%20owner%20manager%20in%20business%20attire%20standing%20confidently%20in%20modern%20office%20environment%2C%20middle-aged%20experienced%20leader%2C%20clean%20professional%20appearance&width=400&height=300&seq=team-owner&orientation=landscape"
+                  src="/images/heat-pump-vs-furnace-abbotsford-hero.png"
                   alt="Mike Thompson - Owner"
                   className="w-full h-64 object-cover object-top"
                 />
@@ -188,7 +188,7 @@ export default function AboutPage() {
 
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <img
-                  src="https://readdy.ai/api/search-image?query=Experienced%20HVAC%20technician%20in%20uniform%20working%20on%20heating%20system%2C%20professional%20appearance%20with%20tools%2C%20expertise%20and%20competence%20in%20residential%20setting&width=400&height=300&seq=team-tech1&orientation=landscape"
+                  src="/images/hvac-maintenance-abbotsford-hero.png"
                   alt="Sarah Chen - Lead Technician"
                   className="w-full h-64 object-cover object-top"
                 />
@@ -203,7 +203,7 @@ export default function AboutPage() {
 
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <img
-                  src="https://readdy.ai/api/search-image?query=Professional%20customer%20service%20representative%20in%20modern%20office%20environment%2C%20friendly%20approachable%20person%20answering%20phone%20calls%2C%20clean%20business%20atmosphere&width=400&height=300&seq=team-service&orientation=landscape"
+                  src="/images/ac-maintenance-abbotsford-hero.png"
                   alt="David Kim - Service Manager"
                   className="w-full h-64 object-cover object-top"
                 />

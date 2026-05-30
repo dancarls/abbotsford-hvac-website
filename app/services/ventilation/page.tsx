@@ -1,4 +1,3 @@
-import ProjectServiceForm from '../../../components/feature/ProjectServiceForm';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { Metadata } from 'next';
@@ -192,7 +191,7 @@ export default function VentilationServices() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20installing%20whole-home%20ventilation%20system%20with%20ERV%20unit%20in%20modern%20Abbotsford%20home%20basement%2C%20clean%20ductwork%20installation%2C%20fresh%20air%20ventilation%20equipment%2C%20professional%20residential%20ventilation%20service%2C%20modern%20mechanical%20room&width=1920&height=1000&seq=ventilation-hero-1&orientation=landscape')`
+            backgroundImage: `url('/images/hvac-maintenance-abbotsford-hero.png')`
           }}
         />
         <div className="absolute inset-0 bg-blue-900/60" />
@@ -211,8 +210,8 @@ export default function VentilationServices() {
                 <i className="ri-phone-fill text-2xl"></i>
                 Call Now {settings.phoneNumber}
               </a>
-              <a href="#ventilation-form-section" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
-                Request Online Quote
+              <a href="/contact" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
+                Chat or Get a Quote
               </a>
             </div>
           </div>
@@ -306,10 +305,37 @@ export default function VentilationServices() {
             </div>
             <div className="bg-gray-100 rounded-xl p-4">
               <img
-                src="https://readdy.ai/api/search-image?query=HVAC%20technician%20performing%20professional%20duct%20cleaning%20service%20with%20specialized%20vacuum%20equipment%2C%20clean%20residential%20ductwork%20system%2C%20professional%20ventilation%20maintenance%20in%20Abbotsford%20home%2C%20modern%20air%20quality%20improvement%20service&width=600&height=400&seq=ventilation-service-1&orientation=landscape"
+                src="/images/hvac-filter-replacement-abbotsford.png"
                 alt="Professional ventilation service"
                 className="w-full h-auto rounded-lg object-cover object-top"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Abbotsford Climate & Local Knowledge */}
+      <section className="py-16 bg-blue-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Why Ventilation Matters in the Fraser Valley</h2>
+            <p className="text-xl text-blue-200 max-w-3xl mx-auto">Abbotsford averages 1,500mm of rain per year — one of BC's wettest cities. Without proper ventilation, that moisture invades your home, creating mould, rot, and poor air quality.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-blue-800 rounded-xl p-6">
+              <i className="ri-drop-line text-3xl text-blue-300 mb-4 block"></i>
+              <h3 className="text-xl font-bold mb-3">Moisture & Mould Control</h3>
+              <p className="text-blue-200">Abbotsford's rainfall and humidity create perfect conditions for mould in attics, crawlspaces, and walls. HRV systems continuously exhaust damp air and bring in fresh air — preventing mould before it starts.</p>
+            </div>
+            <div className="bg-blue-800 rounded-xl p-6">
+              <i className="ri-wind-line text-3xl text-blue-300 mb-4 block"></i>
+              <h3 className="text-xl font-bold mb-3">Wildfire Smoke Filtration</h3>
+              <p className="text-blue-200">BC wildfire smoke increasingly blankets the Fraser Valley each summer. ERV systems with MERV-13 filters remove fine particulate matter, keeping your indoor air clean even when outdoor air quality is unhealthy.</p>
+            </div>
+            <div className="bg-blue-800 rounded-xl p-6">
+              <i className="ri-money-dollar-circle-line text-3xl text-blue-300 mb-4 block"></i>
+              <h3 className="text-xl font-bold mb-3">Energy Recovery Savings</h3>
+              <p className="text-blue-200">Modern HRV/ERV systems recover 70-80% of the heat from exhaust air, reducing your heating costs while maintaining fresh air circulation. Most Abbotsford homeowners see a 15-25% reduction in heating bills.</p>
             </div>
           </div>
         </div>
@@ -367,22 +393,25 @@ export default function VentilationServices() {
         </div>
       </section>
 
-      <section id="ventilation-form-section" className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ProjectServiceForm
-            serviceId="ventilation-form"
-            serviceName="Ventilation Service"
-            formEndpoint="https://readdy.ai/api/form/d3ad1vog3i95tm0o9ch0"
-            serviceOptions={[
-              { value: 'whole-home-ventilation', label: 'Whole-Home Ventilation' },
-              { value: 'exhaust-fans', label: 'Exhaust & Attic Fans' },
-              { value: 'air-balancing', label: 'Air Balancing' },
-              { value: 'erv-hrv', label: 'ERV/HRV Systems' },
-              { value: 'duct-cleaning', label: 'Duct Cleaning' },
-              { value: 'maintenance', label: 'Ventilation Maintenance' },
-              { value: 'other', label: 'Other' }
-            ]}
-          />
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i className="ri-robot-2-line text-2xl text-white"></i>
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Improve Your Home's Air Circulation</h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Call us now or use our AI chat assistant — available 24/7 for ventilation questions, duct cleaning estimates, and ERV/HRV consultations. No forms, no waiting.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg text-lg inline-flex items-center justify-center gap-3">
+              <i className="ri-phone-fill"></i>
+              Call {settings.phoneNumber}
+            </a>
+            <a href="/contact" className="bg-white text-blue-600 border-2 border-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all text-lg inline-flex items-center justify-center gap-3">
+              <i className="ri-chat-smile-2-line"></i>
+              Chat with Our AI
+            </a>
+          </div>
         </div>
       </section>
 

@@ -1,4 +1,3 @@
-import ProjectServiceForm from '../../../components/feature/ProjectServiceForm';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import { Metadata } from 'next';
@@ -205,7 +204,7 @@ export default function CoolingServices() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://readdy.ai/api/search-image?query=Professional%20HVAC%20technician%20installing%20modern%20central%20air%20conditioning%20unit%20outside%20Abbotsford%20home%2C%20summer%20cooling%20installation%2C%20clean%20residential%20exterior%2C%20modern%20AC%20condenser%20unit%2C%20professional%20cooling%20system%20installation%2C%20Canadian%20residential%20setting&width=1920&height=1000&seq=cooling-hero-1&orientation=landscape')`
+            backgroundImage: `url('/images/ac-maintenance-abbotsford-hero.png')`
           }}
         />
         <div className="absolute inset-0 bg-blue-900/60" />
@@ -224,8 +223,8 @@ export default function CoolingServices() {
                 <i className="ri-phone-fill text-2xl"></i>
                 Call Now {settings.phoneNumber}
               </a>
-              <a href="#cooling-form-section" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
-                Request Online Quote
+              <a href="/contact" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
+                Chat or Get a Quote
               </a>
             </div>
           </div>
@@ -319,11 +318,44 @@ export default function CoolingServices() {
             </div>
             <div className="bg-gray-100 rounded-xl p-4">
               <img
-                src="https://readdy.ai/api/search-image?query=HVAC%20technician%20performing%20professional%20air%20conditioning%20maintenance%20service%2C%20cleaning%20AC%20coils%20and%20checking%20refrigerant%20levels%2C%20modern%20residential%20cooling%20system%2C%20professional%20AC%20service%20in%20Abbotsford%20home%2C%20clean%20technical%20work%20environment&width=600&height=400&seq=cooling-service-1&orientation=landscape"
+                src="/images/ductless-mini-split-abbotsford-hero.png"
                 alt="Professional cooling service"
                 className="w-full h-auto rounded-lg object-cover object-top"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Abbotsford Climate & Local Knowledge */}
+      <section className="py-16 bg-blue-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">AC Built for Abbotsford Summers</h2>
+            <p className="text-xl text-blue-200 max-w-3xl mx-auto">After the 2021 BC heat dome hit 49°C, Abbotsford homeowners learned fast that quality cooling isn't optional. Here's what we recommend for Fraser Valley homes.</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-blue-800 rounded-xl p-6">
+              <i className="ri-sun-line text-3xl text-yellow-400 mb-4 block"></i>
+              <h3 className="text-xl font-bold mb-3">Heat Dome Ready</h3>
+              <p className="text-blue-200">Abbotsford's summers now regularly exceed 35°C. We size AC systems for peak demand — not average temperatures — so your system keeps up on the hottest days without short-cycling.</p>
+            </div>
+            <div className="bg-blue-800 rounded-xl p-6">
+              <i className="ri-home-2-line text-3xl text-blue-300 mb-4 block"></i>
+              <h3 className="text-xl font-bold mb-3">Ductless for Older Homes</h3>
+              <p className="text-blue-200">Many Abbotsford homes built before 1990 have no ductwork. Ductless mini-splits add whole-home or room cooling without costly duct installation — and they qualify for BC Hydro rebates up to $1,000 per unit.</p>
+            </div>
+            <div className="bg-blue-800 rounded-xl p-6">
+              <i className="ri-leaf-line text-3xl text-blue-300 mb-4 block"></i>
+              <h3 className="text-xl font-bold mb-3">Energy Efficiency Ratings</h3>
+              <p className="text-blue-200">We recommend SEER2 ratings of 16+ for Abbotsford's climate. Higher-rated units cost more upfront but pay back in 2-4 years through lower hydro bills — especially during peak summer rates.</p>
+            </div>
+          </div>
+          <div className="mt-10 grid md:grid-cols-4 gap-6 text-center">
+            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">15+</div><div className="text-blue-300 text-sm mt-1">Years serving Abbotsford</div></div>
+            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">1,500+</div><div className="text-blue-300 text-sm mt-1">AC units installed</div></div>
+            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">24/7</div><div className="text-blue-300 text-sm mt-1">Emergency AC response</div></div>
+            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">4.9★</div><div className="text-blue-300 text-sm mt-1">Average customer rating</div></div>
           </div>
         </div>
       </section>
@@ -380,22 +412,25 @@ export default function CoolingServices() {
         </div>
       </section>
 
-      <section id="cooling-form-section" className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ProjectServiceForm
-            serviceId="cooling-form"
-            serviceName="Cooling Service"
-            formEndpoint="https://readdy.ai/api/form/d3ad1vog3i95tm0o9cgg"
-            serviceOptions={[
-              { value: 'ac-installation', label: 'AC Installation' },
-              { value: 'ac-repair', label: 'AC Repair' },
-              { value: 'central-air', label: 'Central Air System' },
-              { value: 'ductless', label: 'Ductless Mini-Split' },
-              { value: 'ac-maintenance', label: 'AC Maintenance' },
-              { value: 'emergency-ac', label: 'Emergency AC Repair' },
-              { value: 'other', label: 'Other' }
-            ]}
-          />
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+            <i className="ri-robot-2-line text-2xl text-white"></i>
+          </div>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Beat the Heat?</h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Call us now or use our AI chat assistant — available 24/7 to answer questions, provide estimates, and book your AC service. No forms, no waiting.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg text-lg inline-flex items-center justify-center gap-3">
+              <i className="ri-phone-fill"></i>
+              Call {settings.phoneNumber}
+            </a>
+            <a href="/contact" className="bg-white text-blue-600 border-2 border-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all text-lg inline-flex items-center justify-center gap-3">
+              <i className="ri-chat-smile-2-line"></i>
+              Chat with Our AI
+            </a>
+          </div>
         </div>
       </section>
 

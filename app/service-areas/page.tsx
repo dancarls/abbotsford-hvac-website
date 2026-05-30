@@ -43,7 +43,7 @@ export default function ServiceAreasPage() {
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://readdy.ai/api/search-image?query=Abbotsford%20BC%20residential%20neighbourhood%20aerial%20view%2C%20Fraser%20Valley%20suburban%20homes%2C%20community%20landscape%2C%20professional%20HVAC%20service%20area&width=1920&height=600&seq=service-areas-hero-1&orientation=landscape')`
+            backgroundImage: `url('/images/hvac-maintenance-abbotsford-hero.png')`
           }}
         />
         <div className="absolute inset-0 bg-blue-800/65" />
