@@ -9,7 +9,7 @@ export default function AdminDashboard() {
     const [activeTab, setActiveTab] = useState('areas');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
-    const [siteSettings, setSiteSettings] = useState({ phoneNumber: '', showTeamSection: false, googleAnalyticsId: '', aiReceptionistScript: '' });
+    const [siteSettings, setSiteSettings] = useState({ phoneNumber: '', address: '', showTeamSection: false, googleAnalyticsId: '', aiReceptionistScript: '' });
     const [isSaving, setIsSaving] = useState(false);
 
     useEffect(() => {
@@ -275,6 +275,17 @@ export default function AdminDashboard() {
                                                 placeholder="e.g. 123-456-7890"
                                             />
                                             <p className="text-xs text-gray-500 mt-2">This will update the phone number globally across the top header, footer, and service pages.</p>
+                                        </div>
+                                        <div className="mt-4">
+                                            <label className="block text-sm font-semibold mb-2">Business Address</label>
+                                            <input
+                                                type="text"
+                                                value={siteSettings.address}
+                                                onChange={(e) => setSiteSettings({ ...siteSettings, address: e.target.value })}
+                                                className="w-full p-3 border rounded-xl"
+                                                placeholder="e.g. 123 Main St, Abbotsford, BC V2S 1A1"
+                                            />
+                                            <p className="text-xs text-gray-500 mt-2">Shown in the footer and used in Google local business schema.</p>
                                         </div>
                                     </div>
 

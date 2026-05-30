@@ -8,6 +8,7 @@ export function getSettings() {
         primaryCity: settingsData.primaryCity || "Abbotsford",
         baseUrl: settingsData.baseUrl || "https://www.abbotsfordhvac.ca",
         email: settingsData.email || "info@abbotsfordhvac.ca",
+        address: (settingsData as any).address || "",
         aiReceptionistScript: (settingsData as any).aiReceptionistScript || "",
         googleAnalyticsId: (settingsData as any).googleAnalyticsId || "",
         showTeamSection: settingsData.showTeamSection || false,
