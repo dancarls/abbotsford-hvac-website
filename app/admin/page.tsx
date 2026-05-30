@@ -9,7 +9,7 @@ export default function AdminDashboard() {
     const [activeTab, setActiveTab] = useState('areas');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
-    const [siteSettings, setSiteSettings] = useState({ phoneNumber: '', showTeamSection: false });
+    const [siteSettings, setSiteSettings] = useState({ phoneNumber: '', showTeamSection: false, googleAnalyticsId: '', aiReceptionistScript: '' });
     const [isSaving, setIsSaving] = useState(false);
 
     useEffect(() => {
@@ -179,21 +179,34 @@ export default function AdminDashboard() {
                         {activeTab === 'seo' && (
                             <div className="max-w-2xl">
                                 <h2 className="text-xl font-bold mb-6">SEO & External Code</h2>
-                                <div className="space-y-6">
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-2">Google Analytics ID</label>
-                                        <input type="text" placeholder="G-XXXXXXXXXX" className="w-full p-2 border rounded-lg" />
+                                <form onSubmit={handleSaveSettings} className="space-y-6">
+                                    <div className="bg-gray-50 p-6 rounded-xl border">
+                                        <h3 className="font-bold mb-4">Google Analytics</h3>
+                                        <label className="block text-sm font-semibold mb-2">Measurement ID</label>
+                                        <input
+                                            type="text"
+                                            value={siteSettings.googleAnalyticsId}
+                                            onChange={(e) => setSiteSettings({ ...siteSettings, googleAnalyticsId: e.target.value })}
+                                            placeholder="G-XXXXXXXXXX"
+                                            className="w-full p-3 border rounded-xl"
+                                        />
+                                        <p className="text-xs text-gray-500 mt-2">Added to every page automatically once saved.</p>
                                     </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-2">AdSense Code Block</label>
-                                        <textarea placeholder="Paste your AdSense script here..." className="w-full p-2 border rounded-lg h-24 font-mono text-xs"></textarea>
+                                    <div className="bg-gray-50 p-6 rounded-xl border">
+                                        <h3 className="font-bold mb-4">AI Chatbot / Custom Script</h3>
+                                        <label className="block text-sm font-semibold mb-2">Paste embed script here</label>
+                                        <textarea
+                                            value={siteSettings.aiReceptionistScript}
+                                            onChange={(e) => setSiteSettings({ ...siteSettings, aiReceptionistScript: e.target.value })}
+                                            placeholder="<script>...</script>"
+                                            className="w-full p-3 border rounded-xl h-32 font-mono text-xs"
+                                        />
+                                        <p className="text-xs text-gray-500 mt-2">Injected into the bottom of every page. Use this for your chatbot widget.</p>
                                     </div>
-                                    <div>
-                                        <label className="block text-sm font-semibold mb-2">Custom Chatbot Script</label>
-                                        <textarea placeholder="Paste external chatbot JS here..." className="w-full p-2 border rounded-lg h-24 font-mono text-xs"></textarea>
-                                    </div>
-                                    <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700">Save SEO Settings</button>
-                                </div>
+                                    <button type="submit" disabled={isSaving} className="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition-all disabled:opacity-50">
+                                        {isSaving ? 'Saving...' : 'Save SEO Settings'}
+                                    </button>
+                                </form>
                             </div>
                         )}
 

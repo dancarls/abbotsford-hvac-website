@@ -9,6 +9,7 @@ export function getSettings() {
         baseUrl: settingsData.baseUrl || "https://www.abbotsfordhvac.ca",
         email: settingsData.email || "info@abbotsfordhvac.ca",
         aiReceptionistScript: (settingsData as any).aiReceptionistScript || "",
+        googleAnalyticsId: (settingsData as any).googleAnalyticsId || "",
         showTeamSection: settingsData.showTeamSection || false,
         teamMembers: settingsData.teamMembers || [],
     };

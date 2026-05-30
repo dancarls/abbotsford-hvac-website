@@ -6,6 +6,7 @@
     "baseUrl": "https://www.abbotsfordhvac.ca",
     "email": "info@abbotsfordhvac.ca",
     "aiReceptionistScript": "",
+    "googleAnalyticsId": "G-DZYN99VBLV",
     "showTeamSection": false,
     "teamMembers": []
 }

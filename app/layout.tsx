@@ -30,6 +30,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <head>
+                {settings.googleAnalyticsId && (
+                    <>
+                        <script async src={`https://www.googletagmanager.com/gtag/js?id=${settings.googleAnalyticsId}`} />
+                        <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${settings.googleAnalyticsId}');` }} />
+                    </>
+                )}
                 <link
                     rel="stylesheet"
                     href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
