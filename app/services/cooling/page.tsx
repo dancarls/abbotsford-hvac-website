@@ -5,8 +5,6 @@ import Link from 'next/link';
 import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
-export const dynamic = 'force-dynamic';
-
 export const metadata: Metadata = {
   title: "Air Conditioning & Cooling Services in Abbotsford, BC",
   description: "Expert AC installation, repair & ductless mini-split services in Abbotsford. Beat the Fraser Valley heat with same-day cooling service. Licensed & insured. Free estimates.",

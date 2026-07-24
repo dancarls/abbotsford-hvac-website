@@ -3,8 +3,8 @@ import settingsData from './data/settings.json';
 export function getSettings() {
     return {
         businessName: settingsData.businessName || "Abbotsford HVAC",
-        phoneNumber: settingsData.phoneNumber || "(604) 555-0123",
-        phoneRaw: settingsData.phoneRaw || "6045550123",
+        phoneNumber: settingsData.phoneNumber || "(236) 477-3002",
+        phoneRaw: settingsData.phoneRaw || "2364773002",
         primaryCity: settingsData.primaryCity || "Abbotsford",
         baseUrl: settingsData.baseUrl || "https://www.abbotsfordhvac.ca",
         email: settingsData.email || "info@abbotsfordhvac.ca",

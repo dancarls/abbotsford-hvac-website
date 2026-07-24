@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import settingsData from '../../lib/data/settings.json';
 
-const PHONE = settingsData.phoneNumber || '(604) 555-0123';
+const PHONE = settingsData.phoneNumber || '(236) 477-3002';
 const PHONE_RAW = settingsData.phoneRaw || PHONE.replace(/[^0-9]/g, '');
 
 const services = [

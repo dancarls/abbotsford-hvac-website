@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: "Expert Heating Services in Abbotsford, BC",

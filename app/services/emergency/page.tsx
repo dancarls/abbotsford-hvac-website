@@ -5,8 +5,6 @@ import Link from 'next/link';
 import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
-export const dynamic = 'force-dynamic';
-
 export const metadata: Metadata = {
   title: "24/7 Emergency HVAC Repair in Abbotsford, BC",
   description: "No heat? AC broken? Emergency HVAC repair in Abbotsford available 24/7 — including weekends & holidays. Fast 1–2 hour response across Fraser Valley. Call now.",

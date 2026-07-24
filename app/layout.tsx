@@ -5,6 +5,12 @@ import { getSettings } from '../lib/getSettings'
 
 const settings = getSettings();
 
+const retellPublicKey = process.env.NEXT_PUBLIC_RETELL_PUBLIC_KEY;
+const retellChatAgentId = process.env.NEXT_PUBLIC_RETELL_CHAT_AGENT_ID;
+const retellVoicePublicKey = process.env.NEXT_PUBLIC_RETELL_VOICE_PUBLIC_KEY;
+const retellVoiceAgentId = process.env.NEXT_PUBLIC_RETELL_VOICE_AGENT_ID;
+const retellChatEnabled = Boolean(retellPublicKey && retellChatAgentId);
+
 export const metadata: Metadata = {
     title: {
         default: 'Abbotsford HVAC - Expert Heating, Cooling & Air Quality Services',
@@ -56,6 +62,23 @@ export default function RootLayout({
             </head>
             <body className="font-sans antialiased">
                 {children}
+                {retellChatEnabled && (
+                    <script
+                        id="retell-widget"
+                        src="https://dashboard.retellai.com/retell-widget-v2.js"
+                        type="module"
+                        async
+                        data-public-key={retellPublicKey}
+                        data-agent-id={retellChatAgentId}
+                        {...(retellVoicePublicKey ? { 'data-voice-public-key': retellVoicePublicKey } : {})}
+                        {...(retellVoiceAgentId ? { 'data-voice-agent-id': retellVoiceAgentId } : {})}
+                        data-title="Abbotsford HVAC"
+                        data-bot-name="Abbotsford HVAC Assistant"
+                        data-color="#2563eb"
+                        data-fab-text="Need HVAC service?"
+                        data-popup-message="Ask about heating, cooling, or emergency service — I can also book a callback."
+                    />
+                )}
                 {settings.aiReceptionistScript && (
                     <div dangerouslySetInnerHTML={{ __html: settings.aiReceptionistScript }} />
                 )}

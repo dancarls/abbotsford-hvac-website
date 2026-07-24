@@ -4,8 +4,6 @@ import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
 import { getSettings } from '@/lib/getSettings';
 
-export const dynamic = 'force-dynamic';
-
 export const metadata: Metadata = {
   title: 'About Us | Abbotsford HVAC',
   description: 'Learn about Abbotsford HVAC. We are a locally-owned heating and cooling company serving the Fraser Valley with over 15 years of industry experience.',

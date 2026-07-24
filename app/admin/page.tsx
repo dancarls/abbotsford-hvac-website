@@ -9,8 +9,18 @@ export default function AdminDashboard() {
     const [activeTab, setActiveTab] = useState('areas');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState('');
+    const [loginError, setLoginError] = useState('');
     const [siteSettings, setSiteSettings] = useState({ phoneNumber: '', address: '', showTeamSection: false, googleAnalyticsId: '', aiReceptionistScript: '' });
     const [isSaving, setIsSaving] = useState(false);
+
+    useEffect(() => {
+        fetch('/api/admin/me')
+            .then(res => res.json())
+            .then(data => {
+                if (data?.authenticated) setIsAuthenticated(true);
+            })
+            .catch(() => {});
+    }, []);
 
     useEffect(() => {
         if (isAuthenticated) {
@@ -20,6 +30,27 @@ export default function AdminDashboard() {
                 .catch(console.error);
         }
     }, [isAuthenticated]);
+
+    const handleLogin = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setLoginError('');
+        try {
+            const res = await fetch('/api/admin/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password })
+            });
+            if (res.ok) {
+                setIsAuthenticated(true);
+                setPassword('');
+            } else {
+                const data = await res.json().catch(() => ({}));
+                setLoginError(data?.error || 'Incorrect password');
+            }
+        } catch (err) {
+            setLoginError('Login failed - please try again');
+        }
+    };
 
     const handleSaveSettings = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -47,14 +78,7 @@ export default function AdminDashboard() {
                         <h1 className="text-2xl font-bold text-gray-900">Owner Login</h1>
                         <p className="text-gray-500 mt-2">Enter your password to manage Abbotsford HVAC</p>
                     </div>
-                    <form onSubmit={(e) => {
-                        e.preventDefault();
-                        if (password === 'AbbyHVAC2026') {
-                            setIsAuthenticated(true);
-                        } else {
-                            alert('Incorrect password');
-                        }
-                    }}>
+                    <form onSubmit={handleLogin}>
                         <div className="mb-6">
                             <label className="block text-sm font-semibold mb-2">Password</label>
                             <input
@@ -64,6 +88,9 @@ export default function AdminDashboard() {
                                 className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-blue-500 outline-none"
                                 placeholder="••••••••"
                             />
+                            {loginError && (
+                                <p className="text-red-600 text-sm mt-2">{loginError}</p>
+                            )}
                         </div>
                         <button className="w-full bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-all">
                             Access Dashboard

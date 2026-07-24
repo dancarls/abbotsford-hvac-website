@@ -3,6 +3,15 @@ import geoData from '../lib/data/geo-service-data.json';
 
 const BASE_URL = 'https://www.abbotsfordhvac.ca';
 
+const blogSlugs = [
+    'ac-maintenance-abbotsford-summer-tune-up',
+    'ac-not-cooling-abbotsford-repair',
+    'ductless-mini-split-cooling-abbotsford',
+    'heat-pump-vs-furnace-abbotsford',
+    'home-hvac-maintenance-best-practices-abbotsford',
+    'indoor-air-quality-fraser-valley-allergies',
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
     const staticPages: MetadataRoute.Sitemap = [
         { url: BASE_URL, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
@@ -36,5 +45,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         }))
     );
 
-    return [...staticPages, ...servicePages, ...locationPages, ...geoServicePages];
+    const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
+        url: `${BASE_URL}/blog/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.6,
+    }));
+
+    return [...staticPages, ...servicePages, ...locationPages, ...geoServicePages, ...blogPages];
 }

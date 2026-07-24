@@ -7,3 +7,6 @@ dist-ssr
 .env
 .env.*
 out
+.next
+.claude
+*.tsbuildinfo

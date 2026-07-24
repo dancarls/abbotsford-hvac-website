@@ -5,8 +5,6 @@ import Link from 'next/link';
 import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
-export const dynamic = 'force-dynamic';
-
 export const metadata: Metadata = {
   title: "Indoor Air Quality Solutions in Abbotsford, BC",
   description: "UV air purifiers, HEPA filtration, humidifiers & CO detectors installed in Abbotsford homes. Breathe cleaner air in your Fraser Valley home. Licensed technicians. Free estimates.",

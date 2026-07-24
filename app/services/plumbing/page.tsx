@@ -5,8 +5,6 @@ import Link from 'next/link';
 import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
-export const dynamic = 'force-dynamic';
-
 export const metadata: Metadata = {
   title: "Water Heater & Plumbing Services in Abbotsford, BC",
   description: "Tankless & traditional water heater installation, plumbing repairs & pipe insulation in Abbotsford. Same-day service available. Licensed plumbers serving Fraser Valley. Free estimates.",

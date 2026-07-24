@@ -5,8 +5,6 @@ import Link from 'next/link';
 import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
-export const dynamic = 'force-dynamic';
-
 export const metadata: Metadata = {
   title: "HVAC Maintenance Plans & Tune-Ups in Abbotsford, BC",
   description: "Annual HVAC maintenance plans & seasonal tune-ups in Abbotsford. Prevent breakdowns, extend equipment life & keep your warranty valid. Serving Fraser Valley. Book today.",

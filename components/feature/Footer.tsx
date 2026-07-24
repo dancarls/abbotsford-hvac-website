@@ -1,5 +1,9 @@
 
 import Link from 'next/link';
+import settingsData from '../../lib/data/settings.json';
+
+const PHONE = settingsData.phoneNumber || '(236) 477-3002';
+const PHONE_RAW = settingsData.phoneRaw || '2364773002';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -17,23 +21,6 @@ export default function Footer() {
             <p className="text-gray-300 mb-4">
               Your trusted local HVAC experts serving Abbotsford, BC and surrounding areas with professional heating, cooling, and air quality solutions.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors cursor-pointer">
-                <div className="w-6 h-6 flex items-center justify-center">
-                  <i className="ri-facebook-fill text-xl"></i>
-                </div>
-              </a>
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors cursor-pointer">
-                <div className="w-6 h-6 flex items-center justify-center">
-                  <i className="ri-instagram-line text-xl"></i>
-                </div>
-              </a>
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors cursor-pointer">
-                <div className="w-6 h-6 flex items-center justify-center">
-                  <i className="ri-google-fill text-xl"></i>
-                </div>
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -43,7 +30,7 @@ export default function Footer() {
               <li><Link href="/" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Home</Link></li>
               <li><Link href="/about" className="text-gray-300 hover:text-white transition-colors cursor-pointer">About Us</Link></li>
               <li><Link href="/services/heating" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Services</Link></li>
-              <li><Link href="/locations/abbotsford-west" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Service Areas</Link></li>
+              <li><Link href="/service-areas" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Service Areas</Link></li>
               <li><Link href="/services/maintenance" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Maintenance Plans</Link></li>
               <li><Link href="/services/commercial" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Commercial HVAC</Link></li>
             </ul>
@@ -68,13 +55,23 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-start">
                 <div className="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                  <i className="ri-phone-fill text-blue-400"></i>
+                </div>
+                <a href={`tel:${PHONE_RAW}`} className="text-gray-300 hover:text-white transition-colors font-semibold">
+                  {PHONE}
+                </a>
+              </div>
+              <div className="flex items-start">
+                <div className="w-5 h-5 flex items-center justify-center mt-1 mr-3">
                   <i className="ri-map-pin-line text-blue-400"></i>
                 </div>
-                <span className="text-gray-300">123 Main Street, Abbotsford, BC V2S 0A3</span>
+                <span className="text-gray-300">Serving Abbotsford, Mission & the Fraser Valley</span>
               </div>
-              <div className="text-gray-300">
-                <p>Mon-Sun: 24/7 Service Available</p>
-
+              <div className="flex items-start">
+                <div className="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                  <i className="ri-time-line text-blue-400"></i>
+                </div>
+                <span className="text-gray-300">24/7 Emergency Service Available</span>
               </div>
             </div>
           </div>
@@ -90,15 +87,6 @@ export default function Footer() {
               <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer">
                 Privacy Policy
               </Link>
-              <span className="text-gray-600">|</span>
-              <a
-                href="https://readdy.ai/?origin=logo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer"
-              >
-                Website Builder
-              </a>
               <span className="text-gray-600">|</span>
               <Link href="/admin" className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer">
                 Admin

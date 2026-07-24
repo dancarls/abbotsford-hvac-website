@@ -5,8 +5,6 @@ import Link from 'next/link';
 import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
-export const dynamic = 'force-dynamic';
-
 export const metadata: Metadata = {
   title: "Ventilation & Duct Cleaning Services in Abbotsford, BC",
   description: "Professional HRV/ERV installation, duct cleaning & whole-home ventilation in Abbotsford. Improve air circulation and reduce moisture in your Fraser Valley home. Free estimates.",

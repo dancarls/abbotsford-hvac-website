@@ -33,7 +33,7 @@ export default function TermsOfService() {
                     <section>
                         <h2 className="text-2xl font-bold text-gray-900 mt-8 mb-4">5. Contact Information</h2>
                         <p>
-                            For questions regarding these terms, please contact us at info@abbotsfordhvac.ca or 123 Main Street, Abbotsford, BC.
+                            For questions regarding these terms, please contact us at info@abbotsfordhvac.ca or (236) 477-3002.
                         </p>
                     </section>
                 </div>

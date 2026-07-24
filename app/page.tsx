@@ -156,6 +156,7 @@ export default function Home() {
       "image": "https://www.abbotsfordhvac.ca/logo.jpg",
       "@id": "https://www.abbotsfordhvac.ca/#business",
       "url": "https://www.abbotsfordhvac.ca",
+      "telephone": `+1-${settings.phoneRaw}`,
       "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
@@ -187,12 +188,6 @@ export default function Home() {
           "closes": "17:00"
         }
       ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "3",
-        "bestRating": "5"
-      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "HVAC Services",
@@ -206,11 +201,7 @@ export default function Home() {
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "24/7 Emergency HVAC Service" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "HVAC Maintenance Plans" } }
         ]
-      },
-      "sameAs": [
-        "https://www.facebook.com/abbotsfordhvac",
-        "https://www.instagram.com/abbotsfordhvac"
-      ]
+      }
     },
     {
       "@context": "https://schema.org",
@@ -481,7 +472,7 @@ export default function Home() {
                   <p className="text-blue-100 font-medium mb-1 text-sm uppercase tracking-wider">Don't see your area?</p>
                   <h4 className="text-xl font-bold text-white mb-4 leading-tight">We may still be able to help you today.</h4>
                   <a
-                    href="tel:6045550123"
+                    href={`tel:${settings.phoneRaw}`}
                     className="inline-flex bg-white text-blue-600 px-6 py-3 rounded-xl font-bold hover:bg-blue-50 transition-all items-center justify-center gap-2 cursor-pointer shadow-md"
                   >
                     <i className="ri-phone-fill"></i>
@@ -507,26 +498,20 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <article key={index} className="bg-white rounded-xl shadow-lg p-8" itemScope itemType="https://schema.org/Review">
-                <div className="flex items-center mb-4" itemProp="reviewRating" itemScope itemType="https://schema.org/Rating">
-                  <meta itemProp="ratingValue" content={testimonial.rating.toString()} />
-                  <meta itemProp="bestRating" content="5" />
+              <article key={index} className="bg-white rounded-xl shadow-lg p-8">
+                <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <div key={i} className="w-5 h-5 flex items-center justify-center">
                       <i className="ri-star-fill text-yellow-400" aria-hidden="true"></i>
                     </div>
                   ))}
                 </div>
-                <p className="text-gray-700 mb-6 italic" itemProp="reviewBody">
+                <p className="text-gray-700 mb-6 italic">
                   "{testimonial.text}"
                 </p>
-                <div itemProp="author" itemScope itemType="https://schema.org/Person">
-                  <p className="font-semibold text-gray-900" itemProp="name">{testimonial.name}</p>
+                <div>
+                  <p className="font-semibold text-gray-900">{testimonial.name}</p>
                   <p className="text-gray-600 text-sm">{testimonial.location}</p>
-                </div>
-                <meta itemProp="datePublished" content={testimonial.date} />
-                <div itemProp="itemReviewed" itemScope itemType="https://schema.org/LocalBusiness">
-                  <meta itemProp="name" content="Abbotsford HVAC" />
                 </div>
               </article>
             ))}
