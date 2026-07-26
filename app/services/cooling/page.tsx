@@ -6,12 +6,12 @@ import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
 export const metadata: Metadata = {
-  title: "AC & Cooling Services in Abbotsford, BC",
-  description: "Air conditioning repair, installation, and ductless mini-splits for Abbotsford. Real costs, heat wave prep, and Fraser Valley-specific cooling advice.",
+  title: "AC Repair Abbotsford BC — Air Conditioning Service & Installation",
+  description: "AC repair in Abbotsford — same-day diagnosis, real cost ranges, and ductless mini-split options. Cooling service across the Fraser Valley with 24/7 emergency dispatch.",
   alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/cooling' },
   openGraph: {
-    title: "AC & Cooling Services in Abbotsford, BC | Abbotsford HVAC",
-    description: "Air conditioning repair, installation, and ductless mini-splits for Abbotsford. Real costs, heat wave prep, Fraser Valley context.",
+    title: "AC Repair Abbotsford BC — Air Conditioning Service",
+    description: "Same-day AC repair, real cost ranges, ductless mini-split options. Fraser Valley cooling service.",
     images: ['https://www.abbotsfordhvac.ca/images/ac-maintenance-abbotsford-hero.png']
   }
 };

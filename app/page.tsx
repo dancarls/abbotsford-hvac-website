@@ -329,6 +329,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Popular Abbotsford HVAC searches — keyword-anchored quick links */}
+      <section className="py-8 bg-white border-b border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 text-center">Popular in Abbotsford</p>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+            <Link href="/services/heating" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
+              Furnace repair in Abbotsford
+            </Link>
+            <Link href="/services/cooling" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
+              AC repair in Abbotsford
+            </Link>
+            <Link href="/services/cooling" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
+              Air conditioning Abbotsford
+            </Link>
+            <Link href="/services/heating" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
+              Heat pump Abbotsford
+            </Link>
+            <Link href="/services/emergency" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-red-50 border border-gray-200 hover:border-red-200 rounded-full text-sm font-medium text-gray-700 hover:text-red-700 transition-all">
+              Emergency HVAC Abbotsford
+            </Link>
+            <Link href="/blog/bc-heat-pump-rebates-abbotsford" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-emerald-50 border border-gray-200 hover:border-emerald-200 rounded-full text-sm font-medium text-gray-700 hover:text-emerald-700 transition-all">
+              BC heat pump rebates
+            </Link>
+            <Link href="/services/maintenance" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
+              HVAC maintenance Abbotsford
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Common HVAC Problems */}
       <section id="common-problems" className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

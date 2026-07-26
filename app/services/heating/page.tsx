@@ -6,12 +6,12 @@ import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
 export const metadata: Metadata = {
-  title: "Furnace & Heating Services in Abbotsford, BC",
-  description: "Furnace repair, replacement, and heat pump options for Abbotsford and Fraser Valley homes. Real cost ranges, BC rebate info, and 24/7 emergency help.",
+  title: "Furnace Repair Abbotsford BC — Heating, Boiler & Heat Pump Service",
+  description: "Furnace repair in Abbotsford — real cost ranges, common problems, and repair-vs-replace guidance. Heat pump options with BC rebate info. 24/7 no-heat emergency dispatch.",
   alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/heating' },
   openGraph: {
-    title: "Furnace & Heating Services in Abbotsford, BC | Abbotsford HVAC",
-    description: "Furnace repair, replacement, and heat pump options for Abbotsford homes. Real costs, BC rebates, 24/7 emergency help.",
+    title: "Furnace Repair Abbotsford BC — Heating & Heat Pump Service",
+    description: "Furnace repair, replacement, heat pump options with BC rebate info. 24/7 emergency help across the Fraser Valley.",
     images: ['https://www.abbotsfordhvac.ca/images/hvac-maintenance-abbotsford-hero.png']
   }
 };

@@ -13,10 +13,10 @@ const retellChatEnabled = Boolean(retellPublicKey && retellChatAgentId);
 
 export const metadata: Metadata = {
     title: {
-        default: 'Abbotsford HVAC - Expert Heating, Cooling & Air Quality Services',
+        default: 'HVAC Abbotsford BC — Furnace Repair, AC & Heat Pumps | Abbotsford HVAC',
         template: '%s | Abbotsford HVAC',
     },
-    description: 'Professional HVAC services in Abbotsford, BC. Expert heating, cooling, ventilation & air quality solutions. 24/7 emergency service. Licensed & insured.',
+    description: 'Local HVAC help in Abbotsford & the Fraser Valley. Furnace repair, AC repair, heat pump installs, and 24/7 emergency service — with real cost ranges and BC rebate info.',
     metadataBase: new URL('https://www.abbotsfordhvac.ca'),
     openGraph: {
         siteName: 'Abbotsford HVAC',
