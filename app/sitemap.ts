@@ -6,6 +6,7 @@ const BASE_URL = 'https://www.abbotsfordhvac.ca';
 const blogSlugs = [
     'ac-maintenance-abbotsford-summer-tune-up',
     'ac-not-cooling-abbotsford-repair',
+    'bc-heat-pump-rebates-abbotsford',
     'ductless-mini-split-cooling-abbotsford',
     'heat-pump-vs-furnace-abbotsford',
     'home-hvac-maintenance-best-practices-abbotsford',

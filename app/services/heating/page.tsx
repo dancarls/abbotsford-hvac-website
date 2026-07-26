@@ -5,24 +5,58 @@ import Link from 'next/link';
 import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
-
 export const metadata: Metadata = {
-  title: "Expert Heating Services in Abbotsford, BC",
-  description: "Professional furnace installation, repair & heat pump services in Abbotsford. Licensed technicians available 24/7. Same-day emergency heating repairs. Call now.",
+  title: "Furnace & Heating Services in Abbotsford, BC",
+  description: "Furnace repair, replacement, and heat pump options for Abbotsford and Fraser Valley homes. Real cost ranges, BC rebate info, and 24/7 emergency help.",
   alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/heating' },
   openGraph: {
-    title: "Expert Heating Services in Abbotsford, BC | Abbotsford HVAC",
-    description: "Professional furnace installation, repair & heat pump services in Abbotsford. Licensed technicians available 24/7. Same-day emergency heating repairs.",
-    images: ['https://www.abbotsfordhvac.ca/og-heating.jpg']
+    title: "Furnace & Heating Services in Abbotsford, BC | Abbotsford HVAC",
+    description: "Furnace repair, replacement, and heat pump options for Abbotsford homes. Real costs, BC rebates, 24/7 emergency help.",
+    images: ['https://www.abbotsfordhvac.ca/images/hvac-maintenance-abbotsford-hero.png']
   }
 };
+
+const faqs = [
+  {
+    q: 'How much does a new furnace cost in Abbotsford?',
+    a: 'Installed furnace prices in the Fraser Valley typically run $3,500–$8,500 for high-efficiency gas units. Factors: AFUE rating (90–96%+), size, brand, and ductwork tie-in. Cheapest quotes often skip permits or use lower-tier equipment — worth comparing 2–3 quotes at similar spec.'
+  },
+  {
+    q: 'How often should I service my furnace in the Fraser Valley?',
+    a: 'Once a year, ideally in September or October before heating season. Abbotsford\'s damp climate is harder on burners and heat exchangers than dry-climate cities, so annual inspections catch small issues before they become mid-winter emergencies.'
+  },
+  {
+    q: 'What are the warning signs my furnace needs repair?',
+    a: 'Unusual noises (booms on startup, rattling, squealing), yellow or flickering pilot light, uneven heating between rooms, frequent short cycling, rising gas bills without weather changes, and a furnace over 15 years old. Booming sounds and CO alarms should be treated as urgent.'
+  },
+  {
+    q: 'Should I repair or replace my furnace?',
+    a: 'General rule: if the furnace is over 15 years old AND the repair quote is more than 50% of a replacement, replacement usually wins on 5-year cost. Also worth costing out a heat pump upgrade at the same time — BC rebates can shift the math significantly.'
+  },
+  {
+    q: 'Is a heat pump a good option in Abbotsford\'s climate?',
+    a: 'Yes for most homes. Cold-climate heat pumps work efficiently well below Abbotsford\'s coldest winter temperatures and provide summer cooling in one system. Between BC Hydro CleanBC rebates and Canada Greener Homes credits, $1,000–$6,000+ of the install cost can typically be offset. Ductwork condition matters — worth an on-site assessment.'
+  },
+  {
+    q: 'How long does a furnace typically last?',
+    a: 'Modern gas furnaces: 15–20 years with annual maintenance. Older mid-efficiency units (80% AFUE) often push to 25+ years but cost noticeably more to run. Heat pumps: 12–15 years. Warranties commonly cover parts for 10 years and heat exchanger for 20.'
+  },
+  {
+    q: 'What brands of furnace hold up best in the Fraser Valley?',
+    a: 'Carrier, Lennox, Trane, Rheem, and Goodman all have solid reputations. Bigger factor than brand: installer quality. A well-installed mid-tier furnace outlasts a poorly installed premium one. Ask about warranty registration and combustion analysis on install.'
+  },
+  {
+    q: 'Do you offer 24/7 emergency heating repair?',
+    a: 'Yes — no-heat calls during Fraser Valley cold snaps are treated as urgent. Call any time. If you smell gas, leave the house first and call the emergency line from outside.'
+  }
+];
 
 const heatingSchema = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Heating Services in Abbotsford, BC",
-    "description": "Professional furnace installation, repair, heat pump systems, boiler services and emergency heating repairs in Abbotsford, BC.",
+    "description": "Furnace repair, replacement, heat pump installation, and 24/7 emergency heating service across Abbotsford and the Fraser Valley.",
     "provider": { "@type": "HVACBusiness", "@id": "https://www.abbotsfordhvac.ca/#business" },
     "areaServed": { "@type": "City", "name": "Abbotsford" },
     "serviceType": ["Furnace Installation", "Furnace Repair", "Heat Pump Installation", "Boiler Services", "Emergency Heating Repair"]
@@ -33,167 +67,39 @@ const heatingSchema = [
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
       { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.abbotsfordhvac.ca/services/heating" },
-      { "@type": "ListItem", "position": 3, "name": "Heating Services", "item": "https://www.abbotsfordhvac.ca/services/heating" }
+      { "@type": "ListItem", "position": 3, "name": "Heating", "item": "https://www.abbotsfordhvac.ca/services/heating" }
     ]
   },
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How often should I have my heating system serviced in Abbotsford?",
-        "acceptedAnswer": { "@type": "Answer", "text": "We recommend annual furnace service before the heating season — ideally in September or October. Abbotsford's damp climate can affect heat exchangers and burners, so yearly inspections catch issues before they become costly breakdowns." }
-      },
-      {
-        "@type": "Question",
-        "name": "What are signs my furnace needs repair?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Warning signs include unusual noises (banging, squealing, rattling), yellow or flickering pilot light, uneven heating, frequent cycling on/off, rising energy bills, or your furnace is over 15 years old. If you notice any of these, call us for a same-day diagnosis." }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does a furnace last in the Fraser Valley?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Most gas furnaces last 15–20 years with proper maintenance. Heat pumps typically last 15 years. Annual servicing can significantly extend the life of your system. We offer maintenance plans that maximize your equipment lifespan." }
-      },
-      {
-        "@type": "Question",
-        "name": "Is a heat pump a good choice for Abbotsford's climate?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes — modern cold-climate heat pumps work efficiently down to -25°C, well below Abbotsford winter lows. They provide both heating and cooling in one system, and BC Hydro and FortisBC often offer rebates up to $6,000 for qualifying installations." }
-      },
-      {
-        "@type": "Question",
-        "name": "How much does furnace installation cost in Abbotsford?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Furnace installation in Abbotsford typically ranges from $3,000 to $8,000+ depending on the unit's efficiency rating (AFUE), brand, and installation complexity. High-efficiency 96% AFUE models cost more upfront but reduce monthly gas bills significantly. We provide free, no-obligation estimates." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you offer emergency heating service in Abbotsford?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes, we provide 24/7 emergency heating repair throughout Abbotsford and the Fraser Valley. We aim to have a technician at your door within 1–2 hours for urgent heating failures." }
-      }
-    ]
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
   }
 ];
 
 export default function HeatingServices() {
   const settings = getSettings();
 
-  const heatingServices = [
-    {
-      icon: 'ri-fire-line',
-      title: 'Furnace Installation',
-      description: 'Professional gas and electric furnace installation with energy-efficient models from top brands. We handle permits, inspections, and warranty registration.',
-      features: ['Gas & Electric Options', 'High-Efficiency Models', 'Permit & Inspection Handling', 'Manufacturer Warranties', 'Free Installation Estimates']
-    },
-    {
-      icon: 'ri-tools-line',
-      title: 'Furnace Repair',
-      description: 'Expert furnace repair services for all makes and models. From pilot light issues to complete system breakdowns, we diagnose and fix it fast.',
-      features: ['All Makes & Models', 'Same-Day Service', 'Diagnostic Testing', 'Parts Warranty', '24/7 Emergency Repairs']
-    },
-    {
-      icon: 'ri-leaf-line',
-      title: 'Heat Pump Systems',
-      description: 'Energy-efficient heat pump installation and maintenance. Perfect for Abbotsford\'s moderate climate with year-round heating and cooling.',
-      features: ['Air Source Heat Pumps', 'Ground Source Options', 'Dual Fuel Systems', 'Energy Rebates Available', 'Year-Round Comfort']
-    },
-    {
-      icon: 'ri-water-percent-line',
-      title: 'Boiler Services',
-      description: 'Complete boiler installation, repair, and maintenance services. Specializing in high-efficiency condensing boilers and hydronic heating systems.',
-      features: ['Boiler Installation', 'Repair & Maintenance', 'Hydronic Systems', 'Radiant Floor Heating', 'Steam & Hot Water']
-    },
-    {
-      icon: 'ri-home-wifi-line',
-      title: 'Smart Thermostats',
-      description: 'Upgrade to programmable and smart thermostats for better comfort and energy savings. Professional installation and setup included.',
-      features: ['WiFi-Enabled Models', 'Energy Savings', 'Remote Control', 'Professional Setup', 'Compatibility Check']
-    },
-    {
-      icon: 'ri-alarm-warning-line',
-      title: 'Emergency Heating',
-      description: '24/7 emergency heating repairs when your system fails. Fast response times to get your Abbotsford home warm again quickly.',
-      features: ['24/7 Availability', 'Rapid Response', 'All System Types', 'Emergency Diagnostics', 'Temporary Solutions']
-    }
+  const commonProblems = [
+    { icon: 'ri-fire-line', title: 'Furnace won\'t start on a cold morning', body: 'Often a thermostat, ignition, or flame-sensor issue. Sometimes a tripped high-limit switch. Usually diagnosable in under 30 minutes.' },
+    { icon: 'ri-volume-up-line', title: 'Booming, rattling, or squealing noises', body: 'Different sounds point to different problems — delayed ignition (boom), loose blower (rattle), worn belt (squeal). Some are safety concerns.' },
+    { icon: 'ri-thermometer-line', title: 'Cold spots or uneven heating', body: 'Usually ductwork or air balancing rather than the furnace itself. An undersized unit for a renovated/expanded home shows the same symptom.' },
+    { icon: 'ri-loader-line', title: 'Short cycling (on/off every few minutes)', body: 'Often oversized furnace, dirty filter, or thermostat placement. Cheap to diagnose, expensive to ignore — short cycling wears out components fast.' },
+    { icon: 'ri-money-dollar-circle-line', title: 'Gas bills climbing year over year', body: 'A 15-year-old 80% AFUE furnace burns ~20% more gas than a modern 96% unit for the same heat output. Payback on replacement can be 5–8 years.' },
+    { icon: 'ri-error-warning-line', title: 'Pilot light or ignition problems', body: 'Yellow or flickering pilot suggests combustion issues that can produce carbon monoxide. Not a DIY fix.' }
   ];
 
-
-  const faqs = [
-    {
-      question: 'How often should I have my heating system serviced?',
-      answer: 'It\'s recommended to have your heating system professionally serviced annually, ideally in fall before heating season begins, to ensure it runs efficiently and reliably throughout winter.'
-    },
-    {
-      question: 'What signs indicate my heating system needs repair?',
-      answer: 'Common signs include strange noises, uneven temperatures, weak airflow, unusual smells, frequent cycling, rising energy bills, and the system not reaching set temperatures.'
-    },
-    {
-      question: 'How long does a typical heating system last?',
-      answer: 'A well-maintained heating system typically lasts 15-20 years for gas furnaces and 20-30 years for electric systems, depending on usage and maintenance quality.'
-    },
-    {
-      question: 'What size furnace do I need for my Abbotsford home?',
-      answer: 'Furnace sizing depends on square footage, insulation, windows, and local climate. Our technicians perform load calculations to determine the right size for optimal efficiency and comfort.'
-    },
-    {
-      question: 'What warranties do heating systems usually come with?',
-      answer: 'Warranties usually cover parts for 5-10 years, with labor coverage for 1-2 years, depending on the manufacturer. We help you understand and register all warranties.'
-    },
-    {
-      question: 'How much does heating system installation or replacement cost?',
-      answer: 'Costs range widely depending on system size and complexity but typically fall between $3,000 and $8,000+ for residential installations in Abbotsford.'
-    },
-    {
-      question: 'What are common causes of heating system breakdowns?',
-      answer: 'Neglected maintenance, dirty filters, worn parts, thermostat issues, and electrical problems are typical causes of heating system failures.'
-    },
-    {
-      question: 'Can I install a smart thermostat with my existing heating system?',
-      answer: 'Most modern heating systems support smart thermostats, which can improve comfort and cut energy use by 10-20% through better scheduling and control.'
-    },
-    {
-      question: 'What energy efficiency ratings should I consider?',
-      answer: 'Higher AFUE ratings for heating (above 90%) are recommended. High-efficiency systems qualify for utility rebates and significantly reduce energy costs.'
-    },
-    {
-      question: 'What brands of heating equipment do you recommend?',
-      answer: 'Popular brands are Carrier, Lennox, Trane, Goodman, and Rheem for reliability and parts availability. We help you choose the best option for your needs.'
-    },
-    {
-      question: 'What is the difference between a furnace and a heat pump?',
-      answer: 'A furnace burns fuel to generate heat while a heat pump transfers heat from outside air to inside, also providing cooling. Heat pumps are more efficient in moderate climates like Abbotsford.'
-    },
-    {
-      question: 'How do I know if my furnace needs to be replaced?',
-      answer: 'Frequent repairs, uneven heating, excessive noise, and age over 15 years indicate replacement might be necessary. Rising energy bills also suggest declining efficiency.'
-    },
-    {
-      question: 'What types of furnaces are best for Canadian winters?',
-      answer: 'High-efficiency gas furnaces with AFUE above 90% perform excellently in cold climates like Abbotsford, providing reliable heat even in extreme cold.'
-    },
-    {
-      question: 'What is AFUE and why is it important?',
-      answer: 'Annual Fuel Utilization Efficiency shows furnace efficiency percentage; higher AFUE saves energy and lowers bills. Modern furnaces should have AFUE above 90%.'
-    },
-    {
-      question: 'How do I prevent my furnace from breaking down?',
-      answer: 'Regular annual maintenance, timely filter changes every 1-3 months, and professional inspections prevent most breakdowns and extend system life.'
-    },
-    {
-      question: 'Can I convert my oil furnace to gas or electric?',
-      answer: 'Yes, but a professional should assess your home and install the proper equipment. Gas conversion often provides better efficiency and lower operating costs.'
-    },
-    {
-      question: 'What safety checks should I perform on my heating system?',
-      answer: 'Check for carbon monoxide leaks with detectors, ensure proper ventilation clearances, inspect gas connections, and have annual professional safety inspections.'
-    },
-    {
-      question: 'What are signs of carbon monoxide leaks from heating?',
-      answer: 'Headaches, dizziness, nausea, flu-like symptoms, and unusual odors necessitate immediate action. Leave the house and call emergency services if suspected.'
-    },
-    {
-      question: 'How does radiant floor heating compare to baseboard heaters?',
-      answer: 'Radiant heating is more energy-efficient and provides even heat distribution but is costlier to install. Baseboard heaters are less expensive but can create uneven temperatures.'
-    }
+  const services = [
+    { icon: 'ri-fire-line', title: 'Furnace Repair', body: 'Same-day diagnosis for most breakdowns. Common parts (ignitors, flame sensors, blower motors, thermostats) stocked for one-visit repairs when possible.' },
+    { icon: 'ri-hammer-line', title: 'Furnace Replacement', body: 'High-efficiency gas furnace installs with permits and inspection handled. Free replacement quotes with 2–3 tier options to compare.' },
+    { icon: 'ri-leaf-line', title: 'Heat Pump Installation', body: 'Cold-climate heat pumps that work in Fraser Valley winters. Rebate paperwork help so you don\'t leave BC Hydro / Greener Homes money on the table.' },
+    { icon: 'ri-water-percent-line', title: 'Boiler Service', body: 'Hydronic and combi-boiler service and replacement. Common in older Abbotsford homes with radiant floor or radiator heat.' },
+    { icon: 'ri-tools-line', title: 'Annual Maintenance', body: 'Pre-winter tune-up: combustion analysis, cleaning, safety checks, filter change. Best-value HVAC decision most homeowners make each year.' },
+    { icon: 'ri-alarm-warning-line', title: '24/7 No-Heat Emergency', body: 'Cold snap and no heat? Priority dispatch, honest triage — no upsell during an emergency.' }
   ];
 
   return (
@@ -201,286 +107,191 @@ export default function HeatingServices() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(heatingSchema) }} />
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden bg-blue-900">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('/images/heat-pump-vs-furnace-abbotsford-hero.png')`
-          }}
-        />
-        <div className="absolute inset-0 bg-blue-900/60" />
-
-        {/* Content Overlay */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-white">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-2xl">
-              Expert Heating Services in <span className="text-blue-400">Abbotsford</span>
+      {/* Hero */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-blue-900">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/heat-pump-vs-furnace-abbotsford-hero.png')` }} />
+        <div className="absolute inset-0 bg-blue-900/70" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-white max-w-3xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Furnace & Heating Help in <span className="text-blue-300">Abbotsford</span>
             </h1>
-            <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto text-white drop-shadow-lg font-medium">
-              Professional furnace installation, repair, and maintenance services. Keep your home warm and comfortable all winter long.
+            <p className="text-lg sm:text-xl mb-8 text-gray-100 leading-relaxed">
+              Furnace won&apos;t start? Booming noises on ignition? Heat pump underperforming in damp cold? Get a straight diagnosis and a fair repair-vs-replace conversation from a local Abbotsford HVAC installer.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href={`tel:${settings.phoneRaw}`} className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue-700 transition-all shadow-xl inline-flex items-center justify-center gap-2">
                 <i className="ri-phone-fill text-2xl"></i>
-                Call Now {settings.phoneNumber}
+                Call {settings.phoneNumber}
               </a>
-              <a href="/contact" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
-                Chat or Get a Quote
-              </a>
+              <Link href="#common-heating-problems" className="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all inline-flex items-center justify-center gap-2">
+                <i className="ri-question-line"></i>
+                Common furnace problems
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Heating Services Grid */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Complete Heating Solutions
-            </h2>
-            <p className="text-xl text-gray-600">
-              From furnace installation to emergency repairs, we handle all your heating needs in Abbotsford
-            </p>
+      {/* Common Problems */}
+      <section id="common-heating-problems" className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 max-w-3xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Common Furnace & Heating Problems in Abbotsford</h2>
+            <p className="text-lg text-gray-600">What people usually call about — and what they usually turn out to be.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {heatingServices.map((service, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <i className={`${service.icon} text-2xl text-blue-600`}></i>
-                  </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {commonProblems.map((p, i) => (
+              <div key={i} className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-blue-200 transition-all">
+                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
+                  <i className={`${p.icon} text-2xl text-blue-600`} aria-hidden="true"></i>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {service.description}
-                </p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-gray-700">
-                      <div className="w-4 h-4 flex items-center justify-center mr-2">
-                        <i className="ri-check-line text-green-500"></i>
-                      </div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="font-bold text-gray-900 mb-2">{p.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{p.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Our Heating Services */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Why Choose Our Heating Experts?
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <i className="ri-shield-check-line text-xl text-blue-600"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Licensed & Certified Technicians</h3>
-                    <p className="text-gray-600">Our heating specialists are fully licensed, bonded, and continuously trained on the latest heating technologies and safety protocols.</p>
-                  </div>
+      {/* Services covered */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Heating Service Covers</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Furnace, boiler, and heat pump work across Abbotsford and the Fraser Valley.</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s, i) => (
+              <div key={i} className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-lg transition-all border border-gray-100">
+                <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-4">
+                  <i className={`${s.icon} text-2xl text-blue-600`}></i>
                 </div>
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <i className="ri-time-line text-xl text-green-600"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Fast Response Times</h3>
-                    <p className="text-gray-600">We understand heating emergencies can't wait. Our team provides same-day service and 24/7 emergency repairs throughout Abbotsford.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <i className="ri-award-line text-xl text-blue-600"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Quality Workmanship Guarantee</h3>
-                    <p className="text-gray-600">All our heating installations and repairs come with comprehensive warranties and our satisfaction guarantee.</p>
-                  </div>
-                </div>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">{s.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{s.body}</p>
               </div>
-            </div>
-            <div className="bg-gray-100 rounded-xl p-4">
-              <img
-                src="/images/dual-fuel-heat-pump-installation-abbotsford.png"
-                alt="Professional heating service"
-                className="w-full h-auto rounded-lg object-cover object-top"
-              />
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Abbotsford Climate & Local Knowledge */}
-      <section className="py-16 bg-blue-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Heating Built for Abbotsford's Climate</h2>
-            <p className="text-xl text-blue-200 max-w-3xl mx-auto">The Fraser Valley's wet winters and temperature swings demand a heating system designed for local conditions — not a generic spec from a catalogue.</p>
+      {/* Cost transparency */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Heating Work Actually Costs in Abbotsford</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Real ranges from local quotes — not marketing "starting from" numbers.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-blue-800 rounded-xl p-6">
-              <i className="ri-temp-cold-line text-3xl text-blue-300 mb-4 block"></i>
-              <h3 className="text-xl font-bold mb-3">Cold, Damp Winters</h3>
-              <p className="text-blue-200">Abbotsford temperatures regularly drop to -10°C to -15°C. High humidity accelerates heat exchanger corrosion — we inspect for this every service call and recommend corrosion-resistant systems that stand up to Fraser Valley winters.</p>
-            </div>
-            <div className="bg-blue-800 rounded-xl p-6">
-              <i className="ri-money-dollar-circle-line text-3xl text-blue-300 mb-4 block"></i>
-              <h3 className="text-xl font-bold mb-3">BC Hydro & FortisBC Rebates</h3>
-              <p className="text-blue-200">Qualifying heat pump installations can receive up to $6,000 in CleanBC rebates. We help you identify eligible systems, complete the paperwork, and maximize your rebate — at no extra charge.</p>
-            </div>
-            <div className="bg-blue-800 rounded-xl p-6">
-              <i className="ri-leaf-line text-3xl text-blue-300 mb-4 block"></i>
-              <h3 className="text-xl font-bold mb-3">Heat Pumps vs. Gas Furnaces</h3>
-              <p className="text-blue-200">Modern cold-climate heat pumps work efficiently down to -25°C, making them ideal for Abbotsford. We perform a load calculation and compare operating costs before recommending which system makes financial sense for your home.</p>
-            </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { label: 'Furnace tune-up / maintenance', range: '$150 – $250', note: 'Combustion analysis, cleaning, filter, safety check' },
+              { label: 'Common furnace repair (ignitor, flame sensor, capacitor)', range: '$250 – $600', note: 'Diagnosis + part + labour, most single-visit repairs' },
+              { label: 'Blower motor or control board replacement', range: '$600 – $1,400', note: 'Bigger parts, still often repairable if unit is under 12 years old' },
+              { label: 'New furnace installed (high-efficiency gas)', range: '$3,500 – $8,500', note: 'Depends on AFUE, size, brand, duct tie-in complexity' },
+              { label: 'Heat pump installed (air-source, cold-climate)', range: '$8,000 – $18,000', note: 'Before BC + federal rebates, which can offset $1,000–$6,000+' },
+              { label: 'Boiler service / replacement', range: '$400 – $12,000', note: 'Wide range — small service to full high-efficiency boiler swap' }
+            ].map((c, i) => (
+              <div key={i} className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <div className="text-sm text-gray-500 mb-1">{c.label}</div>
+                <div className="text-2xl font-bold text-blue-600 mb-2">{c.range}</div>
+                <div className="text-xs text-gray-500">{c.note}</div>
+              </div>
+            ))}
           </div>
-          <div className="mt-10 grid md:grid-cols-4 gap-6 text-center">
-            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">15+</div><div className="text-blue-300 text-sm mt-1">Years serving Abbotsford</div></div>
-            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">2,000+</div><div className="text-blue-300 text-sm mt-1">Systems installed locally</div></div>
-            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">24/7</div><div className="text-blue-300 text-sm mt-1">Emergency response</div></div>
-            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">4.9★</div><div className="text-blue-300 text-sm mt-1">Average customer rating</div></div>
+          <p className="text-sm text-gray-500 italic text-center mt-6">
+            Ranges reflect typical Fraser Valley installer quotes in 2026. Actual quote depends on your home. Get 2–3 comparisons for anything over $2,000.
+          </p>
+        </div>
+      </section>
+
+      {/* Heat pump vs furnace decision */}
+      <section className="py-16 bg-blue-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Heat Pump vs. New Furnace — Which Makes Sense?</h2>
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                When it&apos;s time to replace, Abbotsford homeowners now have a real choice — not just a like-for-like furnace swap. Modern cold-climate heat pumps handle Fraser Valley winters, provide summer AC, and stack with BC and federal rebates.
+              </p>
+              <Link href="/blog/bc-heat-pump-rebates-abbotsford" className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors shadow-md">
+                Read the BC Heat Pump Rebate guide <i className="ri-arrow-right-line"></i>
+              </Link>
+            </div>
+            <div className="space-y-3">
+              {[
+                { title: 'One system for heat + AC', body: 'A heat pump provides both — no separate AC install later.' },
+                { title: 'BC rebates shift the math', body: 'CleanBC + Greener Homes can offset $1,000–$6,000+ on qualifying installs.' },
+                { title: 'Lower operating cost', body: 'Electric heat pump is often cheaper to run than gas at BC rates.' },
+                { title: 'Ductwork condition matters', body: 'Not every home is a fit — old undersized ducts can be a limiter.' },
+                { title: 'Backup heat is standard', body: 'Cold-climate heat pumps typically pair with an electric or gas backup for the coldest days.' }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-3 bg-white p-4 rounded-xl border border-blue-100">
+                  <i className="ri-check-line text-emerald-600 text-xl flex-shrink-0 mt-0.5"></i>
+                  <div>
+                    <div className="font-bold text-gray-900 text-sm">{item.title}</div>
+                    <div className="text-sm text-gray-600">{item.body}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Service Areas */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Heating Service Areas
-            </h2>
-            <p className="text-xl text-gray-600">
-              Professional heating services throughout Abbotsford and surrounding areas
-            </p>
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Heating Service Areas</h2>
+            <p className="text-lg text-gray-600">Abbotsford neighbourhoods and nearby Fraser Valley communities.</p>
           </div>
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="bg-gray-100 rounded-xl p-4">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-122.38308678476562!3d49.05718584863281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d4c89d72c663%3A0x4a2b36750554ba72!2sAbbotsford%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-lg"
-              ></iframe>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-                Areas We Serve for Heating Services
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                {geoData.areas.map((area) => (
-                  <Link key={area.slug} href={`/locations/${area.slug}`} className="flex items-center group">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700 group-hover:text-blue-600 transition-colors">{area.name}</span>
-                  </Link>
-                ))}
-              </div>
-              <div className="bg-blue-50 rounded-lg p-6">
-                <h4 className="text-lg font-semibold text-blue-900 mb-2">
-                  Need heating service outside these areas?
-                </h4>
-                <p className="text-blue-800 mb-4">
-                  We may still be able to help! Contact us to see if we can service your location.
-                </p>
-                <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block whitespace-nowrap cursor-pointer">
-                  Contact for Service Area
-                </a>
-              </div>
-            </div>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
+            {geoData.areas.map((area) => (
+              <Link key={area.slug} href={`/locations/${area.slug}`} className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-blue-50 hover:text-blue-700 transition-all group">
+                <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-3"></div>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-blue-700">{area.name}</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-blue-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-            <i className="ri-robot-2-line text-2xl text-white"></i>
-          </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Book Heating Service?</h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Call us now or use our AI chat assistant — available 24/7 to answer questions, provide estimates, and book your appointment. No forms, no waiting.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg text-lg inline-flex items-center justify-center gap-3">
-              <i className="ri-phone-fill"></i>
-              Call {settings.phoneNumber}
-            </a>
-            <a href="/contact" className="bg-white text-blue-600 border-2 border-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all text-lg inline-flex items-center justify-center gap-3">
-              <i className="ri-chat-smile-2-line"></i>
-              Chat with Our AI
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
+      {/* FAQ */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-600">
-              Common questions about heating services in Abbotsford
-            </p>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Furnace & Heating FAQ</h2>
+            <p className="text-lg text-gray-600">Real questions from Abbotsford homeowners.</p>
           </div>
-          <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600">
-                  {faq.answer}
-                </p>
-              </div>
+          <div className="space-y-4">
+            {faqs.map((f, i) => (
+              <details key={i} className="group bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all">
+                <summary className="flex items-center justify-between cursor-pointer list-none">
+                  <h3 className="text-lg font-bold text-gray-900 pr-4">{f.q}</h3>
+                  <i className="ri-add-line text-2xl text-blue-600 group-open:rotate-45 transition-transform flex-shrink-0"></i>
+                </summary>
+                <p className="mt-4 text-gray-700 leading-relaxed">{f.a}</p>
+              </details>
             ))}
           </div>
         </div>
       </section>
 
       {/* Emergency CTA */}
-      <section className="py-16 bg-red-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-            <div className="w-10 h-10 flex items-center justify-center">
-              <i className="ri-alarm-warning-line text-3xl text-red-600"></i>
-            </div>
-          </div>
-          <h2 className="text-4xl font-bold text-white mb-4">
-            No Heat? We're Here to Help!
-          </h2>
-          <p className="text-xl text-red-100 mb-8">
-            Don't let a broken heating system leave you in the cold. Our emergency heating repair team is available 24/7 throughout Abbotsford.
+      <section className="py-16 bg-red-600 text-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <i className="ri-alarm-warning-fill text-5xl mb-4 block"></i>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">No Heat in the Middle of a Cold Snap?</h2>
+          <p className="text-lg text-red-100 mb-8">
+            Furnace failures happen most often on the coldest nights — because that&apos;s when your system is working hardest. Call 24/7 for priority emergency dispatch across Abbotsford and the Fraser Valley.
           </p>
-          <a href={`tel:${settings.phoneNumber}`} className="bg-white text-red-600 px-10 py-5 rounded-xl text-xl font-bold hover:bg-gray-100 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto">
-            <i className="ri-phone-fill"></i>
-            Call Our Support Team 24/7
+          <a href={`tel:${settings.phoneRaw}`} className="inline-flex items-center gap-3 bg-white text-red-600 px-8 py-4 rounded-xl text-lg font-bold hover:bg-red-50 transition-all shadow-xl">
+            <i className="ri-phone-fill text-2xl"></i>
+            Call {settings.phoneNumber}
           </a>
+          <p className="mt-4 text-sm text-red-200">
+            Smell gas? Leave the house first, then call from outside.
+          </p>
         </div>
       </section>
 

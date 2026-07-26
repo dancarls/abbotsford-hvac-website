@@ -6,25 +6,60 @@ import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
 export const metadata: Metadata = {
-  title: "Air Conditioning & Cooling Services in Abbotsford, BC",
-  description: "Expert AC installation, repair & ductless mini-split services in Abbotsford. Beat the Fraser Valley heat with same-day cooling service. Licensed & insured. Free estimates.",
+  title: "AC & Cooling Services in Abbotsford, BC",
+  description: "Air conditioning repair, installation, and ductless mini-splits for Abbotsford. Real costs, heat wave prep, and Fraser Valley-specific cooling advice.",
   alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/cooling' },
   openGraph: {
-    title: "Air Conditioning & Cooling Services in Abbotsford, BC | Abbotsford HVAC",
-    description: "Expert AC installation, repair & ductless mini-split services in Abbotsford. Beat the Fraser Valley heat with same-day cooling service.",
-    images: ['https://www.abbotsfordhvac.ca/og-cooling.jpg']
+    title: "AC & Cooling Services in Abbotsford, BC | Abbotsford HVAC",
+    description: "Air conditioning repair, installation, and ductless mini-splits for Abbotsford. Real costs, heat wave prep, Fraser Valley context.",
+    images: ['https://www.abbotsfordhvac.ca/images/ac-maintenance-abbotsford-hero.png']
   }
 };
+
+const faqs = [
+  {
+    q: 'How much does AC installation cost in Abbotsford?',
+    a: 'Central AC installed on an existing furnace: typically $4,500–$8,500. Full central AC install with new ductwork: $8,000–$15,000+. Ductless mini-split: $3,500–$6,500 for a single-zone; $8,000–$18,000 for multi-zone. Wide ranges come from tonnage, brand, SEER2 rating, and electrical work needed.'
+  },
+  {
+    q: 'My AC won\'t cool. What\'s the fastest thing to check?',
+    a: 'Three quick checks before calling: (1) thermostat set to Cool, not Fan; (2) breaker for the AC outdoor unit — often trips during heat waves; (3) filter clogged? A dirty filter can freeze the coil and stop cooling entirely. If those check out, it\'s time for a diagnostic.'
+  },
+  {
+    q: 'Is a ductless mini-split worth it in Abbotsford?',
+    a: 'Often yes — especially for older homes without ductwork, basement suites, home offices, or hot upstairs rooms. Mini-splits also work as heat pumps in winter. BC Hydro rebates can offset $1,000–$3,000 on qualifying installs. Downside: higher upfront cost per zone than window units.'
+  },
+  {
+    q: 'How often should I service my AC?',
+    a: 'Once a year, ideally in spring (April/May) before demand ramps up. A tune-up includes coil cleaning, refrigerant check, capacitor test, and filter — usually catches issues before they become mid-July emergencies when installers are booked out weeks.'
+  },
+  {
+    q: 'What SEER / SEER2 rating should I look for?',
+    a: 'SEER2 14 is the current minimum. SEER2 16–18 is the value sweet spot for the Fraser Valley — extra efficiency pays back in 3–5 years. SEER2 20+ is worth it only if you run AC heavily (heat dome country) or plan to stay 10+ years.'
+  },
+  {
+    q: 'Why is my AC freezing up (ice on the outdoor unit)?',
+    a: 'Almost always one of: dirty filter, blocked airflow (closed vents), low refrigerant (leak), or a failing blower motor. Turn the unit off and let it thaw before calling — running a frozen unit damages the compressor.'
+  },
+  {
+    q: 'How long does an AC system last?',
+    a: 'Central AC: 12–18 years in the Fraser Valley. Ductless mini-splits: 15–20 years with maintenance. Cold-climate heat pumps that provide cooling: 12–15 years. Refrigerant type matters — older R-22 systems are expensive to service now, often faster to replace.'
+  },
+  {
+    q: 'Should I replace my old AC and furnace together?',
+    a: 'Usually yes when both are 15+ years old. Modern AC/heat-pump units are engineered to pair with matching efficiency furnaces — a mismatched pair can lose 15–20% efficiency and void some warranties. A heat pump upgrade often makes sense at this crossroads.'
+  }
+];
 
 const coolingSchema = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "Air Conditioning Services in Abbotsford, BC",
-    "description": "Professional AC installation, repair, ductless mini-split and emergency cooling services in Abbotsford, BC.",
+    "description": "Central AC installation, ductless mini-split systems, AC repair, and cooling emergency service across Abbotsford and the Fraser Valley.",
     "provider": { "@type": "HVACBusiness", "@id": "https://www.abbotsfordhvac.ca/#business" },
     "areaServed": { "@type": "City", "name": "Abbotsford" },
-    "serviceType": ["AC Installation", "AC Repair", "Ductless Mini-Split", "Central Air Systems", "Emergency AC Repair"]
+    "serviceType": ["Air Conditioning Installation", "AC Repair", "Ductless Mini-Split Installation", "AC Maintenance", "Emergency AC Repair"]
   },
   {
     "@context": "https://schema.org",
@@ -32,449 +67,201 @@ const coolingSchema = [
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
       { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.abbotsfordhvac.ca/services/cooling" },
-      { "@type": "ListItem", "position": 3, "name": "Cooling Services", "item": "https://www.abbotsfordhvac.ca/services/cooling" }
+      { "@type": "ListItem", "position": 3, "name": "Cooling", "item": "https://www.abbotsfordhvac.ca/services/cooling" }
     ]
   },
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How much does AC installation cost in Abbotsford?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Central AC installation in Abbotsford typically ranges from $4,000 to $10,000 depending on home size, existing ductwork, and unit efficiency. Ductless mini-splits start around $2,500 per zone. We provide free, no-obligation estimates." }
-      },
-      {
-        "@type": "Question",
-        "name": "Is a ductless mini-split better than central air for Abbotsford homes?",
-        "acceptedAnswer": { "@type": "Answer", "text": "For homes without existing ductwork, ductless mini-splits are often the better choice — they're more energy-efficient, allow zone-by-zone control, and can provide both heating and cooling year-round. Central air is more cost-effective if you already have a ducted furnace system." }
-      },
-      {
-        "@type": "Question",
-        "name": "How often should I service my air conditioner?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Annual AC servicing is recommended, ideally in spring before the cooling season. This includes cleaning coils, checking refrigerant levels, inspecting electrical components, and testing performance — preventing breakdowns during the hottest days." }
-      },
-      {
-        "@type": "Question",
-        "name": "What are signs my AC needs repair?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Key warning signs include warm air blowing from vents, weak airflow, unusual noises (grinding, squealing), ice forming on the unit, water leaks around the unit, or your energy bill spiking without explanation. Call us for a same-day diagnosis." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you offer emergency AC repair in Abbotsford?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes — we offer 24/7 emergency AC repair throughout Abbotsford and the Fraser Valley. When your AC fails on the hottest day of summer, we dispatch a technician within 1–2 hours." }
-      }
-    ]
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
   }
 ];
 
 export default function CoolingServices() {
   const settings = getSettings();
 
-  const coolingServices = [
-    {
-      icon: 'ri-snowy-line',
-      title: 'AC Installation',
-      description: 'Professional air conditioning installation for central air systems, ductless mini-splits, and window units. Energy-efficient models with manufacturer warranties.',
-      features: ['Central Air Systems', 'Ductless Mini-Splits', 'High-Efficiency Models', 'Professional Installation', 'Warranty Coverage']
-    },
-    {
-      icon: 'ri-tools-line',
-      title: 'AC Repair & Service',
-      description: 'Expert air conditioning repair for all makes and models. From refrigerant leaks to compressor issues, we diagnose and fix AC problems quickly.',
-      features: ['All Makes & Models', 'Same-Day Service', 'Refrigerant Services', 'Compressor Repair', '24/7 Emergency AC']
-    },
-    {
-      icon: 'ri-settings-3-line',
-      title: 'AC Maintenance',
-      description: 'Regular air conditioning maintenance to keep your system running efficiently. Includes cleaning, tune-ups, and seasonal preparation.',
-      features: ['Seasonal Tune-ups', 'Filter Replacement', 'Coil Cleaning', 'System Inspection', 'Preventive Care']
-    },
-    {
-      icon: 'ri-building-4-line',
-      title: 'Central Air Systems',
-      description: 'Complete central air conditioning systems for whole-home cooling. Ductwork installation, zoning systems, and smart controls available.',
-      features: ['Whole-Home Cooling', 'Ductwork Installation', 'Zoning Systems', 'Smart Thermostats', 'Energy Efficient']
-    },
-    {
-      icon: 'ri-home-wifi-line',
-      title: 'Ductless Mini-Splits',
-      description: 'Ductless mini-split systems perfect for targeted cooling without ductwork. Quiet operation and individual room control.',
-      features: ['No Ductwork Required', 'Individual Room Control', 'Quiet Operation', 'Heat Pump Options', 'Easy Installation']
-    },
-    {
-      icon: 'ri-alarm-warning-line',
-      title: 'Emergency AC Repairs',
-      description: '24/7 emergency air conditioning repairs when your AC fails during hot weather. Fast response to restore your comfort quickly.',
-      features: ['24/7 Availability', 'Rapid Response', 'Weekend Service', 'Emergency Diagnostics', 'Same-Day Repairs']
-    }
+  const commonProblems = [
+    { icon: 'ri-snowflake-line', title: 'AC running but not cooling', body: 'Low refrigerant, dirty coil, or failed capacitor are the top three causes. Filter check is the free first step.' },
+    { icon: 'ri-flashlight-line', title: 'Outside unit not running at all', body: 'Tripped breaker, blown capacitor, or contactor failure. Common after summer thunderstorms and heat waves.' },
+    { icon: 'ri-water-percent-line', title: 'Ice on the AC unit', body: 'Airflow issue or low refrigerant. Turn it off, let it thaw, then diagnose. Running frozen kills compressors.' },
+    { icon: 'ri-volume-up-line', title: 'Loud grinding or buzzing', body: 'Motor bearing, contactor, or fan issue. Buzzing without airflow is often the capacitor — small, cheap, urgent fix.' },
+    { icon: 'ri-drop-line', title: 'Water leaking indoors', body: 'Clogged condensate drain line — very common in the humid Fraser Valley. Sometimes a DIY vacuum-the-drain fix, sometimes not.' },
+    { icon: 'ri-thermometer-line', title: 'Some rooms cool, others hot', body: 'Airflow / duct balancing or an undersized system. A room addition or opened-up floor plan often outgrows the original AC sizing.' }
   ];
 
-
-  const faqs = [
-    {
-      question: 'How often should I have my air conditioning system serviced?',
-      answer: 'It\'s recommended to have your AC system professionally serviced annually, ideally in spring before cooling season begins, to ensure optimal performance and efficiency.'
-    },
-    {
-      question: 'What signs indicate my AC system needs repair?',
-      answer: 'Common signs include weak airflow, warm air from vents, strange noises, unusual smells, frequent cycling, rising energy bills, and ice formation on the unit.'
-    },
-    {
-      question: 'How long does a typical air conditioning system last?',
-      answer: 'A well-maintained central AC system typically lasts 15-20 years, while ductless mini-splits can last 15-25 years with proper care and maintenance.'
-    },
-    {
-      question: 'What size air conditioner do I need for my home?',
-      answer: 'AC sizing depends on square footage, insulation, windows, and climate. Our technicians perform load calculations to determine the right BTU capacity for efficient cooling.'
-    },
-    {
-      question: 'How much does air conditioning installation cost?',
-      answer: 'Costs vary widely depending on system type and size but typically range from $3,000 to $10,000+ for central air systems, with ductless systems often less expensive.'
-    },
-    {
-      question: 'What energy efficiency ratings should I consider for AC?',
-      answer: 'Higher SEER ratings for cooling (above 14, preferably 16+) are recommended. High-efficiency systems qualify for rebates and significantly reduce energy costs.'
-    },
-    {
-      question: 'How often should I change my AC air filters?',
-      answer: 'AC filters should typically be changed every 1-3 months during cooling season, more often if you have pets, allergies, or live in a dusty area.'
-    },
-    {
-      question: 'What are common causes of AC system breakdowns?',
-      answer: 'Neglected maintenance, dirty filters, refrigerant leaks, electrical issues, and worn compressor components are typical causes of AC system failures.'
-    },
-    {
-      question: 'Can a ductless mini-split work in Abbotsford\'s climate?',
-      answer: 'Yes! Modern ductless systems work efficiently in Abbotsford\'s climate and can provide both heating and cooling with excellent energy efficiency.'
-    },
-    {
-      question: 'What financing options are available for AC installation?',
-      answer: 'We offer flexible financing plans, and there may be government or utility rebates available for energy-efficient AC upgrades in BC.'
-    },
-    {
-      question: 'What size air conditioner do I need for my home?',
-      answer: 'A professional assessment calculates proper size based on your home\'s square footage, insulation, windows, and local climate conditions in Abbotsford.'
-    },
-    {
-      question: 'What is SEER rating and why does it matter?',
-      answer: 'Seasonal Energy Efficiency Ratio measures AC efficiency; higher SEER ratings mean less energy used and lower utility bills. Look for SEER 16+ for best efficiency.'
-    },
-    {
-      question: 'Why is my air conditioner freezing up?',
-      answer: 'AC freeze-up is often due to low refrigerant levels, dirty air filters, blocked airflow, or thermostat issues. Professional diagnosis is needed to prevent damage.'
-    },
-    {
-      question: 'How can I reduce my AC energy bills?',
-      answer: 'Regular maintenance, clean filters, proper insulation, programmable thermostats, sealing air leaks, and upgrading to high-efficiency systems all help reduce costs.'
-    },
-    {
-      question: 'Should I cover my AC unit in winter?',
-      answer: 'It\'s not typically recommended to completely cover your AC unit as it can trap moisture and cause damage. A partial cover for the top is usually sufficient.'
-    },
-    {
-      question: 'What are the benefits of ductless mini-split systems?',
-      answer: 'Mini-splits provide individual room control (zoning), are energy efficient, work well in homes without ducts, operate quietly, and can provide both heating and cooling.'
-    },
-    {
-      question: 'When is it time to replace my air conditioner?',
-      answer: 'Consider replacement when your AC is over 10-15 years old, requires frequent repairs, has declining efficiency, or repair costs exceed 50% of replacement cost.'
-    },
-    {
-      question: 'How do refrigerants affect AC performance and environment?',
-      answer: 'Proper refrigerant levels ensure optimal performance and efficiency. Newer refrigerants like R-410A are more environmentally friendly than older types like R-22.'
-    },
-    {
-      question: 'Can I use my air conditioner as a heat pump?',
-      answer: 'Only if it\'s specifically designed as a heat pump system. Standard AC units cannot provide efficient heating - they\'re cooling-only systems.'
-    }
+  const services = [
+    { icon: 'ri-snowflake-line', title: 'AC Repair', body: 'Same-day diagnostic for most breakdowns. Common parts (capacitors, contactors, motors) stocked for one-visit repairs when possible.' },
+    { icon: 'ri-hammer-line', title: 'Central AC Installation', body: 'New central AC on existing ductwork or full ducted install. Free replacement quotes with efficiency tier options.' },
+    { icon: 'ri-home-wifi-line', title: 'Ductless Mini-Split Install', body: 'Single-zone for a hot room or suite; multi-zone for whole-home cooling without ducts. Rebate paperwork included.' },
+    { icon: 'ri-tools-line', title: 'AC Tune-Up', body: 'Pre-summer service: coil clean, refrigerant check, electrical test, filter. Book in April/May to avoid mid-summer backlogs.' },
+    { icon: 'ri-leaf-line', title: 'Heat Pump (Cooling + Heating)', body: 'One system for AC and winter heat. Cold-climate models work well in Abbotsford. Rebate-eligible.' },
+    { icon: 'ri-alarm-warning-line', title: 'Emergency AC Service', body: 'No cooling during a heat wave? Priority dispatch. Fraser Valley heat can be a real health risk for seniors and young kids.' }
   ];
 
   return (
     <div className="min-h-screen bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(coolingSchema) }} />
-      {/* SEO tag replaced */}
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden bg-blue-900">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('/images/ac-maintenance-abbotsford-hero.png')`
-          }}
-        />
-        <div className="absolute inset-0 bg-blue-900/60" />
-
-        {/* Content Overlay */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-white">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-2xl">
-              Expert Cooling Services in <span className="text-blue-400">Abbotsford</span>
+      {/* Hero */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-blue-900">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/ac-maintenance-abbotsford-hero.png')` }} />
+        <div className="absolute inset-0 bg-blue-900/70" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-white max-w-3xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              AC & Cooling in <span className="text-blue-300">Abbotsford</span>
             </h1>
-            <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto text-white drop-shadow-lg font-medium">
-              Professional air conditioning installation, repair, and maintenance services. Stay cool and comfortable all summer long.
+            <p className="text-lg sm:text-xl mb-8 text-gray-100 leading-relaxed">
+              AC not cooling on a 35°C day? Hot upstairs bedroom nobody sleeps in? Wondering if a ductless mini-split makes sense? Get straight answers and real cost ranges from a local Abbotsford installer.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href={`tel:${settings.phoneRaw}`} className="bg-blue-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue-700 transition-all shadow-xl inline-flex items-center justify-center gap-2">
                 <i className="ri-phone-fill text-2xl"></i>
-                Call Now {settings.phoneNumber}
+                Call {settings.phoneNumber}
               </a>
-              <a href="/contact" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
-                Chat or Get a Quote
-              </a>
+              <Link href="#common-cooling-problems" className="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all inline-flex items-center justify-center gap-2">
+                <i className="ri-question-line"></i>
+                Common AC problems
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Cooling Services Grid */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Complete Cooling Solutions
-            </h2>
-            <p className="text-xl text-gray-600">
-              From AC installation to emergency repairs, we handle all your cooling needs in Abbotsford
-            </p>
+      {/* Fraser Valley reality check */}
+      <section className="py-12 bg-orange-50 border-b border-orange-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-800 leading-relaxed">
+            <span className="font-bold">Fraser Valley summers aren&apos;t what they used to be.</span> Since the 2021 heat dome hit 40°C+ in Abbotsford, AC has shifted from a nice-to-have to something a lot of homes need — and older houses were never sized for it. If your system was installed pre-2015, it may be working harder than it was ever spec&apos;d for.
+          </p>
+        </div>
+      </section>
+
+      {/* Common Problems */}
+      <section id="common-cooling-problems" className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 max-w-3xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Common AC Problems in Abbotsford</h2>
+            <p className="text-lg text-gray-600">What people call about — and what it usually turns out to be.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {coolingServices.map((service, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <i className={`${service.icon} text-2xl text-blue-600`}></i>
-                  </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {commonProblems.map((p, i) => (
+              <div key={i} className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-blue-200 transition-all">
+                <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
+                  <i className={`${p.icon} text-2xl text-blue-600`}></i>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {service.description}
-                </p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-gray-700">
-                      <div className="w-4 h-4 flex items-center justify-center mr-2">
-                        <i className="ri-check-line text-green-500"></i>
-                      </div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="font-bold text-gray-900 mb-2">{p.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{p.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Our Cooling Services */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Why Choose Our Cooling Experts?
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <i className="ri-award-line text-xl text-blue-600"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Certified AC Technicians</h3>
-                    <p className="text-gray-600">Our cooling specialists are EPA certified for refrigerant handling and trained on all major AC brands and systems.</p>
-                  </div>
+      {/* Services covered */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Cooling Service Covers</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Central AC, ductless mini-splits, and heat pumps across Abbotsford and the Fraser Valley.</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s, i) => (
+              <div key={i} className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-lg transition-all border border-gray-100">
+                <div className="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center mb-4">
+                  <i className={`${s.icon} text-2xl text-blue-600`}></i>
                 </div>
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <i className="ri-speed-up-line text-xl text-green-600"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Same-Day AC Service</h3>
-                    <p className="text-gray-600">Beat the heat with our same-day air conditioning service. We prioritize AC emergencies during hot weather.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <i className="ri-leaf-line text-xl text-blue-600"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Energy-Efficient Solutions</h3>
-                    <p className="text-gray-600">We install high-efficiency AC systems that reduce energy costs and qualify for utility rebates and tax credits.</p>
-                  </div>
-                </div>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">{s.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{s.body}</p>
               </div>
-            </div>
-            <div className="bg-gray-100 rounded-xl p-4">
-              <img
-                src="/images/ductless-mini-split-abbotsford-hero.png"
-                alt="Professional cooling service"
-                className="w-full h-auto rounded-lg object-cover object-top"
-              />
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Abbotsford Climate & Local Knowledge */}
-      <section className="py-16 bg-blue-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">AC Built for Abbotsford Summers</h2>
-            <p className="text-xl text-blue-200 max-w-3xl mx-auto">After the 2021 BC heat dome hit 49°C, Abbotsford homeowners learned fast that quality cooling isn't optional. Here's what we recommend for Fraser Valley homes.</p>
+      {/* Cost transparency */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What AC Work Actually Costs in Abbotsford</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Real ranges from Fraser Valley quotes — not marketing "starting from" numbers.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-blue-800 rounded-xl p-6">
-              <i className="ri-sun-line text-3xl text-yellow-400 mb-4 block"></i>
-              <h3 className="text-xl font-bold mb-3">Heat Dome Ready</h3>
-              <p className="text-blue-200">Abbotsford's summers now regularly exceed 35°C. We size AC systems for peak demand — not average temperatures — so your system keeps up on the hottest days without short-cycling.</p>
-            </div>
-            <div className="bg-blue-800 rounded-xl p-6">
-              <i className="ri-home-2-line text-3xl text-blue-300 mb-4 block"></i>
-              <h3 className="text-xl font-bold mb-3">Ductless for Older Homes</h3>
-              <p className="text-blue-200">Many Abbotsford homes built before 1990 have no ductwork. Ductless mini-splits add whole-home or room cooling without costly duct installation — and they qualify for BC Hydro rebates up to $1,000 per unit.</p>
-            </div>
-            <div className="bg-blue-800 rounded-xl p-6">
-              <i className="ri-leaf-line text-3xl text-blue-300 mb-4 block"></i>
-              <h3 className="text-xl font-bold mb-3">Energy Efficiency Ratings</h3>
-              <p className="text-blue-200">We recommend SEER2 ratings of 16+ for Abbotsford's climate. Higher-rated units cost more upfront but pay back in 2-4 years through lower hydro bills — especially during peak summer rates.</p>
-            </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { label: 'AC tune-up / spring service', range: '$150 – $220', note: 'Coil clean, refrigerant check, electrical, filter' },
+              { label: 'Common AC repair (capacitor, contactor)', range: '$200 – $500', note: 'Diagnostic + part, most single-visit fixes' },
+              { label: 'Refrigerant recharge (if no leak)', range: '$300 – $800', note: 'R-410A cheaper than legacy R-22; leaks add cost' },
+              { label: 'Central AC on existing furnace/ducts', range: '$4,500 – $8,500', note: 'Depends on tonnage, SEER2, electrical work' },
+              { label: 'Ductless mini-split (single-zone)', range: '$3,500 – $6,500', note: 'Great for suites, home offices, hot rooms' },
+              { label: 'Multi-zone ductless (2–4 heads)', range: '$8,000 – $18,000', note: 'Rebate-eligible if it doubles as a heat pump' }
+            ].map((c, i) => (
+              <div key={i} className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <div className="text-sm text-gray-500 mb-1">{c.label}</div>
+                <div className="text-2xl font-bold text-blue-600 mb-2">{c.range}</div>
+                <div className="text-xs text-gray-500">{c.note}</div>
+              </div>
+            ))}
           </div>
-          <div className="mt-10 grid md:grid-cols-4 gap-6 text-center">
-            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">15+</div><div className="text-blue-300 text-sm mt-1">Years serving Abbotsford</div></div>
-            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">1,500+</div><div className="text-blue-300 text-sm mt-1">AC units installed</div></div>
-            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">24/7</div><div className="text-blue-300 text-sm mt-1">Emergency AC response</div></div>
-            <div className="bg-blue-800/50 rounded-xl p-5"><div className="text-3xl font-bold text-yellow-400">4.9★</div><div className="text-blue-300 text-sm mt-1">Average customer rating</div></div>
-          </div>
+          <p className="text-sm text-gray-500 italic text-center mt-6">
+            Ranges reflect typical Fraser Valley quotes in 2026. Get 2–3 comparisons for anything over $2,000. Rebate stacking can meaningfully lower heat-pump numbers.
+          </p>
         </div>
       </section>
 
       {/* Service Areas */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Cooling Service Areas
-            </h2>
-            <p className="text-xl text-gray-600">
-              Professional air conditioning services throughout Abbotsford and surrounding areas
-            </p>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Cooling Service Areas</h2>
+            <p className="text-lg text-gray-600">Abbotsford neighbourhoods and nearby Fraser Valley communities.</p>
           </div>
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="bg-gray-100 rounded-xl p-4">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-122.38308678476562!3d49.05718584863281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d4c89d72c663%3A0x4a2b36750554ba72!2sAbbotsford%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-lg"
-              ></iframe>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-                Areas We Serve for Cooling Services
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                {geoData.areas.map((area) => (
-                  <Link key={area.slug} href={`/locations/${area.slug}`} className="flex items-center group">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700 group-hover:text-blue-600 transition-colors">{area.name}</span>
-                  </Link>
-                ))}
-              </div>
-              <div className="bg-blue-50 rounded-lg p-6">
-                <h4 className="text-lg font-semibold text-blue-900 mb-2">
-                  Need cooling service outside these areas?
-                </h4>
-                <p className="text-blue-800 mb-4">
-                  We may still be able to help! Contact us to see if we can service your location.
-                </p>
-                <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block whitespace-nowrap cursor-pointer">
-                  Contact for Service Area
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-blue-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-            <i className="ri-robot-2-line text-2xl text-white"></i>
-          </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Beat the Heat?</h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Call us now or use our AI chat assistant — available 24/7 to answer questions, provide estimates, and book your AC service. No forms, no waiting.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg text-lg inline-flex items-center justify-center gap-3">
-              <i className="ri-phone-fill"></i>
-              Call {settings.phoneNumber}
-            </a>
-            <a href="/contact" className="bg-white text-blue-600 border-2 border-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all text-lg inline-flex items-center justify-center gap-3">
-              <i className="ri-chat-smile-2-line"></i>
-              Chat with Our AI
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-600">
-              Common questions about cooling services in Abbotsford
-            </p>
-          </div>
-          <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600">
-                  {faq.answer}
-                </p>
-              </div>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {geoData.areas.map((area) => (
+              <Link key={area.slug} href={`/locations/${area.slug}`} className="flex items-center p-3 bg-white rounded-lg hover:bg-blue-50 hover:text-blue-700 transition-all border border-gray-100 group">
+                <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-3"></div>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-blue-700">{area.name}</span>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Emergency CTA */}
-      <section className="py-16 bg-blue-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-            <div className="w-10 h-10 flex items-center justify-center">
-              <i className="ri-snowy-line text-3xl text-blue-600"></i>
-            </div>
+      {/* FAQ */}
+      <section className="py-16 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">AC & Cooling FAQ</h2>
+            <p className="text-lg text-gray-600">Real questions Abbotsford homeowners ask about air conditioning.</p>
           </div>
-          <h2 className="text-4xl font-bold text-white mb-4">
-            AC Broken? We&apos;re Here to Help!
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Don&apos;t suffer in the heat with a broken air conditioner. Our emergency AC repair team is available 24/7 throughout Abbotsford.
+          <div className="space-y-4">
+            {faqs.map((f, i) => (
+              <details key={i} className="group bg-gray-50 rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all">
+                <summary className="flex items-center justify-between cursor-pointer list-none">
+                  <h3 className="text-lg font-bold text-gray-900 pr-4">{f.q}</h3>
+                  <i className="ri-add-line text-2xl text-blue-600 group-open:rotate-45 transition-transform flex-shrink-0"></i>
+                </summary>
+                <p className="mt-4 text-gray-700 leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA */}
+      <section className="py-16 bg-blue-700 text-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Talk to a Local Cooling Specialist</h2>
+          <p className="text-lg text-blue-100 mb-8">
+            Whether it&apos;s a same-day AC repair or planning ahead for the next heat wave — call or chat and get connected with a local Abbotsford installer.
           </p>
-          <a href={`tel:${settings.phoneNumber}`} className="bg-white text-blue-600 px-10 py-5 rounded-xl text-xl font-bold hover:bg-gray-100 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto">
-            <i className="ri-phone-fill"></i>
-            Call Our Support Team 24/7
+          <a href={`tel:${settings.phoneRaw}`} className="inline-flex items-center gap-3 bg-white text-blue-700 px-8 py-4 rounded-xl text-lg font-bold hover:bg-blue-50 transition-all shadow-xl">
+            <i className="ri-phone-fill text-2xl"></i>
+            Call {settings.phoneNumber}
           </a>
         </div>
       </section>

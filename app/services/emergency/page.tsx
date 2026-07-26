@@ -6,30 +6,48 @@ import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
 export const metadata: Metadata = {
-  title: "24/7 Emergency HVAC Repair in Abbotsford, BC",
-  description: "No heat? AC broken? Emergency HVAC repair in Abbotsford available 24/7 — including weekends & holidays. Fast 1–2 hour response across Fraser Valley. Call now.",
+  title: "24/7 Emergency HVAC Service in Abbotsford, BC",
+  description: "No heat, no AC, or gas smell? 24/7 emergency HVAC dispatch across Abbotsford and the Fraser Valley. Fast triage and honest pricing during real emergencies.",
   alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/emergency' },
   openGraph: {
-    title: "24/7 Emergency HVAC Repair in Abbotsford, BC | Abbotsford HVAC",
-    description: "No heat? AC broken? Emergency HVAC repair in Abbotsford available 24/7 including weekends & holidays. Fast 1–2 hour response across Fraser Valley.",
-    images: ['https://www.abbotsfordhvac.ca/og-emergency.jpg']
+    title: "24/7 Emergency HVAC Service in Abbotsford, BC | Abbotsford HVAC",
+    description: "No heat, no AC, or gas smell? 24/7 emergency HVAC dispatch across Abbotsford and the Fraser Valley.",
+    images: ['https://www.abbotsfordhvac.ca/images/ac-not-cooling-abbotsford-hero.png']
   }
 };
+
+const faqs = [
+  {
+    q: 'What counts as an HVAC emergency?',
+    a: 'No heat when it\'s freezing outside, no AC during a heat wave (especially with seniors, infants, or medical conditions in the home), any gas smell, a CO alarm going off, water leaking from the furnace or air handler, or electrical burning smell. Anything safety-related is always an emergency — do not wait.'
+  },
+  {
+    q: 'How fast do you respond?',
+    a: 'True emergencies (no heat during cold, no cool during heat wave, safety issues) are prioritized. Response times depend on time of day and current workload, but urgent calls are triaged ahead of routine service. If you\'re calling for a real emergency, say so up front.'
+  },
+  {
+    q: 'What should I do RIGHT NOW while I wait?',
+    a: 'Gas smell: leave the house immediately, then call from outside. Also call FortisBC 1-800-663-9911. CO alarm: same — leave the house, then call 911 and a technician. No heat: close unused rooms, dress in layers, use safe supplemental heat (space heater — never a gas stove for heating). No AC in extreme heat: use fans, cool showers, hydrate, close blinds, seek air-conditioned shelter if needed.'
+  },
+  {
+    q: 'Do you charge extra for weekends, evenings, or holidays?',
+    a: 'Emergency after-hours calls typically carry a service call fee that reflects the after-hours dispatch, but pricing is disclosed before any work begins. No surprise charges after the fact.'
+  },
+  {
+    q: 'Will you actually come out at 2 AM in January?',
+    a: 'Yes — no-heat calls during cold snaps are exactly what 24/7 emergency service is for. That said, a diagnostic-only visit at 2 AM may end with a temporary fix and a full repair scheduled for the next day if parts aren\'t on the truck.'
+  }
+];
 
 const emergencySchema = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "24/7 Emergency HVAC Repair in Abbotsford, BC",
-    "description": "24/7 emergency furnace repair, emergency AC repair and same-day HVAC service in Abbotsford, BC and the Fraser Valley.",
+    "name": "24/7 Emergency HVAC Service in Abbotsford, BC",
+    "description": "Emergency furnace, AC, and heat pump repair across Abbotsford and the Fraser Valley — 24 hours a day, 365 days a year.",
     "provider": { "@type": "HVACBusiness", "@id": "https://www.abbotsfordhvac.ca/#business" },
-    "availableChannel": { "@type": "ServiceChannel", "servicePhone": { "@type": "ContactPoint", "contactType": "emergency", "availableLanguage": "English", "hoursAvailable": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" } } },
-    "areaServed": [
-      { "@type": "City", "name": "Abbotsford" },
-      { "@type": "City", "name": "Mission" },
-      { "@type": "AdministrativeArea", "name": "Fraser Valley Regional District" }
-    ],
-    "serviceType": ["Emergency Furnace Repair", "Emergency AC Repair", "Emergency Heating", "Same-Day HVAC Service"]
+    "areaServed": { "@type": "City", "name": "Abbotsford" },
+    "serviceType": ["Emergency Heating Repair", "Emergency AC Repair", "Emergency HVAC Service", "24/7 HVAC Dispatch"]
   },
   {
     "@context": "https://schema.org",
@@ -37,444 +55,170 @@ const emergencySchema = [
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
       { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.abbotsfordhvac.ca/services/emergency" },
-      { "@type": "ListItem", "position": 3, "name": "Emergency Services", "item": "https://www.abbotsfordhvac.ca/services/emergency" }
+      { "@type": "ListItem", "position": 3, "name": "Emergency", "item": "https://www.abbotsfordhvac.ca/services/emergency" }
     ]
   },
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How fast can you respond to an HVAC emergency in Abbotsford?",
-        "acceptedAnswer": { "@type": "Answer", "text": "For emergency calls in Abbotsford, we target a 1–2 hour response time, 24 hours a day, 7 days a week, including holidays. We keep technicians on call specifically for after-hours and weekend emergencies so you're never left waiting in the cold or heat." }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you charge extra for after-hours emergency HVAC calls?",
-        "acceptedAnswer": { "@type": "Answer", "text": "After-hours and weekend emergency service calls do carry an after-hours service fee in addition to the standard diagnostic rate. We provide upfront pricing before any work begins so there are no surprises. Contact us for current emergency service rates." }
-      },
-      {
-        "@type": "Question",
-        "name": "What counts as an HVAC emergency?",
-        "acceptedAnswer": { "@type": "Answer", "text": "HVAC emergencies include: complete heating failure when temperatures drop below 5°C, gas leaks or CO detector alerts (call gas company and 911 first), AC failure during a heat warning, flooding from a failed condensate line, or electrical burning smell from HVAC equipment." }
-      },
-      {
-        "@type": "Question",
-        "name": "What should I do while waiting for an emergency HVAC technician?",
-        "acceptedAnswer": { "@type": "Answer", "text": "For heating emergencies: use electric space heaters safely, keep interior doors closed to retain heat, check your circuit breaker and thermostat batteries. For AC emergencies: close blinds, use fans, move to the lowest floor of your home. Do not attempt to repair gas appliances yourself." }
-      }
-    ]
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
   }
 ];
 
 export default function EmergencyServices() {
   const settings = getSettings();
 
-  const emergencyServices = [
-    {
-      icon: 'ri-alarm-warning-line',
-      title: '24/7 Emergency Response',
-      description: 'Round-the-clock emergency HVAC service available 365 days a year. When your comfort system fails, we\'re here to help immediately.',
-      features: ['24/7 Availability', '365 Days a Year', 'Rapid Response', 'Emergency Hotline', 'No Extra Weekend Fees']
-    },
-    {
-      icon: 'ri-time-line',
-      title: 'Same-Day Service',
-      description: 'Fast same-day emergency repairs to restore your heating or cooling quickly. Priority scheduling for urgent HVAC problems.',
-      features: ['Same-Day Response', 'Priority Scheduling', 'Urgent Repairs', 'Fast Diagnosis', 'Quick Solutions']
-    },
-    {
-      icon: 'ri-fire-line',
-      title: 'Emergency Heating Repairs',
-      description: 'Emergency furnace and heating system repairs when you have no heat. Critical for Abbotsford\'s cold winters.',
-      features: ['No Heat Emergencies', 'Furnace Breakdowns', 'Boiler Failures', 'Heat Pump Issues', 'Thermostat Problems']
-    },
-    {
-      icon: 'ri-snowy-line',
-      title: 'Emergency AC Repairs',
-      description: 'Emergency air conditioning repairs during hot weather. Don\'t suffer in the heat when your AC breaks down.',
-      features: ['AC System Failures', 'Cooling Emergencies', 'Refrigerant Leaks', 'Compressor Issues', 'Electrical Problems']
-    },
-    {
-      icon: 'ri-calendar-line',
-      title: 'Weekend & Holiday Service',
-      description: 'Emergency HVAC service available on weekends and holidays when other companies are closed.',
-      features: ['Weekend Service', 'Holiday Availability', 'No Extra Charges', 'Same Quality Service', 'Emergency Coverage']
-    },
-    {
-      icon: 'ri-stethoscope-line',
-      title: 'Emergency Diagnostics',
-      description: 'Fast emergency system diagnostics to quickly identify and fix HVAC problems, minimizing downtime.',
-      features: ['Rapid Diagnosis', 'Advanced Tools', 'System Analysis', 'Problem Identification', 'Efficient Repairs']
-    }
-  ];
-
-
-  const faqs = [
-    {
-      question: 'What constitutes an HVAC emergency?',
-      answer: 'HVAC emergencies include complete system failures (no heat in winter, no AC in extreme heat), gas leaks, electrical issues, water leaks from systems, or any situation that threatens safety or property.'
-    },
-    {
-      question: 'How quickly do you respond to emergencies?',
-      answer: 'We aim to respond to true emergencies within 1-2 hours during business hours and within 2-4 hours after hours, weekends, and holidays, depending on location and weather conditions.'
-    },
-    {
-      question: 'Do you charge extra for emergency service?',
-      answer: 'Emergency calls may have a service call fee, but we don\'t charge extra for weekends or holidays. We provide upfront pricing before any work begins.'
-    },
-    {
-      question: 'What should I do while waiting for emergency service?',
-      answer: 'For heating emergencies, dress warmly and close off unused rooms. For AC emergencies, stay hydrated and use fans. If you smell gas, leave immediately and call the gas company.'
-    }
+  const emergencyTypes = [
+    { icon: 'ri-fire-line', border: 'border-red-500', iconBg: 'bg-red-50', iconColor: 'text-red-600', title: 'No heat / furnace down', body: 'Cold snap and the house won\'t stay warm. Priority dispatch — especially with kids, elderly residents, or pets.' },
+    { icon: 'ri-snowflake-line', border: 'border-blue-500', iconBg: 'bg-blue-50', iconColor: 'text-blue-600', title: 'No AC in extreme heat', body: 'Fraser Valley heat waves can be a health emergency for seniors and young kids. Priority triage.' },
+    { icon: 'ri-alarm-warning-line', border: 'border-orange-500', iconBg: 'bg-orange-50', iconColor: 'text-orange-600', title: 'Gas smell or CO alarm', body: 'Leave the house immediately, call from outside. Gas: FortisBC 1-800-663-9911. CO: call 911. Then call an HVAC tech.' },
+    { icon: 'ri-flashlight-line', border: 'border-yellow-500', iconBg: 'bg-yellow-50', iconColor: 'text-yellow-600', title: 'Electrical / burning smell', body: 'Turn off the system at the breaker if safe. Do not restart. Call for diagnostic before running again.' },
+    { icon: 'ri-drop-line', border: 'border-sky-500', iconBg: 'bg-sky-50', iconColor: 'text-sky-600', title: 'Water leaking from HVAC', body: 'Clogged condensate line, cracked heat exchanger, or ruptured pipe — some are cosmetic, some are urgent.' },
+    { icon: 'ri-error-warning-line', border: 'border-red-500', iconBg: 'bg-red-50', iconColor: 'text-red-600', title: 'Booming or violent noises', body: 'Delayed ignition on a gas furnace can crack the heat exchanger — real safety issue. Don\'t wait.' }
   ];
 
   return (
     <div className="min-h-screen bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(emergencySchema) }} />
-      {/* SEO tag replaced */}
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden bg-red-900">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('/images/ac-not-cooling-abbotsford-hero.png')`
-          }}
-        />
-        <div className="absolute inset-0 bg-red-900/60" />
-
-        {/* Content Overlay */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-white">
-            <div className="w-24 h-24 bg-white/20 backdrop-blur-xl border-2 border-white/40 rounded-full flex items-center justify-center mx-auto mb-8 shadow-2xl">
-              <div className="w-12 h-12 flex items-center justify-center">
-                <i className="ri-alarm-warning-line text-5xl text-yellow-400 animate-pulse"></i>
-              </div>
-            </div>
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-2xl">
-              24/7 Emergency HVAC Service in <span className="text-yellow-300">Abbotsford</span>
-            </h1>
-            <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto text-white drop-shadow-lg font-medium">
-              When your heating or cooling system fails, we respond fast. Available 24/7, 365 days a year for emergency HVAC repairs throughout Abbotsford.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <a href={`tel:${settings.phoneRaw}`} className="bg-yellow-400 text-red-900 px-10 py-5 rounded-xl text-xl font-bold hover:bg-yellow-300 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3">
-                <i className="ri-phone-fill text-2xl"></i>
-                Call Now {settings.phoneNumber}
-              </a>
-            </div>
+      {/* Emergency Hero */}
+      <section className="relative py-20 md:py-28 overflow-hidden bg-red-900">
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/images/ac-not-cooling-abbotsford-hero.png')` }} />
+        <div className="absolute inset-0 bg-red-900/75" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+          <div className="inline-flex items-center gap-2 bg-yellow-400 text-red-900 px-4 py-2 rounded-full font-bold text-sm mb-6 uppercase tracking-wider">
+            <i className="ri-alarm-warning-fill animate-pulse"></i>
+            24/7 Emergency Dispatch
           </div>
-        </div>
-      </section>
-
-      {/* Emergency Alert Bar */}
-      <section className="bg-red-600 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center text-white text-center">
-            <div className="w-6 h-6 flex items-center justify-center mr-3">
-              <i className="ri-alarm-warning-line text-xl"></i>
-            </div>
-            <p className="text-lg font-semibold">
-              HVAC EMERGENCY? Don't wait — call {settings.phoneNumber} for fast response!
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Emergency Services Grid */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Complete Emergency HVAC Services
-            </h2>
-            <p className="text-xl text-gray-600">
-              When HVAC emergencies strike, we're ready with fast, professional emergency service throughout Abbotsford
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {emergencyServices.map((service, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow border-l-4 border-red-500">
-                <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-4">
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <i className={`${service.icon} text-2xl text-red-600`}></i>
-                  </div>
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {service.description}
-                </p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-gray-700">
-                      <div className="w-4 h-4 flex items-center justify-center mr-2">
-                        <i className="ri-check-line text-green-500"></i>
-                      </div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Emergency Response Process */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our Emergency Response Process
-            </h2>
-            <p className="text-xl text-gray-600">
-              Fast, efficient emergency service when you need it most
-            </p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-red-600">1</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Call Us</h3>
-              <p className="text-gray-600">
-                Call our emergency hotline 24/7. We answer immediately and dispatch a technician.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-red-600">2</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Fast Response</h3>
-              <p className="text-gray-600">
-                Our technician arrives quickly with fully stocked emergency vehicle and diagnostic tools.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-red-600">3</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Quick Diagnosis</h3>
-              <p className="text-gray-600">
-                We quickly identify the problem and provide upfront pricing for emergency repairs.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-red-600">4</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Restore Comfort</h3>
-              <p className="text-gray-600">
-                We complete repairs efficiently to restore your heating or cooling as quickly as possible.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Our Emergency Service */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Why Choose Our Emergency HVAC Service?
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <i className="ri-time-line text-xl text-red-600"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Fastest Response Times</h3>
-                    <p className="text-gray-600">We prioritize emergency calls and aim for 1-2 hour response times, even during extreme weather conditions.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <i className="ri-tools-line text-xl text-red-600"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Fully Stocked Emergency Vehicles</h3>
-                    <p className="text-gray-600">Our emergency vehicles carry extensive parts inventory to complete most repairs on the first visit.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <i className="ri-shield-check-line text-xl text-red-600"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Emergency-Trained Technicians</h3>
-                    <p className="text-gray-600">Our technicians are specially trained for emergency situations and safety protocols.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gray-100 rounded-xl p-4">
-              <img
-                src="/images/ac-capacitor-diagnosis-abbotsford.png"
-                alt="Emergency HVAC service"
-                className="w-full h-auto rounded-lg object-cover object-top"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Emergency Response Context */}
-      <section className="py-16 bg-red-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Fast Emergency Response Across Abbotsford</h2>
-            <p className="text-xl text-red-200 max-w-3xl mx-auto">When your heating fails in January or your AC dies in a July heat wave, every hour matters. Here's what our emergency process looks like from your first call.</p>
-          </div>
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="bg-red-800 rounded-xl p-6 text-center">
-              <div className="text-4xl font-bold text-yellow-400 mb-2">1</div>
-              <h3 className="text-lg font-bold mb-2">You Call</h3>
-              <p className="text-red-200 text-sm">Our dispatch answers immediately — no voicemail, no call-back queue. We assess your situation and confirm coverage area.</p>
-            </div>
-            <div className="bg-red-800 rounded-xl p-6 text-center">
-              <div className="text-4xl font-bold text-yellow-400 mb-2">2</div>
-              <h3 className="text-lg font-bold mb-2">Tech Dispatched</h3>
-              <p className="text-red-200 text-sm">A certified technician is dispatched within minutes. Our GPS-routed dispatch sends the closest available tech in Abbotsford.</p>
-            </div>
-            <div className="bg-red-800 rounded-xl p-6 text-center">
-              <div className="text-4xl font-bold text-yellow-400 mb-2">3</div>
-              <h3 className="text-lg font-bold mb-2">On-Site Diagnosis</h3>
-              <p className="text-red-200 text-sm">We diagnose the problem and give you a clear, upfront price before any work begins. No surprises, no hidden fees.</p>
-            </div>
-            <div className="bg-red-800 rounded-xl p-6 text-center">
-              <div className="text-4xl font-bold text-yellow-400 mb-2">4</div>
-              <h3 className="text-lg font-bold mb-2">Problem Solved</h3>
-              <p className="text-red-200 text-sm">Our vans carry the most common parts for all major brands. Most emergency repairs are completed in a single visit.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Emergency Service Areas */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Emergency Service Areas
-            </h2>
-            <p className="text-xl text-gray-600">
-              24/7 emergency HVAC service throughout Abbotsford and surrounding areas
-            </p>
-          </div>
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="bg-gray-100 rounded-xl p-4">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-122.38308678476562!3d49.05718584863281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d4c89d72c663%3A0x4a2b36750554ba72!2sAbbotsford%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-lg"
-              ></iframe>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-                Areas We Serve for Emergency HVAC
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                {geoData.areas.map((area) => (
-                  <Link key={area.slug} href={`/locations/${area.slug}`} className="flex items-center group">
-                    <div className="w-2 h-2 bg-red-600 rounded-full mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700 group-hover:text-red-600 transition-colors">{area.name}</span>
-                  </Link>
-                ))}
-              </div>
-              <div className="bg-red-50 rounded-lg p-6 border border-red-200">
-                <h4 className="text-lg font-semibold text-red-900 mb-2">
-                  Emergency outside these areas?
-                </h4>
-                <p className="text-red-800 mb-4">
-                  Call us anyway! We may be able to help or recommend emergency service in your area.
-                </p>
-                <a href={`tel:${settings.phoneRaw}`} className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors inline-block whitespace-nowrap cursor-pointer">
-                  Contact for Service Area
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="emergency-form-section" className="py-16 bg-gray-50">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Need Emergency HVAC Service Right Now?</h2>
-          <p className="text-xl text-gray-600 mb-8">Don't wait — call us directly or chat with our AI assistant for immediate help.</p>
-          <a href={`tel:${settings.phoneRaw}`} className="inline-flex bg-red-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-red-700 transition-all shadow-xl items-center gap-3">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            HVAC Emergency in Abbotsford?
+          </h1>
+          <p className="text-lg sm:text-xl mb-8 text-red-100 leading-relaxed max-w-2xl mx-auto">
+            No heat during a cold snap. No AC during a heat wave. Gas smell. CO alarm. Call now for priority emergency dispatch across Abbotsford and the Fraser Valley.
+          </p>
+          <a href={`tel:${settings.phoneRaw}`} className="inline-flex items-center gap-3 bg-yellow-400 text-red-900 px-10 py-5 rounded-xl text-xl font-bold hover:bg-yellow-300 transition-all shadow-2xl hover:scale-105 active:scale-95">
             <i className="ri-phone-fill text-2xl"></i>
-            Call Now {settings.phoneNumber}
+            Call {settings.phoneNumber}
           </a>
+          <p className="mt-6 text-sm text-red-200">
+            Gas smell? Leave the house first. Then call from outside.
+          </p>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Emergency Service FAQ
-            </h2>
-            <p className="text-xl text-gray-600">
-              Common questions about emergency HVAC services in Abbotsford
-            </p>
+      {/* Emergency triage */}
+      <section className="py-14 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Is This an Emergency? Quick Triage</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">These are the situations that qualify for after-hours priority dispatch. If you&apos;re unsure, call anyway — dispatch will triage.</p>
           </div>
-          <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600">
-                  {faq.answer}
-                </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {emergencyTypes.map((e, i) => (
+              <div key={i} className={`bg-white border-l-4 ${e.border} rounded-r-2xl p-6 shadow-sm hover:shadow-md transition-all`}>
+                <div className={`w-12 h-12 ${e.iconBg} rounded-xl flex items-center justify-center mb-4`}>
+                  <i className={`${e.icon} text-2xl ${e.iconColor}`}></i>
+                </div>
+                <h3 className="font-bold text-gray-900 mb-2">{e.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{e.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Final Emergency CTA */}
-      <section className="py-16 bg-red-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-            <div className="w-10 h-10 flex items-center justify-center">
-              <i className="ri-phone-line text-3xl text-red-600"></i>
+      {/* Safety-first callouts */}
+      <section className="py-14 bg-yellow-50 border-y border-yellow-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 text-center">Before You Call — Safety First</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <div className="flex items-center gap-3 mb-3">
+                <i className="ri-fire-fill text-2xl text-red-600"></i>
+                <h3 className="font-bold text-gray-900">Gas Smell</h3>
+              </div>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Leave the house immediately. Don&apos;t flip switches, don&apos;t use the phone inside. Call <a href="tel:18006639911" className="font-bold text-red-600 underline">FortisBC 1-800-663-9911</a> from outside, then call your HVAC tech.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <div className="flex items-center gap-3 mb-3">
+                <i className="ri-alarm-warning-fill text-2xl text-orange-600"></i>
+                <h3 className="font-bold text-gray-900">CO Alarm</h3>
+              </div>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Get everyone outside. Call <a href="tel:911" className="font-bold text-red-600 underline">911</a> first. CO poisoning is fast and serious. Do not re-enter until first responders clear the house.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <div className="flex items-center gap-3 mb-3">
+                <i className="ri-flashlight-fill text-2xl text-yellow-600"></i>
+                <h3 className="font-bold text-gray-900">Electrical Smell</h3>
+              </div>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Turn the system off at the breaker if you can do it safely. Don&apos;t restart it. If there are flames or visible smoke, get out and call 911 first.
+              </p>
             </div>
           </div>
-          <h2 className="text-4xl font-bold text-white mb-4">
-            Don't Wait - Call Now!
-          </h2>
-          <p className="text-xl text-red-100 mb-8">
-            HVAC emergencies get worse with time. Call our emergency hotline immediately for fast, professional service.
+        </div>
+      </section>
+
+      {/* Service Areas */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">24/7 Emergency Coverage Areas</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Emergency HVAC dispatch across Abbotsford and nearby Fraser Valley communities.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {geoData.areas.map((area) => (
+              <Link key={area.slug} href={`/locations/${area.slug}`} className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-red-50 hover:text-red-700 transition-all group">
+                <div className="w-1.5 h-1.5 bg-red-600 rounded-full mr-3"></div>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-red-700">{area.name}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Emergency HVAC FAQ</h2>
+            <p className="text-lg text-gray-600">Straight answers about how emergency dispatch actually works.</p>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((f, i) => (
+              <details key={i} className="group bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all">
+                <summary className="flex items-center justify-between cursor-pointer list-none">
+                  <h3 className="text-lg font-bold text-gray-900 pr-4">{f.q}</h3>
+                  <i className="ri-add-line text-2xl text-red-600 group-open:rotate-45 transition-transform flex-shrink-0"></i>
+                </summary>
+                <p className="mt-4 text-gray-700 leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-16 bg-red-600 text-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <i className="ri-phone-fill text-5xl mb-4 block"></i>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Don&apos;t Wait — Call Now</h2>
+          <p className="text-lg text-red-100 mb-8">
+            HVAC emergencies get worse the longer you wait. Cracked heat exchangers, frozen coils, and refrigerant leaks all escalate quickly.
           </p>
-          <a href={`tel:${settings.phoneRaw}`} className="bg-yellow-400 text-red-900 px-12 py-6 rounded-xl text-2xl font-bold hover:bg-yellow-300 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto animate-pulse">
-            <i className="ri-phone-fill"></i>
-            Call Our Emergency Team Now
+          <a href={`tel:${settings.phoneRaw}`} className="inline-flex items-center gap-3 bg-white text-red-600 px-10 py-5 rounded-xl text-xl font-bold hover:bg-red-50 transition-all shadow-xl">
+            <i className="ri-phone-fill text-2xl"></i>
+            Call {settings.phoneNumber}
           </a>
-          <p className="text-red-100 mt-4 text-sm">
-            Available 24/7 • 365 Days a Year • Fast Response
-          </p>
         </div>
       </section>
 
