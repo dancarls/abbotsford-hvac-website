@@ -6,25 +6,60 @@ import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
 export const metadata: Metadata = {
-  title: "Water Heater & Plumbing Services in Abbotsford, BC",
-  description: "Tankless & traditional water heater installation, plumbing repairs & pipe insulation in Abbotsford. Same-day service available. Licensed plumbers serving Fraser Valley. Free estimates.",
+  title: "Plumber Abbotsford BC — Plumbing Repairs & Water Heater Service",
+  description: "Local plumber in Abbotsford — leak repairs, drain cleaning, water heater install (tank & tankless), and emergency plumbing. Real cost ranges. Fraser Valley coverage.",
   alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/plumbing' },
   openGraph: {
-    title: "Water Heater & Plumbing Services in Abbotsford, BC | Abbotsford HVAC",
-    description: "Tankless & traditional water heater installation, plumbing repairs & pipe insulation in Abbotsford. Same-day service available.",
-    images: ['https://www.abbotsfordhvac.ca/og-plumbing.jpg']
+    title: "Plumber Abbotsford BC — Plumbing Repairs & Water Heater Service",
+    description: "Local plumber in Abbotsford — leaks, drains, water heaters, and emergency plumbing across the Fraser Valley.",
+    images: ['https://www.abbotsfordhvac.ca/images/hvac-maintenance-abbotsford-hero.png']
   }
 };
+
+const faqs = [
+  {
+    q: 'How much does a plumber cost in Abbotsford?',
+    a: 'Service call minimums typically run $95–$150 in the Fraser Valley. Most common repairs (leaky faucet, running toilet, minor drain unclog) total $150–$400 for the visit. Bigger jobs (main line, water heater, re-piping section) run $500–$5,000+. Emergency after-hours calls carry a higher call-out fee but no surprise pricing after diagnostic.'
+  },
+  {
+    q: 'How much does water heater installation cost in Abbotsford?',
+    a: 'Standard tank water heater installed: $1,200–$2,800 depending on size and gas vs electric. Tankless water heater installed: $3,000–$5,500 — higher upfront but 20+ year lifespan and 20–30% lower operating cost vs a tank. Gas conversions and code upgrades (venting, expansion tanks) can add $300–$1,500.'
+  },
+  {
+    q: 'Tankless vs tank water heater — which is better for Abbotsford?',
+    a: 'Tankless wins for: households with 3+ people, high hot water demand, limited utility space, or 15+ year planning horizon. Tanks win for: lower upfront cost, simpler install, occasional-use properties. Fraser Valley municipal water is moderately hard, so tankless units need annual descaling — plan for that.'
+  },
+  {
+    q: 'How long does a water heater last?',
+    a: 'Standard tank water heater: 8–12 years typical, 15 with careful maintenance. Tankless: 15–20+ years with annual descaling. Warning signs: rusty hot water, popping/rumbling on heat cycle, water pooling around the base, or hot water running out faster than it used to.'
+  },
+  {
+    q: 'Do you handle emergency plumbing in Abbotsford?',
+    a: 'Yes — burst pipes, active leaks, sewage backup, and no-hot-water calls are treated as emergencies. Priority dispatch for anything actively damaging the home. Turn off the main water shutoff (usually near where water enters the house) before calling if there\'s an active leak.'
+  },
+  {
+    q: 'What plumbing issues are most common in Abbotsford homes?',
+    a: 'Frozen or burst pipes during cold snaps (older homes with poorly insulated crawlspaces), aging galvanized supply lines needing replacement, cast iron drain line problems in pre-1980 homes, hard-water buildup on fixtures and tankless heaters, and root intrusion in older main sewer lines.'
+  },
+  {
+    q: 'Should I repipe my whole house?',
+    a: 'Common triggers: multiple leaks in original galvanized or Poly-B pipe (common in 1980s–90s Abbotsford builds), consistently low water pressure, or discoloured water from corroded lines. Full residential repipe in copper or PEX typically runs $4,000–$15,000 depending on home size and access.'
+  },
+  {
+    q: 'Do you serve Mission, Chilliwack, and other Fraser Valley areas?',
+    a: 'Yes — coverage across Abbotsford, Mission, and nearby Fraser Valley communities including Chilliwack for larger jobs. Call to confirm for outlying addresses.'
+  }
+];
 
 const plumbingSchema = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Plumbing & Water Heating Services in Abbotsford, BC",
-    "description": "Water heater installation, plumbing repairs, tankless water heater conversion and pipe insulation services in Abbotsford, BC.",
+    "name": "Plumbing Services in Abbotsford, BC",
+    "description": "Plumbing repairs, drain cleaning, water heater install and service, repipe work, and emergency plumbing across Abbotsford and the Fraser Valley.",
     "provider": { "@type": "HVACBusiness", "@id": "https://www.abbotsfordhvac.ca/#business" },
     "areaServed": { "@type": "City", "name": "Abbotsford" },
-    "serviceType": ["Water Heater Installation", "Tankless Water Heater", "Plumbing Repairs", "Pipe Insulation", "Emergency Plumbing"]
+    "serviceType": ["Plumbing Repair", "Drain Cleaning", "Water Heater Installation", "Tankless Water Heater", "Emergency Plumbing", "Repipe"]
   },
   {
     "@context": "https://schema.org",
@@ -32,373 +67,241 @@ const plumbingSchema = [
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.abbotsfordhvac.ca" },
       { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.abbotsfordhvac.ca/services/plumbing" },
-      { "@type": "ListItem", "position": 3, "name": "Plumbing & Water Heating", "item": "https://www.abbotsfordhvac.ca/services/plumbing" }
+      { "@type": "ListItem", "position": 3, "name": "Plumbing", "item": "https://www.abbotsfordhvac.ca/services/plumbing" }
     ]
   },
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How much does water heater installation cost in Abbotsford?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Traditional tank water heaters cost $1,200–$3,000 installed in Abbotsford. Tankless water heaters range from $2,500–$5,500+ installed. Tankless units have higher upfront costs but provide endless hot water and last 20+ years vs 10–15 for tanks." }
-      },
-      {
-        "@type": "Question",
-        "name": "Should I switch to a tankless water heater?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Tankless water heaters are ideal if you frequently run out of hot water, want to save on energy bills (20–30% more efficient), or have limited space. They're a strong choice for Abbotsford homes with 2+ bathrooms or high hot water demand." }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does a water heater last?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Tank water heaters typically last 10–15 years. Tankless units can last 20+ years with annual descaling — important in Abbotsford due to moderately hard water from the municipal supply. Signs you need replacement include rusty water, rumbling sounds, or inconsistent temperatures." }
-      }
-    ]
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
   }
 ];
 
 export default function PlumbingServices() {
   const settings = getSettings();
 
-  const plumbingServices = [
-    {
-      icon: 'ri-drop-line',
-      title: 'Water Heater Services',
-      description: 'Complete water heater installation, repair, and maintenance for tank and tankless systems. Gas, electric, and hybrid options available.',
-      features: ['Tank & Tankless Options', 'Gas & Electric Models', 'Installation & Repair', 'Energy Efficient Units', 'Warranty Coverage']
-    },
-    {
-      icon: 'ri-tools-line',
-      title: 'Plumbing Repairs',
-      description: 'Expert plumbing repairs for leaks, clogs, pipe issues, and fixture problems. Fast, reliable service for all your plumbing needs.',
-      features: ['Leak Repairs', 'Drain Cleaning', 'Pipe Repairs', 'Fixture Installation', 'Emergency Service']
-    },
-    {
-      icon: 'ri-temp-cold-line',
-      title: 'Pipe Insulation',
-      description: 'Professional pipe insulation services to prevent freezing, reduce heat loss, and improve energy efficiency in your plumbing system.',
-      features: ['Freeze Protection', 'Energy Savings', 'Hot Water Lines', 'Cold Water Lines', 'Professional Installation']
-    },
-    {
-      icon: 'ri-fire-line',
-      title: 'Hot Water Systems',
-      description: 'Complete hot water system design and installation including circulation pumps, expansion tanks, and temperature control.',
-      features: ['System Design', 'Circulation Pumps', 'Expansion Tanks', 'Temperature Control', 'Efficiency Optimization']
-    },
-    {
-      icon: 'ri-leaf-line',
-      title: 'Tankless Water Heaters',
-      description: 'Space-saving tankless water heater installation and service. Endless hot water with improved energy efficiency.',
-      features: ['Endless Hot Water', 'Space Saving Design', 'Energy Efficient', 'Long Lifespan', 'Professional Installation']
-    },
-    {
-      icon: 'ri-alarm-warning-line',
-      title: 'Emergency Plumbing',
-      description: '24/7 emergency plumbing services for burst pipes, major leaks, and other urgent plumbing issues that can\'t wait.',
-      features: ['24/7 Availability', 'Rapid Response', 'Burst Pipe Repair', 'Leak Detection', 'Water Damage Prevention']
-    }
+  const commonProblems = [
+    { icon: 'ri-drop-line', title: 'Active leak or burst pipe', body: 'Shut off the main water valve first, then call. Most homes have the shutoff near where water enters — often in a basement corner or utility room.' },
+    { icon: 'ri-fire-line', title: 'No hot water', body: 'Pilot light out (gas), tripped breaker (electric), failed heating element, or the tank\'s reached end-of-life. Age of unit is the biggest tell.' },
+    { icon: 'ri-alarm-warning-line', title: 'Water heater leaking', body: 'Small leaks around fittings may be fixable. Tank leaking from the bottom = usually replacement time. Don\'t ignore — a burst tank floods fast.' },
+    { icon: 'ri-loader-line', title: 'Slow drains or backed-up sewer', body: 'Kitchen and bathroom drains often clog from grease and hair. Whole-house backup usually means main line — cameras help pinpoint it.' },
+    { icon: 'ri-water-flash-line', title: 'Low water pressure', body: 'Could be a single fixture (aerator, cartridge) or system-wide (galvanized pipe corrosion, pressure regulator, or municipal supply). Different fixes.' },
+    { icon: 'ri-water-percent-line', title: 'Hard water buildup', body: 'Fraser Valley water isn\'t extreme but tankless heaters, kettles, and fixtures show it. Water softeners and annual descaling help.' },
+    { icon: 'ri-temp-cold-line', title: 'Frozen pipes in cold snap', body: 'Common in older Abbotsford homes with poorly insulated crawlspaces. Never use open flame — heat guns, warm cloths, and a slow drip help.' },
+    { icon: 'ri-tools-line', title: 'Running toilet, dripping tap', body: 'Cheap fixes that add up on water bills. Most are 20-minute jobs — worth grouping several into one service call.' }
   ];
 
-
-  const faqs = [
-    {
-      question: 'How long do water heaters typically last?',
-      answer: 'Tank water heaters last 8-12 years, while tankless units can last 15-20 years with proper maintenance. Regular servicing extends lifespan and maintains efficiency.'
-    },
-    {
-      question: 'Should I choose a tank or tankless water heater?',
-      answer: 'Tankless heaters provide endless hot water and save space but have higher upfront costs. Tank heaters cost less initially but take up more space. We\'ll help you choose based on your needs.'
-    },
-    {
-      question: 'How do I know if my pipes need insulation?',
-      answer: 'Signs include frozen pipes in winter, long waits for hot water, high energy bills, or condensation on cold water pipes. Insulation helps with all these issues.'
-    },
-    {
-      question: 'Do you offer emergency plumbing services?',
-      answer: 'Yes! We provide 24/7 emergency plumbing services for burst pipes, major leaks, and other urgent issues that can cause property damage.'
-    }
+  const services = [
+    { icon: 'ri-drop-line', title: 'Plumbing Repairs', body: 'Leaks, drips, running toilets, low pressure, fixture replacement — most single-visit repairs handled same-day.' },
+    { icon: 'ri-fire-line', title: 'Water Heater Install & Repair', body: 'Tank and tankless. Gas, electric, and hybrid heat pump water heaters. Permit and inspection handled.' },
+    { icon: 'ri-loader-line', title: 'Drain Cleaning', body: 'Kitchen, bathroom, and main-line drain unclogs. Camera inspection available for recurring or main-line issues.' },
+    { icon: 'ri-alarm-warning-line', title: 'Emergency Plumbing', body: 'Burst pipes, active leaks, sewage backup. Priority dispatch — call any time, don\'t let damage compound.' },
+    { icon: 'ri-hammer-line', title: 'Repipe & Pipe Repair', body: 'Section repipes and full-house replacement in copper or PEX. Especially common in Abbotsford homes with original Poly-B (1980s–90s).' },
+    { icon: 'ri-tools-line', title: 'Fixture Install & Upgrades', body: 'Faucets, toilets, sinks, garburators. Coordinated with renovation projects or one-off replacements.' }
   ];
 
   return (
     <div className="min-h-screen bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(plumbingSchema) }} />
-      {/* SEO tag replaced */}
       <Header />
 
-      {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden bg-blue-900">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('/images/dual-fuel-heat-pump-installation-abbotsford.png')`
-          }}
-        />
-        <div className="absolute inset-0 bg-blue-900/60" />
-
-        {/* Content Overlay */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center text-white">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-2xl">
-              Expert Plumbing & Water Heating in <span className="text-blue-400">Abbotsford</span>
+      {/* Hero */}
+      <section className="relative py-24 md:py-32 overflow-hidden bg-sky-900">
+        <div className="absolute inset-0 bg-cover bg-center opacity-40" style={{ backgroundImage: `url('/images/hvac-maintenance-abbotsford-hero.png')` }} />
+        <div className="absolute inset-0 bg-sky-900/70" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-white max-w-3xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+              Plumber in <span className="text-sky-300">Abbotsford, BC</span>
             </h1>
-            <p className="text-xl lg:text-2xl mb-10 max-w-3xl mx-auto text-white drop-shadow-lg font-medium">
-              Professional water heater installation, plumbing repairs, and pipe insulation services. Keep your water flowing and heating systems running efficiently.
+            <p className="text-lg sm:text-xl mb-8 text-gray-100 leading-relaxed">
+              Active leak? No hot water? Old water heater on borrowed time? Get a local Abbotsford plumber for repairs, water heater install (tank or tankless), and emergency plumbing across the Fraser Valley.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-blue-700 transition-all shadow-2xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href={`tel:${settings.phoneRaw}`} className="bg-sky-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-sky-700 transition-all shadow-xl inline-flex items-center justify-center gap-2">
                 <i className="ri-phone-fill text-2xl"></i>
-                Call Now {settings.phoneNumber}
+                Call {settings.phoneNumber}
               </a>
-              <a href="/contact" className="bg-white/20 backdrop-blur-xl border-2 border-white/40 text-white px-10 py-5 rounded-xl text-xl font-bold hover:bg-white/30 transition-all hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer shadow-2xl">
-                Chat or Get a Quote
-              </a>
+              <Link href="#common-plumbing-problems" className="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/20 transition-all inline-flex items-center justify-center gap-2">
+                <i className="ri-question-line"></i>
+                Common plumbing problems
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Plumbing Services Grid */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Complete Plumbing & Water Heating Solutions
-            </h2>
-            <p className="text-xl text-gray-600">
-              From water heater installation to emergency repairs, we handle all your plumbing needs in Abbotsford
-            </p>
+      {/* Trust bar */}
+      <section className="py-8 bg-sky-50 border-b border-sky-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-gray-800 leading-relaxed">
+            <span className="font-bold">Local Abbotsford plumbers</span> — not a call centre routing your job to whoever answers. Real cost ranges below, no surprise pricing after diagnostic, and emergency dispatch for burst pipes and active leaks.
+          </p>
+        </div>
+      </section>
+
+      {/* Common Problems */}
+      <section id="common-plumbing-problems" className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 max-w-3xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Common Plumbing Problems in Abbotsford Homes</h2>
+            <p className="text-lg text-gray-600">What people call about — and what tends to cause it.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {plumbingServices.map((service, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <i className={`${service.icon} text-2xl text-blue-600`}></i>
-                  </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {commonProblems.map((p, i) => (
+              <div key={i} className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-sky-200 transition-all">
+                <div className="w-12 h-12 bg-sky-50 rounded-xl flex items-center justify-center mb-4">
+                  <i className={`${p.icon} text-2xl text-sky-600`} aria-hidden="true"></i>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-gray-900">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {service.description}
-                </p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-gray-700">
-                      <div className="w-4 h-4 flex items-center justify-center mr-2">
-                        <i className="ri-check-line text-green-500"></i>
-                      </div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="font-bold text-gray-900 mb-2 text-sm">{p.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{p.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Our Plumbing Services */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Why Choose Our Plumbing Experts?
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <i className="ri-shield-check-line text-xl text-blue-600"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Licensed Plumbing Professionals</h3>
-                    <p className="text-gray-600">Our plumbers are fully licensed, bonded, and experienced in all aspects of residential and commercial plumbing systems.</p>
-                  </div>
+      {/* What's covered */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Plumbing Service Covers</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Repairs, water heaters, drains, and emergency plumbing across Abbotsford and nearby Fraser Valley.</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((s, i) => (
+              <div key={i} className="bg-white rounded-2xl shadow-sm p-6 hover:shadow-lg transition-all border border-gray-100">
+                <div className="w-14 h-14 bg-sky-50 rounded-2xl flex items-center justify-center mb-4">
+                  <i className={`${s.icon} text-2xl text-sky-600`}></i>
                 </div>
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <i className="ri-water-percent-line text-xl text-green-600"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Water Damage Prevention</h3>
-                    <p className="text-gray-600">We focus on preventing water damage through quality installations, leak detection, and prompt emergency response services.</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                    <div className="w-6 h-6 flex items-center justify-center">
-                      <i className="ri-leaf-line text-xl text-blue-600"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Energy-Efficient Solutions</h3>
-                    <p className="text-gray-600">We install high-efficiency water heaters and plumbing systems that reduce energy costs and environmental impact.</p>
-                  </div>
-                </div>
+                <h3 className="font-bold text-gray-900 text-lg mb-2">{s.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{s.body}</p>
               </div>
-            </div>
-            <div className="bg-gray-100 rounded-xl p-4">
-              <img
-                src="/images/hvac-maintenance-abbotsford-hero.png"
-                alt="Professional plumbing service"
-                className="w-full h-auto rounded-lg object-cover object-top"
-              />
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Abbotsford Plumbing Context */}
-      <section className="py-16 bg-blue-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Plumbing & Water Heating for Abbotsford Homes</h2>
-            <p className="text-xl text-blue-200 max-w-3xl mx-auto">Abbotsford's water quality and energy costs make choosing the right water heating system more important than ever. Here's what local homeowners should know.</p>
+      {/* Cost transparency */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">What Plumbing Work Actually Costs in Abbotsford</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Real ranges from Fraser Valley quotes — not marketing "starting from" pricing.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-blue-800 rounded-xl p-6">
-              <i className="ri-drop-line text-3xl text-blue-300 mb-4 block"></i>
-              <h3 className="text-xl font-bold mb-3">Tankless Water Heaters</h3>
-              <p className="text-blue-200">Tankless (on-demand) water heaters save 25-35% on energy bills vs. tank models. With BC's rising electricity costs, most Abbotsford homeowners recoup the premium in 5-7 years. We stock all major brands and provide next-day installation.</p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              { label: 'Service call + diagnostic', range: '$95 – $150', note: 'Standard minimum for a visit; applied against repair total' },
+              { label: 'Common repair (leak, running toilet, drain unclog)', range: '$150 – $400', note: 'Most single-visit fixes fall here' },
+              { label: 'Tank water heater installed', range: '$1,200 – $2,800', note: '40–60 gal gas or electric; plus code upgrades if needed' },
+              { label: 'Tankless water heater installed', range: '$3,000 – $5,500', note: 'Higher upfront, 20+ year lifespan, endless hot water' },
+              { label: 'Main sewer / drain camera & clean', range: '$400 – $900', note: 'Camera inspection + hydro-jet for tree roots or heavy blockage' },
+              { label: 'Section repipe (part of house)', range: '$1,500 – $5,000', note: 'Common for kitchen/bathroom refresh or Poly-B replacement' },
+              { label: 'Full-house repipe (copper or PEX)', range: '$4,000 – $15,000', note: 'Depends on size, access, and pipe material' },
+              { label: 'Emergency after-hours callout', range: '+$150 – $300', note: 'Added to normal repair cost; disclosed before work' }
+            ].map((c, i) => (
+              <div key={i} className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                <div className="text-sm text-gray-500 mb-1">{c.label}</div>
+                <div className="text-2xl font-bold text-sky-600 mb-2">{c.range}</div>
+                <div className="text-xs text-gray-500">{c.note}</div>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm text-gray-500 italic text-center mt-6">
+            Ranges reflect typical Fraser Valley quotes in 2026. Get 2–3 comparisons for anything over $2,000.
+          </p>
+        </div>
+      </section>
+
+      {/* Water heater decision */}
+      <section className="py-16 bg-sky-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Tankless vs. Tank Water Heater — Which for Your Home?</h2>
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                Water heaters are the plumbing decision most Abbotsford homeowners face at some point — usually right after the old one starts leaking. Tank vs. tankless changes cost, hot water availability, install complexity, and lifespan.
+              </p>
+              <a href={`tel:${settings.phoneRaw}`} className="inline-flex items-center gap-2 bg-sky-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-sky-700 transition-colors shadow-md">
+                <i className="ri-phone-fill"></i>
+                Talk it through: {settings.phoneNumber}
+              </a>
             </div>
-            <div className="bg-blue-800 rounded-xl p-6">
-              <i className="ri-shield-check-line text-3xl text-blue-300 mb-4 block"></i>
-              <h3 className="text-xl font-bold mb-3">Hard Water Considerations</h3>
-              <p className="text-blue-200">Abbotsford's municipal water can cause scale buildup in water heaters, reducing efficiency by up to 30%. We descale existing units and recommend tankless models with commercial-grade scale resistance for Fraser Valley conditions.</p>
-            </div>
-            <div className="bg-blue-800 rounded-xl p-6">
-              <i className="ri-money-dollar-circle-line text-3xl text-blue-300 mb-4 block"></i>
-              <h3 className="text-xl font-bold mb-3">BC Rebates Available</h3>
-              <p className="text-blue-200">Heat pump water heaters qualify for up to $1,000 in CleanBC rebates. We handle all paperwork and help you identify the highest-rebate option for your home's existing infrastructure.</p>
+            <div className="space-y-3">
+              {[
+                { title: 'Household size', body: '1–3 people: tank often makes sense. 4+ or high demand: tankless usually wins.' },
+                { title: 'Space', body: 'Tankless mounts on a wall — good for small utility rooms. Tanks need floor + clearance.' },
+                { title: 'Time horizon', body: 'Staying 10+ years? Tankless payback works. Selling soon? Tank costs less upfront.' },
+                { title: 'Gas vs electric', body: 'Gas tankless is most common in Abbotsford. Heat pump water heaters are the newest option — high efficiency, higher install cost.' },
+                { title: 'Fraser Valley hard water', body: 'Tankless units need annual descaling here — add to maintenance planning.' }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-3 bg-white p-4 rounded-xl border border-sky-100">
+                  <i className="ri-check-line text-emerald-600 text-xl flex-shrink-0 mt-0.5"></i>
+                  <div>
+                    <div className="font-bold text-gray-900 text-sm">{item.title}</div>
+                    <div className="text-sm text-gray-600">{item.body}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Service Areas */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Plumbing Service Areas
-            </h2>
-            <p className="text-xl text-gray-600">
-              Professional plumbing services throughout Abbotsford and surrounding areas
-            </p>
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Plumbing Service Areas</h2>
+            <p className="text-lg text-gray-600">Abbotsford neighbourhoods and nearby Fraser Valley communities.</p>
           </div>
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="bg-gray-100 rounded-xl p-4">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83325.24904165726!2d-122.38308678476562!3d49.05718584863281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485d4c89d72c663%3A0x4a2b36750554ba72!2sAbbotsford%2C%20BC%2C%20Canada!5e0!3m2!1sen!2sus!4v1704835000000!5m2!1sen!2sus"
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="rounded-lg"
-              ></iframe>
-            </div>
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-gray-900">
-                Areas We Serve for Plumbing Services
-              </h3>
-              <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                {geoData.areas.map((area) => (
-                  <Link key={area.slug} href={`/locations/${area.slug}`} className="flex items-center group">
-                    <div className="w-2 h-2 bg-blue-600 rounded-full mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700 group-hover:text-blue-600 transition-colors">{area.name}</span>
-                  </Link>
-                ))}
-              </div>
-              <div className="bg-blue-50 rounded-lg p-6">
-                <h4 className="text-lg font-semibold text-blue-900 mb-2">
-                  Need plumbing service outside these areas?
-                </h4>
-                <p className="text-blue-800 mb-4">
-                  We may still be able to help! Contact us to see if we can service your location.
-                </p>
-                <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors inline-block whitespace-nowrap cursor-pointer">
-                  Contact for Service Area
-                </a>
-              </div>
-            </div>
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {geoData.areas.map((area) => (
+              <Link key={area.slug} href={`/locations/${area.slug}`} className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-sky-50 hover:text-sky-700 transition-all group">
+                <div className="w-1.5 h-1.5 bg-sky-600 rounded-full mr-3"></div>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-sky-700">{area.name}</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-blue-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-            <i className="ri-robot-2-line text-2xl text-white"></i>
-          </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Need Plumbing or Water Heater Service?</h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Call us now or use our AI chat assistant — available 24/7 for water heater quotes, plumbing repair estimates, and tankless system consultations. No forms, no waiting.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={`tel:${settings.phoneNumber}`} className="bg-blue-600 text-white px-10 py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg text-lg inline-flex items-center justify-center gap-3">
-              <i className="ri-phone-fill"></i>
-              Call {settings.phoneNumber}
-            </a>
-            <a href="/contact" className="bg-white text-blue-600 border-2 border-blue-600 px-10 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all text-lg inline-flex items-center justify-center gap-3">
-              <i className="ri-chat-smile-2-line"></i>
-              Chat with Our AI
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
+      {/* FAQ */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xl text-gray-600">
-              Common questions about plumbing services in Abbotsford
-            </p>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Plumbing FAQ</h2>
+            <p className="text-lg text-gray-600">Real questions Abbotsford homeowners ask about plumbing work.</p>
           </div>
-          <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600">
-                  {faq.answer}
-                </p>
-              </div>
+          <div className="space-y-4">
+            {faqs.map((f, i) => (
+              <details key={i} className="group bg-white rounded-2xl border border-gray-100 shadow-sm p-6 hover:shadow-md transition-all">
+                <summary className="flex items-center justify-between cursor-pointer list-none">
+                  <h3 className="text-lg font-bold text-gray-900 pr-4">{f.q}</h3>
+                  <i className="ri-add-line text-2xl text-sky-600 group-open:rotate-45 transition-transform flex-shrink-0"></i>
+                </summary>
+                <p className="mt-4 text-gray-700 leading-relaxed">{f.a}</p>
+              </details>
             ))}
           </div>
         </div>
       </section>
 
       {/* Emergency CTA */}
-      <section className="py-16 bg-red-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-6">
-            <div className="w-10 h-10 flex items-center justify-center">
-              <i className="ri-drop-line text-3xl text-red-600"></i>
-            </div>
-          </div>
-          <h2 className="text-4xl font-bold text-white mb-4">
-            Plumbing Emergency? We're Here to Help!
-          </h2>
-          <p className="text-xl text-red-100 mb-8">
-            Don't let a plumbing emergency cause water damage. Our emergency plumbing team is available 24/7 throughout Abbotsford.
+      <section className="py-16 bg-red-600 text-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <i className="ri-alarm-warning-fill text-5xl mb-4 block"></i>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Plumbing Emergency in Abbotsford?</h2>
+          <p className="text-lg text-red-100 mb-8">
+            Active leak, burst pipe, sewage backup, or no hot water? Turn off the main shutoff if there&apos;s active water, then call. Priority dispatch across Abbotsford and the Fraser Valley.
           </p>
-          <a href={`tel:${settings.phoneNumber}`} className="bg-white text-red-600 px-10 py-5 rounded-xl text-xl font-bold hover:bg-gray-100 transition-all shadow-xl hover:scale-105 active:scale-95 whitespace-nowrap cursor-pointer flex items-center justify-center gap-2 mx-auto">
-            <i className="ri-phone-fill"></i>
-            Call Our Support Team 24/7
+          <a href={`tel:${settings.phoneRaw}`} className="inline-flex items-center gap-3 bg-white text-red-600 px-8 py-4 rounded-xl text-lg font-bold hover:bg-red-50 transition-all shadow-xl">
+            <i className="ri-phone-fill text-2xl"></i>
+            Call {settings.phoneNumber}
           </a>
         </div>
       </section>

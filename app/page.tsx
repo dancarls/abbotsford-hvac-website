@@ -64,11 +64,19 @@ export default function Home() {
       link: '/services/commercial'
     },
     {
+      icon: 'ri-drop-line',
+      iconColor: 'text-sky-600',
+      bgColor: 'bg-sky-50',
+      title: 'Plumbing & Water Heaters',
+      description: 'Leak repairs, drain cleaning, tank and tankless water heater install, and emergency plumbing — for Abbotsford homes and the Fraser Valley.',
+      link: '/services/plumbing'
+    },
+    {
       icon: 'ri-alarm-warning-line',
       iconColor: 'text-orange-600',
       bgColor: 'bg-orange-50',
-      title: 'Emergency HVAC',
-      description: 'No heat in the middle of a cold snap or a broken AC during a heat wave — 24/7 emergency HVAC help across Abbotsford and the Fraser Valley.',
+      title: 'Emergency HVAC & Plumbing',
+      description: 'No heat, no AC, burst pipe, or active leak — 24/7 emergency dispatch across Abbotsford and the Fraser Valley.',
       link: '/services/emergency'
     }
   ];
@@ -348,6 +356,12 @@ export default function Home() {
             </Link>
             <Link href="/services/emergency" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-red-50 border border-gray-200 hover:border-red-200 rounded-full text-sm font-medium text-gray-700 hover:text-red-700 transition-all">
               Emergency HVAC Abbotsford
+            </Link>
+            <Link href="/services/plumbing" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-sky-50 border border-gray-200 hover:border-sky-200 rounded-full text-sm font-medium text-gray-700 hover:text-sky-700 transition-all">
+              Plumber Abbotsford
+            </Link>
+            <Link href="/services/plumbing" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-sky-50 border border-gray-200 hover:border-sky-200 rounded-full text-sm font-medium text-gray-700 hover:text-sky-700 transition-all">
+              Water heater Abbotsford
             </Link>
             <Link href="/blog/bc-heat-pump-rebates-abbotsford" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-emerald-50 border border-gray-200 hover:border-emerald-200 rounded-full text-sm font-medium text-gray-700 hover:text-emerald-700 transition-all">
               BC heat pump rebates
