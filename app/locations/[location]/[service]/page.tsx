@@ -59,6 +59,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {
         title: content.hero_title,
         description: content.hero_subtitle,
+        // Noindex programmatic combo pages — templated content triggers Google's
+        // Helpful Content signal. Keep them accessible via direct link + internal
+        // navigation but out of the index. The dedicated /services/*-abbotsford
+        // pages and top-level area pages carry the ranking weight.
+        robots: {
+            index: false,
+            follow: true,
+            googleBot: {
+                index: false,
+                follow: true,
+            },
+        },
+        alternates: {
+            canonical: `https://www.abbotsfordhvac.ca/locations/${area}`,
+        },
         openGraph: {
             images: [`https://www.abbotsfordhvac.ca/images/hvac-maintenance-abbotsford-hero.png`],
             type: 'website',

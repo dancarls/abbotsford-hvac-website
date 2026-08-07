@@ -51,14 +51,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.8,
     }));
 
-    const geoServicePages: MetadataRoute.Sitemap = geoData.areas.flatMap((area) =>
-        geoData.services.map((service) => ({
-            url: `${BASE_URL}/locations/${area.slug}/${service.slug}`,
-            lastModified: new Date(),
-            changeFrequency: 'monthly' as const,
-            priority: 0.7,
-        }))
-    );
+    // Note: /locations/[area]/[service] combo pages are intentionally excluded
+    // from the sitemap and set to noindex — they were templated (find/replace on
+    // area+service name) which triggers Google's Helpful Content Update signal,
+    // and 165 of 168 were already stuck at "discovered but not indexed" per GSC.
+    // Ranking weight consolidates on the 21 area pages + 8 service pages + 3 dedicated
+    // /services/*-abbotsford money-keyword landing pages. Combo pages remain
+    // reachable via direct link and internal navigation, but Google won't index them.
 
     const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
         url: `${BASE_URL}/blog/${slug}`,
@@ -67,5 +66,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
     }));
 
-    return [...staticPages, ...geoServiceLandingPageEntries, ...servicePages, ...locationPages, ...geoServicePages, ...blogPages];
+    return [...staticPages, ...geoServiceLandingPageEntries, ...servicePages, ...locationPages, ...blogPages];
 }
