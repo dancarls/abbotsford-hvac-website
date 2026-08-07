@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Header from '../../components/feature/Header';
 import Footer from '../../components/feature/Footer';
+import LeadForm from '../../components/feature/LeadForm';
 import { getSettings } from '../../lib/getSettings';
 
 export const metadata: Metadata = {
@@ -90,48 +91,42 @@ export default function ContactPage() {
 
       {/* Contact Options */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">How Would You Like to Reach Us?</h2>
-            <p className="text-xl text-gray-600">We're available by phone and AI chat — no forms, no waiting.</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Three Ways to Reach Us</h2>
+            <p className="text-xl text-gray-600">Pick whichever works — all three go to the same dispatch line.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          {/* Primary: form left, phone right (mobile: stacked) */}
+          <div className="grid lg:grid-cols-2 gap-8 mb-8">
+            {/* Lead Form */}
+            <div>
+              <LeadForm source="contact-page" heading="Send us a message" subheading="Fill in three quick details and we'll call you back — usually within 30 minutes during business hours." />
+            </div>
+
             {/* Call Us */}
-            <div className="bg-blue-600 rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden">
+            <div className="bg-blue-600 rounded-3xl p-8 md:p-10 text-white shadow-2xl relative overflow-hidden">
               <div className="absolute -bottom-8 -right-8 opacity-10">
                 <i className="ri-phone-fill text-[150px]"></i>
               </div>
               <div className="relative z-10">
-                <span className="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-6 inline-block">24/7 Available</span>
-                <h3 className="text-3xl font-bold mb-3">Call Us Directly</h3>
-                <p className="text-blue-100 mb-8 leading-relaxed">
-                  Speak with our team instantly. Emergency heating or cooling calls answered any time — including nights, weekends, and holidays.
+                <span className="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 inline-block">24/7 Available</span>
+                <h3 className="text-2xl md:text-3xl font-bold mb-3">Call Us Directly</h3>
+                <p className="text-blue-100 mb-6 leading-relaxed">
+                  Emergency heating, cooling, or plumbing calls answered any time — including nights, weekends, and holidays. Our AI receptionist takes the call and dispatches to the right person.
                 </p>
                 <a
                   href={`tel:${settings.phoneRaw}`}
-                  className="inline-flex bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all items-center gap-3 shadow-xl text-lg"
+                  className="inline-flex bg-white text-blue-600 px-6 md:px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition-all items-center gap-3 shadow-xl text-lg"
                 >
                   <i className="ri-phone-fill text-xl"></i>
                   {settings.phoneNumber}
                 </a>
-              </div>
-            </div>
-
-            {/* AI Chat */}
-            <div className="bg-white rounded-3xl p-10 border border-gray-100 shadow-2xl relative overflow-hidden">
-              <div className="absolute -bottom-8 -right-8 opacity-5">
-                <i className="ri-robot-fill text-[150px] text-blue-600"></i>
-              </div>
-              <div className="relative z-10">
-                <span className="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-6 inline-block">AI Powered</span>
-                <h3 className="text-3xl font-bold text-gray-900 mb-3">Chat with Our AI Assistant</h3>
-                <p className="text-gray-600 mb-8 leading-relaxed">
-                  Get instant answers, request quotes, and book service — our AI assistant handles it 24/7. Look for the chat button in the corner of every page.
-                </p>
-                <div className="flex items-center gap-3 p-4 bg-blue-50 rounded-xl">
-                  <i className="ri-chat-smile-2-line text-2xl text-blue-600"></i>
-                  <span className="text-blue-800 font-semibold">Chat widget active on all pages</span>
+                <div className="mt-6 pt-6 border-t border-white/20">
+                  <div className="flex items-center gap-3 text-blue-50">
+                    <i className="ri-chat-smile-2-line text-2xl"></i>
+                    <span className="text-sm">Or use the chat widget (bottom-right corner) for a quick text answer any time.</span>
+                  </div>
                 </div>
               </div>
             </div>
