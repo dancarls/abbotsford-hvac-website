@@ -13,6 +13,13 @@ const blogSlugs = [
     'indoor-air-quality-fraser-valley-allergies',
 ];
 
+// High-priority geo+service landing pages (money keywords)
+const geoServiceLandingPages = [
+    'ac-repair-abbotsford',
+    'furnace-repair-abbotsford',
+    'heat-pump-abbotsford',
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
     const staticPages: MetadataRoute.Sitemap = [
         { url: BASE_URL, lastModified: new Date(), changeFrequency: 'weekly', priority: 1.0 },
@@ -22,6 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         { url: `${BASE_URL}/service-areas`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
         { url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: 'yearly', priority: 0.3 },
     ];
+
+    const geoServiceLandingPageEntries: MetadataRoute.Sitemap = geoServiceLandingPages.map((slug) => ({
+        url: `${BASE_URL}/services/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: 0.95,
+    }));
 
     const servicePages: MetadataRoute.Sitemap = geoData.services.map((service) => ({
         url: `${BASE_URL}/services/${service.slug}`,
@@ -53,5 +67,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
     }));
 
-    return [...staticPages, ...servicePages, ...locationPages, ...geoServicePages, ...blogPages];
+    return [...staticPages, ...geoServiceLandingPageEntries, ...servicePages, ...locationPages, ...geoServicePages, ...blogPages];
 }

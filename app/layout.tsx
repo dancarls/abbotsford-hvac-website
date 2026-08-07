@@ -2,6 +2,7 @@ import React from 'react'
 import './globals.css'
 import type { Metadata } from 'next'
 import { getSettings } from '../lib/getSettings'
+import MobileCallBar from '../components/feature/MobileCallBar'
 
 const settings = getSettings();
 
@@ -62,6 +63,7 @@ export default function RootLayout({
             </head>
             <body className="font-sans antialiased">
                 {children}
+                <MobileCallBar />
                 {retellChatEnabled && (
                     <script
                         id="retell-widget"

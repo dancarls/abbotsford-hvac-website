@@ -10,3 +10,5 @@ out
 .next
 .claude
 *.tsbuildinfo
+
+.vercel

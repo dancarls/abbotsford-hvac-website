@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Header from '../components/feature/Header';
 import Footer from '../components/feature/Footer';
+import LeadForm from '../components/feature/LeadForm';
 import { getSettings } from '../lib/getSettings';
 
 export default function Home() {
@@ -11,25 +12,25 @@ export default function Home() {
       icon: 'ri-temp-hot-line',
       iconColor: 'text-red-600',
       bgColor: 'bg-red-50',
-      title: 'Heating & Furnaces',
-      description: 'Furnace repair, replacement, boiler service and heat pump systems for Abbotsford and Fraser Valley homes — including no-heat emergencies during cold snaps.',
-      link: '/services/heating'
+      title: 'Furnace Repair',
+      description: 'Furnace repair, replacement, boiler service — including no-heat emergencies during Fraser Valley cold snaps. Real cost ranges and 24/7 dispatch.',
+      link: '/services/furnace-repair-abbotsford'
     },
     {
       icon: 'ri-snowflake-line',
       iconColor: 'text-blue-600',
       bgColor: 'bg-blue-50',
-      title: 'Air Conditioning',
-      description: 'Central AC installation, repair, and ductless mini-split options — increasingly common as Fraser Valley summers get hotter.',
-      link: '/services/cooling'
+      title: 'AC Repair',
+      description: 'Central AC repair and installation, ductless mini-split options — same-day dispatch for heat wave breakdowns across Abbotsford and the Fraser Valley.',
+      link: '/services/ac-repair-abbotsford'
     },
     {
       icon: 'ri-leaf-line',
       iconColor: 'text-emerald-600',
       bgColor: 'bg-emerald-50',
       title: 'Heat Pumps',
-      description: "One system for heating and cooling. Cold-climate heat pumps work well in Abbotsford's winters, and BC rebates can offset $1,000–$6,000 of the install cost.",
-      link: '/services/heating'
+      description: "One system for heating and cooling. Cold-climate heat pumps handle Abbotsford's winters, and BC + federal rebates stack to $1,000–$11,000+.",
+      link: '/services/heat-pump-abbotsford'
     },
     {
       icon: 'ri-windy-line',
@@ -314,24 +315,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust bar / quick CTA */}
+      {/* Trust bar + inline lead form */}
       <section id="service-form" className="py-12 bg-gray-50 border-b border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-6 text-center">
-            <div className="flex flex-col items-center">
-              <i className="ri-map-pin-2-line text-3xl text-blue-600 mb-2"></i>
-              <p className="font-semibold text-gray-900">Local to Abbotsford</p>
-              <p className="text-sm text-gray-600">Abbotsford, Mission, and Fraser Valley communities</p>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-5 gap-8 items-start">
+            <div className="lg:col-span-3 grid sm:grid-cols-3 gap-6 text-center">
+              <div className="flex flex-col items-center">
+                <i className="ri-map-pin-2-line text-3xl text-blue-600 mb-2"></i>
+                <p className="font-semibold text-gray-900">Local to Abbotsford</p>
+                <p className="text-sm text-gray-600">Abbotsford, Mission, and Fraser Valley communities</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <i className="ri-timer-flash-line text-3xl text-red-600 mb-2"></i>
+                <p className="font-semibold text-gray-900">24/7 Emergency Line</p>
+                <p className="text-sm text-gray-600">No heat, no cool, gas smell — call any time</p>
+              </div>
+              <div className="flex flex-col items-center">
+                <i className="ri-hand-heart-line text-3xl text-emerald-600 mb-2"></i>
+                <p className="font-semibold text-gray-900">Straight Talk</p>
+                <p className="text-sm text-gray-600">Real information about repair-vs-replace, rebates, and options</p>
+              </div>
             </div>
-            <div className="flex flex-col items-center">
-              <i className="ri-timer-flash-line text-3xl text-red-600 mb-2"></i>
-              <p className="font-semibold text-gray-900">24/7 Emergency Line</p>
-              <p className="text-sm text-gray-600">No heat, no cool, gas smell — call any time</p>
-            </div>
-            <div className="flex flex-col items-center">
-              <i className="ri-hand-heart-line text-3xl text-emerald-600 mb-2"></i>
-              <p className="font-semibold text-gray-900">Straight Talk</p>
-              <p className="text-sm text-gray-600">Real information about repair-vs-replace, rebates, and options</p>
+            <div className="lg:col-span-2">
+              <LeadForm source="homepage-hero" />
             </div>
           </div>
         </div>
@@ -342,16 +348,16 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 text-center">Popular in Abbotsford</p>
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-            <Link href="/services/heating" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
+            <Link href="/services/furnace-repair-abbotsford" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
               Furnace repair in Abbotsford
             </Link>
-            <Link href="/services/cooling" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
+            <Link href="/services/ac-repair-abbotsford" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
               AC repair in Abbotsford
             </Link>
-            <Link href="/services/cooling" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
+            <Link href="/services/ac-repair-abbotsford" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
               Air conditioning Abbotsford
             </Link>
-            <Link href="/services/heating" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
+            <Link href="/services/heat-pump-abbotsford" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-blue-50 border border-gray-200 hover:border-blue-200 rounded-full text-sm font-medium text-gray-700 hover:text-blue-700 transition-all">
               Heat pump Abbotsford
             </Link>
             <Link href="/services/emergency" className="inline-flex items-center px-4 py-2 bg-gray-50 hover:bg-red-50 border border-gray-200 hover:border-red-200 rounded-full text-sm font-medium text-gray-700 hover:text-red-700 transition-all">

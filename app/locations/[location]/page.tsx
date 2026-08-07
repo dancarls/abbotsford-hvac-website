@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
+import LeadForm from '../../../components/feature/LeadForm';
 import geoData from '../../../lib/data/geo-service-data.json';
 import { supabase } from '../../../lib/supabase';
 import { getSettings } from '../../../lib/getSettings';
@@ -178,31 +179,31 @@ export default async function ServiceAreaPage({ params }: PageProps) {
                         <div className="lg:col-span-2 space-y-12">
                             <div>
                                 <h2 className="text-4xl font-bold text-gray-900 mb-8 pb-4 border-b-2 border-blue-600 inline-block">
-                                    Comprehensive HVAC Support for {areaData.name}
+                                    HVAC Help for {areaData.name} Homeowners
                                 </h2>
                                 <div className="prose prose-xl text-gray-600 max-w-none">
                                     <p className="mb-8 leading-relaxed text-lg">
-                                        {content.description} Our team has been serving the {areaData.name} community for years, providing reliable heating, cooling, and plumbing solutions to residential and commercial properties alike. Whether you're near {areaData.landmark} or in the heart of the {areaData.name} residential districts, our technicians are just a call away.
+                                        {content.description}
                                     </p>
                                     <p className="mb-8 leading-relaxed text-lg">
-                                        We recognize that {areaData.name} has its own unique character and environmental factors. From the seasonal shifts that affect local humidity levels to the specific architectural styles common in this part of Abbotsford, we tailor our HVAC recommendations to ensure maximum efficiency and longevity for your systems.
+                                        Whether you&apos;re near {areaData.landmark} or elsewhere in {areaData.name}, our dispatch line connects you with a local Fraser Valley HVAC installer for furnace repair, AC service, heat pump installs, plumbing, and 24/7 emergency dispatch. No high-pressure sales — get real information first, then decide.
                                     </p>
                                 </div>
                             </div>
 
                             <div className="bg-blue-50 rounded-3xl p-8 lg:p-12 border border-blue-100">
-                                <h3 className="text-3xl font-bold text-gray-900 mb-6 font-display">Local {areaData.name} Expertise</h3>
+                                <h3 className="text-3xl font-bold text-gray-900 mb-6 font-display">What This Page Is</h3>
                                 <div className="grid md:grid-cols-2 gap-8">
                                     <div>
-                                        <h4 className="text-xl font-bold text-blue-900 mb-3 underline decoration-blue-200 underline-offset-4">Environmental Awareness</h4>
+                                        <h4 className="text-xl font-bold text-blue-900 mb-3 underline decoration-blue-200 underline-offset-4">Local HVAC Info for {areaData.name}</h4>
                                         <p className="text-blue-800/80">
-                                            We've developed specific maintenance protocols for the {areaData.name} area, accounting for local air quality and temperature fluctuations common near {areaData.landmark}.
+                                            Straight information about heating, cooling, and plumbing decisions Abbotsford homeowners face — real cost ranges, BC rebate context, and no marketing fluff.
                                         </p>
                                     </div>
                                     <div>
-                                        <h4 className="text-xl font-bold text-blue-900 mb-3 underline decoration-blue-200 underline-offset-4">Neighborhood Presence</h4>
+                                        <h4 className="text-xl font-bold text-blue-900 mb-3 underline decoration-blue-200 underline-offset-4">A Fast Path to a Local Installer</h4>
                                         <p className="text-blue-800/80">
-                                            Our vans are a common sight near {areaData.landmark}. We take pride in being the first choice for emergency HVAC repairs in the {areaData.name} community.
+                                            Our dispatch line and AI assistant help {areaData.name} homeowners connect with a Fraser Valley HVAC installer quickly — including nights and weekends for real emergencies.
                                         </p>
                                     </div>
                                 </div>
@@ -247,53 +248,42 @@ export default async function ServiceAreaPage({ params }: PageProps) {
 
                         {/* Right Sidebar */}
                         <div className="space-y-8">
+                            <LeadForm source={`location-${areaData.slug}`} heading={`${areaData.name} callback`} subheading="Three quick details and we'll call back — usually within 30 minutes during business hours." />
+
                             <div className="bg-blue-700 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden group">
                                 <div className="absolute top-0 right-0 -m-8 w-32 h-32 bg-blue-600/20 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
-                                <h3 className="text-2xl font-bold mb-4 relative z-10">Local {areaData.name} Support</h3>
-                                <p className="text-blue-100 mb-8 relative z-10 text-lg">
-                                    Need a professional opinion on your HVAC system? Our team is trained on {areaData.name} service standards.
+                                <h3 className="text-2xl font-bold mb-4 relative z-10">Call now — {areaData.name}</h3>
+                                <p className="text-blue-100 mb-6 relative z-10">
+                                    Prefer to talk it through? Our 24/7 line connects to a local Fraser Valley HVAC dispatch — including emergencies.
                                 </p>
                                 <a
                                     href={`tel:${settings.phoneRaw}`}
-                                    className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 cursor-pointer"
+                                    className="w-full bg-white text-blue-700 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all shadow-lg hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3 cursor-pointer"
                                 >
                                     <i className="ri-phone-fill text-2xl"></i>
-                                    Call {settings.phoneNumber}
+                                    {settings.phoneNumber}
                                 </a>
-                                <Link
-                                    href="/contact"
-                                    className="w-full mt-4 bg-white/10 border border-white/20 text-white py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center gap-3 cursor-pointer block text-center"
-                                >
-                                    Get Quote
-                                </Link>
                             </div>
 
-                            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm space-y-6">
-                                <h4 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                                    <i className="ri-shield-flash-fill text-blue-600"></i>
-                                    {areaData.name} Area Service Stats
+                            <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm">
+                                <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                    <i className="ri-time-line text-blue-600"></i>
+                                    Response Windows
                                 </h4>
-                                <div className="grid grid-cols-2 gap-4">
-                                    <div className="p-4 bg-gray-50 rounded-2xl text-center">
-                                        <div className="text-2xl font-bold text-blue-600">1-2h</div>
-                                        <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">Avg Response</div>
-                                    </div>
-                                    <div className="p-4 bg-gray-50 rounded-2xl text-center">
-                                        <div className="text-2xl font-bold text-blue-600">500+</div>
-                                        <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">Local Jobs</div>
-                                    </div>
-                                    <div className="p-4 bg-gray-50 rounded-2xl text-center">
-                                        <div className="text-2xl font-bold text-blue-600">4.9/5</div>
-                                        <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">Rating</div>
-                                    </div>
-                                    <div className="p-4 bg-gray-50 rounded-2xl text-center">
-                                        <div className="text-2xl font-bold text-blue-600">24/7</div>
-                                        <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">Emergency</div>
-                                    </div>
-                                </div>
-                                <p className="text-sm text-gray-500 italic">
-                                    * Statistics based on internal service data for the {areaData.name} region over the past 12 months.
-                                </p>
+                                <ul className="space-y-3 text-sm text-gray-700">
+                                    <li className="flex items-start gap-2">
+                                        <i className="ri-alarm-warning-fill text-red-500 mt-0.5 flex-shrink-0"></i>
+                                        <span><span className="font-semibold">Emergencies</span> (no heat/AC, active leak, gas smell) — priority dispatch, 24/7.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <i className="ri-flashlight-fill text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                        <span><span className="font-semibold">Urgent same-day</span> — most {areaData.name} addresses, business hours.</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <i className="ri-calendar-check-fill text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                                        <span><span className="font-semibold">Scheduled</span> (installs, tune-ups) — booked within days depending on load.</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

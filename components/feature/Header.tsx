@@ -125,14 +125,25 @@ export default function Header() {
             </a>
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2"
-            aria-label="Toggle menu"
-          >
-            <i className={`ri-${isMenuOpen ? 'close' : 'menu'}-line text-2xl`}></i>
-          </button>
+          {/* Mobile: phone + hamburger side by side */}
+          <div className="md:hidden flex items-center gap-2">
+            <a
+              href={`tel:${PHONE_RAW}`}
+              className="bg-blue-600 text-white px-3 py-2 rounded-lg font-bold text-sm shadow-sm active:scale-95 transition-transform flex items-center gap-1"
+              aria-label={`Call ${PHONE}`}
+            >
+              <i className="ri-phone-fill text-base" aria-hidden="true"></i>
+              Call
+            </a>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2"
+              aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
+            >
+              <i className={`ri-${isMenuOpen ? 'close' : 'menu'}-line text-2xl`}></i>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
