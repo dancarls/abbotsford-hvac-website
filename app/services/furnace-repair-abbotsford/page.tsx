@@ -7,15 +7,20 @@ import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
 export const metadata: Metadata = {
-  title: 'Furnace Repair Abbotsford BC — 24/7 Emergency Furnace Service',
+  title: 'Furnace Repair Abbotsford BC — 🔥 24/7 No-Heat Emergency · Same-Day',
   description:
-    'Local furnace repair in Abbotsford. Common problems, real cost ranges ($95–$150 service call, $200–$1,500 typical repair), and same-day dispatch across the Fraser Valley.',
+    'Furnace repair in Abbotsford, BC — $95 diagnostic, 24/7 no-heat dispatch during Fraser Valley cold snaps. Real cost ranges: flame sensor $150, ignitor $200–$400, blower $400–$900.',
   alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/furnace-repair-abbotsford' },
+  other: {
+    'last-modified': new Date().toISOString(),
+  },
   openGraph: {
-    title: 'Furnace Repair Abbotsford BC — 24/7 Emergency Furnace Service',
+    title: 'Furnace Repair Abbotsford BC — 🔥 24/7 No-Heat Emergency',
     description:
-      'Local furnace repair in Abbotsford — real cost ranges, no-heat emergency dispatch, and honest repair vs. replace advice.',
+      'Local furnace repair, 24/7 no-heat dispatch, real Fraser Valley cost ranges. Honest repair-vs-replace advice.',
     images: ['https://www.abbotsfordhvac.ca/images/hvac-maintenance-abbotsford-hero.png'],
+    type: 'website',
+    locale: 'en_CA',
   },
 };
 

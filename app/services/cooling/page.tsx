@@ -1,5 +1,6 @@
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
+import RelatedServices from '../../../components/feature/RelatedServices';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getSettings } from '@/lib/getSettings';
@@ -265,6 +266,14 @@ export default function CoolingServices() {
           </a>
         </div>
       </section>
+
+      {/* Internal linking boost — pumps PageRank into money-keyword landing pages */}
+      <RelatedServices
+        heading="Also Popular in Abbotsford"
+        subheading="Our most-requested repairs and installs across the Fraser Valley."
+        exclude={['ac-repair']}
+        tone="tinted"
+      />
 
       <Footer />
     </div>

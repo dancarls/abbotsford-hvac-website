@@ -7,15 +7,20 @@ import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
 export const metadata: Metadata = {
-  title: 'Heat Pump Abbotsford BC — Install, Rebates & Cost Guide',
+  title: 'Heat Pump Abbotsford BC — 🍃 Up to $11,000 in BC Rebates (2026)',
   description:
-    'Heat pump installation in Abbotsford — cold-climate systems, BC + federal rebates stacking to $1,000–$11,000+, real cost ranges, and honest sizing advice for Fraser Valley homes.',
+    'Heat pump install in Abbotsford, BC — cold-climate systems rated -25°C, BC + federal rebates stacking $1,000–$11,000+, real cost ranges $4,000 (mini-split) to $18,000 (ducted central).',
   alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/heat-pump-abbotsford' },
+  other: {
+    'last-modified': new Date().toISOString(),
+  },
   openGraph: {
-    title: 'Heat Pump Abbotsford BC — Install, Rebates & Cost Guide',
+    title: 'Heat Pump Abbotsford BC — 🍃 Up to $11,000 in BC Rebates',
     description:
-      'Cold-climate heat pump install for Abbotsford homes — real BC rebate stacking, cost ranges $8,000–$18,000 installed, and sizing advice for the Fraser Valley climate.',
+      'Cold-climate heat pump install for Fraser Valley homes — BC rebate stacking, real cost ranges, honest sizing.',
     images: ['https://www.abbotsfordhvac.ca/images/ductless-mini-split-abbotsford-hero.png'],
+    type: 'website',
+    locale: 'en_CA',
   },
 };
 

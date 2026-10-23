@@ -7,15 +7,20 @@ import { getSettings } from '@/lib/getSettings';
 import geoData from '@/lib/data/geo-service-data.json';
 
 export const metadata: Metadata = {
-  title: 'AC Repair Abbotsford BC — Same-Day Air Conditioning Repair',
+  title: 'AC Repair Abbotsford BC — ⚡ Same-Day · $95 Diagnostic · 24/7',
   description:
-    'Local AC repair in Abbotsford. Common problems, real cost ranges ($95–$150 service call, $200–$1,600 typical repair), and same-day dispatch across the Fraser Valley.',
+    'AC repair in Abbotsford, BC — $95 diagnostic, same-day service across the Fraser Valley, real cost ranges from $150 (capacitor) to $2,500 (compressor). 24/7 heat-wave dispatch.',
   alternates: { canonical: 'https://www.abbotsfordhvac.ca/services/ac-repair-abbotsford' },
+  other: {
+    'last-modified': new Date().toISOString(),
+  },
   openGraph: {
-    title: 'AC Repair Abbotsford BC — Same-Day Air Conditioning Repair',
+    title: 'AC Repair Abbotsford BC — ⚡ Same-Day · $95 Diagnostic',
     description:
-      'Local AC repair in Abbotsford — real cost ranges, common problems, and 24/7 emergency dispatch across the Fraser Valley.',
+      'Local AC repair across the Fraser Valley — $95 diagnostic, real cost ranges, 24/7 heat-wave emergency dispatch.',
     images: ['https://www.abbotsfordhvac.ca/images/ac-not-cooling-abbotsford-hero.png'],
+    type: 'website',
+    locale: 'en_CA',
   },
 };
 

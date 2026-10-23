@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Header from '../components/feature/Header';
 import Footer from '../components/feature/Footer';
 import LeadForm from '../components/feature/LeadForm';
+import RelatedServices from '../components/feature/RelatedServices';
 import { getSettings } from '../lib/getSettings';
 
 export default function Home() {
@@ -672,6 +673,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Internal linking boost — pumps PageRank into money-keyword landing pages */}
+      <RelatedServices tone="tinted" />
 
       {/* Bottom CTA */}
       <section className="py-16 bg-gradient-to-br from-blue-700 to-blue-900 text-white">

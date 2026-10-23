@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Header from '../../../components/feature/Header';
 import Footer from '../../../components/feature/Footer';
 import LeadForm from '../../../components/feature/LeadForm';
+import RelatedServices from '../../../components/feature/RelatedServices';
 import geoData from '../../../lib/data/geo-service-data.json';
 import { supabase } from '../../../lib/supabase';
 import { getSettings } from '../../../lib/getSettings';
@@ -365,6 +366,12 @@ export default async function ServiceAreaPage({ params }: PageProps) {
                     </div>
                 </div>
             </section>
+
+            {/* Internal linking boost — pumps PageRank into money-keyword landing pages */}
+            <RelatedServices
+                heading={`HVAC Services for ${areaData.name} Homes`}
+                subheading={`Most-requested repairs and installs for ${areaData.name} residents — real Fraser Valley cost ranges and local dispatch.`}
+            />
 
             <Footer />
         </div>
